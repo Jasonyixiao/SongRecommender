@@ -6,5 +6,9 @@ public class main {
         Scanner sc = new Scanner(System.in);
         String task = sc.next();
         System.out.println(task);
+        System.out.println("Enter your username: ");
+        Scanner sc2 = new Scanner(System.in);
+        String username = sc2.next();
+        System.out.println(username);
     }
 }

@@ -9,6 +9,6 @@ public class main {
         System.out.println("Enter your username: ");
         Scanner sc2 = new Scanner(System.in);
         String username = sc2.next();
-        System.out.println(username);
+        System.out.println(username); // change this line to call controller
     }
 }

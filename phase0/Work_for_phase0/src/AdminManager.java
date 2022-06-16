@@ -91,9 +91,13 @@ public class AdminManager {
 
     }
 
-    public boolean banUser(NormalUser someUser){
-        someUser.setBanDate();
-        return true;
+    public boolean banUser(User someUser){
+        if (someUser instanceof AdminUser) {
+            return false;
+        } else {
+            someUser.setBanDate();
+            return true;
+        }
     }
 
     // when we impliment the controller for banning user, we need to first make sure that we check if the user that is

@@ -1,3 +1,5 @@
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
@@ -10,5 +12,8 @@ public class main {
         Scanner sc2 = new Scanner(System.in);
         String username = sc2.next();
         System.out.println(username); // change this line to call controller
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        System.out.println(c.getTime());
     }
 }

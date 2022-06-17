@@ -16,6 +16,9 @@ public class NormalUserManager {
     public boolean login(String username, String password){
         for(NormalUser user: allNormalUsers){
             if (user.getUsername().equals(username)){
+                if (checkDateHelper(user.getBanDate())) {
+                    return false;
+                }
                 if (user.getPassword().equals(password)){
                     user.setIsSignedIn(true);
                     user.appendLoginHistory(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
@@ -26,6 +29,11 @@ public class NormalUserManager {
             }
         }
         return false; //no such user in the list
+    }
+
+    private boolean checkDateHelper(Date banUntilDate){
+        Date currentDay = new Date();
+        return banUntilDate.after(currentDay);
     }
 
     public void createNormalUser(String username, String password){

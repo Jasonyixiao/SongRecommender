@@ -25,6 +25,10 @@ public abstract class User {
         banUntil.add(Calendar.DATE, 1); // Adds 15 days
     }
 
+    public Date getBanDate() {
+        return this.banUntil.getTime();
+    }
+
 
     //@Jason : 这里决定一下is_banned该用什么type，怎么设定他要被ban了多久？ maybe用倒计时？如果用倒计时的话 怎么把他存进csv
 

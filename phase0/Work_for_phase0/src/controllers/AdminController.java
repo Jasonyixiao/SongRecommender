@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.User;
+import entities.AdminUser;
 import usecases.AdminManager;
 import java.util.List;
 

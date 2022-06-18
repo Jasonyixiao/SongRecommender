@@ -41,8 +41,8 @@ public class AdminController implements AdminControllerInterface{
         return adminManager.getLoginHistory(username);
     }
 
-    public boolean banUserAccount(User someUser){
-        return adminManager.banUser(someUser);
+    public boolean banUserAccount(String username){
+        return adminManager.banUser(username);
     }
 
 

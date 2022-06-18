@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class NormalUserManager {
-    private List<NormalUser> allNormalUsers;
+    private ArrayList<NormalUser> allNormalUsers;
 
     public NormalUserManager(){
         allNormalUsers = new ArrayList<NormalUser>();
@@ -43,21 +43,19 @@ public class NormalUserManager {
     public void createNormalUser(String username, String password){
         NormalUser newNormalUser = new NormalUser(username, password);
         appendToList(newNormalUser);
-        // @Henry： 这里要在database里加新user的信息
 
     }
 
-//    public boolean checkInList(String username){    这个也许要放到controller里因为method有点多了
-//        for(entities.NormalUser user: allNormalUsers){
-//            if (user.getUsername().equals(username)){
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    public boolean checkInList(String username){
+        for(entities.NormalUser user: allNormalUsers){
+            if (user.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
 
-    private boolean checkLogIn(String username ){             //这个method是用来在controller里叫的
-                                                                // 比如我在没有登录前是不能看自己的history的
+    private boolean checkLogIn(String username ){
         for(NormalUser user: allNormalUsers){
             if (user.getUsername().equals(username)){
                 return user.getIsSignedIn();
@@ -81,8 +79,8 @@ public class NormalUserManager {
     }
     public void removeFromList(NormalUser user){
         allNormalUsers.remove(user);
-        //@Henry ： 这里我们删完人 得需要想办法把在我们的database里也把这个人删掉。要不然在这里删 要不然我们在controller里删、
+
     }
 
-//    public void ban
+
 }

@@ -32,7 +32,6 @@ public abstract class User {
     }
 
 
-    //@Jason : 这里决定一下is_banned该用什么type，怎么设定他要被ban了多久？ maybe用倒计时？如果用倒计时的话 怎么把他存进csv
 
     public User(String username, String password){
         this.username = username;

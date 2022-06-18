@@ -13,12 +13,12 @@ public class LoginSystem {
                 "your input: ");
         Scanner sc = new Scanner(System.in);
         String task = sc.next();
-        if (task.equals('A')) {
+        if (task.equals("A")) {
             System.out.println("Enter your username :");
             String username = sc.next();
             System.out.println("Enter your password :");
             String password = sc.next();
-        } else if (task.equals('B')) {
+        } else if (task.equals("B")) {
             System.out.println("Enter your desired username: ");
 
         }

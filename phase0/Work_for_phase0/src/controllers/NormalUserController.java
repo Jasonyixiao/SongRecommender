@@ -3,7 +3,11 @@ package controllers;
 import usecases.NormalUserManager;
 import java.util.List;
 
-public class NormalUserController {
+public class NormalUserController implements NormalUserManagerInterface{
+    @Override
+    public void normalUserManager() {
+        System.out.println("normalUserManager");
+    }
     private NormalUserManager normalUserManager;
     //constructor
     public NormalUserController(NormalUserManager normalUserManager){

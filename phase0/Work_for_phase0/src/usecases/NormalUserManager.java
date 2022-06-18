@@ -1,3 +1,7 @@
+package usecases;
+
+import entities.NormalUser;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,7 +48,7 @@ public class NormalUserManager {
     }
 
 //    public boolean checkInList(String username){    这个也许要放到controller里因为method有点多了
-//        for(NormalUser user: allNormalUsers){
+//        for(entities.NormalUser user: allNormalUsers){
 //            if (user.getUsername().equals(username)){
 //                return true;
 //            }

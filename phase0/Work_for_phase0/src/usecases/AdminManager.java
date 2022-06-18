@@ -1,3 +1,9 @@
+package usecases;
+
+import entities.AdminUser;
+import entities.NormalUser;
+import entities.User;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +29,7 @@ public class AdminManager {
     }
 
 //     public boolean checkInList(String username){  //这个也许要放到controller里
-//        for(AdminUser user: allAdminUsers){
+//        for(entities.AdminUser user: allAdminUsers){
 //            if (user.getUsername().equals(username)){
 //                return true;
 //            }
@@ -63,13 +69,13 @@ public class AdminManager {
 
 
     // @jason: ban人的method交给你了 爱你
-    // public void ban_user(AdminUser adminUser){}
+    // public void ban_user(entities.AdminUser adminUser){}
 
     public boolean deleteUser( String username){
         // assumes the user that gets delete is a non_admin user
         // @Selena 在controller里叫这个method前要先check这个是不是
         // non admin
-        // @Selena 在controller里叫delete_user前最好要先叫一下 NormalUserManager.check_in_list(见上面我comment掉的)。
+        // @Selena 在controller里叫delete_user前最好要先叫一下 usecases.NormalUserManager.check_in_list(见上面我comment掉的)。
         // 因为这里我们assume想要删掉的人已经是non_admin并且我已经以admin登录
 
         for (NormalUser user: normalManager.getAllNormalUsers()){

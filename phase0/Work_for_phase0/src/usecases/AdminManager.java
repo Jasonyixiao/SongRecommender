@@ -2,7 +2,7 @@ package usecases;
 
 import entities.AdminUser;
 import entities.NormalUser;
-import entities.User;
+
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package controllers;
 
-public class LoginImplement implements LoginInterface {
+public class Enrollment implements Enrolled {
     @Override
     public void login() {
         System.out.println("login");

@@ -3,7 +3,7 @@
  */
 package controllers;
 
-public interface LoginInterface {
+public interface Enrolled {
     // AdminManager Login(String username, String password);
     void login();
 

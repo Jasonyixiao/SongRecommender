@@ -25,6 +25,7 @@ public class AdminManager {
 
     }
     public List<AdminUser> getAllAdminUsers(){
+
         return allAdminUsers;
     }
 
@@ -105,6 +106,7 @@ public class AdminManager {
             return true;
         }
     }
+
 
     // when we impliment the controller for banning user, we need to first make sure that we check if the user that is
     // trying to bansome one is not an admin, we will return "Sorry you are not an admin."

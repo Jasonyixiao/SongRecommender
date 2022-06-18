@@ -1,6 +1,6 @@
 package controllers;
 
 public interface NormalUserManagerInterface {
-    public void normalUserManager();
+    void normalUserManager();
 
 }

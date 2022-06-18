@@ -5,6 +5,6 @@ package controllers;
 
 public interface LoginInterface {
     // AdminManager Login(String username, String password);
-    public void login();
+    void login();
 
 }

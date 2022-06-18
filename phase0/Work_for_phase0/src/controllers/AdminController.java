@@ -6,15 +6,17 @@ import usecases.AdminManager;
 import java.util.List;
 
 public class AdminController implements AdminControllerInterface{
-    @Override
-    public void adminController() {
-        System.out.println("adminController");
-    }
     private AdminManager adminManager;
+
     public AdminController(AdminManager adminManager) {
         this.adminManager = new AdminManager();
     }
     // AdminController stores an instance of AdminManage
+
+    @Override
+    public void adminController() {
+        System.out.println("adminController");
+    }
 
     public List<AdminUser> getAllAdminUsers(){
         return adminManager.getAllAdminUsers();

@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -75,8 +76,8 @@ public class User implements Serializable {
         IsAdmin = i;
     }
 
-    public void appendLoginHistory(String d){
-        loginHistory.add(d);
+    public void appendLoginHistory(){
+        loginHistory.add(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
     }
 
     public List<String> getLoginHistory(){
@@ -91,9 +92,7 @@ public class User implements Serializable {
         this.isSignedIn = b;
     }
 
-    public int getId(){
-        return id;
-    }
+
 
 
 }

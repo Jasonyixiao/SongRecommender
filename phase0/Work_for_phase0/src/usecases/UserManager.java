@@ -27,6 +27,7 @@ public class UserManager {
     public boolean logIn(String username, String password) {
         User currentUser = allUsers.get(username);
         if (currentUser != null) {
+            currentUser.appendLoginHistory();
             return currentUser.getPassword().equals(password);
         } else {
             return false;

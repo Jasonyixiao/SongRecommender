@@ -14,7 +14,7 @@ public class LoginSystem {
     public static void main(String[] args) {
             //File f = new File(driver.GateWay.userFile);
             //System.out.println(f.exists());
-            GateWay g = new GateWay("./user");
+            GateWay g = new GateWay();
             UserManager userManager = new UserManager(g);
             userManager.createUser("aaa","bbb");
             userManager.createUser("a", "b");

@@ -9,10 +9,10 @@ import java.util.HashMap;
 
 
 public class GateWay implements IGateWay {
-    private final String file;
+    private final String file = "./user";
 
-    public GateWay(String filepath){
-        this.file = filepath;
+    public GateWay(){
+
     }
 
 

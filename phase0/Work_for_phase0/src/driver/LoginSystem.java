@@ -1,40 +1,36 @@
 package driver;
 
-import controllers.AdminController;
+import usecases.UserManager;
 
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This is the Shell that prompts user for input
  */
 public class LoginSystem {
-    private AdminController adminController = new AdminController();
+
 
     public static void main(String[] args) {
-        System.out.println("Input A to login, input B to create account. " +
-                "your input: ");
-        Scanner sc = new Scanner(System.in);
-        String task = sc.next();
-        if (task.equals("A")) {
-            System.out.println("Enter your username :");
-            String username = sc.next();
-            System.out.println("Enter your password :");
-            String password = sc.next();
-            
-        } else if (task.equals("B")) {
-            System.out.println("Enter your desired username: ");
+            //File f = new File(driver.GateWay.userFile);
+            //System.out.println(f.exists());
+            GateWay g = new GateWay("./user");
+            UserManager userManager = new UserManager(g);
+            userManager.createUser("aaa","bbb");
+            userManager.createUser("a", "b");
+            userManager.save();
+            UserManager n1 = new UserManager(g);
+            n1.read();
+            System.out.println(n1.getAllUsers());
 
-        }
-        System.out.println(task);
-        System.out.println("Enter your username: ");
-        Scanner sc2 = new Scanner(System.in);
-        String username = sc2.next();
-        System.out.println(username); // change this line to call controller
-        Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
-        System.out.println(c.getTime());
+            //m.create_admin_user("aaa","bbb");
+            //System.out.println(m.getAllAdminUsers());
+            //m.save();
+            //AdminManager.admindata a = new AdminManager.admindata();
+
+            //g.save(new AdminManager.admindata());
+
+
+
     }
 }

@@ -1,3 +1,5 @@
+package driver;
+
 import entities.User;
 import usecases.IGateWay;
 
@@ -9,8 +11,8 @@ import java.util.HashMap;
 public class GateWay implements IGateWay {
     private final String file;
 
-    public GateWay(String file){
-        this.file = file;
+    public GateWay(String filepath){
+        this.file = filepath;
     }
 
 

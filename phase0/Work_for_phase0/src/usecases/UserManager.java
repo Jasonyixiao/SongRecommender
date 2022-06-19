@@ -3,17 +3,22 @@ package usecases;
 import entities.User;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class UserManager {
     private HashMap<String, User> allUsers;
-    private IGateWay gateWay;
+    private final IGateWay gateWay;
 
-    public UserManager() {
+    public UserManager(IGateWay g) {
         this.allUsers = new HashMap<String, User>(9999);
+        this.gateWay = g;
     }
-
+    public HashMap<String, User> getAllUsers(){
+        return allUsers;
+    }
     public void createUser(String username, String password) {
         User newUser = new User(username, password);
         allUsers.put(username, newUser);
@@ -64,6 +69,7 @@ public class UserManager {
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 otherUser.setIsAdmin(1);
                 return "Command successful. ";
+
             }
             else{
                 return "The user is already an admin. ";
@@ -134,6 +140,8 @@ public class UserManager {
             e.printStackTrace();
         }
     }
+
+
 
 
 

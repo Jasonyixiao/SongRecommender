@@ -1,6 +1,8 @@
 package controllers;
 
 import usecases.UserManager;
+
+import java.io.IOException;
 import java.util.List;
 
 public class UserController {
@@ -15,6 +17,11 @@ public class UserController {
         // if admin created successfully "command successful" is printed
         // if a non-admin tries to create admin, "you are not an admin" will be returned
         // if an admin tries to create admin,
+    }
+
+    public String createNormalUser(String username, String password) {
+        this.userManager.createUser(username, password);
+        return "Successful! ";
     }
 
 
@@ -41,6 +48,10 @@ public class UserController {
     }
     public List<String> getLogInHistory(String username) {
         return this.userManager.getLoginHistory(username);
+    }
+
+    public boolean logOut(String username) throws IOException {
+        return this.userManager.logout(username);
     }
 
 }

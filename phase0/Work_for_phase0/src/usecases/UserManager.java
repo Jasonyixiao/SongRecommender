@@ -5,6 +5,7 @@ import entities.User;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,10 +29,22 @@ public class UserManager {
         User currentUser = allUsers.get(username);
         if (currentUser != null) {
             currentUser.appendLoginHistory();
-            return currentUser.getPassword().equals(password);
+            if (checkDateHelper(currentUser.getBanDate())) {
+                return false; // If the code returns here then we know this user is banned
+            }
+            if (currentUser.getPassword().equals(password)) {
+                currentUser.setIsSignedIn(true);
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
+    }
+        private boolean checkDateHelper(Date banUntilDate){
+        Date currentDay = new Date();
+        return banUntilDate.after(currentDay);
     }
 
     public boolean logout(String username) throws IOException {

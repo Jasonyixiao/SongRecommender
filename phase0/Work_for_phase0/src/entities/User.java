@@ -90,5 +90,9 @@ public class User {
         this.isSignedIn = b;
     }
 
+    public int getId(){
+        return id;
+    }
+
 
 }

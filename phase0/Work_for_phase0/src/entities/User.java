@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public abstract class User {
+public class User {
 
     private String username;
 
@@ -20,6 +20,10 @@ public abstract class User {
 
     private Calendar banUntil;
 
+    private int id;
+
+    private static int totalPopulation = 0;
+
     public void setBanDate(){
 
         banUntil.setTime(new Date()); // Now use today date.
@@ -32,8 +36,7 @@ public abstract class User {
     }
 
 
-
-    public User(String username, String password){
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.IsAdmin = 0;
@@ -41,6 +44,11 @@ public abstract class User {
         loginHistory = new ArrayList<String>();
         banUntil = Calendar.getInstance();
         banUntil.setTime(new Date());
+        this.id = totalPopulation;
+        totalPopulation++;
+        if (this.id == 0) {
+            IsAdmin = 1;
+        }
     }
     public String getUsername(){
         return username;

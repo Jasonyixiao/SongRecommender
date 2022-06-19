@@ -1,8 +1,5 @@
 package usecases;
 
-import entities.AdminUser;
-import entities.NormalUser;
-
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

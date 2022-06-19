@@ -6,7 +6,7 @@ import java.util.List;
 public class AdminController implements AdminControllerInterface{
     private AdminManager adminManager;
 
-    public AdminController(AdminManager adminManager) {
+    public AdminController() {
         this.adminManager = new AdminManager();
     }
     // AdminController stores an instance of AdminManage

@@ -8,11 +8,11 @@ import java.util.List;
 
 public class User {
 
-    private String username;
+    private String username;         // we need to enforce that usernames are UNIQUE
 
     private String password;
 
-    private int IsAdmin;
+    private int IsAdmin; // 1 is admin and 0 is admin
 
     private List<String> loginHistory;
 

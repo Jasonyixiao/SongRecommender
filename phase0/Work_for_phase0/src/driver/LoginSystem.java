@@ -1,5 +1,8 @@
 package driver;
 
+import controllers.AdminController;
+
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -8,6 +11,8 @@ import java.util.Scanner;
  * This is the Shell that prompts user for input
  */
 public class LoginSystem {
+    private AdminController adminController = new AdminController();
+
     public static void main(String[] args) {
         System.out.println("Input A to login, input B to create account. " +
                 "your input: ");
@@ -18,6 +23,7 @@ public class LoginSystem {
             String username = sc.next();
             System.out.println("Enter your password :");
             String password = sc.next();
+            
         } else if (task.equals("B")) {
             System.out.println("Enter your desired username: ");
 

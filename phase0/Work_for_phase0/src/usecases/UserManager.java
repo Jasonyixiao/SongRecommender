@@ -68,14 +68,14 @@ public class UserManager {
         if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 otherUser.setIsAdmin(1);
-                return "Command successful. ";
+                return "Command successful.";
 
             }
             else{
-                return "The user is already an admin. ";
+                return "The user is already an admin.";
             }
         } else {
-            return "You are not an admin .";
+            return "You are not an admin.";
         }
     }
 
@@ -90,13 +90,13 @@ public class UserManager {
         if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 allUsers.remove(otherUsername);
-                return "Command successful. ";
+                return "Command successful.";
             }
             else{
-                return "You cannot delete admin. ";
+                return "You cannot delete admin.";
             }
         } else {
-            return "You are not an admin .";
+            return "You are not an admin.";
         }
     }
 
@@ -117,12 +117,12 @@ public class UserManager {
         if (currentUser.getIsAdmin() == 1) {    // 1 mean the current user is an admin
             if (otherUser.getIsAdmin() == 0){       // 0 means the current user is a noraml user
                 otherUser.setBanDate();
-                return "Command Successful! ";
+                return "Command Successful!";
             }else{
-                return "You cannot delete admin. ";
+                return "You cannot ban admin.";
             }
         } else {
-            return "You are not an admin .";
+            return "You are not an admin.";
         }
     }
 

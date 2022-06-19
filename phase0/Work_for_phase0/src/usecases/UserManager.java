@@ -2,11 +2,13 @@ package usecases;
 
 import entities.User;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 public class UserManager {
     private HashMap<String, User> allUsers;
+    private IGateWay gateWay;
 
     public UserManager() {
         this.allUsers = new HashMap<String, User>(9999);
@@ -21,6 +23,22 @@ public class UserManager {
         User currentUser = allUsers.get(username);
         if (currentUser != null) {
             return currentUser.getPassword().equals(password);
+        } else {
+            return false;
+        }
+    }
+
+    public boolean logout(String username) throws IOException {
+        User currentUser = allUsers.get(username);
+        if (checkIsLogIn(username)) {
+            currentUser.setIsSignedIn(false);
+            try{
+                gateWay.save(allUsers);
+                return true;
+            }catch (IOException e){
+                e.printStackTrace();
+                return false;
+            }
         } else {
             return false;
         }
@@ -101,6 +119,23 @@ public class UserManager {
             return "You are not an admin .";
         }
     }
+
+    public void read(){
+        try {
+            allUsers = gateWay.read();
+        }catch (ClassNotFoundException ignored){
+        }
+    }
+
+    public void save(){
+        try {
+            gateWay.save(allUsers);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
 

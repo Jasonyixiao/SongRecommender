@@ -12,7 +12,6 @@ public class GateWay implements IGateWay {
     private final String file = "./user";
 
     public GateWay(){
-
     }
 
 

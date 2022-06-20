@@ -2,26 +2,26 @@ package entities;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class User implements Serializable {
-    private int id;
 
     private String username;         // we need to enforce that usernames are UNIQUE
 
     private String password;
 
-    private int IsAdmin; // 1 is admin and 0 is admin
+    private int IsAdmin; // 1 is admin and 0 is not admin
 
     private List<String> loginHistory;
 
     private boolean isSignedIn;
 
     private Calendar banUntil;
+
+    private final int id;
 
     private static int totalPopulation = 0;
 
@@ -36,7 +36,9 @@ public class User implements Serializable {
         return this.banUntil.getTime();
     }
 
-
+    public int getId(){
+        return this.id;
+    }
     public User(String username, String password) {
         this.username = username;
         this.password = password;

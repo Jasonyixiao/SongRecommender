@@ -1,14 +1,16 @@
 package controllers;
 
 public class UserProfile {
-    private int userId;
-    private String username;
-    private String password;
+        private final String username;
+        //we're just going to keep this as a security token for now so the user as a sign in token
+        private final String password;
 
-    public UserProfile(int userId, String username, String password)
+        public UserProfile(String username, String password) {
+            this.username = username;
+            this.password = password;
+        }
+        public String getUsername()
     {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
+        return username;
     }
 }

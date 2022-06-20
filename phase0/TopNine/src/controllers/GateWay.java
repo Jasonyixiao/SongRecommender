@@ -1,7 +1,7 @@
-package driver;
+package controllers;
 
 import entities.User;
-import usecases.IGateWay;
+import controllers.IGateWay;
 
 import java.io.*;
 

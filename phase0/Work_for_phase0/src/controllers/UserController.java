@@ -23,12 +23,8 @@ public class UserController {
     }
 
 
-    public String logIn(String username, String password) {
-        if(this.userManager.logIn(username, password)) {
-            return "Successful.";
-        } else {
-            return "Incorrect username or password.";
-        }
+    public boolean authenticate(String username, String password) {
+        return this.userManager.logIn(username, password);
     }
 
     public String deleteUser(String myUsername, String otherUsername) {

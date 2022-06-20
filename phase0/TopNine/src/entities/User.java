@@ -7,13 +7,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class user implements Serializable {
+public class User implements Serializable {
 
     private String username;         // we need to enforce that usernames are UNIQUE
 
     private String password;
 
-    private int IsAdmin; // 1 is admin and 0 is admin
+    private int IsAdmin; // 1 is admin and 0 is not admin
 
     private List<String> loginHistory;
 
@@ -39,7 +39,7 @@ public class user implements Serializable {
     public int getId(){
         return this.id;
     }
-    public user(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.IsAdmin = 0;

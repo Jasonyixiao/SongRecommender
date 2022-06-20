@@ -1,12 +1,14 @@
 package controllers;
 
+import usecases.UserManager;
+
 import java.io.IOException;
 import java.util.List;
 
-public class userController implements IUserController{
-    private final usecases.userManager userManager;
+public class UserController implements IUserController{
+    private final UserManager userManager;
 
-    public userController(usecases.userManager userManager) {
+    public UserController(UserManager userManager) {
         this.userManager =  userManager;
     }
 

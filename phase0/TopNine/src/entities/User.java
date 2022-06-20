@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class User implements Serializable {
+    private int id;
 
     private String username;         // we need to enforce that usernames are UNIQUE
 
@@ -21,8 +22,6 @@ public class User implements Serializable {
     private boolean isSignedIn;
 
     private Calendar banUntil;
-
-    private int id;
 
     private static int totalPopulation = 0;
 

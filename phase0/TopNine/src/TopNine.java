@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class TopNine {
+public class TopNine {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
 }

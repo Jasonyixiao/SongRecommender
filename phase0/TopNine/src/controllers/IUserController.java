@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IUserController {
-    String createAdminUser(UserProfile userContext, String myUsername, String otherUsername);
+    boolean createAdminUser(UserProfile userContext, String myUsername, String otherUsername);
 
-    String createNormalUser(String username, String password);
+    boolean createNormalUser(UserProfile userContext, String username, String password);
 
-    String logIn(String username, String password);
+    UserProfile authenticate(String username, String password);
 
-    String deleteUser(String myUsername, String otherUsername);
+    boolean deleteUser(UserProfile userContext, String username);
 
-    String banUser(String myUsername, String otherUsername);
+    boolean banUser(UserProfile userContext, String otherUsername);
 
-    List<String> getLogInHistory(String username);
+    List<String> getLogInHistory(UserProfile userContext);
 
     boolean logOut(String username) throws IOException;
 }

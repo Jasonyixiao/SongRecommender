@@ -1,7 +1,5 @@
-package controllers;
-
-import entities.User;
-import controllers.IGateWay;
+import entities.user;
+import usecases.IGateWay;
 
 import java.io.*;
 
@@ -27,19 +25,19 @@ public class GateWay implements IGateWay {
     }
 
 
-    public HashMap<String, User> read () throws ClassNotFoundException {
+    public HashMap<String, user> read () throws ClassNotFoundException {
 
         try {
             InputStream file = new FileInputStream(this.file);
             InputStream buffer = new BufferedInputStream(file);
             ObjectInput input = new ObjectInputStream(buffer);
-            HashMap<String, User> result = (HashMap<String, User>) input.readObject();
+            HashMap<String, user> result = (HashMap<String, user>) input.readObject();
             input.close();
             return result;
         } catch (IOException ex) {
             //logger.log(Level.SEVERE, "Cannot read from input file, returning" +
             //        "a new StudentManager.", ex);
-            return new HashMap<String, User>();
+            return new HashMap<String, user>();
         }
     }
 

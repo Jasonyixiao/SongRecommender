@@ -2,13 +2,12 @@ package entities;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class User implements Serializable {
+public class user implements Serializable {
 
     private String username;         // we need to enforce that usernames are UNIQUE
 
@@ -22,7 +21,7 @@ public class User implements Serializable {
 
     private Calendar banUntil;
 
-    private int id;
+    private final int id;
 
     private static int totalPopulation = 0;
 
@@ -37,8 +36,10 @@ public class User implements Serializable {
         return this.banUntil.getTime();
     }
 
-
-    public User(String username, String password) {
+    public int getId(){
+        return this.id;
+    }
+    public user(String username, String password) {
         this.username = username;
         this.password = password;
         this.IsAdmin = 0;

@@ -1,17 +1,18 @@
 package controllers;
 
-import usecases.UserManager;
-
 import java.io.IOException;
 import java.util.List;
 
-public class UserController implements IUserController{
-    private final UserManager userManager;
+public class userController implements IUserController{
+    private final usecases.userManager userManager;
 
-    public UserController(UserManager userManager) {
+    public userController(usecases.userManager userManager) {
         this.userManager =  userManager;
     }
 
+    private int usernameToId(String username){
+        return userManager.idOfUser(username);
+    }
     @Override
     public String createAdminUser(UserProfile userContext, String myUsername, String otherUsername) {
 

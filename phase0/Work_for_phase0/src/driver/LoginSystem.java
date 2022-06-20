@@ -1,9 +1,6 @@
 package driver;
 
-import usecases.UserManager;
-
-import java.io.Serializable;
-import java.util.ArrayList;
+import usecases.userManager;
 
 /**
  * This is the Shell that prompts user for input
@@ -15,11 +12,11 @@ public class LoginSystem {
             //File f = new File(driver.GateWay.userFile);
             //System.out.println(f.exists());
             GateWay g = new GateWay();
-            UserManager userManager = new UserManager(g);
+            userManager userManager = new userManager(g);
             userManager.createUser("aaa","bbb");
             userManager.createUser("a", "b");
             userManager.save();
-            UserManager n1 = new UserManager(g);
+            usecases.userManager n1 = new userManager(g);
             n1.read();
             System.out.println(n1.getAllUsers());
 

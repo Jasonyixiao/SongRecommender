@@ -9,8 +9,8 @@ import java.util.List;
 public class UserController implements IUserController{
     private final UserManager userManager;
 
-    public UserController(UserManager userManager) {
-        this.userManager =  userManager;
+    public UserController() {
+        this.userManager =  new UserManager(new GateWay());
     }
 
     private int usernameToId(String username){

@@ -13,4 +13,8 @@ public interface IShellState {
     boolean isRunning();
 
     void setUserProfile(UserProfile loginUser);
+
+    UserProfile getUserProfile();
+
+    void StopRunning();
 }

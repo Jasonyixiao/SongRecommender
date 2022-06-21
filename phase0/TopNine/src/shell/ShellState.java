@@ -1,8 +1,6 @@
 package shell;
 
-import controllers.ILoginController;
-import controllers.IUserController;
-import controllers.UserProfile;
+import controllers.*;
 
 public class ShellState implements IShellState {
 
@@ -13,6 +11,8 @@ public class ShellState implements IShellState {
     public ShellState()
     {
         isRunning = true;
+       // loginController = new LoginController();
+        userController = new UserController();
     }
     private boolean isRunning;
 
@@ -34,5 +34,15 @@ public class ShellState implements IShellState {
     @Override
     public void setUserProfile(UserProfile loginUser) {
         this.userProfile = loginUser;
+    }
+
+    @Override
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    @Override
+    public void StopRunning() {
+        isRunning = false;
     }
 }

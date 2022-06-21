@@ -1,8 +1,9 @@
 package shell.constants;
 
 import java.util.Hashtable;
-import shell.commands.Command;
-import shell.commands.Login;
+
+
+import shell.commands.*;
 // TODO  Import commands from the Commands package
 
 /**
@@ -17,10 +18,11 @@ public class Constants {
 
     static {
         COMMAND_DIC.put("login", new Login());
-   /*     COMMAND_DIC.put("register", new Register());
+        COMMAND_DIC.put("register", new Register());
         COMMAND_DIC.put("history", new History());
         COMMAND_DIC.put("logout", new Logout());
-        COMMAND_DIC.put("exit", new Exit());*/
+        COMMAND_DIC.put("exit", new Exit());
+        COMMAND_DIC.put("user", new User());
         // TODO: All new commands should be placed under here
     }
 

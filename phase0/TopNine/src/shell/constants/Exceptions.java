@@ -10,4 +10,5 @@ public class Exceptions {
     public static final String COMMAND_NOT_FOUND = "command not found";
     public static final String INVALID_STRING_MSG = "Invalid string input";
 
+
 }

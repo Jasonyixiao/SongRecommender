@@ -1,7 +1,9 @@
 package shell.commands;
 
 import java.util.List;
-import shell.ITopNineShellState;
+import java.util.Locale;
+
+import shell.IShellState;
 import shell.constants.CommandException;
 import shell.constants.Constants;
 import shell.constants.Exceptions;
@@ -19,14 +21,15 @@ public class CommandController {
      * @return string that is given back as command is executed
      * @throws Exception if any of the provided arguments is invalid
      */
-    public String executeCommand(ITopNineShellState shellState, String commandLine)
+    public String executeCommand(IShellState shellState, String commandLine)
             throws Exception {
-        // TODO: clean this up.
-        if (commandLine.equals("")) {
+
+        if (commandLine.isEmpty()) {
             return "";
         }
         // use command reader to separate command with arguments
-        CmdArgTuple cmdArgTuple = CommandReader.parseCommandLine(commandLine);
+        // ensures everything is lower case from the cammandline.
+        CmdArgTuple cmdArgTuple = CommandReader.parseCommandLine(commandLine.toLowerCase());
         Command command = getCommand(cmdArgTuple);
         List<String> arguments = cmdArgTuple.getArguments();
 

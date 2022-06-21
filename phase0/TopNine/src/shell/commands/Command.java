@@ -3,7 +3,8 @@ package shell.commands;
 import java.util.List;
 
 import shell.constants.CommandException;
-import shell.ITopNineShellState;
+import shell.IShellState;
+
 
 /**
  * This is a base class for any commands that might be needed in the program
@@ -26,16 +27,17 @@ public abstract class Command {
     }
 
     abstract public String executeCommand
-            (ITopNineShellState loginSystemState, List<String> arguments) throws Exception;
+            (IShellState shellState, List<String> arguments) throws Exception;
 
-    // TODO: write Javadoc
+    // Checks to see if there are the correct number of arguments.
+    // Throws if there are too many or not enough arguments
     protected void checkArgumentsNum(List<String> arguments) throws Exception {
         if (arguments.size() > maxArguments) {
-            // TODO: add this message to class constants.Exceptions
-            throw new CommandException("too many arguments provided");
+
+            throw new CommandException(CommandException.TooManyArguments);
         }
         if (arguments.size() < minArguments) {
-            throw new CommandException("too little arguments provided");
+            throw new CommandException(CommandException.NotEnoughArguments);
         }
     }
 

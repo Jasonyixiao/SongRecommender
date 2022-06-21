@@ -4,13 +4,13 @@ import controllers.ILoginController;
 import controllers.IUserController;
 import controllers.UserProfile;
 
-public class TopNineShellState implements ITopNineShellState{
+public class ShellState implements IShellState {
 
     ILoginController loginController;
     IUserController userController;
-    UserProfile userContext;
+    UserProfile userProfile;
 
-    public TopNineShellState()
+    public ShellState()
     {
         isRunning = true;
     }
@@ -29,5 +29,10 @@ public class TopNineShellState implements ITopNineShellState{
     @Override
     public boolean isRunning() {
         return isRunning;
+    }
+
+    @Override
+    public void setUserProfile(UserProfile loginUser) {
+        this.userProfile = loginUser;
     }
 }

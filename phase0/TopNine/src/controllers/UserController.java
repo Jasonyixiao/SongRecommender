@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.User;
 import usecases.UserManager;
 
 import java.io.IOException;
@@ -16,50 +17,62 @@ public class UserController implements IUserController{
         return userManager.idOfUser(username);
     }
     @Override
-    public String createAdminUser(UserProfile userContext, String myUsername, String otherUsername) {
-
-        //      Authenticate(userContext);
-       //        IsAdmin(userContext);
-                    return this.userManager.createAdmin(myUsername,otherUsername);
-        // if admin created successfully "command successful" is printed
-        // if a non-admin tries to create admin, "you are not an admin" will be returned
-        // if an admin tries to create admin,
-    }
-
-    @Override
-    public String createNormalUser(String username, String password) {
-        this.userManager.createUser(username, password);
-        return "Successful! ";
-    }
-
-
-    @Override
-    public String logIn(String username, String password) {
-        if(this.userManager.logIn(username, password)) {
-            return "Successful.";
+    public boolean createAdminUser(UserProfile userContext, String myUsername, String otherUsername) {
+        // I assume userContext contain info about the current user that is trying to  create admin.
+        if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
+            if(isAdmin(myUsername)) {
+                return this.userManager.createAdmin(myUsername,otherUsername);
+            } else return false;
         } else {
-            return "Incorrect username or password.";
+            return false;
         }
     }
 
     @Override
-    public String deleteUser(String myUsername, String otherUsername) {
-        return this.userManager.deleteUser(myUsername, otherUsername);
-        // if admin tries to delete non-user successfully "command successful" is printed
-        // if a non-admin tries to delete user, "you are not an admin" will be returned
-        // if an admin tries to delete an admin, "You cannot delete admin." will be returned
+    public boolean createNormalUser(UserProfile userContext, String username, String password) {
+        this.userManager.createUser(username, password);
+        return true;
+    }
+
+
+
+    public boolean logIn(UserProfile userContext, String username, String password) {
+        return this.userManager.logIn(username, password);
     }
 
     @Override
-    public String banUser(String myUsername, String otherUsername) {
-        return this.userManager.banUser(myUsername, otherUsername);
+    public boolean deleteUser(UserProfile userContext, String otherUsername) {
+        if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
+            if(isAdmin(userContext.getUsername())) {
+                return this.userManager.banUser(userContext.getUsername() ,otherUsername);
+            } else return false;
+        } else {
+            return false;
+        }
+    }
+
+
+    @Override
+    public boolean banUser(UserProfile userContext, String otherUsername) {
+        if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
+            if(isAdmin(userContext.getUsername())) {
+                return this.userManager.banUser(userContext.getUsername(), otherUsername);
+            } else return false;
+        } else {
+            return false;
+        }
         // if admin tries to ban non-user successfully "command successful" is printed
         // if a non-admin tries to ban user, "you are not an admin" will be returned
         // if an admin tries to ban an admin, "You cannot ban admin." will be returned
     }
     @Override
-    public List<String> getLogInHistory(String username) {
-        return this.userManager.getLoginHistory(username);
+    public List<String> getLogInHistory(UserProfile userContext) {
+        // note that getLoginHistory already checks if the user if singed in.
+        if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
+            return this.userManager.getLoginHistory(userContext.getUsername());
+        } else {
+            return null; // null is returned if the user cannot access the history
+        }
     }
 
     @Override
@@ -67,4 +80,17 @@ public class UserController implements IUserController{
         return this.userManager.logout(username);
     }
 
+    @Override
+    public UserProfile authenticate(String username, String password) {
+        if (userManager.checkUsernamePasswordMatch(username, password)) {
+            return new UserProfile(username, password);
+        }
+        else {
+            return null;
+        }
+    }
+
+    private boolean isAdmin(String username) {
+        return userManager.checkIsAdmin(username) == 1; // 1 mean this user is an admin
+    }
 }

@@ -30,12 +30,23 @@ public class UserManager {
     public boolean logIn(String username, String password) {
         User currentUser = allUsers.get(username);
         if (currentUser != null) {
-            currentUser.appendLoginHistory();
             if (checkDateHelper(currentUser.getBanDate())) {
                 return false; // If the code returns here then we know this user is banned
-            }
-            if (currentUser.getPassword().equals(password)) {
+            } else if (checkUsernamePasswordMatch(username, password)) {
                 currentUser.setIsSignedIn(true);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkUsernamePasswordMatch (String username, String password) {
+        User currentUser = allUsers.get(username);
+        if (currentUser != null) {
+            if (currentUser.getPassword().equals(password)) {
                 return true;
             } else {
                 return false;
@@ -77,24 +88,28 @@ public class UserManager {
         }
     }
 
-    public String createAdmin(String myUsername, String otherUsername){
+    public boolean createAdmin(String myUsername, String otherUsername){
         // user can only call this method when they are logged in
         // current admin has username myUsername
         // the person to be promoted has username otherUsername
         User currentUser = allUsers.get(myUsername);
         User otherUser = allUsers.get(otherUsername);
-        if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
-            if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
+        if (checkIsAdmin(myUsername) == 1) {    // 1 means the current user is admin
+            if (checkIsAdmin(otherUsername) == 0) {      // 0 mean the other user is normal user
                 otherUser.setIsAdmin(1);
-                return "Command successful.";
-
+                return true;
             }
             else{
-                return "The user is already an admin.";
+                return false;
             }
         } else {
-            return "You are not an admin.";
+            return false;
         }
+    }
+
+    public int checkIsAdmin(String username) {
+        User currentUser = allUsers.get(username);
+        return currentUser.getIsAdmin();
     }
 
     public boolean hasUser(String username){
@@ -102,19 +117,19 @@ public class UserManager {
         return currentUser != null;
     }
 
-    public String deleteUser(String myUsername, String otherUsername) {
+    public boolean deleteUser(String myUsername, String otherUsername) {
         User currentUser = allUsers.get(myUsername);
         User otherUser = allUsers.get(otherUsername);
         if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 allUsers.remove(otherUsername);
-                return "Command successful.";
+                return true;
             }
             else{
-                return "You cannot delete admin.";
+                return false;
             }
         } else {
-            return "You are not an admin.";
+            return false;
         }
     }
 
@@ -129,18 +144,18 @@ public class UserManager {
         }
     }
 
-    public String banUser(String myUsername, String otherUsername) {
+    public boolean banUser(String myUsername, String otherUsername) {
         User currentUser = allUsers.get(myUsername);
         User otherUser = allUsers.get(otherUsername);
         if (currentUser.getIsAdmin() == 1) {    // 1 mean the current user is an admin
             if (otherUser.getIsAdmin() == 0){       // 0 means the current user is a noraml user
                 otherUser.setBanDate();
-                return "Command Successful!";
+                return true;
             }else{
-                return "You cannot ban admin.";
+                return false;
             }
         } else {
-            return "You are not an admin.";
+            return false;
         }
     }
 

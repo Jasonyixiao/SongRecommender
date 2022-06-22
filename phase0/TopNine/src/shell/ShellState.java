@@ -11,8 +11,9 @@ public class ShellState implements IShellState {
     public ShellState()
     {
         isRunning = true;
-       // loginController = new LoginController();
+
         userController = new UserController();
+        loginController = new LoginController(userController);
     }
     private boolean isRunning;
 

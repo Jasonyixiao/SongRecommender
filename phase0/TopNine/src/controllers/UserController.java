@@ -76,11 +76,6 @@ public class UserController implements IUserController{
     }
 
     @Override
-    public boolean logOut(String username) throws IOException {
-        return this.userManager.logout(username);
-    }
-
-    @Override
     public UserProfile authenticate(String username, String password) {
         if (userManager.checkUsernamePasswordMatch(username, password)) {
             return new UserProfile(username, password);
@@ -91,6 +86,6 @@ public class UserController implements IUserController{
     }
 
     private boolean isAdmin(String username) {
-        return userManager.checkIsAdmin(username) == 1; // 1 mean this user is an admin
+        return userManager.checkIsAdmin(username); // 1 mean this user is an admin
     }
 }

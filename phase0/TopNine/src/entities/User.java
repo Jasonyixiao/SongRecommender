@@ -2,56 +2,44 @@ package entities;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class User implements Serializable {
 
+    private final int id;
     private String username;         // we need to enforce that usernames are UNIQUE
 
     private String password;
 
-    private int IsAdmin; // 1 is admin and 0 is not admin
+    private boolean isAdmin; // 1 is admin and 0 is not admin
 
-    private List<String> loginHistory;
+    private final List<String> loginHistory;
 
-    private boolean isSignedIn;
-
-    private Calendar banUntil;
-
-    private final int id;
+    private LocalDateTime banUntil;
 
     private static int totalPopulation = 0;
 
     public void setBanDate(){
 
-        banUntil.setTime(new Date()); // Now use today date.
-
-        banUntil.add(Calendar.DATE, 1); // Adds 15 days
+        banUntil = LocalDateTime.now().plusDays(15);
     }
 
-    public Date getBanDate() {
-        return this.banUntil.getTime();
+    public LocalDateTime getBanDate() {
+        return banUntil;
     }
 
     public int getId(){
-        return this.id;
+        return id;
     }
     public User(String username, String password) {
+        this.id = totalPopulation++;
         this.username = username;
         this.password = password;
-        this.IsAdmin = 0;
-        this.isSignedIn = false;
-        loginHistory = new ArrayList<String>();
-        banUntil = Calendar.getInstance();
-        banUntil.setTime(new Date());
-        this.id = totalPopulation;
-        totalPopulation++;
-        if (this.id == 0) {
-            IsAdmin = 1;
-        }
+        this.isAdmin = false;
+        loginHistory = new ArrayList<>();
     }
     public String getUsername(){
         return username;
@@ -69,12 +57,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getIsAdmin(){
-        return IsAdmin;
+    public boolean isAdmin(){
+        return isAdmin;
     }
 
-    public void setIsAdmin(int i){
-        IsAdmin = i;
+    public void setIsAdmin(){
+        isAdmin = true;
     }
 
     public void appendLoginHistory(){
@@ -84,16 +72,4 @@ public class User implements Serializable {
     public List<String> getLoginHistory(){
         return loginHistory;
     }
-
-    public boolean getIsSignedIn(){
-        return isSignedIn;
-    }
-
-    public void setIsSignedIn(boolean b){
-        this.isSignedIn = b;
-    }
-
-
-
-
 }

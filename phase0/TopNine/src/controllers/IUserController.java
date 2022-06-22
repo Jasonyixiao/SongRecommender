@@ -16,5 +16,4 @@ public interface IUserController {
 
     List<String> getLogInHistory(UserProfile userContext);
 
-    boolean logOut(String username) throws IOException;
 }

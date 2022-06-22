@@ -44,7 +44,7 @@ public class UserController implements IUserController{
     public boolean deleteUser(UserProfile userContext, String otherUsername) {
         if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
             if(isAdmin(userContext.getUsername())) {
-                return this.userManager.banUser(userContext.getUsername() ,otherUsername);
+                return this.userManager.deleteUser(userContext.getUsername() ,otherUsername);
             } else return false;
         } else {
             return false;
@@ -67,7 +67,7 @@ public class UserController implements IUserController{
     }
     @Override
     public List<String> getLogInHistory(UserProfile userContext) {
-        // note that getLoginHistory already checks if the user if singed in.
+        // note that getLoginHistory already checks if the user is singed in.
         if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
             return this.userManager.getLoginHistory(userContext.getUsername());
         } else {

@@ -46,11 +46,7 @@ public class UserManager {
     public boolean checkUsernamePasswordMatch (String username, String password) {
         User currentUser = allUsers.get(username);
         if (currentUser != null) {
-            if (currentUser.getPassword().equals(password)) {
-                return true;
-            } else {
-                return false;
-            }
+            return currentUser.getPassword().equals(password);
         } else {
             return false;
         }
@@ -92,7 +88,6 @@ public class UserManager {
         // user can only call this method when they are logged in
         // current admin has username myUsername
         // the person to be promoted has username otherUsername
-        User currentUser = allUsers.get(myUsername);
         User otherUser = allUsers.get(otherUsername);
         if (checkIsAdmin(myUsername) == 1) {    // 1 means the current user is admin
             if (checkIsAdmin(otherUsername) == 0) {      // 0 mean the other user is normal user

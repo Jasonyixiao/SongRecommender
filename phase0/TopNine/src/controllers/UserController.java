@@ -1,9 +1,8 @@
 package controllers;
 
-import entities.User;
 import usecases.UserManager;
 
-import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserController implements IUserController{
@@ -66,7 +65,7 @@ public class UserController implements IUserController{
         // if an admin tries to ban an admin, "You cannot ban admin." will be returned
     }
     @Override
-    public List<String> getLogInHistory(UserProfile userContext) {
+    public List<LocalDateTime> getLogInHistory(UserProfile userContext) {
         // note that getLoginHistory already checks if the user is singed in.
         if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
             return this.userManager.getLoginHistory(userContext.getUsername());

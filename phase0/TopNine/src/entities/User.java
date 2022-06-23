@@ -16,7 +16,7 @@ public class User implements Serializable {
 
     private boolean isAdmin; // 1 is admin and 0 is not admin
 
-    private final List<String> loginHistory;
+    private final List<LocalDateTime> loginHistory;
 
     private LocalDateTime banUntil;
 
@@ -66,10 +66,10 @@ public class User implements Serializable {
     }
 
     public void appendLoginHistory(){
-        loginHistory.add(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
+        loginHistory.add(LocalDateTime.now());
     }
 
-    public List<String> getLoginHistory(){
+    public List<LocalDateTime> getLoginHistory(){
         return loginHistory;
     }
 }

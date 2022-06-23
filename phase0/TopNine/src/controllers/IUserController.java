@@ -1,6 +1,6 @@
 package controllers;
 
-import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IUserController {
@@ -14,6 +14,6 @@ public interface IUserController {
 
     boolean banUser(UserProfile userContext, String otherUsername);
 
-    List<String> getLogInHistory(UserProfile userContext);
+    List<LocalDateTime> getLogInHistory(UserProfile userContext);
 
 }

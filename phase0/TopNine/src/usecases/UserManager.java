@@ -105,7 +105,7 @@ public class UserManager {
         }
     }
 
-    public List<String> getLoginHistory(String myUsername) {
+    public List<LocalDateTime> getLoginHistory(String myUsername) {
         // Users can only view history if they are logged in
         User currentUser = allUsers.get(myUsername);
 

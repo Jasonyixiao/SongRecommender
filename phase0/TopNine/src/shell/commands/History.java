@@ -3,6 +3,7 @@ package shell.commands;
 import controllers.IUserController;
 import shell.IShellState;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class History extends Command {
@@ -16,10 +17,10 @@ public class History extends Command {
 
         StringBuilder sb = new StringBuilder();
         IUserController userController = shellState.getUserController();
-        List<String> loginHistory = userController.getLogInHistory(shellState.getUserProfile());
+        List<LocalDateTime> loginHistory = userController.getLogInHistory(shellState.getUserProfile());
 
         sb.append(shellState.getUserProfile().getUsername() + "'s login history:\n");
-        for (String history : loginHistory) {
+        for (LocalDateTime history : loginHistory) {
             sb.append(history + "\n");
         }
         return sb.toString();

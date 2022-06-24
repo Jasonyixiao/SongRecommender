@@ -34,9 +34,14 @@ public class UserController implements IUserController{
     }
 
 
-
+    @Override
     public boolean logIn(UserProfile userContext, String username, String password) {
-        return this.userManager.logIn(username, password);
+        if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
+            return this.userManager.logIn(username, password);
+        } else {
+            return false;
+        }
+        // why do we need to authenticate here?
     }
 
     @Override

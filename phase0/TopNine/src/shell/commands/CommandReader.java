@@ -21,12 +21,12 @@ public class CommandReader {
     public static CmdArgTuple parseCommandLine(String commandLine)
             throws Exception {
         // split up the command line by the spaces
-        List<String> splited = manuallySplit(commandLine);
+        List<String> splited = manuallySplit(commandLine); // this splits the command
         if (splited.size() == 0) {
-            throw new Exception(Exceptions.COMMAND_NOT_FOUND);
+            throw new Exception(Exceptions.COMMAND_NOT_FOUND); // this means No input form user
         }
         String command = splited.get(0);
-        List<String> arguments = splited.subList(1, splited.size());
+        List<String> arguments = splited.subList(1, splited.size()); // arguments contain the rest of the list
         return new CmdArgTuple(command, arguments);
     }
 
@@ -65,7 +65,7 @@ public class CommandReader {
                     endSplitI = getEndNonStrIndex(commandLine, currI);
                 }
 
-                String splittedArgument = commandLine.substring(currI, endSplitI);
+                String splittedArgument = commandLine.substring(currI, endSplitI); // this is the argument that
                 // remove the quotes if the argument is the STRING argument
                 if (currChar == '"') {
                     splittedArgument =

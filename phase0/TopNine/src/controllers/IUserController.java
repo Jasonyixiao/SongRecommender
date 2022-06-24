@@ -16,4 +16,5 @@ public interface IUserController {
 
     List<LocalDateTime> getLogInHistory(UserProfile userContext);
 
+    boolean logIn(UserProfile userContext, String username, String password);
 }

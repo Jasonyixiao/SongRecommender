@@ -1,9 +1,5 @@
 package controllers;
 
-import controllers.ILoginController;
-import controllers.IUserController;
-import controllers.UserProfile;
-
 public class LoginController implements ILoginController {
     IUserController userController;
 
@@ -14,8 +10,13 @@ public class LoginController implements ILoginController {
 
     @Override
     public UserProfile Login(String username, String password) {
-        //.....
-        return new UserProfile(username, password);
+        // call login from usercontroller
+        UserProfile userContext = new UserProfile(username, password);
+        if (userController.logIn(userContext, username, password)) {
+            return userContext;
+        } else {
+            return null;
+        }
     }
 
     @Override

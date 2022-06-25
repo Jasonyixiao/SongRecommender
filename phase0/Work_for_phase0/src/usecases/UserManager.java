@@ -1,6 +1,6 @@
 package usecases;
 
-import entities.user;
+import entities.User;
 
 import java.io.IOException;
 import java.util.Date;
@@ -8,23 +8,23 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UserManager {
-    private HashMap<String, user> allUsers;
+    private HashMap<String, User> allUsers;
     private final IGateWay gateWay;
 
     public UserManager(IGateWay g) {
-        this.allUsers = new HashMap<String, user>(9999);
+        this.allUsers = new HashMap<String, User>(9999);
         this.gateWay = g;
     }
-    public HashMap<String, user> getAllUsers(){
+    public HashMap<String, User> getAllUsers(){
         return allUsers;
     }
     public void createUser(String username, String password) {
-        user newUser = new user(username, password);
+        User newUser = new User(username, password);
         allUsers.put(username, newUser);
     }
 
     public boolean logIn(String username, String password) {
-        user currentUser = allUsers.get(username);
+        User currentUser = allUsers.get(username);
         if (currentUser != null) {
             currentUser.appendLoginHistory();
             if (checkDateHelper(currentUser.getBanDate())) {
@@ -46,7 +46,7 @@ public class UserManager {
     }
 
     public boolean logout(String username) throws IOException {
-        user currentUser = allUsers.get(username);
+        User currentUser = allUsers.get(username);
         if (checkIsLogIn(username)) {
             currentUser.setIsSignedIn(false);
             try{
@@ -63,7 +63,7 @@ public class UserManager {
 
     private boolean checkIsLogIn(String username) {
 
-        user currentUser = allUsers.get(username);
+        User currentUser = allUsers.get(username);
         if (currentUser != null) {
            return currentUser.getIsSignedIn();
         } else {
@@ -75,8 +75,8 @@ public class UserManager {
         // user can only call this method when they are logged in
         // current admin has username myUsername
         // the person to be promoted has username otherUsername
-        user currentUser = allUsers.get(myUsername);
-        user otherUser = allUsers.get(otherUsername);
+        User currentUser = allUsers.get(myUsername);
+        User otherUser = allUsers.get(otherUsername);
         if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 otherUser.setIsAdmin(1);
@@ -92,13 +92,13 @@ public class UserManager {
     }
 
     public boolean hasUser(String username){
-        user currentUser = allUsers.get(username);
+        User currentUser = allUsers.get(username);
         return currentUser != null;
     }
 
     public String deleteUser(String myUsername, String otherUsername) {
-        user currentUser = allUsers.get(myUsername);
-        user otherUser = allUsers.get(otherUsername);
+        User currentUser = allUsers.get(myUsername);
+        User otherUser = allUsers.get(otherUsername);
         if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 allUsers.remove(otherUsername);
@@ -114,7 +114,7 @@ public class UserManager {
 
     public List<String> getLoginHistory(String myUsername) {
         // Users can only view history if they are logged in
-        user currentUser = allUsers.get(myUsername);
+        User currentUser = allUsers.get(myUsername);
         if (currentUser.getIsSignedIn()) {
             return currentUser.getLoginHistory();
         }
@@ -124,8 +124,8 @@ public class UserManager {
     }
 
     public String banUser(String myUsername, String otherUsername) {
-        user currentUser = allUsers.get(myUsername);
-        user otherUser = allUsers.get(otherUsername);
+        User currentUser = allUsers.get(myUsername);
+        User otherUser = allUsers.get(otherUsername);
         if (currentUser.getIsAdmin() == 1) {    // 1 mean the current user is an admin
             if (otherUser.getIsAdmin() == 0){       // 0 means the current user is a noraml user
                 otherUser.setBanDate();
@@ -137,6 +137,16 @@ public class UserManager {
             return "You are not an admin.";
         }
     }
+
+    public boolean checkUsernamePasswordMatch (String username, String password) {
+        User currentUser = allUsers.get(username);
+        if (currentUser != null) {
+            return currentUser.getPassword().equals(password);
+        } else {
+            return false;
+        }
+    }
+
 
     public void read(){
         try {

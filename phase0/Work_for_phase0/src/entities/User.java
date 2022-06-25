@@ -2,7 +2,6 @@ package entities;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,14 +38,14 @@ public class User implements Serializable {
 
 
     public User(String username, String password) {
-        this.username = username;
+        this.id = totalPopulation;
+        this.username = username + id; // this makes the usernames Unique
         this.password = password;
         this.IsAdmin = 0;
         this.isSignedIn = false;
         loginHistory = new ArrayList<String>();
         banUntil = Calendar.getInstance();
         banUntil.setTime(new Date());
-        this.id = totalPopulation;
         totalPopulation++;
         if (this.id == 0) {
             IsAdmin = 1;

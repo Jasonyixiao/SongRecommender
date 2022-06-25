@@ -1,30 +1,26 @@
 package controllers;
 
+import usecases.UserManager;
+
 import java.io.IOException;
 import java.util.List;
 
 public class UserController {
-    private final usecases.userManager userManager;
+    private final UserManager userManager;
 
-    public UserController(usecases.userManager userManager) {
+    public UserController(UserManager userManager) {
         this.userManager =  userManager;
     }
 
     public String createAdminUser(String myUsername, String otherUsername) {
         return this.userManager.createAdmin(myUsername,otherUsername);
-        // if admin created successfully "command successful" is printed
-        // if a non-admin tries to create admin, "you are not an admin" will be returned
-        // if an admin tries to create admin,
+        // this is used in promte
     }
 
     public String createNormalUser(String username, String password) {
         this.userManager.createUser(username, password);
-        return "Successful! ";
-    }
-
-
-    public boolean authenticate(String username, String password) {
-        return this.userManager.logIn(username, password);
+        return "New User created! Please Login. ";
+        // first person created will be admin
     }
 
     public String deleteUser(String myUsername, String otherUsername) {
@@ -48,4 +44,19 @@ public class UserController {
         return this.userManager.logout(username);
     }
 
+    public boolean logIn(UserProfile userContext, String username, String password) {
+        if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
+            return this.userManager.logIn(username, password);
+        } else {
+            return false;
+        }
+    }
+    public UserProfile authenticate(String username, String password) {
+        if (userManager.checkUsernamePasswordMatch(username, password)) {
+            return new UserProfile(username, password);
+        }
+        else {
+            return null;
+        }
+    }
 }

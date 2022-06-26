@@ -16,7 +16,7 @@ public class Ban extends Commands{
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the Username of the Person You Want to ban:  ");
             String otherUsername = scanner.nextLine();
-            return userController.createAdminUser(myUsername, otherUsername);
+            return userController.banUser(myUsername, otherUsername);
         } else {
             return "Please Login First.";
         }

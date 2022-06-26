@@ -28,7 +28,11 @@ public class UserController {
     }
 
     public String deleteUser(String myUsername, String otherUsername) {
-        return this.userManager.deleteUser(myUsername, otherUsername);
+        if (!myUsername.equals(otherUsername)) {
+            return this.userManager.deleteUser(myUsername, otherUsername);
+        } else {
+            return "You Cannot Delete Yourself.";
+        }
         // if admin tries to delete non-user successfully "command successful" is printed
         // if a non-admin tries to delete user, "you are not an admin" will be returned
         // if an admin tries to delete an admin, "You cannot delete admin." will be returned

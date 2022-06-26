@@ -23,7 +23,7 @@ public class User implements Serializable {
 
     private int id;
 
-    private static int totalPopulation = 0;
+    private static int totalPopulation;
 
     public void setBanDate(){
 

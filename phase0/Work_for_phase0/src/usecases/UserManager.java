@@ -21,7 +21,7 @@ public class UserManager {
     }
     public String createUser(String username, String password) {
         User newUser = new User(username, password);
-        allUsers.put(username, newUser);
+        allUsers.put(newUser.getUsername(), newUser);
         return newUser.getUsername();
     }
 

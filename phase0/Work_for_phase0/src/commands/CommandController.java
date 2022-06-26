@@ -15,6 +15,8 @@ public class CommandController {
         this.commands.put("002", new Logout());
         this.commands.put("003", new Exit());
         this.commands.put("004", new History());
+        this.commands.put("005", new CreateAdmin());
+        this.commands.put("006", new Delete());
     }
 
     public HashMap<String, Commands> getCommandMap() {

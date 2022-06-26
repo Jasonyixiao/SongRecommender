@@ -18,7 +18,7 @@ public class History extends Commands{
         UserController userController = state.getLoginController().getUserController(); // disgusting
         List<String> history =  userController.getLogInHistory(state.getUserProfile().getUsername());
         for (String item : history) {
-            System.out.println(history);
+            System.out.println(item);
         }
         return "";
     }

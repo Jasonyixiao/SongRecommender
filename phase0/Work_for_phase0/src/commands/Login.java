@@ -24,6 +24,7 @@ public class Login extends Commands{
         UserProfile userContext = loginController.Login(username,password);
         shellState.setUserProfile(userContext);
         if (userContext != null) {
+            shellState.setIsSignedIn();
             return "Success";
         } else {
             return "Login Failed";

@@ -32,13 +32,14 @@ public class LoginSystem {
         while (shellState.getIsRunning()){
 
             // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).
-
-            System.out.println("Enter your command, enter 000 to Register, enter 001 to login");
+            System.out.println("Enter your command, enter 000 to Register, 001 to login, " +
+                    "002 to logout, 003 to Exit, 004 to check history" +
+                    ", 005 to create Admin, 006 to delete a user");
             String userCommand = input.nextLine();
             if (commandMap.get(userCommand) != null) {
                 String result = commandMap.get(userCommand).executeCommand(shellState);
                 System.out.println(result);
-            } else{
+            } else {
                 System.out.println("Invalid Input, Try Again!");
             }
         }

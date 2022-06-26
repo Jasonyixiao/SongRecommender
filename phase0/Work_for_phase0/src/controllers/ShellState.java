@@ -13,6 +13,18 @@ public class ShellState {
         this.loginController = loginController;
     }
 
+    public void setIsSignedIn(){
+        this.userContext.setIsSignedIn(true);
+    }
+
+    public void setLoggedOff() {
+        this.userContext.setIsSignedIn(false);
+    }
+
+    public boolean getIsSignedIn() {
+        return this.userContext.getIsSignedIn();
+    }
+
     public void setUserProfile(UserProfile userContext) {
         if (userContext != null) {
             this.userContext = userContext;

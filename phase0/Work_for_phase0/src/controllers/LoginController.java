@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.IOException;
+
 public class LoginController implements ILoginController {
     private UserController userController;
 
@@ -24,7 +26,7 @@ public class LoginController implements ILoginController {
     }
 
     @Override
-    public void LogOff(UserProfile userContext) {
-        //....
+    public void LogOff(UserProfile userContext) throws IOException {
+        userController.logOut(userContext.getUsername());
     }
 }

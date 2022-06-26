@@ -19,7 +19,7 @@ public class UserController {
 
     public String createNormalUser(String username, String password) {
         String newUsername = this.userManager.createUser(username, password);
-        return "Your Username is"+ newUsername + ". Please Login. "; //Todo we need to tell the user their username by returning their Unique username
+        return "Your Username is "+ newUsername + ". Please Login. "; //Todo we need to tell the user their username by returning their Unique username
         // first person created will be admin
         //Todo We make the username unique by adding a unique number to the end of their username, but we need to return
         //Todo this username to the user so that they know their username

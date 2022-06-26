@@ -11,14 +11,18 @@ public class Delete extends Commands {
     }
 
     public String executeCommand(ShellState state) {
-        if (state.getUserProfile().getIsSignedIn()) {
-            UserController userController = state.getLoginController().getUserController(); // disgusting
-            String myUsername = state.getUserProfile().getUsername();
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter the Username of the Person You Want to Delete:  ");
-            String otherUsername = scanner.nextLine();
-            return userController.deleteUser(myUsername, otherUsername);
-        } else {
+        try {
+            if (state.getUserProfile().getIsSignedIn()) {
+                UserController userController = state.getLoginController().getUserController(); // disgusting
+                String myUsername = state.getUserProfile().getUsername();
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter the Username of the Person You Want to Delete:  ");
+                String otherUsername = scanner.nextLine();
+                return userController.deleteUser(myUsername, otherUsername);
+            } else {
+                return "Please Login First.";
+            }
+        } catch (Exception e) {
             return "Please Login First.";
         }
     }

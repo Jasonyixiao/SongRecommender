@@ -11,15 +11,19 @@ public class CreateAdmin extends Commands{
     }
 
     public String executeCommand(ShellState state) {
-        if (state.getUserProfile().getIsSignedIn()) {
-            UserController userController = state.getLoginController().getUserController(); // disgusting
-            String myUsername = state.getUserProfile().getUsername();
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter the Username of the Person You Want to promote:  ");
-            String otherUsername = scanner.nextLine();
-            return userController.createAdminUser(myUsername, otherUsername);
-        } else {
-            return "Please Login First.";
+        try {
+            if (state.getUserProfile().getIsSignedIn()) {
+                UserController userController = state.getLoginController().getUserController(); // disgusting
+                String myUsername = state.getUserProfile().getUsername();
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter the Username of the Person You Want to promote:  ");
+                String otherUsername = scanner.nextLine();
+                return userController.createAdminUser(myUsername, otherUsername);
+            } else {
+                return "Please Login First.";
+            }
+        } catch (Exception e) {
+            return "Please Login First";
         }
     }
 }

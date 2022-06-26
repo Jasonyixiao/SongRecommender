@@ -29,7 +29,11 @@ public class UserController {
 
     public String deleteUser(String myUsername, String otherUsername) {
         if (!myUsername.equals(otherUsername)) {
-            return this.userManager.deleteUser(myUsername, otherUsername);
+            if (userManager.hasUser(otherUsername)) {
+                return this.userManager.deleteUser(myUsername, otherUsername);
+            } else {
+                return "User Does Not Exist.";
+            }
         } else {
             return "You Cannot Delete Yourself.";
         }

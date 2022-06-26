@@ -11,8 +11,12 @@ public class Exit extends Commands{
     @Override
     public String executeCommand(ShellState state) throws IOException {
         state.stopRunning();
-        Logout logout = new Logout();
-        logout.executeCommand(state);
+        try {
+            Logout logout = new Logout();
+            logout.executeCommand(state);
+        } catch (Exception e) {
+            return "Bye!";
+        }
         return "Bye!";
     }
 }

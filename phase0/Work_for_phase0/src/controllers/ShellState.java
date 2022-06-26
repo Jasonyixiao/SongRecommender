@@ -6,9 +6,11 @@ public class ShellState {
     private boolean isRunning;
     private UserProfile userContext;
 
-    public ShellState () {
-        this.isRunning = true;
+    private LoginController loginController;
 
+    public ShellState (LoginController loginController) {
+        this.isRunning = true;
+        this.loginController = loginController;
     }
 
     public void setUserProfile(UserProfile userContext) {
@@ -29,4 +31,7 @@ public class ShellState {
         return this.isRunning;
     }
 
+    public LoginController getLoginController(){
+        return this.loginController;
+    }
 }

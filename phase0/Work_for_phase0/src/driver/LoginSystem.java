@@ -2,7 +2,9 @@ package driver;
 
 import commands.CommandController;
 import commands.Commands;
+import controllers.LoginController;
 import controllers.ShellState;
+import controllers.UserController;
 import usecases.UserManager;
 
 import java.util.HashMap;
@@ -17,7 +19,13 @@ public class LoginSystem {
     public static void main(String[] args) {
             //File f = new File(driver.GateWay.userFile);
             //System.out.println(f.exists());
-        ShellState shellState = new ShellState();
+        GateWay g = new GateWay();
+        UserManager userManager = new UserManager(g);
+        userManager.read();
+        UserController userController = new UserController(userManager);
+        LoginController loginController = new LoginController(userController);
+        ShellState shellState = new ShellState(loginController);
+
         Scanner input = new Scanner(System.in);
         CommandController command = new CommandController(shellState); // we can use the get method from this class to get a map with all the commands in it
         HashMap<String, Commands> commandMap = command.getCommandMap(); // This is the map with all the commands in it
@@ -36,6 +44,7 @@ public class LoginSystem {
         }
 //            GateWay g = new GateWay();
 //            UserManager userManager = new UserManager(g);
+
 //            userManager.createUser("aaa","bbb");
 //            userManager.createUser("a", "b");
 //            userManager.save();

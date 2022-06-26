@@ -15,7 +15,7 @@ public class History extends Commands{
     }
 
     public String executeCommand(ShellState state) {
-        UserController userController = new UserController(new UserManager(new GateWay())); // disgusting
+        UserController userController = state.getLoginController().getUserController(); // disgusting
         List<String> history =  userController.getLogInHistory(state.getUserProfile().getUsername());
         for (String item : history) {
             System.out.println(history);

@@ -20,7 +20,7 @@ public class Register extends Commands{
         String username = scanner.nextLine() ;
         System.out.print("Enter your Password:  ");
         String password = scanner.nextLine();
-        UserController userController = new UserController(new UserManager(new GateWay())); // disgusting
+        UserController userController = state.getLoginController().getUserController(); // very disgusting
         return userController.createNormalUser(username, password);
     }
 }

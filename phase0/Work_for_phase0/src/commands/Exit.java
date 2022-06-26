@@ -9,6 +9,8 @@ public class Exit extends Commands{
     @Override
     public String executeCommand(ShellState state) {
         state.stopRunning();
+        Logout logout = new Logout();
+        logout.executeCommand(state);
         return "Bye!";
     }
 }

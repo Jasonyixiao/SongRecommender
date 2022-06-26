@@ -1,7 +1,7 @@
 package controllers;
 
 public class LoginController implements ILoginController {
-    UserController userController;
+    private UserController userController;
 
     public  LoginController(UserController userController)
     {
@@ -17,6 +17,10 @@ public class LoginController implements ILoginController {
         } else {
             return null;
         }
+    }
+
+    public UserController getUserController() {
+        return userController;
     }
 
     @Override

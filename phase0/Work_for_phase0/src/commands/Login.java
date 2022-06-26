@@ -19,7 +19,7 @@ public class Login extends Commands{
         String username = scanner.nextLine();
         System.out.print("Password:  ");
         String password = scanner.nextLine();
-        UserController userController = new UserController(new UserManager(new GateWay())); // disgusting
+        UserController userController = shellState.getLoginController().getUserController();  // disgusting
         LoginController loginController = new LoginController(userController);
         UserProfile userContext = loginController.Login(username,password);
         shellState.setUserProfile(userContext);

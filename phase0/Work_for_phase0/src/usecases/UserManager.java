@@ -14,6 +14,7 @@ public class UserManager {
     public UserManager(IGateWay g) {
         this.allUsers = new HashMap<String, User>(9999);
         this.gateWay = g;
+
     }
     public HashMap<String, User> getAllUsers(){
         return allUsers;
@@ -21,6 +22,7 @@ public class UserManager {
     public void createUser(String username, String password) {
         User newUser = new User(username, password);
         allUsers.put(username, newUser);
+
     }
 
     public boolean logIn(String username, String password) {

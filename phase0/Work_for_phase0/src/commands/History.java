@@ -15,11 +15,15 @@ public class History extends Commands{
     }
 
     public String executeCommand(ShellState state) {
-        UserController userController = state.getLoginController().getUserController(); // disgusting
-        List<String> history =  userController.getLogInHistory(state.getUserProfile().getUsername());
-        for (String item : history) {
-            System.out.println(item);
+        if (state.getUserProfile().getIsSignedIn()) {
+            UserController userController = state.getLoginController().getUserController(); // disgusting
+            List<String> history = userController.getLogInHistory(state.getUserProfile().getUsername());
+            for (String item : history) {
+                System.out.println(item);
+            }
+            return "";
+        } else {
+            return "Please Login First.";
         }
-        return "";
     }
 }

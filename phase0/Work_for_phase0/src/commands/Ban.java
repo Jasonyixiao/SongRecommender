@@ -5,9 +5,8 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
-public class Delete extends Commands {
-
-    public Delete() {
+public class Ban extends Commands{
+    public Ban() {
     }
 
     public String executeCommand(ShellState state) {
@@ -15,9 +14,9 @@ public class Delete extends Commands {
             UserController userController = state.getLoginController().getUserController(); // disgusting
             String myUsername = state.getUserProfile().getUsername();
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter the Username of the Person You Want to Delete:  ");
+            System.out.print("Enter the Username of the Person You Want to ban:  ");
             String otherUsername = scanner.nextLine();
-            return userController.deleteUser(myUsername, otherUsername);
+            return userController.createAdminUser(myUsername, otherUsername);
         } else {
             return "Please Login First.";
         }

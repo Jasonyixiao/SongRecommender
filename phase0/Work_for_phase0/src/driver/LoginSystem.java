@@ -7,6 +7,7 @@ import controllers.ShellState;
 import controllers.UserController;
 import usecases.UserManager;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ import java.util.Scanner;
 public class LoginSystem {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
             //File f = new File(driver.GateWay.userFile);
             //System.out.println(f.exists());
         GateWay g = new GateWay();

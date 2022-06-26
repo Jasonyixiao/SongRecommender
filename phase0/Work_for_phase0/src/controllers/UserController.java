@@ -22,7 +22,7 @@ public class UserController {
             this.userManager.createUser(username, password);
             return "User Created, Please Login.";
         } else {
-            return "Failed to Create User, Try Again!";
+            return "Username already Exist, Try Again!";
         }
         // first person created will be admin
     }

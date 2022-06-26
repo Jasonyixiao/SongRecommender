@@ -18,11 +18,13 @@ public class UserController {
     }
 
     public String createNormalUser(String username, String password) {
-        String newUsername = this.userManager.createUser(username, password);
-        return "Your Username is "+ newUsername + ". Please Login. "; //Todo we need to tell the user their username by returning their Unique username
+        if (!userManager.hasUser(username)) {
+            this.userManager.createUser(username, password);
+            return "User Created, Please Login.";
+        } else {
+            return "Failed to Create User, Try Again!";
+        }
         // first person created will be admin
-        //Todo We make the username unique by adding a unique number to the end of their username, but we need to return
-        //Todo this username to the user so that they know their username
     }
 
     public String deleteUser(String myUsername, String otherUsername) {
@@ -33,7 +35,11 @@ public class UserController {
     }
 
     public String banUser(String myUsername, String otherUsername) {
-        return this.userManager.banUser(myUsername, otherUsername);
+        if (!myUsername.equals(otherUsername)) {
+            return this.userManager.banUser(myUsername, otherUsername);
+        } else {
+            return "You Cannot Ban Yourself.";
+        }
         // if admin tries to ban non-user successfully "command successful" is printed
         // if a non-admin tries to ban user, "you are not an admin" will be returned
         // if an admin tries to ban an admin, "You cannot ban admin." will be returned

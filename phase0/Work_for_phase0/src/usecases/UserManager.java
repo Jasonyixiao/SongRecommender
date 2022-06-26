@@ -19,10 +19,9 @@ public class UserManager {
     public HashMap<String, User> getAllUsers(){
         return allUsers;
     }
-    public String createUser(String username, String password) {
+    public void createUser(String username, String password) {
         User newUser = new User(username, password);
         allUsers.put(newUser.getUsername(), newUser);
-        return newUser.getUsername();
     }
 
     public boolean logIn(String username, String password) {

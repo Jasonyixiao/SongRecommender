@@ -39,7 +39,7 @@ public class User implements Serializable {
 
     public User(String username, String password) {
         this.id = totalPopulation;
-        this.username = username + id; // this makes the usernames Unique
+        this.username = username; // this makes the usernames Unique
         this.password = password;
         this.IsAdmin = 0;
         this.isSignedIn = false;

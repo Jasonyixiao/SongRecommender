@@ -28,5 +28,6 @@ public class LoginController implements ILoginController {
     @Override
     public void LogOff(UserProfile userContext) throws IOException {
         userController.logOut(userContext.getUsername());
+        userContext.setIsSignedIn(false);
     }
 }

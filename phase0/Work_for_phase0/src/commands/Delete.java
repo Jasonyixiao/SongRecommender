@@ -20,7 +20,7 @@ public class Delete extends Commands {
                 String otherUsername = scanner.nextLine();
                 return userController.deleteUser(myUsername, otherUsername);
             } else {
-                return "Please Login First.";
+                return "Command Failed, Try Again.";
             }
         } catch (Exception e) {
             return "Please Login First.";

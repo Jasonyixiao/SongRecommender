@@ -19,7 +19,7 @@ public class Ban extends Commands{
                 String otherUsername = scanner.nextLine();
                 return userController.banUser(myUsername, otherUsername);
             } else {
-                return "Please Login First.";
+                return "Command Failed";
             }
         } catch (Exception e) {
             return "Please Login First";

@@ -1,5 +1,6 @@
 package tests;
 
+import commands.Commands;
 import controllers.ShellState;
 import driver.LoginSystem;
 import commands.CommandController;

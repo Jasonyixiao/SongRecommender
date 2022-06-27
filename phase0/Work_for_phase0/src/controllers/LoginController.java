@@ -2,7 +2,7 @@ package controllers;
 
 import java.io.IOException;
 
-public class LoginController implements ILoginController {
+public class LoginController {
     private UserController userController;
 
     public  LoginController(UserController userController)
@@ -10,7 +10,6 @@ public class LoginController implements ILoginController {
         this.userController = userController;
     }
 
-    @Override
     public UserProfile Login(String username, String password) {
         // call login from usercontroller
         UserProfile userContext = new UserProfile(username, password);
@@ -25,7 +24,6 @@ public class LoginController implements ILoginController {
         return userController;
     }
 
-    @Override
     public void LogOff(UserProfile userContext) throws IOException {
         userController.logOut(userContext.getUsername());
         userContext.setIsSignedIn(false);

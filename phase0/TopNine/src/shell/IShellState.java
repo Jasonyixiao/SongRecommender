@@ -2,7 +2,6 @@ package shell;
 
 
 import controllers.ILoginController;
-import controllers.IUserController;
 import controllers.UserProfile;
 
 public interface IShellState {

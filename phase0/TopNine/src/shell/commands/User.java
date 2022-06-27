@@ -1,6 +1,5 @@
 package shell.commands;
 
-import controllers.IUserController;
 import shell.IShellState;
 import shell.constants.CommandException;
 

@@ -6,7 +6,7 @@ public class ShellState {
     private boolean isRunning;
     private UserProfile userContext;
 
-    private LoginController loginController;
+    private final LoginController loginController;
 
     public ShellState (LoginController loginController) {
         this.isRunning = true;
@@ -17,9 +17,6 @@ public class ShellState {
         this.userContext.setIsSignedIn(true);
     }
 
-    public void setLoggedOff() {
-        this.userContext.setIsSignedIn(false);
-    }
 
     public boolean getIsSignedIn() {
         return this.userContext.getIsSignedIn();

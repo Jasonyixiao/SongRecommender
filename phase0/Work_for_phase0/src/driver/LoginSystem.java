@@ -28,7 +28,7 @@ public class LoginSystem {
         ShellState shellState = new ShellState(loginController);
 
         Scanner input = new Scanner(System.in);
-        CommandController command = new CommandController(shellState); // we can use the get method from this class to get a map with all the commands in it
+        CommandController command = new CommandController(); // we can use the get method from this class to get a map with all the commands in it
         HashMap<String, Commands> commandMap = command.getCommandMap(); // This is the map with all the commands in it
         while (shellState.getIsRunning()){
             // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).

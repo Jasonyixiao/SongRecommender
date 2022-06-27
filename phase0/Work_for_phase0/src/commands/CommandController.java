@@ -8,7 +8,7 @@ public class CommandController {
     //I want this class to store a map with all the Commands
 
     private final HashMap<String, Commands> commands;
-    public CommandController(ShellState state){
+    public CommandController(){
         this.commands = new HashMap<>();
         this.commands.put("000", new Register());
         this.commands.put("001", new Login());

@@ -56,8 +56,8 @@ public class UserController {
         return this.userManager.getLoginHistory(username);
     }
 
-    public boolean logOut(String username) throws IOException {
-        return this.userManager.logout(username);
+    public void logOut(String username) {
+        this.userManager.logout(username);
     }
 
     public boolean logIn(UserProfile userContext, String username, String password) {

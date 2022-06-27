@@ -22,7 +22,7 @@ public class UniteTest {
     @Before
     public void setUp() throws Exception {
         loginSystem = new LoginSystem();
-        commandExecutor = new CommandController(shellstate);
+        commandExecutor = new CommandController();
     }
     @After
     public void tearDown() throws Exception {

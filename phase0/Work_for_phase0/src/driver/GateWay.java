@@ -36,9 +36,7 @@ public class GateWay implements IGateWay {
             input.close();
             return result;
         } catch (IOException ex) {
-            //logger.log(Level.SEVERE, "Cannot read from input file, returning" +
-            //        "a new StudentManager.", ex);
-            return new HashMap<String, User>();
+            return new HashMap<>();
         }
     }
 

@@ -12,13 +12,11 @@ public class UserManager {
     private final IGateWay gateWay;
 
     public UserManager(IGateWay g) {
-        this.allUsers = new HashMap<String, User>(9999);
+        this.allUsers = new HashMap<>(9999);
         this.gateWay = g;
 
     }
-    public HashMap<String, User> getAllUsers(){
-        return allUsers;
-    }
+
     public void createUser(String username, String password) {
         User newUser = new User(username, password);
         allUsers.put(newUser.getUsername(), newUser);
@@ -46,19 +44,15 @@ public class UserManager {
         return banUntilDate.after(currentDay);
     }
 
-    public boolean logout(String username) throws IOException {
+    public void logout(String username) {
         User currentUser = allUsers.get(username);
         if (checkIsLogIn(username)) {
             currentUser.setIsSignedIn(false);
             try{
                 gateWay.save(allUsers);
-                return true;
             }catch (IOException e){
                 e.printStackTrace();
-                return false;
             }
-        } else {
-            return false;
         }
     }
 
@@ -156,13 +150,13 @@ public class UserManager {
         }
     }
 
-    public void save(){
-        try {
-            gateWay.save(allUsers);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
+//    spublic void save(){
+//        try {
+//            gateWay.save(allUsers);
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+//    }
 
 
 

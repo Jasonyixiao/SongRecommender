@@ -3,9 +3,6 @@ package commands;
 import controllers.LoginController;
 import controllers.ShellState;
 import controllers.UserController;
-import controllers.UserProfile;
-import driver.GateWay;
-import usecases.UserManager;
 
 import java.io.IOException;
 

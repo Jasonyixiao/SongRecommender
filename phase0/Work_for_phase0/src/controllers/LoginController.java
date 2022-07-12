@@ -3,7 +3,7 @@ package controllers;
 import java.io.IOException;
 
 public class LoginController {
-    private UserController userController;
+    private final UserController userController;
 
     public  LoginController(UserController userController)
     {
@@ -24,7 +24,7 @@ public class LoginController {
         return userController;
     }
 
-    public void LogOff(UserProfile userContext) throws IOException {
+    public void LogOff(UserProfile userContext) {
         userController.logOut(userContext.getUsername());
         userContext.setIsSignedIn(false);
     }

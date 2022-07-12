@@ -7,8 +7,8 @@ import java.util.HashMap;
 public class CommandController {
     //I want this class to store a map with all the Commands
 
-    private HashMap<String, Commands> commands;
-    public CommandController(ShellState state){
+    private final HashMap<String, Commands> commands;
+    public CommandController(){
         this.commands = new HashMap<>();
         this.commands.put("000", new Register());
         this.commands.put("001", new Login());
@@ -17,6 +17,7 @@ public class CommandController {
         this.commands.put("004", new History());
         this.commands.put("005", new CreateAdmin());
         this.commands.put("006", new Delete());
+        this.commands.put("007", new Ban());
     }
 
     public HashMap<String, Commands> getCommandMap() {

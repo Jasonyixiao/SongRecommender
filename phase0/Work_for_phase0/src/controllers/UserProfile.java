@@ -1,6 +1,5 @@
 package controllers;
 
-import usecases.UserManager;
 
 public class UserProfile {
     private final String username;

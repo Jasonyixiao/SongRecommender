@@ -1,8 +1,7 @@
 package commands;
 
 import controllers.*;
-import driver.GateWay;
-import usecases.UserManager;
+
 
 import java.util.Scanner;
 

@@ -9,19 +9,17 @@ import java.util.List;
 
 public class User implements Serializable {
 
-    private int id;
+    private final String username;         // we need to enforce that usernames are UNIQUE
 
-    private String username;         // we need to enforce that usernames are UNIQUE
-
-    private String password;
+    private final String password;
 
     private int IsAdmin; // 1 is admin and 0 is admin
 
-    private List<String> loginHistory;
+    private final List<String> loginHistory;
 
     private boolean isSignedIn;
 
-    private Calendar banUntil;
+    private final Calendar banUntil;
 
     private static int totalPopulation;
 
@@ -38,16 +36,16 @@ public class User implements Serializable {
 
 
     public User(String username, String password) {
-        this.id = totalPopulation;
+        int id = totalPopulation;
         this.username = username; // this makes the usernames Unique
         this.password = password;
         this.IsAdmin = 0;
         this.isSignedIn = false;
-        loginHistory = new ArrayList<String>();
+        loginHistory = new ArrayList<>();
         banUntil = Calendar.getInstance();
         banUntil.setTime(new Date());
         totalPopulation++;
-        if (this.id == 0) {
+        if (id == 0) {
             IsAdmin = 1;
         }
     }
@@ -55,17 +53,11 @@ public class User implements Serializable {
         return username;
     }
 
-    public void setUsername(String username){
-        this.username = username;
-    }
 
     public String getPassword(){
         return password;
     }
 
-    public void setPassword(String password){
-        this.password = password;
-    }
 
     public int getIsAdmin(){
         return IsAdmin;

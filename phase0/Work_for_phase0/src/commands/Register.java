@@ -5,7 +5,7 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
-public class Register extends Commands{
+public class Register implements Commands{
     public Register () {
 
     }

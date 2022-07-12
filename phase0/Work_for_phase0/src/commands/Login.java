@@ -5,7 +5,7 @@ import controllers.*;
 
 import java.util.Scanner;
 
-public class Login extends Commands{
+public class Login implements Commands{
     // we want to use the username and password user inputs to login the user, but at the same time make login method
     // return an userprofile, so that the next time user tries to do something we do not have to ask for username and
     // password again.

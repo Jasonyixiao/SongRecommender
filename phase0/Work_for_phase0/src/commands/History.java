@@ -4,7 +4,7 @@ import controllers.ShellState;
 import controllers.UserController;
 import java.util.List;
 
-public class History extends Commands{
+public class History implements Commands{
 
     public History () {
 

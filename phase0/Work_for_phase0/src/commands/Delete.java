@@ -5,7 +5,7 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
-public class Delete extends Commands {
+public class Delete implements Commands {
 
     public Delete() {
     }

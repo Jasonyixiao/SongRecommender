@@ -6,6 +6,6 @@ import java.io.IOException;
 
 public interface Commands {
 
-    public abstract String executeCommand(ShellState state) throws IOException;
+    String executeCommand(ShellState state) throws IOException;
 
 }

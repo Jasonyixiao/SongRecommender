@@ -4,7 +4,7 @@ import controllers.ShellState;
 
 import java.io.IOException;
 
-public class Exit extends Commands{
+public class Exit implements Commands{
     public Exit () {
     }
 

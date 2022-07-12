@@ -6,7 +6,7 @@ import controllers.UserController;
 
 import java.io.IOException;
 
-public class Logout extends Commands{
+public class Logout implements Commands{
     public Logout() {
     }
 

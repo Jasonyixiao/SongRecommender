@@ -5,7 +5,7 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
-public class Ban extends Commands{
+public class Ban implements Commands{
     public Ban() {
     }
 

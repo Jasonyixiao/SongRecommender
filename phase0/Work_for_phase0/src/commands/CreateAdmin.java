@@ -5,7 +5,7 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
-public class CreateAdmin extends Commands{
+public class CreateAdmin implements Commands{
 
     public CreateAdmin() {
     }

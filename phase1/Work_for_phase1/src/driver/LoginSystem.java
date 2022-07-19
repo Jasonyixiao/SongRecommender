@@ -1,6 +1,6 @@
 package driver;
 
-import commands.CommandController;
+
 import commands.Commandbuilder;
 import commands.Commands;
 import controllers.LoginController;
@@ -38,8 +38,6 @@ public class LoginSystem {
 
         Scanner input = new Scanner(System.in);
         Commandbuilder commandbuilder = new Commandbuilder();
-        // CommandController command = new CommandController();  we can use the get method from this class to get a map with all the commands in it
-        // HashMap<String, Commands> commandMap = command.getCommandMap(); // This is the map with all the commands in it
         while (shellState.getIsRunning()) {
             // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).
             System.out.println("Enter your command, please refer to the README file for valid inputs.");

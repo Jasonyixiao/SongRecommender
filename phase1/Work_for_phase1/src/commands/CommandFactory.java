@@ -14,7 +14,7 @@ public class CommandFactory {
             }
 
             else if(command.equalsIgnoreCase("LOGIN")){
-                return new Logout();
+                return new Login();
             }
 
             else if(command.equalsIgnoreCase("LOGOUT")){
@@ -45,6 +45,9 @@ public class CommandFactory {
             }
             else if (command.equalsIgnoreCase("LISTEN")){
                 return new Listen();
+            }
+            else if (command.equalsIgnoreCase("RECOMMEND TO USER")) {
+                return new RecommendSongToUser(); //Todo add this to readme file
             }
             else
             {

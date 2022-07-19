@@ -35,6 +35,12 @@ public class ShellState {
         }
     }
 
+//    public void setSongProfile(SongController songController) {
+//        if (songController != null) {
+//            this.songController = songController;
+//        }
+//    }
+
     public UserProfile getUserProfile() {
         return userContext;
     }

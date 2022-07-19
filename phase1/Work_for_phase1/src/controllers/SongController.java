@@ -17,6 +17,15 @@ public class SongController {
     public List<String> getRecommend(Recommender recommender){
         return songManager.getRecommend(recommendAmount,recommender);
     }
+
+    public String recommendSong(String songname, String receiverUsername) {
+        if (songManager.getAllSongs().containsKey(songname)) {
+            songManager.recommendSong(songname, receiverUsername);
+            return "Successful.";
+        } else {
+            return "Song does not exist.";
+        }
+    }
     public float getRatting(String name){
         return songManager.displayCurrentRating(name);
     }

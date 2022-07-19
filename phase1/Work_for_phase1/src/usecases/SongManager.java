@@ -1,5 +1,6 @@
 package usecases;
 
+import entities.Notification;
 import entities.Song;
 import entities.User;
 import recommendStrategy.Recommender;
@@ -18,12 +19,13 @@ public class SongManager {
 
     private final IGateWay gateWay;
 
-
+    private final NotificationCenter notificationCenter;
 
 
     public SongManager(IGateWay g) {
         this.allSongs = new HashMap<>(9999);
         this.gateWay = g;
+        this.notificationCenter = new NotificationCenter();
     }
 
     public HashMap<String, Song> getAllSongs() {
@@ -34,6 +36,11 @@ public class SongManager {
         allSongs.put(name, new Song(url, name, artist));
     }
 
+    public void recommendSong(String songName, String receiverUsername) {
+        Song song = allSongs.get(songName);
+        Notification notification = new Notification(song.getSongUrl());
+        notificationCenter.addNotification(receiverUsername, notification);
+    }
 
     public void rate(String songName, float point) {
         allSongs.get(songName).addPoints(point);
@@ -41,8 +48,9 @@ public class SongManager {
     }
 
 
-    //public String listen(String songName){}
-    //what do we do here?
+    public String listen(String songName){ // we will return the url for now
+        return allSongs.get(songName).getSongUrl();
+    }
 
 
     public float displayCurrentRating(String songName) {

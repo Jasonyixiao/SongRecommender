@@ -5,6 +5,5 @@ public class Notification {
     private String Content; // for now it is an url
     public Notification(String message ) {
         this.message =message;
-
     }
 }

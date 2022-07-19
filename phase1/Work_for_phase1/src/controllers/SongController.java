@@ -31,4 +31,7 @@ public class SongController {
     public void addSong(String name, String url, String artist){
         songManager.addSong(name, url, artist);
     }
+    public boolean has_song(String songName){
+        return songManager.has_song(songName);
+    }
 }

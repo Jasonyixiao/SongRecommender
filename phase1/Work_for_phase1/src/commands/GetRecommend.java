@@ -15,7 +15,8 @@ public class GetRecommend implements Commands{
     }
     @Override
     public String executeCommand(ShellState state) throws IOException {
-        if (state.getUserProfile().getIsSignedIn()){
+        try{
+            if (state.getUserProfile().getIsSignedIn()){
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the type of recommendation you want? (Currently we only have 'by rating')");
             String recommendType = scanner.nextLine();
@@ -32,6 +33,10 @@ public class GetRecommend implements Commands{
         }else {
             return "Please Login First.";
         }
+        } catch (Exception e){
+            return "Please Login First.";
+        }
+
 
 
     }

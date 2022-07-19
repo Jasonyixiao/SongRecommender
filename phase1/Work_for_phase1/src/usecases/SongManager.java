@@ -1,6 +1,7 @@
 package usecases;
 
 import entities.Song;
+import entities.User;
 import recommendStrategy.Recommender;
 
 import java.io.IOException;
@@ -70,5 +71,8 @@ public class SongManager {
             e.printStackTrace();
         }
 
+    }
+    public boolean has_song(String songName){
+        return allSongs.get(songName) != null;
     }
 }

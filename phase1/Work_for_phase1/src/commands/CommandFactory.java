@@ -1,6 +1,6 @@
 package commands;
 
-public class Commandbuilder {
+public class CommandFactory {
 
         //use getShape method to get object of type shape
         public Commands getCommand(String command) {

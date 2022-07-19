@@ -1,20 +1,21 @@
 package controllers;
 
+import recommendStrategy.Recommender;
 import usecases.SongManager;
 
 import java.util.List;
 
 public class SongController {
     private final SongManager songManager;
-    private final int recommandAmount = 9;
+    private final int recommendAmount = 9;
     public SongController(SongManager songManager){
         this.songManager = songManager;
     }
     public String Listen(String name){
         return songManager.getURL(name);
     }
-    public List<String> getRecommend(){
-        return songManager.getRecommand(recommandAmount);
+    public List<String> getRecommend(Recommender recommender){
+        return songManager.getRecommend(recommendAmount,recommender);
     }
     public float getRatting(String name){
         return songManager.displayCurrentRating(name);
@@ -23,4 +24,11 @@ public class SongController {
         songManager.rate(songName, rating);
     }
 
+    public void saveData(){
+        songManager.save();
+    }
+
+    public void addSong(String name, String url, String artist){
+        songManager.addSong(name, url, artist);
+    }
 }

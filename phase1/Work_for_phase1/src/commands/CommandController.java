@@ -18,6 +18,13 @@ public class CommandController {
         this.commands.put("005", new CreateAdmin());
         this.commands.put("006", new Delete());
         this.commands.put("007", new Ban());
+        this.commands.put("008", new RatingSong());
+        this.commands.put("009", new GetRecommand());
+        this.commands.put("010", new SearchSong());
+        this.commands.put("011", new SearchArtist());
+        // this.commands.put("012", new );
+        // this.commands.put("013", new );
+
     }
 
     public HashMap<String, Commands> getCommandMap() {

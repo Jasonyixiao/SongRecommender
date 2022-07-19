@@ -34,6 +34,11 @@ public class Song {
     public String getName(){
         return Name;
     }
+
+    public void setName(String name){
+        Name = name;
+    }
+
     public String getArtist(){
         return artist;
     }

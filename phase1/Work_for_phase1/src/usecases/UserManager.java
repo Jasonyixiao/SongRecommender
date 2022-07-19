@@ -49,7 +49,7 @@ public class UserManager {
         if (checkIsLogIn(username)) {
             currentUser.setIsSignedIn(false);
             try{
-                gateWay.save(allUsers);
+                gateWay.save(allUsers, gateWay.getUserFile());
             }catch (IOException e){
                 e.printStackTrace();
             }
@@ -145,7 +145,7 @@ public class UserManager {
 
     public void read(){
         try {
-            allUsers = gateWay.read();
+            allUsers = gateWay.read_user();
         }catch (ClassNotFoundException ignored){
         }
     }

@@ -19,5 +19,8 @@ public class SongController {
     public float getRatting(String name){
         return songManager.displayCurrentRating(name);
     }
+    public void rateAsong(String songName, float rating){
+        songManager.rate(songName, rating);
+    }
 
 }

@@ -13,10 +13,13 @@ public class SongManager {
 
     private HashMap<String, Song> allSongs;
 
+    private final IGateWay gateWay;
 
 
-    public SongManager(){
+
+    public SongManager(IGateWay g){
         this.allSongs = new HashMap<>(9999);
+        this.gateWay = g;
     }
 
 
@@ -68,5 +71,12 @@ public class SongManager {
     }
     public String getURL(String name){
         return allSongs.get(name).getSongUrl();
+    }
+
+    public void read(){
+        try {
+            allSongs = gateWay.read_song();
+        }catch (ClassNotFoundException ignored){
+        }
     }
 }

@@ -1,6 +1,7 @@
 package driver;
 
 import commands.CommandController;
+import commands.Commandbuilder;
 import commands.Commands;
 import controllers.LoginController;
 import controllers.ShellState;
@@ -27,36 +28,26 @@ public class LoginSystem {
         //System.out.println(f.exists());
         GateWay g = new GateWay();
         UserManager userManager = new UserManager(g);
+        SongManager songManager = new SongManager(g);
         userManager.read();
+        songManager.read();
+        SongController songController = new SongController(songManager);
         UserController userController = new UserController(userManager);
         LoginController loginController = new LoginController(userController);
-        ShellState shellState = new ShellState(loginController);
+        ShellState shellState = new ShellState(loginController,songController);
 
         Scanner input = new Scanner(System.in);
-        CommandController command = new CommandController(); // we can use the get method from this class to get a map with all the commands in it
-        HashMap<String, Commands> commandMap = command.getCommandMap(); // This is the map with all the commands in it
+        Commandbuilder commandbuilder = new Commandbuilder();
+        // CommandController command = new CommandController();  we can use the get method from this class to get a map with all the commands in it
+        // HashMap<String, Commands> commandMap = command.getCommandMap(); // This is the map with all the commands in it
         while (shellState.getIsRunning()) {
             // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).
-            System.out.println("Enter your command, enter " +
-                    "000 to Register, " +
-                    "001 to login, " +
-                    "002 to logout, " +
-                    "003 to Exit, " +
-                    "004 to check history, " +
-                    "005 to create Admin, " +
-                    "006 to delete a user, " +
-                    "007 to ban a user" +
-                    "008 to rate song, " +
-                    "009 to recommend, " +
-                    "010 to search songs," +
-                    "011 to search artist");
+            System.out.println("Enter your command, please refer to the README file for valid inputs.");
             String userCommand = input.nextLine();
-            if (commandMap.get(userCommand) != null) {
-                String result = commandMap.get(userCommand).executeCommand(shellState);
+            Commands command = commandbuilder.getCommand(userCommand);
+            if (command != null){
+                String result = command.executeCommand(shellState);
                 System.out.println(result);
-
-            } else {
-                System.out.println("Invalid Input, Try Again!");
             }
         }
 

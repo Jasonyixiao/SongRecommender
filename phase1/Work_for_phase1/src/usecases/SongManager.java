@@ -1,7 +1,10 @@
 package usecases;
 
 import entities.Song;
+import entities.User;
+import recommendStrategy.Recommender;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,18 +20,22 @@ public class SongManager {
 
 
 
-    public SongManager(IGateWay g){
+
+    public SongManager(IGateWay g) {
         this.allSongs = new HashMap<>(9999);
         this.gateWay = g;
     }
 
+    public HashMap<String, Song> getAllSongs() {
+        return allSongs;
+    }
 
-    public void addSong(String name, String url, String artist){
-        allSongs.put(name,new Song(url, name, artist));
+    public void addSong(String name, String url, String artist) {
+        allSongs.put(name, new Song(url, name, artist));
     }
 
 
-    public void rate(String songName, float point){
+    public void rate(String songName, float point) {
         allSongs.get(songName).addPoints(point);
         allSongs.get(songName).addRatedPeople();
     }
@@ -38,45 +45,34 @@ public class SongManager {
     //what do we do here?
 
 
-    public float displayCurrentRating(String songName){
+    public float displayCurrentRating(String songName) {
         return allSongs.get(songName).getAvgRating();
     }
 
-    public List<String> getRecommand(int amount){
-        ArrayList<Song> result = new ArrayList<>();
-        for(Song s : allSongs.values()){
-            if(result.size()<amount){
-                result.add(s);
-            }else{
-                replaceSmallerRating(result,s);
-            }
-        }
-        ArrayList<String> trueResult = new ArrayList<>();
-        for(Song s: result){
-            trueResult.add(s.getName());
-        }
-        return trueResult;
+    public List<String> getRecommend(int amount, Recommender recommender) {
+        return recommender.getRecommend(amount, allSongs);
     }
-    private void replaceSmallerRating(List<Song> l, Song newSong){
-        Song s = l.get(0);
-        for (Song song: l) {
-            if(song.getAvgRating()<s.getAvgRating()){
-                s = song;
-            }
-        }
-        if(s.getAvgRating()< newSong.getAvgRating()){
-            l.remove(s);
-            l.add(newSong);
-        }
-    }
-    public String getURL(String name){
+
+    public String getURL(String name) {
         return allSongs.get(name).getSongUrl();
     }
 
-    public void read(){
+    public void read() {
         try {
             allSongs = gateWay.read_song();
-        }catch (ClassNotFoundException ignored){
+        } catch (ClassNotFoundException ignored) {
         }
+    }
+
+    public void save() {
+        try {
+            gateWay.save(allSongs, gateWay.getSongFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public boolean has_song(String songName){
+        return allSongs.get(songName) != null;
     }
 }

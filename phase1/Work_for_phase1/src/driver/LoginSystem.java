@@ -1,7 +1,7 @@
 package driver;
 
 
-import commands.Commandbuilder;
+import commands.CommandFactory;
 import commands.Commands;
 import controllers.LoginController;
 import controllers.ShellState;
@@ -10,11 +10,7 @@ import controllers.SongController;
 import usecases.UserManager;
 import usecases.SongManager;
 
-import javax.sound.midi.Soundbank;
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -34,20 +30,22 @@ public class LoginSystem {
         SongController songController = new SongController(songManager);
         UserController userController = new UserController(userManager);
         LoginController loginController = new LoginController(userController);
-        ShellState shellState = new ShellState(loginController,songController);
+        ShellState shellState = new ShellState(loginController, songController);
 
         Scanner input = new Scanner(System.in);
-        Commandbuilder commandbuilder = new Commandbuilder();
+        CommandFactory commandFactory = new CommandFactory();
         while (shellState.getIsRunning()) {
             // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).
             System.out.println("Enter your command, please refer to the README file for valid inputs.");
             String userCommand = input.nextLine();
-            Commands command = commandbuilder.getCommand(userCommand);
-            if (command != null){
+            Commands command = commandFactory.getCommand(userCommand);
+            if (command != null) {
                 String result = command.executeCommand(shellState);
                 System.out.println(result);
             }
         }
+    }
+
 
         //            GateWay g = new GateWay();
 //            UserManager userManager = new UserManager(g);
@@ -67,7 +65,7 @@ public class LoginSystem {
         //g.save(new AdminManager.admindata());
 
 
-    }
+
 
     //private static void commendChoice(String userCommand) {
     //    if (userCommand == "001") {
@@ -75,7 +73,7 @@ public class LoginSystem {
     //        Scanner input = new Scanner(System.in);
     //        System.out.println("Enter your command, " +
     //                "enter 008 to rate song, " +
-    //                "009 to recommend, " +
+    //
     //                "010 to search songs," +
     //                "011 to search artist");
     //        String userCommand2 = input.nextLine();

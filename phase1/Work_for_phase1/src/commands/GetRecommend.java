@@ -9,10 +9,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * This class is responsible for generate recommended songs.
+ */
 public class GetRecommend implements Commands{
     public GetRecommend(){
 
     }
+
+    /**
+     * This method will provide recommended songs for the user.
+     * @param state is the current state of the program
+     * @return whether the user has succeeded. Or return further instructions if the user did not succeed.
+     * @throws IOException if the user didn't log in.
+     */
     @Override
     public String executeCommand(ShellState state) throws IOException {
         try{

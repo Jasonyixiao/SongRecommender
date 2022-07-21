@@ -1,9 +1,16 @@
 package commands;
 
+/**
+ * This class is responsible for creating the required command based on user's input.
+ */
 public class CommandFactory {
 
-        //use getShape method to get object of type shape
-        public Commands getCommand(String command) {
+    /**
+     * This method will call the corresponding constructor of the different kinds of command objects.
+     * @param command is the user command
+     * @return the corresponding kind of command.
+     */
+    public Commands getCommand(String command) {
 
             if(command == null){
                 return null;

@@ -5,11 +5,19 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
+/**
+ * This Class is responsible for registering new user
+ */
 public class Register implements Commands{
     public Register () {
 
     }
 
+    /**
+     * This method will prompt new users to register a new account.
+     * @param state is the current state of the program.
+     * @return
+     */
     public String executeCommand(ShellState state) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Your Name:  ");

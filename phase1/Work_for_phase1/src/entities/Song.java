@@ -14,34 +14,55 @@ public class Song {
 
     private int numRatedPeople = 0;
 
+    /**
+     * Constructor of a song, stores the song name, Spotify link of the song and the singer.
+     * @param url is the Spotify link of the song.
+     * @param name is the songname.
+     * @param artist is the singer.
+     */
     public Song(String url, String name, String artist){
         songUrl = url;
         this.artist = artist;
         Name = name;
     }
 
-    public void addRatedPeople(){
+    /**
+     * This method will let a user rate the song with point.
+     * @param point is rating the user gives.
+     */
+    public void rate(float point){
+        totalpoints += point;
         numRatedPeople ++;
     }
 
-    public void addPoints(float point){
-        totalpoints += point;
-    }
-
+    /**
+     * Getter for SongUrl.
+     * @return the Spotify link for the song.
+     */
     public String getSongUrl(){
         return songUrl;
     }
+
+    /**
+     * Getter for Name;
+     * @return the song name.
+     */
     public String getName(){
         return Name;
     }
 
-    public void setName(String name){
-        Name = name;
-    }
-
+    /**
+     * Getter for artist
+     * @return the singer of the song.
+     */
     public String getArtist(){
         return artist;
     }
+
+    /**
+     * Calculates the average rating of this song.
+     * @return the average rating of this song.
+     */
     public float getAvgRating(){
         return totalpoints/numRatedPeople;
     }

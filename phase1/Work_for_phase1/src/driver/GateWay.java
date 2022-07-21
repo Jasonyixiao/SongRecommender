@@ -7,7 +7,9 @@ import entities.User;
 import java.io.*;
 import java.util.HashMap;
 
-
+/**
+ * This Class is responsible for the data saving/reading task for the program.
+ */
 public class GateWay implements IGateWay {
     private final String userFile = "./user";
     private final String songFile = "./song";
@@ -15,7 +17,12 @@ public class GateWay implements IGateWay {
     public GateWay(){
     }
 
-
+    /**
+     * This method will save the serializable object o to path.
+     * @param o is the object being saved.
+     * @param path is the path we are saving to.
+     * @throws IOException  if error saving to file
+     */
     public void save(Serializable o, String path) throws IOException {
 
         OutputStream file = new FileOutputStream(path);
@@ -27,7 +34,12 @@ public class GateWay implements IGateWay {
         output.close();
     }
 
-
+    /**
+     * This method will read the users into the program.
+     * @return the deserialized map of all users.
+     * @throws ClassNotFoundException if error reading from file.
+     */
+    @Override
     public HashMap<String, User> read_user () throws ClassNotFoundException {
 
         try {
@@ -42,6 +54,11 @@ public class GateWay implements IGateWay {
         }
     }
 
+    /**
+     * This method will read the songs into the program.
+     * @return a deserialized Map of all Songs.
+     * @throws ClassNotFoundException if error reading from file.
+     */
     @Override
     public HashMap<String, Song> read_song() throws ClassNotFoundException {
         try {
@@ -56,11 +73,18 @@ public class GateWay implements IGateWay {
         }
     }
 
-
+    /**
+     * Getter for songFile.
+     * @return the path of storing the song data.
+     */
     public String getSongFile() {
         return songFile;
     }
 
+    /**
+     * Getter for userFile.
+     * @return the path of storing the use data.
+     */
     public String getUserFile() {
         return userFile;
     }

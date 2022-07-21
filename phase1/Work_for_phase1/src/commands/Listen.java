@@ -7,11 +7,22 @@ import controllers.UserController;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * This class is responsible for letting users listen to a song.
+ */
 public class Listen implements Commands {
 
     public Listen(){
 
     }
+
+    /**
+     * This method will prompt user to listen to a song  of user's choice.
+     * @param state is the current state of the program.
+     * @return the url of the song and messages about whether the user has succeeded.
+     *         Or return further instructions if the user did not succeed.
+     * @throws IOException if the user did not log in.
+     */
     @Override
     public String executeCommand(ShellState state) throws IOException {
         try{

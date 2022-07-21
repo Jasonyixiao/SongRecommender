@@ -43,8 +43,7 @@ public class SongManager {
     }
 
     public void rate(String songName, float point) {
-        allSongs.get(songName).addPoints(point);
-        allSongs.get(songName).addRatedPeople();
+        allSongs.get(songName).rate(point);
     }
 
 
@@ -58,7 +57,7 @@ public class SongManager {
     }
 
     public List<String> getRecommend(int amount, Recommender recommender) {
-        return recommender.getRecommend(amount, allSongs);
+        return recommender.getRecommend(amount, allSongs.values());
     }
 
     public String getURL(String name) {

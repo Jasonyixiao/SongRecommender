@@ -6,11 +6,20 @@ import controllers.SongController;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * This class is responsible for recommending a song to a user.
+ */
 public class RecommendSongToUser implements Commands {
     public RecommendSongToUser () {
 
     }
 
+    /**
+     * This method will prompt user to recommend song to another user.
+     * @param state is the current state of the program.
+     * @return whether the user has succeeded. Or return further instructions if the user did not succeed.
+     * @throws IOException if the user did not login.
+     */
     @Override
     public String executeCommand(ShellState state) throws IOException {
         //Todo currently we haven't dealt with the case where the username user input is invalid.

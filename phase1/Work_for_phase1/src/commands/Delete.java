@@ -5,11 +5,19 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
+/**
+ * This Class is responsible for deleting a user.
+ */
 public class Delete implements Commands {
 
     public Delete() {
     }
 
+    /**
+     * This method will prompt admin user to delete a normal user.
+     * @param state is the current state of the user.
+     * @return whether the admin user has succeeded. Or return further instructions if the admin user did not succeed.
+     */
     public String executeCommand(ShellState state) {
         try {
             if (state.getUserProfile().getIsSignedIn()) {

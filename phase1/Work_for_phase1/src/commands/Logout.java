@@ -6,10 +6,19 @@ import controllers.UserController;
 
 import java.io.IOException;
 
+/**
+ *  This class is responsible for logging out a user.
+ */
 public class Logout implements Commands{
     public Logout() {
     }
 
+    /**
+     * This method will log out a user
+     * @param state is the current state of the user.
+     * @return whether the user has succeeded. Or return further instructions if the user did not succeed.
+     * @throws IOException if the user didn't log in.
+     */
     @Override
     public String executeCommand(ShellState state) throws IOException {
         try {

@@ -4,13 +4,23 @@ import controllers.ShellState;
 import controllers.SongController;
 import controllers.UserController;
 
+import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * This class is responsible for rating a song.
+ */
 public class RateASong implements Commands{
 
     public RateASong() {
     }
 
+    /**
+     * This method will prompt users to rate a song.
+     * @param state is the current state of the program.
+     * @return whether the user has succeeded. Or return further instructions if the user did not succeed.
+     *
+     */
     public String executeCommand(ShellState state) {
         try{
             if (state.getUserProfile().getIsSignedIn()){

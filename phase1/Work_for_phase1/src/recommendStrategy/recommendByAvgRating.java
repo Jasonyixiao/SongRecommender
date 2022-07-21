@@ -3,17 +3,26 @@ package recommendStrategy;
 import entities.Song;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * This Class is responsible for implementing one recommending strategy.
+ */
 public class recommendByAvgRating implements Recommender {
     public recommendByAvgRating(){}
 
-
+    /**
+     * This method will recommend songs based on highest average ratings.
+     * @param amount is the number of recommended songs.
+     * @param allSongs is the collections of songs where we find recommended songs from.
+     * @return a list of song names of recommended songs.
+     */
     @Override
-    public List<String> getRecommend(int amount, HashMap<String, Song> allSongs) {
+    public List<String> getRecommend(int amount, Collection<Song> allSongs) {
         ArrayList<Song> result = new ArrayList<>();
-        for (Song s : allSongs.values()) {
+        for (Song s : allSongs) {
             if (result.size() < amount) {
                 result.add(s);
             } else {

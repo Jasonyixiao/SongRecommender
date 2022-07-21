@@ -5,10 +5,18 @@ import controllers.UserController;
 
 import java.util.Scanner;
 
+/**
+ * This Class is responsible for banning a normal user.
+ */
 public class Ban implements Commands{
     public Ban() {
     }
 
+    /**
+     * This method will prompt an admin user ban a normal user.
+     * @param state is the current state of the program.
+     * @return whether the admin user has successfully completed their operation, and future instruction.
+     */
     public String executeCommand(ShellState state) {
         try {
             if (state.getUserProfile().getIsSignedIn()) {

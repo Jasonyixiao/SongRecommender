@@ -27,7 +27,7 @@ public class SongController {
      * @return the Spotify link for the song.
      */
     public String Listen(String name){
-        return songManager.getURL(name);
+        return songManager.listen(name);
     }
 
     /**

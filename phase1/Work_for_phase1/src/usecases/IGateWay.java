@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 
+/**
+ * Interface for saving and reading the program's data.
+ */
 public interface IGateWay {
     void save(Serializable o, String path) throws IOException;
     HashMap<String, User>  read_user() throws ClassNotFoundException;

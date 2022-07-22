@@ -4,13 +4,13 @@ package entities;
  */
 public class Song {
 
-    private String songUrl;
+    private final String songUrl;
 
     private float totalpoints;
 
-    private String Name;
+    private final String Name;
 
-    private String artist;
+    private final String artist;
 
     private int numRatedPeople = 0;
 

@@ -26,7 +26,7 @@ public class SongController {
      * @param name is the name of the song the user wants to listen.
      * @return the Spotify link for the song.
      */
-    public String Listen(String name){
+    public String listen(String name){
         return songManager.listen(name);
     }
 
@@ -39,20 +39,20 @@ public class SongController {
         return songManager.getRecommend(recommendAmount,recommender);
     }
 
-    /**
-     * This method will recommend a song to a specific user via username.
-     * @param songname is the name of the song the user wants to recommend.
-     * @param receiverUsername is the username of which the user wants to recommend to.
-     * @return a message of whether the task is performed successfully.
-     */
-    public String recommendSong(String songname, String receiverUsername) {
-        if (songManager.getAllSongs().containsKey(songname)) {
-            songManager.recommendSong(songname, receiverUsername);
-            return "Successful.";
-        } else {
-            return "Song does not exist.";
-        }
-    }
+//    /**
+//     * This method will recommend a song to a specific user via username.
+//     * @param songname is the name of the song the user wants to recommend.
+//     * @param receiverUsername is the username of which the user wants to recommend to.
+//     * @return a message of whether the task is performed successfully.
+//     */
+//    public String recommendSong(String songname, String receiverUsername) {
+//        if (songManager.getAllSongs().containsKey(songname)) {
+//            songManager.recommendSong(songname, receiverUsername);
+//            return "Successful.";
+//        } else {
+//            return "Song does not exist.";
+//        }
+//    }
 
     /**
      * This method will show user the current rating of the specific song.
@@ -95,7 +95,7 @@ public class SongController {
      * @param songName is the name of song the user is looking for.
      * @return true iff the system contains the song.
      */
-    public boolean has_song(String songName){
-        return songManager.has_song(songName);
+    public boolean hasSong(String songName){
+        return songManager.hasSong(songName);
     }
 }

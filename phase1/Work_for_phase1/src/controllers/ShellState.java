@@ -16,6 +16,8 @@ public class ShellState {
 
     private final SongController songController;
 
+    private RecommendController recommendController;
+
     /**
      * This method will construct a ShellState, saves loginController and songController. The default status for the
      * program is running.
@@ -27,6 +29,14 @@ public class ShellState {
         this.loginController = loginController;
         this.songController = songController;
 
+    }
+
+    public void setRecommendController(RecommendController recommendController) {
+        this.recommendController = recommendController;
+    }
+
+    public RecommendController getRecommendController() {
+        return recommendController;
     }
 
     /**

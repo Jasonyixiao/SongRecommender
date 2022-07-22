@@ -53,17 +53,6 @@ public class SongManager {
     }
 
 
-    /**
-     * This method will let the program user recommend a song to another user
-     * @param songName is the name of the song.
-     * @param receiverUsername is the receiving user' username.
-     */
-    public void recommendSong(String songName, String receiverUsername) {
-        Song song = allSongs.get(songName);
-        Notification notification = new Notification(song.getSongUrl());
-        notificationCenter.addNotification(receiverUsername, notification);
-    }
-
 
     /**
      * This method will let user to rate a song.
@@ -136,7 +125,7 @@ public class SongManager {
      * @param songName is the name of song we are checking.
      * @return true iff the song is in the system.
      */
-    public boolean has_song(String songName){
+    public boolean hasSong(String songName){
         return allSongs.get(songName) != null;
     }
 }

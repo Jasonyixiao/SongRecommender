@@ -20,14 +20,23 @@ public class NotificationCenter {
         this.allNotifications = new HashMap<>();
     }
 
+    public int getNumberOfNewNotifications(String username) {
+        List<Notification> notifications = allNotifications.get(username);
+        int numNew = 0;
+        for (Notification notification : notifications) {
+            if (notification.getIsNew()) {
+                numNew += 1;
+            }
+        }
+        return numNew;
+    }
 
-    /**
-     * Getter for a notification's content.
-     * @param notification is the notification we wish to find content of.
-     * @return the notification's content.
-     */
-    public String getNotificationContent(Notification notification) {
-        return notification.getContent();
+    public String getNotificationContent(String username, int idOfNotification) {
+        return allNotifications.get(username).get(idOfNotification).getContent();
+    }
+
+    public String getNotificationMessage(String username, int idOfNotification) {
+        return allNotifications.get(username).get(idOfNotification).getMessage();
     }
 
 
@@ -47,6 +56,52 @@ public class NotificationCenter {
             allNotifications.put(username, listAllNotifications);
         }
     }
+
+    public int createNotification(String receiver, String sender) { // this returns the index of this newly created notification
+        Notification notification = new Notification();
+        notification.setSender(sender);
+        addNotification(receiver, notification);
+        return allNotifications.get(receiver).size() - 1;
+    }
+
+    public boolean hasUser(String username) {
+        return this.allNotifications.containsKey(username);
+    }
+    public void setContent(String username, int idOfNotification, String content) { // we use this to add url to the notification
+            allNotifications.get(username).get(idOfNotification).setContent(content);
+    }
+
+    public void setMessage(String username, int idOfNotification, String message) { // we use this to add message to the notification
+            allNotifications.get(username).get(idOfNotification).setMessage(message);
+    }
+
+    public void setIsRead(String username, int idOfNotification, boolean isRead) {
+            allNotifications.get(username).get(idOfNotification).setIsRead(isRead);
+    }
+
+
+
+
+
+
+    //Todo we need a read and save method
+
+//    public Notification createNotification() {
+//        return new Notification();
+//    }
+//
+//    public void addMessage(Notification notification, String message) {
+//        notification.setMessage(message);
+//    }
+//
+//    public void addContent(Notification notification, String content) {
+//        notification.setContent(content);
+//    }
+//
+//    public void addSender(Notification notification, String username) {
+//        notification.setSender(username);
+//    }
+//
 
 
 }

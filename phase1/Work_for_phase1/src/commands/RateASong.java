@@ -2,9 +2,7 @@ package commands;
 
 import controllers.ShellState;
 import controllers.SongController;
-import controllers.UserController;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -28,7 +26,7 @@ public class RateASong implements Commands{
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("Which song do you want to rate?");
                 String songName = scanner.nextLine();
-                if (songController.has_song(songName)){
+                if (songController.hasSong(songName)){
                     System.out.print("out of 5, what would you rate this song?");
                     String rating = scanner.nextLine();
                     float f = Float.parseFloat(rating);

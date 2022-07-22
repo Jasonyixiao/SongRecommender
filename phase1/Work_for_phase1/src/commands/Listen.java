@@ -2,7 +2,6 @@ package commands;
 
 import controllers.ShellState;
 import controllers.SongController;
-import controllers.UserController;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -31,8 +30,8 @@ public class Listen implements Commands {
                 System.out.print("What song do you want to listen to?");
                 String songName = scanner.nextLine() ;
                 SongController songController = state.getSongController();
-                if (songController.has_song(songName)){
-                    String url = songController.Listen(songName);
+                if (songController.hasSong(songName)){
+                    String url = songController.listen(songName);
                     return "here is the spotify url of the song: " + url;
                 }else{
                     return "No such song in the system";

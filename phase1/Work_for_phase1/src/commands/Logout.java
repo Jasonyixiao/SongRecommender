@@ -26,6 +26,8 @@ public class Logout implements Commands{
                 UserController userController = state.getLoginController().getUserController();// disgusting
                 LoginController loginController = new LoginController(userController);
                 loginController.LogOff(state.getUserProfile());
+                state.getSongController().saveSongData();
+                state.getNotificationController().saveNotificationData();
                 return "You Are Logged Off!";
             } else {
                 return "You are not logged in.";

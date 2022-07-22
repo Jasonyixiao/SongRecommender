@@ -1,8 +1,7 @@
 package commands;
 
-import controllers.RecommendController;
+import controllers.NotificationController;
 import controllers.ShellState;
-import controllers.SongController;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -28,13 +27,13 @@ public class RecommendSongToUser implements Commands {
         // we also need to add a line tof code that always checks notification when user first logs in
         try {
             if (state.getUserProfile().getIsSignedIn()) {
-                RecommendController recommendController = state.getRecommendController();
+                NotificationController notificationController = state.getNotificationController();
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Enter the song name you wish to share: ");
                 String songname = sc.nextLine();
                 System.out.println("Enter the person's username you wish to share the song to: ");
                 String username = sc.nextLine();
-                return recommendController.recommendSong(songname, username, state.getUserProfile().getUsername());
+                return notificationController.recommendSong(songname, username, state.getUserProfile().getUsername());
             } else {
                 return "please Login first.";
             }

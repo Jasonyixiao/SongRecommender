@@ -20,7 +20,7 @@ public class Exit implements Commands{
     @Override
     public String executeCommand(ShellState state) throws IOException {
         state.stopRunning();
-        state.getSongController().saveData();
+
         try {
             Logout logout = new Logout();
             logout.executeCommand(state);

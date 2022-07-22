@@ -2,10 +2,8 @@ package driver;
 
 import commands.CommandFactory;
 import commands.Commands;
-import controllers.LoginController;
-import controllers.ShellState;
-import controllers.SongController;
-import controllers.UserController;
+import controllers.*;
+import usecases.NotificationCenter;
 import usecases.SongManager;
 import usecases.UserManager;
 
@@ -21,18 +19,7 @@ public class TopNineRunner {
     }
 
     public void run() throws IOException {
-        //File f = new File(driver.GateWay.userFile);
-        //System.out.println(f.exists());
-        GateWay g = new GateWay();
-        UserManager userManager = new UserManager(g);
-        SongManager songManager = new SongManager(g);
-        userManager.read();
-        songManager.read();
-        SongController songController = new SongController(songManager);
-        UserController userController = new UserController(userManager);
-        LoginController loginController = new LoginController(userController);
-        ShellState shellState = new ShellState(loginController, songController);
-
+        ShellState shellState = load_current_data();
         Scanner input = new Scanner(System.in);
         CommandFactory commandFactory = new CommandFactory();
         while (shellState.getIsRunning()) {
@@ -46,4 +33,22 @@ public class TopNineRunner {
             }
         }
     }
+
+    private ShellState load_current_data(){
+        GateWay g = new GateWay();
+        NotificationCenter notificationCenter = new NotificationCenter(g);
+        UserManager userManager = new UserManager(g);
+        SongManager songManager = new SongManager(g);
+        userManager.read();
+        songManager.read();
+        notificationCenter.read();
+        SongController songController = new SongController(songManager);
+        UserController userController = new UserController(userManager);
+        LoginController loginController = new LoginController(userController);
+        NotificationController notificationController = new NotificationController(songController,notificationCenter);
+        return new ShellState(loginController, songController, notificationController);
+
+    }
+
+
 }

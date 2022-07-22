@@ -1,7 +1,5 @@
 package controllers;
 
-import entities.Song;
-
 /**
  *  This class is to check if the user is still active. The program will terminate once the user exit. This can be
  *  done by calling setIsRunning that sets isRunning to false, and while loop will terminate.
@@ -16,7 +14,7 @@ public class ShellState {
 
     private final SongController songController;
 
-    private RecommendController recommendController;
+    private final NotificationController notificationController;
 
     /**
      * This method will construct a ShellState, saves loginController and songController. The default status for the
@@ -24,19 +22,19 @@ public class ShellState {
      * @param loginController is responsible for calling the necessary methods for user to login or logout.
      * @param songController is responsible for calling the necessary methods for user to perform song-related tasks.
      */
-    public ShellState (LoginController loginController, SongController songController) {
+    public ShellState (LoginController loginController, SongController songController, NotificationController
+            notificationController) {
         this.isRunning = true;
         this.loginController = loginController;
         this.songController = songController;
+        this.notificationController = notificationController;
 
     }
 
-    public void setRecommendController(RecommendController recommendController) {
-        this.recommendController = recommendController;
-    }
 
-    public RecommendController getRecommendController() {
-        return recommendController;
+
+    public NotificationController getNotificationController() {
+        return notificationController;
     }
 
     /**

@@ -1,11 +1,13 @@
 package driver;
 
+import entities.Notification;
 import entities.Song;
 import usecases.IGateWay;
 import entities.User;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * This Class is responsible for the data saving/reading task for the program.
@@ -13,6 +15,8 @@ import java.util.HashMap;
 public class GateWay implements IGateWay {
     private final String userFile = "./user";
     private final String songFile = "./song";
+
+    private final String notificationFile = "./notification";
 
     public GateWay(){
     }
@@ -74,6 +78,26 @@ public class GateWay implements IGateWay {
     }
 
     /**
+     * This method will read the notifications into the program.
+     *
+     * @return a deserialized Map of all notifications.
+     * @throws ClassNotFoundException if error reading from file.
+     */
+    @Override
+    public HashMap<String, List<Notification>> read_notification() throws ClassNotFoundException {
+        try {
+            InputStream file = new FileInputStream(songFile);
+            InputStream buffer = new BufferedInputStream(file);
+            ObjectInput input = new ObjectInputStream(buffer);
+            HashMap<String, List<Notification>> result = (HashMap<String, List<Notification>>) input.readObject();
+            input.close();
+            return result;
+        } catch (IOException ex) {
+            return new HashMap<>();
+        }
+    }
+
+    /**
      * Getter for songFile.
      * @return the path of storing the song data.
      */
@@ -83,9 +107,20 @@ public class GateWay implements IGateWay {
 
     /**
      * Getter for userFile.
-     * @return the path of storing the use data.
+     * @return the path of storing the user data.
      */
     public String getUserFile() {
         return userFile;
     }
+
+    /**
+     * Getter for notificationFile
+     * @return the path of storing the notification data.
+     */
+    @Override
+    public String getNotificationFile() {
+        return notificationFile;
+    }
+
+
 }

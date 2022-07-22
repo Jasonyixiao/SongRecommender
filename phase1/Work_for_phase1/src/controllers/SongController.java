@@ -76,7 +76,7 @@ public class SongController {
     /**
      * This method will save the song data.
      */
-    public void saveData(){
+    public void saveSongData(){
         songManager.save();
     }
 

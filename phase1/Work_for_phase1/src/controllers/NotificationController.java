@@ -2,7 +2,7 @@ package controllers;
 
 import usecases.NotificationCenter;
 
-public class RecommendController {
+public class NotificationController {
 
     NotificationCenter notificationCenter;
 
@@ -10,8 +10,9 @@ public class RecommendController {
 
     int currentNotificationId;
 ;
-    public RecommendController(SongController songController, NotificationCenter notificationCenter) {
+    public NotificationController(SongController songController, NotificationCenter notificationCenter) {
         this.songController = songController;
+        this.notificationCenter = notificationCenter;
     }
 
     public String getMessage(String username, int idOfNotification) {
@@ -55,6 +56,14 @@ public class RecommendController {
     public int getIdOfCurrentNotification () {
         return this.currentNotificationId;
     }
+
+    /**
+     * This method will save the notification data.
+     */
+    public void saveNotificationData(){
+        notificationCenter.save();
+    }
+
 
 
 

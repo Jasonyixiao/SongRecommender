@@ -2,6 +2,7 @@ package usecases;
 
 import entities.Notification;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,13 +12,16 @@ import java.util.List;
 public class NotificationCenter {
     HashMap<String, List<Notification>> allNotifications; // username to list of notifications
     // we save this, so we later can find all the notifications a user have
+    private final IGateWay gateWay;
 
 
     /**
      * Constructor for NotificationCenter, initialize all notifications in the system.
+     * @param g is the instance of IGateWay we use to save data.
      */
-    public NotificationCenter() {
+    public NotificationCenter(IGateWay g) {
         this.allNotifications = new HashMap<>();
+        this.gateWay = g;
     }
 
     public int getNumberOfNewNotifications(String username) {
@@ -77,6 +81,22 @@ public class NotificationCenter {
 
     public void setIsRead(String username, int idOfNotification, boolean isRead) {
             allNotifications.get(username).get(idOfNotification).setIsRead(isRead);
+    }
+
+    public void save(){
+        try {
+            gateWay.save(allNotifications, gateWay.getSongFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void read(){
+        try {
+            allNotifications = gateWay.read_notification();
+        } catch (ClassNotFoundException ignored) {
+        }
     }
 
 

@@ -19,17 +19,17 @@ public class SongManager {
 
     private final IGateWay gateWay;
 
-    private final NotificationCenter notificationCenter;
+
 
     /**
-     * Constructor for SongManager, initialize and stores all the songs in the system, and store an instance of IGateWay, and an
-     * instance of notification Center.
+     * Constructor for SongManager, initialize and stores all the songs in the system, and store
+     * an instance of IGateWay.
      * @param g is the instance of IGateWay we use to save data..
      */
     public SongManager(IGateWay g) {
         this.allSongs = new HashMap<>(9999);
         this.gateWay = g;
-        this.notificationCenter = new NotificationCenter();
+
     }
 
 

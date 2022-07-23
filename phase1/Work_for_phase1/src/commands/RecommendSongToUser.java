@@ -22,9 +22,6 @@ public class RecommendSongToUser implements Commands {
      */
     @Override
     public String executeCommand(ShellState state) throws IOException {
-        //Todo currently we haven't dealt with the case where the username user input is invalid.
-        // we can do this in song manager possibly.
-        // we also need to add a line tof code that always checks notification when user first logs in
         try {
             if (state.getUserProfile().getIsSignedIn()) {
                 NotificationController notificationController = state.getNotificationController();

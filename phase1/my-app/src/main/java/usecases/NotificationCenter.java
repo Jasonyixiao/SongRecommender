@@ -97,7 +97,7 @@ public class NotificationCenter {
 
     public void save(){
         try {
-            gateWay.save(allNotifications, gateWay.getSongFile());
+            gateWay.save(allNotifications, gateWay.getNotificationFile());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -116,7 +116,7 @@ public class NotificationCenter {
 
 
 
-    //Todo we need a read and save method
+
 
 //    public Notification createNotification() {
 //        return new Notification();

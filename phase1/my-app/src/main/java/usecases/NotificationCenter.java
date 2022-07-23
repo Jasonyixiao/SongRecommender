@@ -27,10 +27,14 @@ public class NotificationCenter {
     public int getNumberOfNewNotifications(String username) {
         List<Notification> notifications = allNotifications.get(username);
         int numNew = 0;
-        for (Notification notification : notifications) {
-            if (notification.getIsNew()) {
-                numNew += 1;
+        try {
+            for (Notification notification : notifications) {
+                if (notification.getIsNew()) {
+                    numNew += 1;
+                }
             }
+        } catch(Exception e) {
+            return 0;
         }
         return numNew;
     }

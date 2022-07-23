@@ -28,12 +28,22 @@ public class RecommendSongToUser implements Commands {
         try {
             if (state.getUserProfile().getIsSignedIn()) {
                 NotificationController notificationController = state.getNotificationController();
+                String sender = state.getUserProfile().getUsername();
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Enter the song name you wish to share: ");
                 String songname = sc.nextLine();
                 System.out.println("Enter the person's username you wish to share the song to: ");
-                String username = sc.nextLine();
-                return notificationController.recommendSong(songname, username, state.getUserProfile().getUsername());
+                String receiver = sc.nextLine();
+                System.out.println("Add a message: ");
+                String message = sc.nextLine();
+                System.out.println("Add url: ");
+                String content = sc.nextLine();
+                String result = notificationController.recommendSong(songname, receiver, sender);
+                notificationController.setContent(receiver,
+                        notificationController.getIdOfCurrentNotification(), content);
+                notificationController.setmessage(receiver,
+                        notificationController.getIdOfCurrentNotification(), message);
+                return result;
             } else {
                 return "please Login first.";
             }

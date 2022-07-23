@@ -15,7 +15,6 @@ import java.util.List;
 public class GateWay implements IGateWay {
     private final String userFile = "./user";
     private final String songFile = "./song";
-
     private final String notificationFile = "./notification";
 
     public GateWay(){

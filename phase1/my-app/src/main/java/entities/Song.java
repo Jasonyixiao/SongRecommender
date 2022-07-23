@@ -1,8 +1,11 @@
 package entities;
+
+import java.io.Serializable;
+
 /**
  * This class represents a song in our system
  */
-public class Song {
+public class Song implements Serializable {
 
     private final String songUrl;
 

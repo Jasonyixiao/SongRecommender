@@ -27,9 +27,11 @@ public class Listen implements Commands {
         try{
             if (state.getUserProfile().getIsSignedIn()){
                 Scanner scanner = new Scanner(System.in);
+                SongController songController = state.getSongController();
+                System.out.println("Here all the songs in the system:");
+                System.out.println(songController.allSongNames());
                 System.out.print("What song do you want to listen to?");
                 String songName = scanner.nextLine() ;
-                SongController songController = state.getSongController();
                 if (songController.hasSong(songName)){
                     String url = songController.listen(songName);
                     return "here is the spotify url of the song: " + url;

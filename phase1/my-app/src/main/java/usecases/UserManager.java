@@ -3,6 +3,7 @@ package usecases;
 import entities.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -220,6 +221,15 @@ public class UserManager {
         } else {
             return false;
         }
+    }
+
+    /**
+     * This method returns the usernames of all the users in the system.
+     * @return  the usernames of all the users in the system.
+     */
+    public List<String> allUserNames(){
+        return new ArrayList<>(allUsers.keySet());
+
     }
 
     /**

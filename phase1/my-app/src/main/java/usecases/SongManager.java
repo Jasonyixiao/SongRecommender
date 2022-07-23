@@ -2,11 +2,11 @@ package usecases;
 
 
 import entities.Song;
-import entities.User;
 import recommendStrategy.Recommender;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -127,6 +127,15 @@ public class SongManager {
      */
     public boolean hasSong(String songName){
         return allSongs.get(songName) != null;
+    }
+
+    /**
+     * This method returns the song names of all the songs in the system.
+     * @return  the song names of all the songs in the system.
+     */
+    public List<String> allSongNames(){
+        return new ArrayList<>(allSongs.keySet());
+
     }
 }
 

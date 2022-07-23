@@ -98,4 +98,19 @@ public class SongController {
     public boolean hasSong(String songName){
         return songManager.hasSong(songName);
     }
+
+    /**
+     * This method returns the song names of all the songs in the system.
+     * @return  the song names of all the songs in the system.
+     */
+    public List<String> allSongNames(){
+        return songManager.allSongNames();
+    }
+    /**
+     * This method will add a song to the system.
+     * @param name is the songname.
+     * @param url is the Spotify link to the song.
+     * @param artist is the singer of the song.
+     */
+
 }

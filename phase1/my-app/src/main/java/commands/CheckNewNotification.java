@@ -6,11 +6,21 @@ import entities.Notification;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * This class is responsible for checking new notifications for program user.
+ */
 public class CheckNewNotification implements Commands{
 
     public CheckNewNotification() {
 
     }
+
+    /**
+     * This method will check if there is any new notifications for the program user.
+     * @param state
+     * @return whether the user has succeeded. Or return further instructions if the user did not succeed.
+     * @throws IOException
+     */
 
     @Override
     public String executeCommand(ShellState state) throws IOException {
@@ -20,7 +30,7 @@ public class CheckNewNotification implements Commands{
             Scanner sc = new Scanner(System.in);
             if (numNewNotifications == 0) {
                 return "You do not have any new Notifications. If you's like to view all notifications enter: " +
-                        "View All Notifications"; //Todo Add new class called view older notifications
+                        "View All Notifications";
             } else {
                 System.out.println("You have " + numNewNotifications + " new notifications. Which notification " +
                         "you would you like to view? Enter a number from 1 to " + numNewNotifications);

@@ -4,11 +4,20 @@ import controllers.ShellState;
 
 import java.io.IOException;
 
+/**
+ * This Class is responsible for checking all the notifications a user has.
+ */
 public class CheckAllNotifications implements Commands{
     public CheckAllNotifications() {
 
     }
 
+    /**
+     * This method will show user all their notifications.
+     * @param state is the current state of the program
+     * @return message regarding the outcome of the task.
+     * @throws IOException
+     */
     @Override
     public String executeCommand(ShellState state) throws IOException {
         try {

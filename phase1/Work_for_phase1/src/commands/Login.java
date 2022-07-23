@@ -33,7 +33,11 @@ public class Login implements Commands{
         shellState.setUserProfile(userContext);
         if (userContext != null) {
             shellState.setIsSignedIn();
-            return "Success";
+            int numNewNotifications = shellState.getNotificationController().getNumofNewNotifications(username);
+            if (numNewNotifications > 0) {
+                System.out.println("You have " + numNewNotifications + " new notifications.");
+            }
+            return "Welcome back!";
         } else {
             return "Login Failed";
         }

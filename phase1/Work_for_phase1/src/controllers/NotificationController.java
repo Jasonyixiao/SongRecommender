@@ -9,18 +9,41 @@ public class NotificationController {
     SongController songController;
 
     int currentNotificationId;
-;
     public NotificationController(SongController songController, NotificationCenter notificationCenter) {
         this.songController = songController;
         this.notificationCenter = notificationCenter;
     }
 
     public String getMessage(String username, int idOfNotification) {
-        return notificationCenter.getNotificationMessage(username, idOfNotification);
+        if (notificationCenter.hasUser(username)) {
+            return notificationCenter.getNotificationMessage(username, idOfNotification);
+        } else {
+            return "No such Notification. ";
+        }
+    }
+
+    public int getTotalNumMesage(String username) {
+        return notificationCenter.getTotalNumNotifications(username);
     }
 
     public String getContent(String username, int idOfNotification) {
-        return notificationCenter.getNotificationContent(username, idOfNotification);
+        if (notificationCenter.hasUser(username)) {
+            return notificationCenter.getNotificationContent(username, idOfNotification);
+        } else {
+            return "No such Notification. ";
+        }
+    }
+
+    public String getSender(String username, int idOfNotification) {
+        if (notificationCenter.hasUser(username)) {
+            return getSender(username, idOfNotification);
+        } else {
+            return "No such Notification. ";
+        }
+    }
+
+    public int getNumofNewNotifications(String currentUser) {
+        return notificationCenter.getNumberOfNewNotifications(currentUser);
     }
 
     public String recommendSong(String songName, String receiver, String sender) {

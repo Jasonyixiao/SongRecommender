@@ -1,6 +1,6 @@
 package usecases;
 
-import entities.Notification;
+
 import entities.Song;
 import entities.User;
 import recommendStrategy.Recommender;
@@ -129,3 +129,4 @@ public class SongManager {
         return allSongs.get(songName) != null;
     }
 }
+

@@ -35,6 +35,14 @@ public class NotificationCenter {
         return numNew;
     }
 
+    public int getTotalNumNotifications(String username) {
+        return allNotifications.get(username).size();
+    }
+
+    public String getSender(String username, int idOfNotification) {
+        return allNotifications.get(username).get(idOfNotification).getSender();
+    }
+
     public String getNotificationContent(String username, int idOfNotification) {
         return allNotifications.get(username).get(idOfNotification).getContent();
     }

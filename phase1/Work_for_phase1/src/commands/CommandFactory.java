@@ -54,7 +54,13 @@ public class CommandFactory {
                 return new Listen();
             }
             else if (command.equalsIgnoreCase("RECOMMEND TO USER")) {
-                return new RecommendSongToUser(); //Todo add this to readme file
+                return new RecommendSongToUser(); //TODO add this to readme file
+            }
+            else if (command.equalsIgnoreCase("CHECK NEW NOTIFICATIONS")) {
+                return new CheckNewNotification(); //TODO add this to readme file
+            }
+            else if (command.equalsIgnoreCase("CHECK ALL NOTIFICATIONS")) {
+                return new CheckAllNotifications(); //TODO add this to readme file
             }
             else
             {

@@ -1,6 +1,8 @@
 package commands;
 
+import controllers.LoginController;
 import controllers.ShellState;
+import controllers.UserController;
 
 import java.io.IOException;
 
@@ -20,7 +22,11 @@ public class Exit implements Commands{
     @Override
     public String executeCommand(ShellState state) throws IOException {
         state.stopRunning();
-
+        UserController userController = state.getLoginController().getUserController();// disgusting
+        LoginController loginController = new LoginController(userController);
+        loginController.LogOff(state.getUserProfile());
+        state.getSongController().saveSongData();
+        state.getNotificationController().saveNotificationData();
         try {
             Logout logout = new Logout();
             logout.executeCommand(state);

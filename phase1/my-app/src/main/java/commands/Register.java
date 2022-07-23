@@ -16,7 +16,7 @@ public class Register implements Commands{
     /**
      * This method will prompt new users to register a new account.
      * @param state is the current state of the program.
-     * @return
+     * @return message regarding outcome of registering a new account.
      */
     public String executeCommand(ShellState state) {
         Scanner scanner = new Scanner(System.in);

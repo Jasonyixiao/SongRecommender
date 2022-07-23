@@ -22,18 +22,25 @@ public class RecommendSongToUser implements Commands {
      */
     @Override
     public String executeCommand(ShellState state) throws IOException {
-        //Todo currently we haven't dealt with the case where the username user input is invalid.
-        // we can do this in song manager possibly.
-        // we also need to add a line tof code that always checks notification when user first logs in
         try {
             if (state.getUserProfile().getIsSignedIn()) {
                 NotificationController notificationController = state.getNotificationController();
+                String sender = state.getUserProfile().getUsername();
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Enter the song name you wish to share: ");
                 String songname = sc.nextLine();
                 System.out.println("Enter the person's username you wish to share the song to: ");
-                String username = sc.nextLine();
-                return notificationController.recommendSong(songname, username, state.getUserProfile().getUsername());
+                String receiver = sc.nextLine();
+                System.out.println("Add a message: ");
+                String message = sc.nextLine();
+                System.out.println("Add url: ");
+                String content = sc.nextLine();
+                String result = notificationController.recommendSong(songname, receiver, sender);
+                notificationController.setContent(receiver,
+                        notificationController.getIdOfCurrentNotification(), content);
+                notificationController.setmessage(receiver,
+                        notificationController.getIdOfCurrentNotification(), message);
+                return result;
             } else {
                 return "please Login first.";
             }

@@ -1,12 +1,10 @@
 package commands;
 
 import controllers.ShellState;
-import controllers.UserController;
-import recommendStrategy.Recommender;
+import recommendStrategy.IRecommender;
 import recommendStrategy.recommendByAvgRating;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -31,7 +29,7 @@ public class GetRecommend implements Commands{
             System.out.print("Enter the type of recommendation you want? (Currently we only have 'by rating')");
             String recommendType = scanner.nextLine();
             if (recommendType.equalsIgnoreCase("BY RATING")){
-                Recommender ratingRecommender = new recommendByAvgRating();
+                IRecommender ratingRecommender = new recommendByAvgRating();
                 System.out.println(state.getSongController().getRecommend(ratingRecommender));
                 return "here are the list of songs!";
             }

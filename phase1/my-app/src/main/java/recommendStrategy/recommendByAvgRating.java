@@ -4,13 +4,12 @@ import entities.Song;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 /**
  * This Class is responsible for implementing one recommending strategy.
  */
-public class recommendByAvgRating implements Recommender {
+public class recommendByAvgRating implements IRecommender {
     public recommendByAvgRating(){}
 
     /**

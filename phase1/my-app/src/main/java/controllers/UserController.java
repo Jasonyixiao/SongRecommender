@@ -2,7 +2,6 @@ package controllers;
 
 import usecases.UserManager;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -110,7 +109,7 @@ public class UserController {
      */
     public boolean logIn(UserProfile userContext, String username, String password) {
         if (authenticate(userContext.getUsername(), userContext.getPassword()) != null) {
-            return this.userManager.logIn(username, password);
+            return this.userManager.login(username, password);
         } else {
             return false;
         }

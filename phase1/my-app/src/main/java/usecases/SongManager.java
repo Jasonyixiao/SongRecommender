@@ -2,11 +2,10 @@ package usecases;
 
 
 import entities.Song;
-import recommendStrategy.Recommender;
+import recommendStrategy.IRecommender;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -90,7 +89,7 @@ public class SongManager {
      * @param recommender specifies which recommending algorithm we will user.
      * @return list of song names that are recommended.
      */
-    public List<String> getRecommend(int amount, Recommender recommender) {
+    public List<String> getRecommend(int amount, IRecommender recommender) {
         return recommender.getRecommend(amount, allSongs.values());
     }
 
@@ -101,7 +100,7 @@ public class SongManager {
      */
     public void read() {
         try {
-            allSongs = gateWay.read_song();
+            allSongs = gateWay.readSong();
         } catch (ClassNotFoundException ignored) {
         }
     }

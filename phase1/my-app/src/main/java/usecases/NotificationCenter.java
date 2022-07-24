@@ -175,7 +175,7 @@ public class NotificationCenter {
      */
     public void read(){
         try {
-            allNotifications = gateWay.read_notification();
+            allNotifications = gateWay.readNotification();
         } catch (ClassNotFoundException ignored) {
         }
     }

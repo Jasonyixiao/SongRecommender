@@ -3,6 +3,7 @@ package driver;
 import commands.CommandFactory;
 import commands.Commands;
 import controllers.*;
+import usecases.IGateWay;
 import usecases.NotificationCenter;
 import usecases.SongManager;
 import usecases.UserManager;
@@ -36,7 +37,7 @@ public class TopNineRunner {
     }
 
     private ShellState load_current_data(){
-        GateWay g = new GateWay();
+        IGateWay g = new GateWay();
         NotificationCenter notificationCenter = new NotificationCenter(g);
         UserManager userManager = new UserManager(g);
         SongManager songManager = new SongManager(g);

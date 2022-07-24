@@ -37,7 +37,13 @@ public class UserManager {
         allUsers.put(newUser.getUsername(), newUser);
     }
 
-
+    /**
+     * Getter for all users.
+     * @return  HashMap<String, User> of all users.
+     */
+    public HashMap<String, User> getAllUsers(){
+        return allUsers;
+    }
     /**
      * This method will log a user into the system.
      * @param username is the username the user provide to authenticate.

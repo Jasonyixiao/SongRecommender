@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  *  This class is responsible for logging in a user.
  */
-public class Login implements Commands{
+public class Login implements ICommands {
     // we want to use the username and password user inputs to login the user, but at the same time make login method
     // return an userprofile, so that the next time user tries to do something we do not have to ask for username and
     // password again.

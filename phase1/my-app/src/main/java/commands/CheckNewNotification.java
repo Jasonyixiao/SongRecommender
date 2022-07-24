@@ -1,7 +1,6 @@
 package commands;
 
 import controllers.ShellState;
-import entities.Notification;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,7 +8,7 @@ import java.util.Scanner;
 /**
  * This class is responsible for checking new notifications for program user.
  */
-public class CheckNewNotification implements Commands{
+public class CheckNewNotification implements ICommands {
 
     public CheckNewNotification() {
 

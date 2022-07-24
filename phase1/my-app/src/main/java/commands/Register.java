@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * This Class is responsible for registering new user
  */
-public class Register implements Commands{
+public class Register implements ICommands {
     public Register () {
 
     }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * This class is responsible for admin user to create another admin user.
  */
-public class CreateAdmin implements Commands{
+public class CreateAdmin implements ICommands {
 
     public CreateAdmin() {
     }

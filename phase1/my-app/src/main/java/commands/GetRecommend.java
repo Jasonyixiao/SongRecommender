@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * This class is responsible for generate recommended songs.
  */
-public class GetRecommend implements Commands{
+public class GetRecommend implements ICommands {
     public GetRecommend(){
 
     }

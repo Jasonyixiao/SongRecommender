@@ -72,7 +72,6 @@ public class SongController {
         songManager.rate(songName, rating);
     }
 
-
     /**
      * This method will save the song data.
      */

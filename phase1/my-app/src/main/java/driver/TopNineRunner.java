@@ -1,7 +1,7 @@
 package driver;
 
 import commands.CommandFactory;
-import commands.Commands;
+import commands.ICommands;
 import controllers.*;
 import usecases.IGateWay;
 import usecases.NotificationCenter;
@@ -21,14 +21,14 @@ public class TopNineRunner {
 
     public void run() throws IOException {
         //load_initial_songs();
-        ShellState shellState = load_current_data();
+        ShellState shellState = loadCurrentData();
         Scanner input = new Scanner(System.in);
         CommandFactory commandFactory = new CommandFactory();
         while (shellState.getIsRunning()) {
             // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).
             System.out.println("Enter your command, please refer to the README file for valid inputs.");
             String userCommand = input.nextLine();
-            Commands command = commandFactory.getCommand(userCommand);
+            ICommands command = commandFactory.getCommand(userCommand);
             if (command != null) {
                 String result = command.executeCommand(shellState);
                 System.out.println(result);
@@ -36,7 +36,7 @@ public class TopNineRunner {
         }
     }
 
-    private ShellState load_current_data(){
+    private ShellState loadCurrentData(){
         IGateWay g = new GateWay();
         NotificationCenter notificationCenter = new NotificationCenter(g);
         UserManager userManager = new UserManager(g);
@@ -54,7 +54,7 @@ public class TopNineRunner {
 
     //Ideally, this method will only get run once, this is just a "hard coded" method for adding the initial songs into
     //the program.
-    private void load_initial_songs(){
+    private void loadInitialSongscu(){
         GateWay g = new GateWay();
         SongController songController = new SongController(new SongManager(g));
         songController.addSong("As It Was",

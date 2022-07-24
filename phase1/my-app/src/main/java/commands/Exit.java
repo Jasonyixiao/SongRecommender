@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * This class is responsible for exiting the program
  */
-public class Exit implements Commands{
+public class Exit implements ICommands {
     public Exit () {
     }
 

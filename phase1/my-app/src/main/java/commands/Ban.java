@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * This Class is responsible for banning a normal user.
  */
-public class Ban implements Commands{
+public class Ban implements ICommands {
     public Ban() {
     }
 

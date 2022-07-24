@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Interface for commands that can be executed.
  */
-public interface Commands {
+public interface ICommands {
 
     String executeCommand(ShellState state) throws IOException;
 

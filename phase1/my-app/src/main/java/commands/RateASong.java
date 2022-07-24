@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * This class is responsible for rating a song.
  */
-public class RateASong implements Commands{
+public class RateASong implements ICommands {
 
     public RateASong() {
     }

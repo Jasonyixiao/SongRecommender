@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * This class is responsible for letting users listen to a song.
  */
-public class Listen implements Commands {
+public class Listen implements ICommands {
 
     public Listen(){
 

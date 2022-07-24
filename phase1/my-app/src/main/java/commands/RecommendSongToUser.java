@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * This class is responsible for recommending a song to a user.
  */
-public class RecommendSongToUser implements Commands {
+public class RecommendSongToUser implements ICommands {
     public RecommendSongToUser () {
 
     }

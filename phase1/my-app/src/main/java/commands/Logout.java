@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  *  This class is responsible for logging out a user.
  */
-public class Logout implements Commands{
+public class Logout implements ICommands {
     public Logout() {
     }
 

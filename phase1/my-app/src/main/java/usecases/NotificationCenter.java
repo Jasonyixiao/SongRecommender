@@ -10,7 +10,7 @@ import java.util.List;
  * This class is responsible for managing all the notifications being sent from a user to another users.
  */
 public class NotificationCenter {
-    HashMap<String, List<Notification>> allNotifications; // username to list of notifications
+    private HashMap<String, List<Notification>> allNotifications; // username to list of notifications
     // we save this, so we later can find all the notifications a user have
     private final IGateWay gateWay;
 

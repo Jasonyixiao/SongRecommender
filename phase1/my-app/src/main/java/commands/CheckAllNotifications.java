@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * This Class is responsible for checking all the notifications a user has.
  */
-public class CheckAllNotifications implements Commands{
+public class CheckAllNotifications implements ICommands {
     public CheckAllNotifications() {
 
     }

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * This class is responsible for presenting the login history for the user.
  */
-public class History implements Commands{
+public class History implements ICommands {
 
     public History () {
 

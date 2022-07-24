@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * This Class is responsible for deleting a user.
  */
-public class Delete implements Commands {
+public class Delete implements ICommands {
 
     public Delete() {
     }

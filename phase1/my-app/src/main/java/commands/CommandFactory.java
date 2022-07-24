@@ -10,7 +10,7 @@ public class CommandFactory {
      * @param command is the user command
      * @return the corresponding kind of command.
      */
-    public Commands getCommand(String command) {
+    public ICommands getCommand(String command) {
 
             if(command == null){
                 return null;

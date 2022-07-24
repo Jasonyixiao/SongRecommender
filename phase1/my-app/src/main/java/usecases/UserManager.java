@@ -3,7 +3,6 @@ package usecases;
 import entities.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -233,7 +232,7 @@ public class UserManager {
      */
     public void read(){
         try {
-            allUsers = gateWay.read_user();
+            allUsers = gateWay.readUser();
         }catch (ClassNotFoundException ignored){
         }
     }

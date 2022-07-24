@@ -14,10 +14,10 @@ import java.util.List;
  */
 public interface IGateWay {
     void save(Serializable o, String path) throws IOException;
-    HashMap<String, User>  read_user() throws ClassNotFoundException;
-    HashMap<String, Song> read_song() throws ClassNotFoundException;
+    HashMap<String, User> readUser() throws ClassNotFoundException;
+    HashMap<String, Song> readSong() throws ClassNotFoundException;
 
-    HashMap<String, List<Notification>> read_notification() throws ClassNotFoundException;
+    HashMap<String, List<Notification>> readNotification() throws ClassNotFoundException;
 
     String getSongFile();
 

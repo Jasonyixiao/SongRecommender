@@ -43,7 +43,7 @@ public class GateWay implements IGateWay {
      * @throws ClassNotFoundException if error reading from file.
      */
     @Override
-    public HashMap<String, User> read_user () throws ClassNotFoundException {
+    public HashMap<String, User> readUser() throws ClassNotFoundException {
 
         try {
             InputStream file = new FileInputStream(userFile);
@@ -63,7 +63,7 @@ public class GateWay implements IGateWay {
      * @throws ClassNotFoundException if error reading from file.
      */
     @Override
-    public HashMap<String, Song> read_song() throws ClassNotFoundException {
+    public HashMap<String, Song> readSong() throws ClassNotFoundException {
         try {
             InputStream file = new FileInputStream(songFile);
             InputStream buffer = new BufferedInputStream(file);
@@ -83,7 +83,7 @@ public class GateWay implements IGateWay {
      * @throws ClassNotFoundException if error reading from file.
      */
     @Override
-    public HashMap<String, List<Notification>> read_notification() throws ClassNotFoundException {
+    public HashMap<String, List<Notification>> readNotification() throws ClassNotFoundException {
         try {
             InputStream file = new FileInputStream(songFile);
             InputStream buffer = new BufferedInputStream(file);

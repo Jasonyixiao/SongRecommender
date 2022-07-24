@@ -1,6 +1,6 @@
 package controllers;
 
-import recommendStrategy.Recommender;
+import recommendStrategy.IRecommender;
 import usecases.SongManager;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class SongController {
      * @param recommender decides the recommending algorithm we will use.
      * @return list of song names that are recommended.
      */
-    public List<String> getRecommend(Recommender recommender){
+    public List<String> getRecommend(IRecommender recommender){
         return songManager.getRecommend(recommendAmount,recommender);
     }
 

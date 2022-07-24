@@ -34,7 +34,7 @@ public class UserTest {
         IGateWay g = new GateWay();
         UserManager userManager = new UserManager(g);
         userManager.createUser("Harry", "Zhang");
-        assertTrue(userManager.logIn("Harry", "Zhang"));
+        assertTrue(userManager.login("Harry", "Zhang"));
 
     }
     @Test
@@ -43,7 +43,7 @@ public class UserTest {
         IGateWay g = new GateWay();
         UserManager userManager = new UserManager(g);
         userManager.createUser("Harry", "Zhang");
-        userManager.logIn("Harry", "Zhang");
+        userManager.login("Harry", "Zhang");
         assertNotNull(userManager.getLoginHistory("Harry"));
 
 

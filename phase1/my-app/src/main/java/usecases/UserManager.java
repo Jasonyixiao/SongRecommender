@@ -44,7 +44,7 @@ public class UserManager {
      * @param password is the password the user provided to authenticate.
      * @return true iff the user has successfully logged in.
      */
-    public boolean logIn(String username, String password) {
+    public boolean login(String username, String password) {
         User currentUser = allUsers.get(username);
         if (currentUser != null) {
             currentUser.appendLoginHistory();
@@ -227,10 +227,6 @@ public class UserManager {
      * This method returns the usernames of all the users in the system.
      * @return  the usernames of all the users in the system.
      */
-    public List<String> allUserNames(){
-        return new ArrayList<>(allUsers.keySet());
-
-    }
 
     /**
      * This method will read the saved user data into the system and store it in allUsers.

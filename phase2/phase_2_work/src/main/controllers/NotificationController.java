@@ -45,7 +45,7 @@ public class NotificationController {
      * @param username is the username of the user.
      * @return the number of notifications.
      */
-    public int getTotalNumMesage(String username) {
+    public int GetTotalNumMessage(String username) {
         return notificationCenter.getTotalNumNotifications(username);
     }
 
@@ -76,7 +76,7 @@ public class NotificationController {
      */
     public String getSender(String username, int idOfNotification) {
         if (notificationCenter.hasUser(username)) {
-            return getSender(username, idOfNotification);
+            return notificationCenter.getSender(username, idOfNotification);
         } else {
             return "No such Notification. ";
         }
@@ -99,13 +99,13 @@ public class NotificationController {
      * @param songName is the name of the song being recommended.
      * @param receiver is the username of the receiving user.
      * @param sender is the username of the sending user.
+     * @param  message is the message of this notification.
      * @return a message whether the user has succeeded. Or return further instructions if the user did not succeed.
      */
-    public String recommendSong(String songName, String receiver, String sender) {
+    public String recommendSong(String songName, String receiver, String sender, String message) {
         if (songController.hasSong(songName)) {
             String songURL = songController.listen(songName);
-            int index = notificationCenter.createNotification(receiver, sender); // This creates a new notification and added it to notification center
-            notificationCenter.setContent(receiver, index, songURL);
+            int index = notificationCenter.createNotification(receiver,sender,songURL, message); // This creates a new notification and added it to notification center
             currentNotificationId = index;
             return "Successfully recommended to " + receiver;
         } else {
@@ -113,30 +113,8 @@ public class NotificationController {
         }
     }
 
-    /**
-     * Sets the content(url for now) for a notification.
-     * @param username is the receiving user's username.
-     * @param idOfNotification is the index of notification we wish to set content for.
-     * @param content is the content we are setting.
-     */
-    public void setContent(String username, int idOfNotification, String content) { // we use this to add url to the notification
-        if(notificationCenter.hasUser(username)) {
-            notificationCenter.setContent(username, idOfNotification, content);
-        }
-    }
 
 
-    /**
-     * Sets the message for a notification.
-     * @param username is the receiving user's username.
-     * @param idOfNotification is the index of notification we wish to set message for.
-     * @param message is the message we are setting.
-     */
-    public void setmessage(String username, int idOfNotification, String message) { // we use this to add message to the notification
-        if(notificationCenter.hasUser(username)) {
-            notificationCenter.setMessage(username, idOfNotification, message);
-        }
-    }
 
 
     /**

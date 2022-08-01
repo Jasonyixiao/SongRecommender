@@ -26,7 +26,7 @@ public class SongManager {
      * @param g is the instance of IGateWay we use to save data..
      */
     public SongManager(IGateWay g) {
-        this.allSongs = new HashMap<>(9999);
+        this.allSongs = new HashMap<>();
         this.gateWay = g;
 
     }
@@ -114,6 +114,7 @@ public class SongManager {
             gateWay.save(allSongs, gateWay.getSongFile());
         } catch (IOException e) {
             e.printStackTrace();
+            // TODO: 2022/8/1  we need to avoid printing to console.
         }
 
     }

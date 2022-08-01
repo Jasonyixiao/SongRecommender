@@ -24,7 +24,7 @@ public class User implements Serializable {
 
     private final Calendar banUntil;
 
-    private static int totalPopulation;
+    public static int totalPopulation;
 
     /**
      * Constructor of the user. stores its username and password.
@@ -32,8 +32,7 @@ public class User implements Serializable {
      * @param password is the password of the user.
      */
     public User(String username, String password) {
-        int id = totalPopulation;
-        this.username = username; // this makes the usernames Unique
+        this.username = username;
         this.password = password;
         this.IsAdmin = 0;
         this.isSignedIn = false;
@@ -41,19 +40,15 @@ public class User implements Serializable {
         banUntil = Calendar.getInstance();
         banUntil.setTime(new Date());
         totalPopulation++;
-        if (id == 0) {
-            IsAdmin = 1;
-        }
+
     }
 
     /**
      * Sets the ban-until date of this user.
      */
-    public void setBanDate(){
-
-        banUntil.setTime(new Date()); // Now use today date.
-
-        banUntil.add(Calendar.DATE, 1); // Adds 15 days
+    public void setBanDate(int i ){
+        banUntil.setTime(new Date());
+        banUntil.add(Calendar.DATE, i); // Adds i day
     }
 
     /**

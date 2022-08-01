@@ -110,11 +110,12 @@ public class NotificationCenter {
      * This method creates a notification.
      * @param receiver is the receiving user's username.
      * @param sender is the sending user's username.
+     * @param content is the song url we are recommending.
+     * @param  message is the message of this notification.
      * @return the index of the notification in the receiving user's list of all notifications.
      */
-    public int createNotification(String receiver, String sender) { // this returns the index of this newly created notification
-        Notification notification = new Notification();
-        notification.setSender(sender);
+    public int createNotification(String receiver, String sender, String content, String message) { // this returns the index of this newly created notification
+        Notification notification = new Notification(content, message, sender);
         addNotification(receiver, notification);
         return allNotifications.get(receiver).size() - 1;
     }
@@ -129,24 +130,7 @@ public class NotificationCenter {
     }
 
 
-    /**
-     * Sets the content(url for now) for a notification.
-     * @param username is the receiving user's username.
-     * @param idOfNotification is the index of notification we wish to set content for.
-     * @param content is the content we are setting.
-     */
-    public void setContent(String username, int idOfNotification, String content) { // we use this to add url to the notification
-            allNotifications.get(username).get(idOfNotification).setContent(content);
-    }
-    /**
-     * Sets the message for a notification.
-     * @param username is the receiving user's username.
-     * @param idOfNotification is the index of notification we wish to set message for.
-     * @param message is the content we are setting.
-     */
-    public void setMessage(String username, int idOfNotification, String message) { // we use this to add message to the notification
-            allNotifications.get(username).get(idOfNotification).setMessage(message);
-    }
+
 
     /**
      * Sets the read status of a notification.
@@ -166,6 +150,7 @@ public class NotificationCenter {
             gateWay.save(allNotifications, gateWay.getNotificationFile());
         } catch (IOException e) {
             e.printStackTrace();
+            // TODO: 2022/8/1  we need to avoid printing to console.
         }
 
     }

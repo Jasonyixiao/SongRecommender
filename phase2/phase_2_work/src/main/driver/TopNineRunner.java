@@ -20,7 +20,7 @@ public class TopNineRunner {
     }
 
     public void run() throws IOException {
-        //load_initial_songs();
+        //loadInitialSongs();
         ShellState shellState = loadCurrentData();
         Scanner input = new Scanner(System.in);
         CommandFactory commandFactory = new CommandFactory();
@@ -54,7 +54,7 @@ public class TopNineRunner {
 
     //Ideally, this method will only get run once, this is just a "hard coded" method for adding the initial songs into
     //the program.
-    private void loadInitialSongscu(){
+    private void loadInitialSongs(){
         GateWay g = new GateWay();
         SongController songController = new SongController(new SongManager(g));
         songController.addSong("As It Was",

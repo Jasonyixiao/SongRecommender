@@ -23,8 +23,7 @@ public class Exit implements ICommands {
     public String executeCommand(ShellState state) throws IOException {
         state.stopRunning();
         UserController userController = state.getLoginController().getUserController();// disgusting
-        LoginController loginController = new LoginController(userController);
-        loginController.LogOff(state.getUserProfile());
+        userController.saveUserData();
         state.getSongController().saveSongData();
         state.getNotificationController().saveNotificationData();
         try {

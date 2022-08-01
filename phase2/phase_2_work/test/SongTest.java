@@ -3,7 +3,7 @@ import driver.GateWay;
 import entities.Song;
 import org.junit.*;
 import recommendStrategy.IRecommender;
-import recommendStrategy.recommendByAvgRating;
+import recommendStrategy.RecommendByAvgRating;
 import usecases.IGateWay;
 import usecases.SongManager;
 
@@ -53,7 +53,7 @@ public class SongTest {
     public void testRecommend(){
         IGateWay g = new GateWay();
         SongManager songManager = new SongManager(g);
-        IRecommender r = new recommendByAvgRating();
+        IRecommender r = new RecommendByAvgRating();
         songManager.addSong("As It Was",
                 "https://open.spotify.com/album/2pqdSWeJVsXAhHFuVLzuA8?highlight=spotify:track:4LRPiXqCikLlN15c3yImP7", "Harry Styles");
         songManager.addSong("Running Up That Hill", "https://open.spotify.com/track/29d0nY7TzCoi22XBqDQkiP?si=9b050067fe704e83",

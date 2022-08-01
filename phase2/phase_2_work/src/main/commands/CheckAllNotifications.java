@@ -22,9 +22,9 @@ public class CheckAllNotifications implements ICommands {
     public String executeCommand(ShellState state) throws IOException {
         try {
             String currentUser = state.getUserProfile().getUsername();
-            int numAllNotifications = state.getNotificationController().getNumofNewNotifications(currentUser);
+            int numAllNotifications = state.getNotificationController().GetTotalNumMessage(currentUser);
             if (numAllNotifications == 0) {
-                return "You do not have any new Notifications";
+                return "You do not have any Notifications";
             } else {
                 for (int i = 0; i < numAllNotifications; i++) {
                     System.out.println("You have a message from "

@@ -53,7 +53,8 @@ public class GateWay implements IGateWay {
             input.close();
             return result;
         } catch (IOException ex) {
-            return new HashMap<>();
+            return new HashMap<>();      //IOException happens because the file at the path may be damaged, or it can not
+                                         //be read at the moment, returning a new Hash
         }
     }
 

@@ -20,7 +20,7 @@ public class Register implements ICommands {
      */
     public String executeCommand(ShellState state) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Your Name:  ");
+        System.out.print("Enter Your Username:  ");
         String username = scanner.nextLine() ;
         System.out.print("Enter Your Desired Password:  ");
         String password = scanner.nextLine();

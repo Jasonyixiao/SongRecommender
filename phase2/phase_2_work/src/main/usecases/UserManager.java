@@ -34,6 +34,9 @@ public class UserManager {
     public void createUser(String username, String password) {
         User newUser = new User(username, password);
         allUsers.put(newUser.getUsername(), newUser);
+        if (User.totalPopulation == 1){           // for simplicity, first user registering will be admin
+            newUser.setIsAdmin(1);
+        }
     }
 
     /**
@@ -87,12 +90,6 @@ public class UserManager {
         User currentUser = allUsers.get(username);
         if (checkIsLogIn(username)) {
             currentUser.setIsSignedIn(false);
-            try{
-                gateWay.save(allUsers, gateWay.getUserFile());
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-
         }
     }
 
@@ -202,7 +199,7 @@ public class UserManager {
         User otherUser = allUsers.get(otherUsername);
         if (currentUser.getIsAdmin() == 1) {    // 1 mean the current user is an admin
             if (otherUser.getIsAdmin() == 0){       // 0 means the current user is a noraml user
-                otherUser.setBanDate();
+                otherUser.setBanDate(1);            // For simplicity, we will ban a user for 1 day.
                 return "Command Successful!";
             }else{
                 return "You cannot ban admin.";
@@ -242,6 +239,16 @@ public class UserManager {
         }catch (ClassNotFoundException ignored){
         }
     }
+    public void save() {
+        try {
+            gateWay.save(allUsers, gateWay.getUserFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+            // TODO: 2022/8/1  we need to avoid printing to console.  
+        }
+
+    }
+
 
 
 

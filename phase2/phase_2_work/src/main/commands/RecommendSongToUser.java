@@ -35,11 +35,8 @@ public class RecommendSongToUser implements ICommands {
                 String message = sc.nextLine();
                 System.out.println("Add url: ");
                 String content = sc.nextLine();
-                String result = notificationController.recommendSong(songname, receiver, sender);
-                notificationController.setContent(receiver,
-                        notificationController.getIdOfCurrentNotification(), content);
-                notificationController.setmessage(receiver,
-                        notificationController.getIdOfCurrentNotification(), message);
+                String result = notificationController.recommendSong(songname,receiver,sender,message);
+
                 return result;
             } else {
                 return "please Login first.";

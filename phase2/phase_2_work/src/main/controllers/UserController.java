@@ -124,4 +124,7 @@ public class UserController {
             return null;
         }
     }
+
+    public void saveUserData() {userManager.save();
+    }
 }

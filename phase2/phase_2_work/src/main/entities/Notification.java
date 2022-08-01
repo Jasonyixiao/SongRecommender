@@ -6,7 +6,7 @@ package entities;
 
 // Note we possibly can separate out recommend and message as two separate classes that extends Notification
 public class Notification {
-    private String content; // for now it is an url of a song
+    private String content; // for now it is an url of a song, we use this for recommending a song to a user.
 
     private String message;
 
@@ -16,12 +16,15 @@ public class Notification {
 
     /**
      * Constructor of a notification, stores content(url of song for now), message, isNew, sender as variables.
+     * @param content is the URL of the song(for now)
+     * @param message is the message of this notification.
+     * @param sender is the username of the sender.
      */
-    public Notification() {
-        this.content = "";
-        this.message = "";
+    public Notification(String content, String message, String sender) {
+        this.content = content;
+        this.message = message;
         this.isNew = true;
-        this.sender = "";
+        this.sender = sender;
     }
 
     /**
@@ -32,13 +35,7 @@ public class Notification {
         return content;
     }
 
-    /**
-     * Setter of content.
-     * @param content is the content we are setting.
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
+
 
 
     /**
@@ -49,13 +46,8 @@ public class Notification {
         return this.message;
     }
 
-    /**
-     * Setter for message
-     * @param message is the message we are setting.
-     */
-    public void setMessage(String message) {
-        this.message = message;
-    }
+
+
 
     /**
      * Setter for isNew.
@@ -73,13 +65,6 @@ public class Notification {
         return this.isNew;
     }
 
-    /**
-     * Setter for sender.
-     * @param username is the username of the sender.
-     */
-    public void setSender(String username) {
-        this.sender = username;
-    }
 
     /**
      * Getter for sender.

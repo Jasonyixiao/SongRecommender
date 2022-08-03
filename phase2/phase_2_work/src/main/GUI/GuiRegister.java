@@ -8,7 +8,7 @@ public class GuiRegister {
         public static void main(String[] args) {
             JPanel panel = new JPanel();
             JFrame frame = new JFrame("Register System");
-            frame.setSize(100, 100);
+            frame.setSize(500, 500);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(panel);
             panel.setLayout(null);

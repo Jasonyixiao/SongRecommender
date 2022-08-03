@@ -15,10 +15,10 @@ public class CommandFactory {
         commandMap.put("LOGIN", new Login());
         commandMap.put("LOGOUT", new Logout());
         commandMap.put("EXIT", new Exit());
-        commandMap.put("CHECK HISTORY", new History());
-        commandMap.put("CREATE ADMIN USER", new CreateAdmin());
-        commandMap.put("DELETE USER", new Delete());
-        commandMap.put("BAN USER", new Ban());
+        commandMap.put("CHECK HISTORY", new History()); // personal login
+        commandMap.put("CREATE ADMIN USER", new CreateAdmin()); //Admin-admin/normal/self
+        commandMap.put("DELETE USER", new Delete()); //admin-normal
+        commandMap.put("BAN USER", new Ban());//admin- normal
         commandMap.put("RATE A SONG", new RateASong());
         commandMap.put("SEE RECOMMENDED SONGS", new GetRecommend());
         commandMap.put("LISTEN", new Listen());

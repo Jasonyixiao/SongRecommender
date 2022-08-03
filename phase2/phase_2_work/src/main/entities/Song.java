@@ -23,7 +23,8 @@ public class Song implements Serializable {
      * @param name is the songname.
      * @param artist is the singer.
      */
-    public Song(String url, String name, String artist){
+    public Song(String
+                        url, String name, String artist){
         songUrl = url;
         this.artist = artist;
         Name = name;

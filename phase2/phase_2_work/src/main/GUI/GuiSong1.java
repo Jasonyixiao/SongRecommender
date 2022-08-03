@@ -16,11 +16,11 @@ public class GuiSong1{
 
 
         JLabel rate = new JLabel("Rate（Use 1-5 any characters present stars) ");
-        rate.setBounds(20,20,150,25);
+        rate.setBounds(20,20,300,25);
         panel.add(rate);
 
         JTextField rateField = new JTextField(5);
-        rateField.setBounds(50,20,45,25);
+        rateField.setBounds(350,20,45,25);
         panel.add(rateField);
         frame.setVisible(true);
 

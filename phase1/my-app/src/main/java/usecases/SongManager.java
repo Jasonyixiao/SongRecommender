@@ -109,12 +109,9 @@ public class SongManager {
     /**
      * This method will save allSongs data into the songFile.
      */
-    public void save() {
-        try {
-            gateWay.save(allSongs, gateWay.getSongFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void save() throws IOException{
+        gateWay.save(allSongs, gateWay.getSongFile());
+
 
     }
 

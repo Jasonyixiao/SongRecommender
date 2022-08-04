@@ -3,6 +3,7 @@ package controllers;
 import recommendStrategy.IRecommender;
 import usecases.SongManager;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -76,7 +77,11 @@ public class SongController {
      * This method will save the song data.
      */
     public void saveSongData(){
-        songManager.save();
+        try {
+            songManager.save();
+        } catch (IOException e) {
+            e.getMessage();
+        }
     }
 
     /**

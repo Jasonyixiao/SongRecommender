@@ -1,6 +1,5 @@
 package commands;
 
-import controllers.LoginController;
 import controllers.ShellState;
 import controllers.UserController;
 

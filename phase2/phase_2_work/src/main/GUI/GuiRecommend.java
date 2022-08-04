@@ -5,42 +5,47 @@ import java.awt.*;
 import static javax.swing.JFrame.*;
 
 public class GuiRecommend {
+    private static JMenuBar mb;
+    private static JMenu m1, m2, m3, m4, m5;
+
+    private static JMenuItem m11, m12, m21, m31, m32, m41, m42;
+
     public GuiRecommend() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setTitle("Homepage(NormalUser)");
         frame.setSize(500, 500);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
-        JMenuBar mb = new JMenuBar();
-        JMenu m1 = new JMenu("User");
-        JMenu m2 = new JMenu("Listen");
-        JMenu m3 = new JMenu("admin");
-        JMenu m4 = new JMenu("notification");
-        JMenu m5 = new JMenu("get recommend");
+
+        mb = new JMenuBar();
+        m1 = new JMenu("User");
+        m2 = new JMenu("Listen");
+        m3 = new JMenu("admin");
+        m4 = new JMenu("notification");
+        m5 = new JMenu("get recommend");
         mb.add(m1);
         mb.add(m2);
         mb.add(m3);
         mb.add(m4);
         mb.add(m5);
 
-        JMenuItem m11 = new JMenuItem("User Information");
-        JMenuItem m12 = new JMenuItem("Log Out");
+        m11 = new JMenuItem("User Information");
+        m12 = new JMenuItem("Log Out");
         m1.add(m11);
         m1.add(m12);
 
-        JMenuItem m21 = new JMenuItem("url");
+        m21 = new JMenuItem("url");
         m2.add(m21);
 
-        JMenuItem m31 = new JMenuItem("User");
-        JMenuItem m32 = new JMenuItem("Self");
+        m31 = new JMenuItem("User");
+        m32 = new JMenuItem("Self");
         m3.add(m31);
         m3.add(m32);
 
-        JMenuItem m41 = new JMenuItem("Receive");
-        JMenuItem m42 = new JMenuItem("Send");
+        m41 = new JMenuItem("Receive");
+        m42 = new JMenuItem("Send");
         m4.add(m41);
         m4.add(m42);
-
 
 
         frame.getContentPane().add(BorderLayout.NORTH, mb);

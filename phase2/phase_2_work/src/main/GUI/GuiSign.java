@@ -5,17 +5,23 @@ import java.awt.*;
 import static javax.swing.JFrame.*;
 
 public class GuiSign {
+    private static JButton button, button1;
+
+    private static JLabel label, label1;
+
+    private static JPanel panel, panel1;
+
     public GuiSign(){
         JFrame frame = new JFrame();
 
-        JButton button = new JButton("Sign in");
-        JButton button1 = new JButton("Register");
+        button = new JButton("Sign in");
+        button1 = new JButton("Register");
 
-        JLabel label = new JLabel("For Existed User");
-        JLabel label1 = new JLabel("For New User");
+        label = new JLabel("For Existed User");
+        label1 = new JLabel("For New User");
 
-        JPanel panel = new JPanel();
-        JPanel panel1 = new JPanel();
+        panel = new JPanel();
+        panel1 = new JPanel();
 
         panel.setBorder(BorderFactory.createEmptyBorder(200,150,200,250));
         panel1.setBorder(BorderFactory.createEmptyBorder(200,250,200,150));

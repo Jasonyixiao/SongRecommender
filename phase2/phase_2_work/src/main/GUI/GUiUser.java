@@ -5,8 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class GUiUser {
-
+public class GUiUser {  //haven;t finished yet
+        private static JTextField userText;
+        private static JLabel label;
 
     public static void main(String[] args){
 
@@ -19,12 +20,11 @@ public class GUiUser {
         frame.setVisible(true);
         frame.add(panel);
 
-        JTextField userText = new JTextField();
-
+        userText = new JTextField();
         frame.setVisible(true);
         panel.setLayout(null);
 
-        JLabel label = new JLabel("User");
+        label = new JLabel("User");
         label.setBounds(10, 20, 80, 25);
         panel.add(label);
 

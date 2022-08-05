@@ -20,7 +20,7 @@ public class User implements Serializable {
 
     private final List<String> loginHistory;
 
-    private boolean isSignedIn;
+    private boolean isSignedIn; //TODO change this to int, 0 is indicates not signed in, 1 indicates signed  actually maybe not
 
     private final Calendar banUntil;
 

@@ -1,4 +1,5 @@
 import entities.User;
+import mapper.UpdateDB;
 import mapper.UserMapper;
 import org.junit.Test;
 import org.apache.ibatis.session.SqlSession;
@@ -10,7 +11,7 @@ import java.util.Objects;
 
 public class updateDBtest {
     @Test
-    void contextLoads() {
+    public void contextLoads() {
     }
     @Test
     public void test() {
@@ -28,41 +29,30 @@ public class updateDBtest {
 
     @Test
     public void getUserById(){
-        SqlSession sqlSession = MybatisUtils1.getSqlSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        System.out.println(userMapper.getUserByUsername("12"));
-        sqlSession.close();
+        UpdateDB updateDB = new UpdateDB();
+        assert Objects.equals(updateDB.getUserById("hz2002").getUsername(),
+                "hz2002");
 
     }
     //增改需要提交事物
-//	@Test
-//	public void addUser(){
-//		SqlSession sqlSession = MybatisUtils.getSqlSession();
-//		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-//		int res = userMapper.addUser(new User(4, "hh", "djdjij1"));
-//		if (res > 0) {
-//			System.out.println("Success!");
-//		}
-//		//提交事务
-//		sqlSession.commit();
-//		sqlSession.close();
-//
-//	}
-//    @Test
-//    public void updateUser() {
-//        UpdateDB updateDB = new UpdateDB();
-//        assert Objects.equals(updateDB.updateUser("hz2002",
-//                        "ds",
-//                        new Date(),
-//                        "dsd",
-//                        "ds",
-//                        "ds"),
-//                "Success!");
-//    }
-//
-//    @Test
-//    public void deleteUser() {
-//        UpdateDB updateDB = new UpdateDB();
-//        assert Objects.equals(updateDB.deleteUser("jz2002"), "Success!");
-//    }
+	@Test
+	public void addUser(){
+        UpdateDB updateDB = new UpdateDB(); //TODO this is for you harry!!!
+        String result = updateDB.addUser("hz2002", "harryIloveU");
+        assert Objects.equals(result, "Success!");
+        updateDB.deleteUser("hz2002");
+	}
+
+    @Test
+    public void updateUser() {
+        UpdateDB updateDB = new UpdateDB();
+        assert Objects.equals(updateDB.updateUser("hz2002", "ds"),
+                "Success!"); //TODO create methods to update other changes to database
+    }
+
+    @Test
+    public void deleteUser() {
+        UpdateDB updateDB = new UpdateDB();
+        assert Objects.equals(updateDB.deleteUser("jz2002"), "Success!");
+    }
 }

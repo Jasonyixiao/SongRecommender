@@ -3,9 +3,7 @@ package usecases;
 import entities.User;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * This class is responsible for system users to do account administrative tasks.
@@ -180,7 +178,7 @@ public class UserManager {
         // Users can only view history if they are logged in
         User currentUser = allUsers.get(myUsername);
         if (currentUser.getIsSignedIn()) {
-            return currentUser.getLoginHistory();
+            return new ArrayList<>(Arrays.asList(currentUser.getLoginHistory().split(",")));
         }
         else{
             return null;

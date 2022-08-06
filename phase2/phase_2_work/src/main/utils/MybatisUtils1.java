@@ -20,7 +20,7 @@ public class MybatisUtils1 {
             // We use the below three line to get sqlSessionFactory.
             // MyBatis includes a utility class, calle d Resources, that contains a number of methods that make it
             // simpler to load resources from the classpath and other locations.
-            String resource = "mybatis-config.xml";
+            String resource = "Mybatis-config.xml";
             InputStream inputStream = Resources.getResourceAsStream(resource);
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (IOException e) {

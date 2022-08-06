@@ -1,11 +1,9 @@
 package entities;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * This Class represent a user in our system.
@@ -18,11 +16,11 @@ public class User implements Serializable {
 
     private int IsAdmin; // 1 is admin and 0 is admin
 
-    private final List<String> loginHistory;
+    private String loginHistory;
 
     private boolean isSignedIn; //TODO change this to int, 0 is indicates not signed in, 1 indicates signed  actually maybe not
 
-    private final Calendar banUntil;
+    private final String banUntil;
 
     public static int totalPopulation;
 
@@ -36,9 +34,10 @@ public class User implements Serializable {
         this.password = password;
         this.IsAdmin = 0;
         this.isSignedIn = false;
-        loginHistory = new ArrayList<>();
-        banUntil = Calendar.getInstance();
-        banUntil.setTime(new Date());
+        loginHistory = "";
+        Calendar date = Calendar.getInstance();
+        date.setTime(new Date());
+        banUntil = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(date.getTime());
         totalPopulation++;
 
     }
@@ -47,8 +46,10 @@ public class User implements Serializable {
      * Sets the ban-until date of this user.
      */
     public void setBanDate(int i ){
-        banUntil.setTime(new Date());
-        banUntil.add(Calendar.DATE, i); // Adds i day
+        Calendar date = Calendar.getInstance();
+        date.setTime(new Date());
+        date.add(Calendar.DATE, i); // Adds i day
+        String banUntil = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(date.getTime());
     }
 
     /**
@@ -56,7 +57,11 @@ public class User implements Serializable {
      * @return a date of which this user is banned util.
      */
     public Date getBanDate() {
-        return this.banUntil.getTime();
+        try {
+            return (new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")).parse(this.banUntil);
+        } catch (ParseException e) {
+            return new Date();
+        }
     }
 
 
@@ -74,6 +79,14 @@ public class User implements Serializable {
      */
     public String getPassword(){
         return password;
+    }
+
+    public boolean isSignedIn() {
+        return isSignedIn;
+    }
+
+    public String getBanUntil() {
+        return banUntil;
     }
 
     /**
@@ -96,14 +109,18 @@ public class User implements Serializable {
      * Adds the current time to the login history.
      */
     public void appendLoginHistory(){
-        loginHistory.add(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
+        if (loginHistory.length() == 0) {
+             loginHistory += new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+        } else {
+            loginHistory += ", " + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+        }
     }
 
     /**
      * Getter for login history.
      * @return a list of login times.
      */
-    public List<String> getLoginHistory(){
+    public String getLoginHistory(){
         return loginHistory;
     }
 

@@ -14,7 +14,7 @@ public class updateDBtest {
     public void contextLoads() {
     }
     @Test
-    public void test() {
+    public void test() { //TODO:   SCROLL DOWN V
         //step 1, get an instance of sqlsession
         SqlSession sqlSession = MybatisUtils1.getSqlSession();
         //step 2, execute sql code
@@ -38,7 +38,7 @@ public class updateDBtest {
 	@Test
 	public void addUser(){
         UpdateDB updateDB = new UpdateDB(); //TODO this is for you harry!!!
-        String result = updateDB.addUser("hz2002", "harryIloveU");
+        String result = updateDB.addUser("Harry", "HarryIloveU...");
         assert Objects.equals(result, "Success!");
         updateDB.deleteUser("hz2002");
 	}

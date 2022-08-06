@@ -18,7 +18,7 @@ public class MybatisUtils1 {
             // sqlSessionFactoryBuilder.
             // SqlSessionFactoryBuilder can build a SqlSessionFactory instance from an XML configuration file
             // We use the below three line to get sqlSessionFactory.
-            // MyBatis includes a utility class, called Resources, that contains a number of methods that make it
+            // MyBatis includes a utility class, calle d Resources, that contains a number of methods that make it
             // simpler to load resources from the classpath and other locations.
             String resource = "mybatis-config.xml";
             InputStream inputStream = Resources.getResourceAsStream(resource);

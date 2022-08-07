@@ -38,7 +38,7 @@ public class updateDBtest {
 	@Test
 	public void addUser(){
         UpdateDB updateDB = new UpdateDB(); //TODO this is for you harry!!!
-        String result = updateDB.addUser("Harry", "HarryIloveU...uwu");
+        String result = updateDB.addUser("Hrry", "HarryIloveU...uwu");
         assert Objects.equals(result, "Success!");
         updateDB.deleteUser("hz2002");
 	}

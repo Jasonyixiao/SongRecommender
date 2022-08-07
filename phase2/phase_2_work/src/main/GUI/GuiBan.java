@@ -2,15 +2,15 @@ package GUI;
 
 import javax.swing.*;
 
-class GuiChangeUserAdmin extends JDialog{
+public class GuiBan extends JDialog{
     private static JLabel label;
     private static JTextField UserName;
     private static JButton button;
 
 
-    public GuiChangeUserAdmin(){
+    public GuiBan(){
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame("Choose User to Admin");
+        JFrame frame = new JFrame("Choose User to Ban");
         frame.setSize(500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);

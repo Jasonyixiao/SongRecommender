@@ -1,9 +1,8 @@
 package GUI;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class GuiSong1{
+public class GuiRateSong extends JDialog{
     private static JPanel panel;
     private static JFrame frame;
     private static JLabel rate;
@@ -12,7 +11,7 @@ public class GuiSong1{
     private static JButton button;
 
 
-    public static void main(String[] args){
+    public GuiRateSong(String[] args){
         panel = new JPanel();
         frame = new JFrame("SongName"); //SongName get from song.csv
 

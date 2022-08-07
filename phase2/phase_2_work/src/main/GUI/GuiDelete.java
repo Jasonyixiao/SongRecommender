@@ -2,15 +2,15 @@ package GUI;
 
 import javax.swing.*;
 
-class GuiChangeUserAdmin extends JDialog{
+class GuiDelete extends JDialog{
     private static JLabel label;
     private static JTextField UserName;
     private static JButton button;
 
 
-    public GuiChangeUserAdmin(){
+    public GuiDelete(){
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame("Choose User to Admin");
+        JFrame frame = new JFrame("Choose User to Delete");
         frame.setSize(500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);

@@ -4,28 +4,29 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import static javax.swing.JFrame.*;
 
 class GuiNormalUser {
     private static JMenuBar jMenuBar;
     private static JMenu m1, m2, m3, m4, m5, m6;
-    private static JMenuItem m11, m12, m21, m31, m32, m33, m61, m62;
+    private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m52;
 
     public GuiNormalUser() {
         JFrame frame = new JFrame("Homepage-NormalUser");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
+        frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
 
         jMenuBar = new JMenuBar();
         m1 = new JMenu("User Information");
         m2 = new JMenu("Listen");
         m3 = new JMenu("Notification");
-        m4 = new JMenu("Get Recommend");
-        m5 = new JMenu("Friend");
-        m6 = new JMenu("Admin");
-
+        m4 = new JMenu("Recommend");
+        m5 = new JMenu("Admin");
+        m6 = new JMenu("Exit");
         jMenuBar.add(m1);
         jMenuBar.add(m2);
         jMenuBar.add(m3);
@@ -58,7 +59,7 @@ class GuiNormalUser {
         //Listen
         m21 = new JMenuItem("url");
         m2.add(m21);
-        //go inside the URL page
+        //go inside the URL page (GuiListen)
         m21.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,53 +69,81 @@ class GuiNormalUser {
 
 
         //Notification
-        m31 = new JMenuItem("Send Message");
-        m32 = new JMenuItem("Check new notifications");
-        m33 = new JMenuItem("Check all notifications");
+        m31 = new JMenuItem("Check new notifications");
+        m32 = new JMenuItem("Check all notifications");
         m3.add(m31);
         m3.add(m32);
-        m3.add(m33);
-        //go to GuiSendMessage page
-        m31.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiSendMessage();
-            }
-        });
         //go to GuiNewNotification page
-        m32.addActionListener(new ActionListener() {
+        m31.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiNewNotification();
             }
         });
         //go to GuiAllNotification page
-        m33.addActionListener(new ActionListener() {
+        m32.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiAllNotification();
             }
         });
 
+
+        //Get Recommend Songs
+        m41 = new JMenuItem("Get Recommend Songs");
+        m42 = new JMenuItem("Rate a Song");
+        m43 = new JMenuItem("Recommend to User");
+        m4.add(m41);
+        m4.add(m42);
+        m4.add(m43);
+        //go to GuiRecommendSong page
+        m41.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiGetRecSong();
+            }
+        });
+        //go to GuiRateSong page
+        m42.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] i = new String[0];
+                new GuiRateSong(i);
+            }
+        });
+        //go to GuiRecSongtoUser page
+        m43.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] i = new String[0];
+                new GuiRecSongtoUser();
+            }
+        }); ////////////
+
+
         //Admin
-        m61 = new JMenuItem("User");
-        m62 = new JMenuItem("Self");
-        m6.add(m61);
-        m6.add(m62);
+        m51 = new JMenuItem("User");
+        m52 = new JMenuItem("Self");
+        m5.add(m51);
+        m5.add(m52);
         //go to GuiChangeUserAdmin page
-        m61.addActionListener(new ActionListener() {
+        m51.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiChangeUserAdmin();
             }
         });
         //go to GuiAdminUser page
-        m62.addActionListener(new ActionListener() {
+        m52.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiAdminUser();
             }
         });
+
+
+        //Exit
+        // haven't finished yet
 
 
         frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
@@ -133,5 +162,14 @@ class GuiNormalUser {
 
     public static void main(String[] args) {
         new GuiNormalUser();
+    }
+    private static void windowClose(Frame frame) {
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // super.windowClosing(e);
+                System.exit(0);
+            }
+        });
     }
 }

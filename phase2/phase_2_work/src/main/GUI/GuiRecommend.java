@@ -2,9 +2,12 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import static javax.swing.JFrame.*;
 
-public class GuiRecommend {
+class GuiRecommend {
     private static JMenuBar mb;
     private static JMenu m1, m2, m3, m4, m5;
 
@@ -33,10 +36,20 @@ public class GuiRecommend {
         m12 = new JMenuItem("Log Out");
         m1.add(m11);
         m1.add(m12);
-
+        m12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiSign();
+            }
+        });
         m21 = new JMenuItem("url");
         m2.add(m21);
-
+        m21.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiListen();     //go inside the URL page
+            }
+        });
         m31 = new JMenuItem("User");
         m32 = new JMenuItem("Self");
         m3.add(m31);

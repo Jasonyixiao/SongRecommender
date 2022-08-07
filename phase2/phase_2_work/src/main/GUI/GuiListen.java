@@ -2,13 +2,13 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-public class GuiListen{
+class GuiListen extends JDialog{
     private static JLabel label;
     private static JTextField UrlLink;
     private static JButton button;
 
 
-    public static void main(String[] args){
+    public GuiListen(){
         JPanel panel = new JPanel();
         JFrame frame = new JFrame("Listen");
         frame.setSize(500,500);
@@ -30,3 +30,4 @@ public class GuiListen{
     }
 
 }
+

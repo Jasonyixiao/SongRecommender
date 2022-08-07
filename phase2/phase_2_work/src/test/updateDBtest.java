@@ -46,13 +46,13 @@ public class updateDBtest {
     @Test
     public void updateUser() {
         UpdateDB updateDB = new UpdateDB(); //TODO this one too
-        assert Objects.equals(updateDB.updateUser("hz2002", "LoveYou!!"),
+        assert Objects.equals(updateDB.updateUser("jason2002", "2002"),
                 "Success!"); //TODO create methods to update other changes to database
     }
 
     @Test
     public void deleteUser() {
         UpdateDB updateDB = new UpdateDB(); //TODO AND this one
-        assert Objects.equals(updateDB.deleteUser("xoxo :P"), "Success!");
+        assert Objects.equals(updateDB.deleteUser("Harry"), "Success!");
     }
 }

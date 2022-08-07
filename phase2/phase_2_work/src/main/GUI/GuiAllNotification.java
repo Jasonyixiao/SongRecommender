@@ -6,8 +6,8 @@ import java.awt.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-public class GuiNotification {
-    public GuiNotification() {
+public class GuiAllNotification {
+    public GuiAllNotification() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setTitle("GuiNotification");
@@ -27,6 +27,6 @@ public class GuiNotification {
 
     }
     public static void main(String[] args) {
-        new GUI.GuiNotification();
+        new GuiAllNotification();
     }
 }

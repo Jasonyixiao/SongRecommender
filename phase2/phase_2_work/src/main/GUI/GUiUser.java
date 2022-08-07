@@ -1,37 +1,32 @@
 package GUI;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.*;
 
-public class GUiUser {  //haven;t finished yet
-        private static JTextField userText;
-        private static JLabel label;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-    public static void main(String[] args){
-
-        JPanel panel = new JPanel();
+public class GuiUser {
+    public GuiUser() {
         JFrame frame = new JFrame();
-
-        frame.setSize(500,500);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setTitle("Users");
+        frame.setSize(500, 500);
+        frame.setLayout(new GridLayout(10, 1, 10, 0));
+        frame.add(new JButton("User1"));
+        frame.add(new JButton("User2"));
+        frame.add(new JButton("User3"));
+        frame.add(new JButton("User4"));
+        frame.add(new JButton("User5"));
+        frame.add(new JButton("User6"));
+        frame.add(new JButton("User7"));
+        frame.add(new JButton("User8"));
+        frame.add(new JButton("User9"));
+        frame.add(new JButton("User10"));
         frame.setVisible(true);
-        frame.add(panel);
-
-        userText = new JTextField();
-        frame.setVisible(true);
-        panel.setLayout(null);
-
-        label = new JLabel("User");
-        label.setBounds(10, 20, 80, 25);
-        panel.add(label);
-
-
-
-
-
 
     }
+    public static void main(String[] args) {
+        new GuiUser();
+    }
+
 }

@@ -35,8 +35,7 @@ class GuiSign extends JDialog {
         panel1.setLayout(new GridLayout(3, 3));
 
         panel.add(button); // exsit user
-        panel.add(label)
-        ;
+        panel.add(label);
         panel1.add(button1);//new user
         panel1.add(label1);
         frame.add(panel, BorderLayout.LINE_START);

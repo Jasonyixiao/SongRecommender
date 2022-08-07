@@ -7,30 +7,31 @@ import java.awt.event.ActionListener;
 
 import static javax.swing.JFrame.*;
 
-class GuiRecommend {
-    private static JMenuBar mb;
-    private static JMenu m1, m2, m3, m4, m5;
+class GuiNormalUser {
+    private static JMenuBar normalUser;
+    private static JMenu m1, m2, m3, m4, m5, m6;
+    private static JMenuItem m11, m12, m21, m31, m32, m61, m62;
 
-    private static JMenuItem m11, m12, m21, m31, m32, m41, m42;
-
-    public GuiRecommend() {
-        JFrame frame = new JFrame();
+    public GuiNormalUser() {
+        JFrame frame = new JFrame("Homepage-NormalUser");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle("Homepage(NormalUser)");
-        frame.setSize(500, 500);
+        frame.setSize(600, 600);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
 
-        mb = new JMenuBar();
+        normalUser = new JMenuBar();
         m1 = new JMenu("User");
         m2 = new JMenu("Listen");
-        m3 = new JMenu("admin");
-        m4 = new JMenu("notification");
-        m5 = new JMenu("get recommend");
-        mb.add(m1);
-        mb.add(m2);
-        mb.add(m3);
-        mb.add(m4);
-        mb.add(m5);
+        m3 = new JMenu("Notification");
+        m4 = new JMenu("Get Recommend");
+        m5 = new JMenu("Friend");
+        m6 = new JMenu("Admin");
+
+        normalUser.add(m1);
+        normalUser.add(m2);
+        normalUser.add(m3);
+        normalUser.add(m4);
+        normalUser.add(m5);
+        normalUser.add(m6);
 
         m11 = new JMenuItem("User Information");
         m12 = new JMenuItem("Log Out");
@@ -42,6 +43,7 @@ class GuiRecommend {
                 new GuiSign();
             }
         });
+
         m21 = new JMenuItem("url");
         m2.add(m21);
         m21.addActionListener(new ActionListener() {
@@ -50,18 +52,19 @@ class GuiRecommend {
                 new GuiListen();     //go inside the URL page
             }
         });
-        m31 = new JMenuItem("User");
-        m32 = new JMenuItem("Self");
+
+        m31 = new JMenuItem("Send");
+        m32 = new JMenuItem("Received");
         m3.add(m31);
         m3.add(m32);
 
-        m41 = new JMenuItem("Receive");
-        m42 = new JMenuItem("Send");
-        m4.add(m41);
-        m4.add(m42);
+        m61 = new JMenuItem("User");
+        m62 = new JMenuItem("Self");
+        m6.add(m61);
+        m6.add(m62);
 
 
-        frame.getContentPane().add(BorderLayout.NORTH, mb);
+        frame.getContentPane().add(BorderLayout.NORTH, normalUser);
         frame.add(new JButton("song1"));
         frame.add(new JButton("song2"));
         frame.add(new JButton("song3"));
@@ -76,6 +79,6 @@ class GuiRecommend {
     }
 
     public static void main(String[] args) {
-        new GuiRecommend();
+        new GuiNormalUser();
     }
 }

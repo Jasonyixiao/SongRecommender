@@ -6,11 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static javax.swing.JFrame.*;
+
 public class GuiAdminUser {
 
+    public static void main(String[] args) {
+        new GuiAdminUser();
+    }
+
     private static JMenuBar jMenuBar;
-    private static JMenu m1, m2, m3, m4, m5, m6, m7;
-    private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62;
+    private static JMenu m1, m2, m3, m4, m5, m6;
+    private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62, m7;
 
     public GuiAdminUser() {
         JFrame frame = new JFrame("Homepage-Admin User");
@@ -35,11 +40,42 @@ public class GuiAdminUser {
         jMenuBar.add(m7);
 
 
-        //User Information
         m11 = new JMenuItem("Check History");
         m12 = new JMenuItem("Log Out");
+        m21 = new JMenuItem("url");
+        m31 = new JMenuItem("Check new notifications");
+        m32 = new JMenuItem("Check all notifications");
+        m41 = new JMenuItem("Get Recommend Songs");
+        m42 = new JMenuItem("Rate a Song");
+        m43 = new JMenuItem("Recommend to User");
+        m51 = new JMenuItem("User");
+        m61 = new JMenuItem("Ban");
+        m62 = new JMenuItem("Delete");
         m1.add(m11);
         m1.add(m12);
+        m2.add(m21);
+        m3.add(m31);
+        m3.add(m32);
+        m4.add(m41);
+        m4.add(m42);
+        m4.add(m43);
+        m5.add(m51);
+        m6.add(m61);
+        m6.add(m62);
+
+        frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
+        frame.add(new JButton("song1"));
+        frame.add(new JButton("song2"));
+        frame.add(new JButton("song3"));
+        frame.add(new JButton("song4"));
+        frame.add(new JButton("song5"));
+        frame.add(new JButton("song6"));
+        frame.add(new JButton("song7"));
+        frame.add(new JButton("song8"));
+        frame.add(new JButton("song9"));
+        frame.setVisible(true);
+
+        //1. Information
         //go back to GuiHistory page
         m11.addActionListener(new ActionListener() {
             @Override
@@ -55,11 +91,7 @@ public class GuiAdminUser {
             }
         });
 
-
-
-        //Listen
-        m21 = new JMenuItem("url");
-        m2.add(m21);
+        //2. Listen
         //go inside the URL page (GuiListen)
         m21.addActionListener(new ActionListener() {
             @Override
@@ -68,11 +100,7 @@ public class GuiAdminUser {
             }
         });
 
-        //Notification
-        m31 = new JMenuItem("Check new notifications");
-        m32 = new JMenuItem("Check all notifications");
-        m3.add(m31);
-        m3.add(m32);
+        //3. Notification
         //go to GuiNewNotification page
         m31.addActionListener(new ActionListener() {
             @Override
@@ -88,14 +116,7 @@ public class GuiAdminUser {
             }
         });
 
-
-        //Get Recommend Songs
-        m41 = new JMenuItem("Get Recommend Songs");
-        m42 = new JMenuItem("Rate a Song");
-        m43 = new JMenuItem("Recommend to User");
-        m4.add(m41);
-        m4.add(m42);
-        m4.add(m43);
+        //4. Get Recommend Songs
         //go to GuiRecommendSong page
         m41.addActionListener(new ActionListener() {
             @Override
@@ -121,9 +142,7 @@ public class GuiAdminUser {
         }); //////////
 
 
-        //Admin
-        m51 = new JMenuItem("User");
-        m5.add(m51);
+        //5. Admin
         //go to GuiChangeUserAdmin page
         m51.addActionListener(new ActionListener() {
             @Override
@@ -133,11 +152,7 @@ public class GuiAdminUser {
         });
 
 
-        //Others
-        m61 = new JMenuItem("Ban");
-        m62 = new JMenuItem("Delete");
-        m6.add(m61);
-        m6.add(m62);
+        //6. Others
         //go to GuiBan page
         m61.addActionListener(new ActionListener() {
             @Override
@@ -153,26 +168,9 @@ public class GuiAdminUser {
             }
         });
 
-
-        //Exit
-        // haven't finished yet
-
-
-        frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
-        frame.add(new JButton("song1"));
-        frame.add(new JButton("song2"));
-        frame.add(new JButton("song3"));
-        frame.add(new JButton("song4"));
-        frame.add(new JButton("song5"));
-        frame.add(new JButton("song6"));
-        frame.add(new JButton("song7"));
-        frame.add(new JButton("song8"));
-        frame.add(new JButton("song9"));
-
-        frame.setVisible(true);
-    }
-    public static void main(String[] args) {
-        new GuiAdminUser();
+        //7. Exit
+        //m7.addActionListener(System.exit(0));
     }
 
 }
+

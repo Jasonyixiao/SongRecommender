@@ -3,9 +3,9 @@ package GUI;
 import javax.swing.*;
 
 class GuiRecSongtoUser extends JDialog {
-    private static JLabel label;
+    private static JLabel songUrlLabel, nameUrlLabel;
     private static JTextField UserName, UrlLink;
-    private static JButton button;
+    private static JButton searchButton;
 
 
     public GuiRecSongtoUser(){
@@ -17,30 +17,29 @@ class GuiRecSongtoUser extends JDialog {
         panel.setLayout(null);
 
         //search song's Url
-        label = new JLabel("Song's URL:");
-        label.setBounds(10,20,80,25);
-        panel.add(label);
+        songUrlLabel = new JLabel("Song's URL:");
+        songUrlLabel.setBounds(10,20,80,25);
         UrlLink = new JTextField();
         UrlLink.setBounds(100,20,165,25);
-        panel.add(UrlLink);
-
-        button = new JButton("Search");
-        button.setBounds(10,80,80,25);
-        panel.add(button);
+        searchButton = new JButton("Search");
+        searchButton.setBounds(10,80,80,25);
 
 
         //search User's name
-        label = new JLabel("User's name:");
-        label.setBounds(10,150,80,25);
-        panel.add(label);
+        nameUrlLabel = new JLabel("User's name:");
+        nameUrlLabel.setBounds(10,150,80,25);
         UserName = new JTextField();
         UserName.setBounds(100,150,165,25);
-        panel.add(UserName);
-        frame.setVisible(true);
+        searchButton = new JButton("Search");
+        searchButton.setBounds(10,220,80,25);
 
-        button = new JButton("Search");
-        button.setBounds(10,220,80,25);
-        panel.add(button);
+        panel.add(songUrlLabel);
+        panel.add(UrlLink);
+        panel.add(searchButton);
+        panel.add(nameUrlLabel);
+        panel.add(UserName);
+        panel.add(searchButton);
+        frame.setVisible(true);
     }
 
 }

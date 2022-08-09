@@ -3,6 +3,9 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 class GuiListen extends JDialog{
+    public static void main(String[] args) {
+        new GuiListen();
+    }
     private static JLabel label;
     private static JTextField UrlLink;
     private static JButton button;
@@ -18,15 +21,17 @@ class GuiListen extends JDialog{
 
         label = new JLabel("Song URL");
         label.setBounds(10,20,80,25);
-        panel.add(label);
+
         UrlLink = new JTextField();
         UrlLink.setBounds(100,20,165,25);
-        panel.add(UrlLink);
-        frame.setVisible(true);
 
         button = new JButton("Search");
         button.setBounds(10,80,80,25);
+
+        panel.add(label);
+        panel.add(UrlLink);
         panel.add(button);
+        frame.setVisible(true);
     }
 
 }

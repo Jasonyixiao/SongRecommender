@@ -6,6 +6,9 @@ import java.awt.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class GuiUser {
+    public static void main(String[] args) {
+        new GuiUser();
+    }
     public GuiUser() {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -24,9 +27,6 @@ public class GuiUser {
         frame.add(new JButton("User10"));
         frame.setVisible(true);
 
-    }
-    public static void main(String[] args) {
-        new GuiUser();
     }
 
 }

@@ -6,11 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static javax.swing.JFrame.*;
+
 public class GuiAdminUser {
 
+    public static void main(String[] args) {
+        new GuiAdminUser();
+    }
+
     private static JMenuBar jMenuBar;
-    private static JMenu m1, m2, m3, m4, m5, m6, m7;
-    private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62;
+    private static JMenu m1, m2, m3, m4, m5, m6;
+    private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62, m7;
 
     public GuiAdminUser() {
         JFrame frame = new JFrame("Homepage-Admin User");
@@ -35,128 +40,28 @@ public class GuiAdminUser {
         jMenuBar.add(m7);
 
 
-        //User Information
         m11 = new JMenuItem("Check History");
         m12 = new JMenuItem("Log Out");
-        m1.add(m11);
-        m1.add(m12);
-        //go back to GuiHistory page
-        m11.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiHistory();
-            }
-        });
-        //go back to GuiSign page
-        m12.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiSign();
-            }
-        });
-
-
-
-        //Listen
         m21 = new JMenuItem("url");
-        m2.add(m21);
-        //go inside the URL page (GuiListen)
-        m21.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiListen();
-            }
-        });
-
-        //Notification
         m31 = new JMenuItem("Check new notifications");
         m32 = new JMenuItem("Check all notifications");
-        m3.add(m31);
-        m3.add(m32);
-        //go to GuiNewNotification page
-        m31.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiNewNotification();
-            }
-        });
-        //go to GuiAllNotification page
-        m32.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiAllNotification();
-            }
-        });
-
-
-        //Get Recommend Songs
         m41 = new JMenuItem("Get Recommend Songs");
         m42 = new JMenuItem("Rate a Song");
         m43 = new JMenuItem("Recommend to User");
+        m51 = new JMenuItem("User");
+        m61 = new JMenuItem("Ban");
+        m62 = new JMenuItem("Delete");
+        m1.add(m11);
+        m1.add(m12);
+        m2.add(m21);
+        m3.add(m31);
+        m3.add(m32);
         m4.add(m41);
         m4.add(m42);
         m4.add(m43);
-        //go to GuiRecommendSong page
-        m41.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiGetRecSong();
-            }
-        });
-        //go to GuiRateSong page
-        m42.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] i = new String[0];
-                new GuiRateSong(i);
-            }
-        });
-        //go to GuiRecSongtoUser page
-        m43.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String[] i = new String[0];
-                new GuiRecSongtoUser();
-            }
-        }); //////////
-
-
-        //Admin
-        m51 = new JMenuItem("User");
         m5.add(m51);
-        //go to GuiChangeUserAdmin page
-        m51.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiChangeUserAdmin();
-            }
-        });
-
-
-        //Others
-        m61 = new JMenuItem("Ban");
-        m62 = new JMenuItem("Delete");
         m6.add(m61);
         m6.add(m62);
-        //go to GuiBan page
-        m61.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiBan();
-            }
-        });
-        //go to GuiDelete page
-        m62.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiDelete();
-            }
-        });
-
-
-        //Exit
-        // haven't finished yet
-
 
         frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
         frame.add(new JButton("song1"));
@@ -168,11 +73,120 @@ public class GuiAdminUser {
         frame.add(new JButton("song7"));
         frame.add(new JButton("song8"));
         frame.add(new JButton("song9"));
-
         frame.setVisible(true);
-    }
-    public static void main(String[] args) {
-        new GuiAdminUser();
+
+        //1. Information
+        //go back to GuiHistory page
+        m11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiHistory();
+                frame.dispose();
+            }
+        });
+        //go back to GuiSign page
+        m12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiSign();
+                frame.dispose();
+            }
+        });
+
+        //2. Listen
+        //go inside the URL page (GuiListen)
+        m21.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiListen();
+                frame.dispose();
+            }
+        });
+
+        //3. Notification
+        //go to GuiNewNotification page
+        m31.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiNewNotification();
+                frame.dispose();
+            }
+        });
+        //go to GuiAllNotification page
+        m32.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiAllNotification();
+                frame.dispose();
+            }
+        });
+
+        //4. Get Recommend Songs
+        //go to GuiRecommendSong page
+        m41.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiGetRecSong();
+                frame.dispose();
+            }
+        });
+        //go to GuiRateSong page
+        m42.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] i = new String[0];
+                new GuiRateSong(i);
+                frame.dispose();
+            }
+        });
+        //go to GuiRecSongtoUser page
+        m43.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String[] i = new String[0];
+                new GuiRecSongtoUser();
+                frame.dispose();
+            }
+        }); //////////
+
+
+        //5. Admin
+        //go to GuiChangeUserAdmin page
+        m51.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiChangeUserAdmin();
+                frame.dispose();
+            }
+        });
+
+
+        //6. Others
+        //go to GuiBan page
+        m61.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiBan();
+                frame.dispose();
+            }
+        });
+        //go to GuiDelete page
+        m62.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiDelete();
+                frame.dispose();
+            }
+        });
+
+        //7. Exit
+        m7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
 }
+

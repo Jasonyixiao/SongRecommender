@@ -17,15 +17,15 @@ public class GuiAdminUser {
     private static JMenu m1, m2, m3, m4, m5, m6;
     private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62, m7;
 
-    public GuiAdminUser() {
+    public GuiAdminUser() { // add parameter
         final JFrame frame = new JFrame("Homepage-Admin User");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
 
         jMenuBar = new JMenuBar();
-        m1 = new JMenu("User Information");
-        m2 = new JMenu("Listen");
+//        m1 = new JMenu(Language.getuserInfo(String language)); // return "user infromation" in chinese
+//        m2 = new JMenu(Language.getlisten(String language));
         m3 = new JMenu("Notification");
         m4 = new JMenu("Recommend");
         m5 = new JMenu("Admin");
@@ -64,7 +64,7 @@ public class GuiAdminUser {
         m6.add(m62);
 
         frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
-        frame.add(new JButton("song1"));
+        frame.add(new JButton("song1")); // we don't need this we will change this to song name, no need to translate
         frame.add(new JButton("song2"));
         frame.add(new JButton("song3"));
         frame.add(new JButton("song4"));

@@ -18,7 +18,7 @@ class GuiNormalUser {
     private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m52;
 
     public GuiNormalUser() {
-        JFrame frame = new JFrame("Homepage-NormalUser");
+        final JFrame frame = new JFrame("Homepage-NormalUser");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
@@ -46,7 +46,7 @@ class GuiNormalUser {
         m42 = new JMenuItem("Rate a Song");
         m43 = new JMenuItem("Recommend to User");
         m51 = new JMenuItem("User");
-        m52 = new JMenuItem("Self");
+        m52 = new JMenuItem("Self"); //TODO delete this line
         m1.add(m11);
         m1.add(m12);
         m2.add(m21);

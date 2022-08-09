@@ -14,7 +14,7 @@ class GuiRegister extends JDialog{
 
     public GuiRegister() {
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame("Register System");
+        final JFrame frame = new JFrame("Register System");
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);

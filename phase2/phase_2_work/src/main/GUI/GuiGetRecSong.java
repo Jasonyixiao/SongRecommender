@@ -13,7 +13,7 @@ public class GuiGetRecSong {
         frame.setTitle("Recommend Songs");
         frame.setSize(500, 250);
         frame.setLayout(new GridLayout(5, 1, 10, 0));
-        frame.add(new JButton("Song1"));
+        frame.add(new JButton("Song1")); // again we will change "song1".... to the name of the song
         frame.add(new JButton("Song2"));
         frame.add(new JButton("Song3"));
         frame.add(new JButton("Song4"));

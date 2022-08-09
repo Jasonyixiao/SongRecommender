@@ -25,8 +25,6 @@ public class CommandFactory {
         commandMap.put("RECOMMEND TO USER", new RecommendSongToUser());  /////
         commandMap.put("CHECK NEW NOTIFICATIONS", new CheckNewNotification());
         commandMap.put("CHECK ALL NOTIFICATIONS", new CheckAllNotifications());
-
-
     }
 
     /**

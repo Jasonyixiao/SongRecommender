@@ -17,7 +17,7 @@ class GuiRecSongtoUser extends JDialog {
         panel.setLayout(null);
 
         //search song's Url
-        songUrlLabel = new JLabel("Song's URL:");
+        songUrlLabel = new JLabel("Song URL:");
         songUrlLabel.setBounds(10,20,80,25);
         UrlLink = new JTextField();
         UrlLink.setBounds(100,20,165,25);
@@ -26,7 +26,7 @@ class GuiRecSongtoUser extends JDialog {
 
 
         //search User's name
-        nameUrlLabel = new JLabel("User's name:");
+        nameUrlLabel = new JLabel("User name:");
         nameUrlLabel.setBounds(10,150,80,25);
         UserName = new JTextField();
         UserName.setBounds(100,150,165,25);

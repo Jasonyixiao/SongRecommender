@@ -12,8 +12,8 @@ public class GuiHistory {
         frame.setTitle("Login History");
         frame.setSize(500, 500);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
-        frame.add(new JButton("Login History1:")); // here we have to add the history
-        frame.add(new JButton("Login History2:"));
+        frame.add(new JButton("Login History1:")); // get rid of "login History 1"... just put 1, 2, 3 instead
+        frame.add(new JButton("Login History2:")); // or use a for loop
         frame.add(new JButton("Login History3:"));
         frame.add(new JButton("Login History4:"));
         frame.add(new JButton("Login History5:"));

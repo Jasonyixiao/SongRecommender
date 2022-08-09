@@ -20,10 +20,10 @@
     <update id="updateUser" parameterType="entities.User">
         update TopNineUser.user
         set password = #{password},
-            isAdmin = #{isAdmin},
+            isAdmin   = #{isAdmin},
             isSignedIn = #{isSignedIn},
             banUntil = #{banUntil},
-            loginHistory = #{loginHistory},
+            loginHistory = #{loginHistory}
         where username = #{username};
     </update>
     <delete id="deleteUser" parameterType="String">

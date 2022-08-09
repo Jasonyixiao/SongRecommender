@@ -46,7 +46,7 @@ class GuiNormalUser {
         m42 = new JMenuItem("Rate a Song");
         m43 = new JMenuItem("Recommend to User");
         m51 = new JMenuItem("User");
-        m52 = new JMenuItem("Self");
+        m52 = new JMenuItem("Self"); //TODO delete this line
         m1.add(m11);
         m1.add(m12);
         m2.add(m21);

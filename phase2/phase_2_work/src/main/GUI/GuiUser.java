@@ -15,7 +15,7 @@ public class GuiUser {
         frame.setTitle("Users");
         frame.setSize(500, 500);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
-        frame.add(new JButton("User1"));
+        frame.add(new JButton("User1")); // replace "User1" ...  with usernames
         frame.add(new JButton("User2"));
         frame.add(new JButton("User3"));
         frame.add(new JButton("User4"));

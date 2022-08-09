@@ -81,6 +81,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiHistory();
+                frame.dispose();
             }
         });
         //go back to GuiSign page
@@ -88,6 +89,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiSign();
+                frame.dispose();
             }
         });
 
@@ -97,6 +99,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiListen();
+                frame.dispose();
             }
         });
 
@@ -106,6 +109,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiNewNotification();
+                frame.dispose();
             }
         });
         //go to GuiAllNotification page
@@ -113,6 +117,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiAllNotification();
+                frame.dispose();
             }
         });
 
@@ -122,6 +127,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiGetRecSong();
+                frame.dispose();
             }
         });
         //go to GuiRateSong page
@@ -130,6 +136,7 @@ public class GuiAdminUser {
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
                 new GuiRateSong(i);
+                frame.dispose();
             }
         });
         //go to GuiRecSongtoUser page
@@ -138,6 +145,7 @@ public class GuiAdminUser {
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
                 new GuiRecSongtoUser();
+                frame.dispose();
             }
         }); //////////
 
@@ -148,6 +156,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiChangeUserAdmin();
+                frame.dispose();
             }
         });
 
@@ -158,6 +167,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiBan();
+                frame.dispose();
             }
         });
         //go to GuiDelete page
@@ -165,11 +175,17 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiDelete();
+                frame.dispose();
             }
         });
 
         //7. Exit
-        //m7.addActionListener(System.exit(0));
+        m7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
 }

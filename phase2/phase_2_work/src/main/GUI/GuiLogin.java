@@ -54,6 +54,7 @@ class GuiLogin extends JDialog{ // when press sign in button
             public void actionPerformed(ActionEvent e) {
                 new GuiNormalUser();
                 new GuiAdminUser();
+                frame.dispose();
             }
         });
 

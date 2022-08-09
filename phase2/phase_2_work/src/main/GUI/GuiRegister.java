@@ -56,6 +56,7 @@ class GuiRegister extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 //if ...
                 new GuiSign();
+                frame.dispose();
             }
         });
 

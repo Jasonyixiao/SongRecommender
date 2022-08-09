@@ -64,6 +64,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiHistory();
+                frame.dispose();
             }
         });
         //go back to GuiSign page
@@ -71,6 +72,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiSign();
+                frame.dispose();
             }
         });
 
@@ -81,6 +83,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiListen();
+                frame.dispose();
             }
         });
 
@@ -91,6 +94,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiNewNotification();
+                frame.dispose();
             }
         });
         //go to GuiAllNotification page
@@ -98,6 +102,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiAllNotification();
+                frame.dispose();
             }
         });
 
@@ -108,6 +113,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiGetRecSong();
+                frame.dispose();
             }
         });
         //go to GuiRateSong page
@@ -116,6 +122,7 @@ class GuiNormalUser {
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
                 new GuiRateSong(i);
+                frame.dispose();
             }
         });
         //go to GuiRecSongtoUser page
@@ -124,6 +131,7 @@ class GuiNormalUser {
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
                 new GuiRecSongtoUser();
+                frame.dispose();
             }
         }); ////////////
 
@@ -134,6 +142,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiChangeUserAdmin();
+                frame.dispose();
             }
         });
         //go to GuiAdminUser page
@@ -141,12 +150,19 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiAdminUser();
+                frame.dispose();
             }
         });
 
 
         //6.Exit
-        // haven't finished yet
+        m6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+                frame.dispose();
+            }
+        });
 
 
         frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);

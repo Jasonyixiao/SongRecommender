@@ -44,6 +44,7 @@ class GuiSign extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiLogin();
+                frame.dispose();
             }
         });
 
@@ -53,6 +54,7 @@ class GuiSign extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiRegister();
+                frame.dispose();
             }
         });
 

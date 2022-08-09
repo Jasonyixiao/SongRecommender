@@ -30,8 +30,8 @@ public class updateDBtest {
     @Test
     public void getUserById(){
         UpdateDB updateDB = new UpdateDB(); //TODO Look at this one
-        assert Objects.equals(updateDB.getUserById("HarryIsTheBest_uwu").getUsername(),
-                "hz2002");
+        assert Objects.equals(updateDB.getUserById("Harry").getUsername(),
+                "Harry");
 
     }
     //增改需要提交事物
@@ -40,19 +40,19 @@ public class updateDBtest {
         UpdateDB updateDB = new UpdateDB(); //TODO this is for you harry!!!
         String result = updateDB.addUser("Harry", "HarryIloveU...uwu");
         assert Objects.equals(result, "Success!");
-        updateDB.deleteUser("hz2002");
+        //updateDB.deleteUser("Harry");
 	}
 
     @Test
     public void updateUser() {
         UpdateDB updateDB = new UpdateDB(); //TODO this one too
-        assert Objects.equals(updateDB.updateUser("hz2002", "LoveYou!!"),
+        assert Objects.equals(updateDB.updateUser("Harry", "LoveYou!!"),
                 "Success!"); //TODO create methods to update other changes to database
     }
 
     @Test
     public void deleteUser() {
         UpdateDB updateDB = new UpdateDB(); //TODO AND this one
-        assert Objects.equals(updateDB.deleteUser("xoxo :P"), "Success!");
+        assert Objects.equals(updateDB.deleteUser("Harry"), "Success!");
     }
 }

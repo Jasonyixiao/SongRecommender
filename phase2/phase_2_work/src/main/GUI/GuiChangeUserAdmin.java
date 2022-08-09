@@ -10,7 +10,7 @@ class GuiChangeUserAdmin extends JDialog{
 
     public GuiChangeUserAdmin(){
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame("Choose User to Admin");
+        JFrame frame = new JFrame("Choose User to promote to admin");
         frame.setSize(500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);

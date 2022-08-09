@@ -6,7 +6,7 @@ import usecases.IGateWay;
 import usecases.UserManager;
 
 import static org.junit.Assert.*;
-public class UserTest {
+public class    UserTest {
 
     //Constructor
     @Test

@@ -23,7 +23,7 @@
             isAdmin = #{isAdmin},
             isSignedIn = #{isSignedIn},
             banUntil = #{banUntil},
-            loginHistory = #{loginHistory},
+            loginHistory = #{loginHistory}
         where username = #{username};
     </update>
     <delete id="deleteUser" parameterType="String">

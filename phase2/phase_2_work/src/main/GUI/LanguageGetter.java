@@ -7,7 +7,7 @@ import GUI.GuiLanguage.language;
 import java.util.HashMap;
 
 public class LanguageGetter {
-    HashMap<String, GUI.GuiLanguage.language> languageMap;
+    private HashMap<String, GUI.GuiLanguage.language> languageMap;
 
     public LanguageGetter() {
         languageMap.put("Chinese", new Chinese());

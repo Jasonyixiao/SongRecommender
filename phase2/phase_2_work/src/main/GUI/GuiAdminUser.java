@@ -10,22 +10,22 @@ import static javax.swing.JFrame.*;
 public class GuiAdminUser {
 
     public static void main(String[] args) {
-        new GuiAdminUser();
-    }
+        new GuiAdminUser("English");
+    } // set default to english
 
     private static JMenuBar jMenuBar;
     private static JMenu m1, m2, m3, m4, m5, m6;
     private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62, m7;
 
-    public GuiAdminUser() { // add parameter
+    public GuiAdminUser(final String language) { // add parameter
         final JFrame frame = new JFrame("Homepage-Admin User");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
 
         jMenuBar = new JMenuBar();
-//        m1 = new JMenu(Language.getuserInfo(String language)); // return "user infromation" in chinese
-//        m2 = new JMenu(Language.getlisten(String language));
+        m1 = new JMenu("UserInfo"); //return "user information" in chinese
+        m2 = new JMenu("Listen");
         m3 = new JMenu("Notification");
         m4 = new JMenu("Recommend");
         m5 = new JMenu("Admin");
@@ -88,7 +88,7 @@ public class GuiAdminUser {
         m12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiSign();
+                new GuiSign(language);
                 frame.dispose();
             }
         });

@@ -1,5 +1,7 @@
 package GUI;
 
+import commands.ICommands;
+
 import javax.swing.*;
 
 

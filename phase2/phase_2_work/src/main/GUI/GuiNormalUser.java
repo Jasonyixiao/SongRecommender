@@ -11,13 +11,13 @@ import static javax.swing.JFrame.*;
 
 class GuiNormalUser {
     public static void main(String[] args) {
-        new GuiNormalUser();
+        new GuiNormalUser("English");
     }
     private static JMenuBar jMenuBar;
     private static JMenu m1, m2, m3, m4, m5, m6;
     private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m52;
 
-    public GuiNormalUser() {
+    public GuiNormalUser(final String language) {
         final JFrame frame = new JFrame("Homepage-NormalUser");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
@@ -71,7 +71,7 @@ class GuiNormalUser {
         m12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiSign();
+                new GuiSign(language);
                 frame.dispose();
             }
         });
@@ -149,7 +149,7 @@ class GuiNormalUser {
         m52.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAdminUser();
+                new GuiAdminUser(language);
                 frame.dispose();
             }
         });

@@ -5,14 +5,14 @@ import java.awt.event.ActionListener;
 
 class GuiRegister extends JDialog{
     public static void main(String[] args) {
-        new GuiRegister();
+        new GuiRegister("English");
     }
     private static JLabel label, passwordLabel, success;
     private static JTextField UserLink;
     private static JPasswordField passwordText;
     private static JButton RegisterButton;
 
-    public GuiRegister() {
+    public GuiRegister(final String language) {
         JPanel panel = new JPanel();
         final JFrame frame = new JFrame("Register System");
         frame.setSize(500, 500);
@@ -55,7 +55,7 @@ class GuiRegister extends JDialog{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //if ...
-                new GuiSign();
+                new GuiSign(language);
                 frame.dispose();
             }
         });

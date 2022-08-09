@@ -7,14 +7,15 @@ import java.awt.event.ActionListener;
 
 class GuiSign extends JDialog {
     public static void main(String[] args) {
-        new GuiSign();
+        new GuiSign("English");
     }
+    //Todo we need to create a separate panel where we ask the user for their language of preference.
 
     private static JButton button1, button2;
     private static JLabel label1, label2;
     private static JPanel panel1, panel2;
 
-    public GuiSign(){  //first frame shows the register button and sign in button.
+    public GuiSign(final String language){  //first frame shows the register button and sign in button.
         final JFrame frame = new JFrame();
 
         button1 = new JButton("log in");
@@ -43,7 +44,7 @@ class GuiSign extends JDialog {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiLogin();
+                new GuiLogin(language);
                 frame.dispose();
             }
         });
@@ -53,7 +54,7 @@ class GuiSign extends JDialog {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiRegister();
+                new GuiRegister(language);
                 frame.dispose();
             }
         });

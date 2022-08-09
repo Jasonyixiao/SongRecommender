@@ -5,16 +5,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 class GuiLogin extends JDialog{ // when press sign in button
-    public static void main(String[] args) {
-        new GuiLogin();
-    }
+//    public static void main(String[] args) {
+//        new GuiLogin("English");
+//    } // we will put english for now
 
     private static JLabel UserId, passwordLabel;
     private static JTextField UserLink;
     private static JPasswordField passwordText;
     private static JButton loginButton;
 
-    public GuiLogin() {
+    public GuiLogin(final String language) {
         JPanel panel = new JPanel();
         final JFrame frame = new JFrame("Login System");
         frame.setSize(500, 500);
@@ -52,8 +52,8 @@ class GuiLogin extends JDialog{ // when press sign in button
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiNormalUser();
-                new GuiAdminUser();
+                new GuiNormalUser(language);
+                new GuiAdminUser(language);
                 frame.dispose();
             }
         });

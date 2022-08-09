@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import static javax.swing.JFrame.*;
 
+
 public class GuiAdminUser {
 
     public static void main(String[] args) {

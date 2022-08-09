@@ -18,7 +18,7 @@ class GuiNormalUser {
     private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m52;
 
     public GuiNormalUser() {
-        JFrame frame = new JFrame("Homepage-NormalUser");
+        final JFrame frame = new JFrame("Homepage-NormalUser");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));

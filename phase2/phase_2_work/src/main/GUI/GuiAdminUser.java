@@ -18,7 +18,7 @@ public class GuiAdminUser {
     private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62, m7;
 
     public GuiAdminUser() {
-        JFrame frame = new JFrame("Homepage-Admin User");
+        final JFrame frame = new JFrame("Homepage-Admin User");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));

@@ -16,7 +16,7 @@ class GuiLogin extends JDialog{ // when press sign in button
 
     public GuiLogin() {
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame("Login System");
+        final JFrame frame = new JFrame("Login System");
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);

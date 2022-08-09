@@ -15,7 +15,7 @@ class GuiSign extends JDialog {
     private static JPanel panel1, panel2;
 
     public GuiSign(){  //first frame shows the register button and sign in button.
-        JFrame frame = new JFrame();
+        final JFrame frame = new JFrame();
 
         button1 = new JButton("Sign in");
         button2 = new JButton("Register");

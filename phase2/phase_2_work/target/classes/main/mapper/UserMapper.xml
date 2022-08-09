@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace = 绑定一个mapper 接口-->
+<mapper namespace="mapper.UserMapper">
+    <!-- select command from sql-->
+    <select id="getAllUser" resultType="entities.User">
+        select * from TopNineUser.user
+    </select>
+    <select id="getUserByUsername" parameterType="String" resultType="entities.User">
+        select * from TopNineUser.user where username = #{username}
+    </select>
+    <!--对象中属性，可以直接取出来-->
+    <insert id="addUser" parameterType="entities.User">
+        insert into TopNineUser.user (username, password, isAdmin, isSignedIn,
+                                     banUntil, loginHistory) values (#{username}, #{password}, #{isAdmin}, #{isSignedIn},
+                                                                   #{banUntil}, #{loginHistory})
+    </insert>
+    <update id="updateUser" parameterType="entities.User">
+        update TopNineUser.user
+        set password = #{password},
+            isAdmin = #{isAdmin},
+            isSignedIn = #{isSignedIn},
+            banUntil = #{banUntil},
+            loginHistory = #{loginHistory}
+        where username = #{username};
+    </update>
+    <delete id="deleteUser" parameterType="String">
+        delete
+        from TopNineUser.user
+        where username = #{username};
+    </delete>
+</mapper>

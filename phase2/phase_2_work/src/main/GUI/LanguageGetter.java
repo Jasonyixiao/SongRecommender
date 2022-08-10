@@ -2,12 +2,12 @@ package GUI;
 
 import GUI.GuiLanguage.Chinese;
 import GUI.GuiLanguage.English;
-import GUI.GuiLanguage.language;
+import GUI.GuiLanguage.ILanguage;
 
 import java.util.HashMap;
 
 public class LanguageGetter {
-    private HashMap<String, language> languageMap;
+    private HashMap<String, ILanguage> languageMap;
 
     public LanguageGetter() {
         languageMap = new HashMap<>();
@@ -15,7 +15,7 @@ public class LanguageGetter {
         languageMap.put("English", new English());
     }
 
-    public language translateto(String language) {
+    public ILanguage translateto(String language) {
         return languageMap.get(language);
     }
 

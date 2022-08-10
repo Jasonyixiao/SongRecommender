@@ -108,7 +108,7 @@ public class GuiAdminUser {
                 catch (IOException exception){
                     success.setFont(new Font(null,Font.ITALIC,25));
                     success.setForeground(Color.red);
-                    success.setText("Unable to save your data.");
+                    success.setText(languageGetter.translateTo(language).logoutFailed());
                 }
             }
         });

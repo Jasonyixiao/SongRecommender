@@ -15,7 +15,8 @@ public class gui {
             loadData.loadInitialSongs();
           new GuiChooseLanguage(shell);
         } catch(IOException | ClassNotFoundException e){
-            System.out.println("Unable to start GUI, failed to load data from your local directory");
+
+            e.printStackTrace();
 
 
 

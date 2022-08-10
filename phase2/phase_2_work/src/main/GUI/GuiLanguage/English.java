@@ -28,6 +28,21 @@ public class English implements ILanguage {
     }
 
     @Override
+    public String logInFailed() {
+        return "Invalid username/password";
+    }
+
+    @Override
+    public String registerFailed() {
+        return "User already exists, please try again";
+    }
+
+    @Override
+    public String logoutFailed() {
+        return "Logout successful, but we were not able to save your data";
+    }
+
+    @Override
     public String userInfo() {
         return "User info";
     }

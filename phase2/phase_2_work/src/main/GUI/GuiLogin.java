@@ -46,7 +46,7 @@ class GuiLogin extends JDialog implements ActionListener { // when press sign in
         this.passwordField = new JPasswordField();
         passwordField.setBounds(100, 50, 165, 25);
         messageLabel.setBounds(125,250,250,35);
-        messageLabel.setFont(new Font(null,Font.ITALIC,25));
+        messageLabel.setFont(new Font(null,Font.ITALIC,15));
 
         this.loginButton = new JButton(languageGetter.translateTo(language).login());
         loginButton.setBounds(10, 80, 80, 25);
@@ -83,7 +83,7 @@ class GuiLogin extends JDialog implements ActionListener { // when press sign in
                 }
             }else{
                 messageLabel.setForeground(Color.red);
-                messageLabel.setText("Invalid username/password.");
+                messageLabel.setText(languageGetter.translateTo(language).logInFailed());
             }
 
         }

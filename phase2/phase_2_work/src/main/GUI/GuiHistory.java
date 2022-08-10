@@ -23,9 +23,10 @@ public class GuiHistory {
         frame.add(panel);
         panel.setLayout(null);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
-        frame.add(new JButton("Login History1:")); // get rid of "login History 1"... just put 1, 2, 3 instead
-        frame.add(new JButton("Login History2:")); // or use a for loop
-        frame.add(new JButton("Login History3:")); // TODO connnect this to the controller
+        for(String history: shell.getLoginController().getUserController().
+                getLogInHistory(shell.getUserProfile().getUsername())){
+            frame.add(new JButton(history));
+        }
         frame.setVisible(true);
         JButton button2 = new JButton(languageGetter.translateTo(language).back());
         button2.setBounds(400,10,80,25);
@@ -33,8 +34,14 @@ public class GuiHistory {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAdminUser(language,shell); // here we need to add a if statement to check if the current user is normal user or admin user
-                frame.dispose();
+                String currentUsername = shell.getUserProfile().getUsername();
+                if (shell.getLoginController().getUserController().isAdmin(currentUsername)){
+                    new GuiAdminUser(language,shell);
+                    frame.dispose();
+                }else{
+                    new GuiNormalUser(language, shell);
+                }
+
             }
         });
 

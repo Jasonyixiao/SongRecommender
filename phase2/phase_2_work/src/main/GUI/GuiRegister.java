@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 class GuiRegister extends JDialog{
 
     public GuiRegister(final String language, final ShellState shell) {
-        LanguageGetter languageGetter = new LanguageGetter();
+        final LanguageGetter languageGetter = new LanguageGetter();
         JPanel panel = new JPanel();
         final JFrame frame = new JFrame(languageGetter.translateTo(language).registerSystem());
         frame.setSize(500, 500);
@@ -35,7 +35,7 @@ class GuiRegister extends JDialog{
         JButton registerButton = new JButton(languageGetter.translateTo(language).register());
         registerButton.setBounds(10, 80, 80, 25);
         final JLabel success = new JLabel();
-        success.setBounds(10, 110, 300, 25);
+        success.setBounds(10, 110, 300, 15);
 
         panel.add(label);
         panel.add(username);
@@ -61,7 +61,7 @@ class GuiRegister extends JDialog{
                 }else{
                     success.setFont(new Font(null,Font.ITALIC,25));
                     success.setForeground(Color.red);
-                    success.setText("User already exists, please try again");
+                    success.setText(languageGetter.translateTo(language).registerFailed());
                 }
             }
         });

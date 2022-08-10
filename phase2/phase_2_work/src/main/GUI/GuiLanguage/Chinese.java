@@ -51,7 +51,7 @@ public class Chinese implements ILanguage {
 
     @Override
     public String checkHistory() {
-        return "查看历史记录";
+        return "查看历史登录记录";
     }
 
     @Override
@@ -196,6 +196,21 @@ public class Chinese implements ILanguage {
     @Override
     public String back() {
         return "返回";
+    }
+
+    @Override
+    public String logInFailed() {
+        return "密码或用户名错误";
+    }
+
+    @Override
+    public String registerFailed() {
+        return "用户名已被占用，请重试";
+    }
+
+    @Override
+    public String logoutFailed() {
+        return "您已成功登出，但您的用户数据无法保存";
     }
 
     @Override

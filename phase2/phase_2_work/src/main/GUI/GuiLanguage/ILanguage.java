@@ -58,4 +58,10 @@ public interface ILanguage {
     public String registerSystem();
 
     public String back();
+
+    public String logInFailed();
+
+    public String registerFailed();
+
+    public String logoutFailed();
 }

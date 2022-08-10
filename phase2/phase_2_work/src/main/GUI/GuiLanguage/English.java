@@ -1,6 +1,6 @@
 package GUI.GuiLanguage;
 
-public class English implements ILanguage {
+public class English implements language {
     public English() {
     }
     public String chooseUserToPromote(){

@@ -1,6 +1,6 @@
 package GUI.GuiLanguage;
 
-public class Chinese implements ILanguage {
+public class Chinese implements language {
     public Chinese() {
     }
     @Override

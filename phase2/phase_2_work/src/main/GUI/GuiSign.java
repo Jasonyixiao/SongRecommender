@@ -1,24 +1,26 @@
 package GUI;
 
+import controllers.ShellState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 class GuiSign extends JDialog {
-    public static void main(String[] args) {
-        new GuiSign("English");
-    }
+//    public static void main(String[] args) {
+//        new GuiSign("English", new ShellState());
+//    }
 
-    public GuiSign(final String language){  //first frame shows the register button and sign in button.
+    public GuiSign(final String language, final ShellState shell){  //first frame shows the register button and sign in button.
         final JFrame frame = new JFrame();
 
         LanguageGetter languageGetter = new LanguageGetter();
-        JButton button1 = new JButton(languageGetter.translateto(language).login());
-        JButton button2 = new JButton(languageGetter.translateto(language).register());
+        JButton button1 = new JButton(languageGetter.translateTo(language).login());
+        JButton button2 = new JButton(languageGetter.translateTo(language).register());
 
-        JLabel label1 = new JLabel(languageGetter.translateto(language).forExistedUser());
-        JLabel label2 = new JLabel(languageGetter.translateto(language).forNewUser());
+        JLabel label1 = new JLabel(languageGetter.translateTo(language).forExistedUser());
+        JLabel label2 = new JLabel(languageGetter.translateTo(language).forNewUser());
 
         JPanel panel1 = new JPanel();
         JPanel panel2 = new JPanel();
@@ -40,7 +42,7 @@ class GuiSign extends JDialog {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiLogin(language);
+                new GuiLogin(language, shell);
                 frame.dispose();
             }
         });
@@ -50,13 +52,13 @@ class GuiSign extends JDialog {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiRegister(language);
+                new GuiRegister(language, shell);
                 frame.dispose();
             }
         });
 
         // LoginJBAction(button1);
-        frame.setTitle(languageGetter.translateto(language).welcome());
+        frame.setTitle(languageGetter.translateTo(language).welcome());
         frame.pack();
         frame.setVisible(true);
 

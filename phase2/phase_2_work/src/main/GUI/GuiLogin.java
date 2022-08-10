@@ -1,94 +1,96 @@
 package GUI;
 
+import controllers.LoginController;
+import controllers.ShellState;
+import controllers.UserController;
+import controllers.UserProfile;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class GuiLogin extends JDialog{ // when press sign in button
+class GuiLogin extends JDialog implements ActionListener { // when press sign in button
 //    public static void main(String[] args) {
 //        new GuiLogin("English");
 //    } // we will put english for now
 
-    public GuiLogin(final String language) {
-        LanguageGetter languageGetter = new LanguageGetter();
-        JPanel panel = new JPanel();
-        final JFrame frame = new JFrame(languageGetter.translateto(language).loginSystem());
+    LanguageGetter languageGetter = new LanguageGetter();
+    JPanel panel = new JPanel();
+    JFrame frame;
+    JLabel userId;
+    JLabel passwordLabel;
+    JButton loginButton;
+    JPasswordField passwordField;
+    JTextField userNameField;
+    ShellState shell;
+    String language;
+    JLabel messageLabel = new JLabel();
+
+
+
+    public GuiLogin(final String language, final ShellState shell) {
+        this.frame = new JFrame(languageGetter.translateTo(language).loginSystem());
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
 
-        JLabel userId = new JLabel(languageGetter.translateto(language).userID());
+        this.userId = new JLabel(languageGetter.translateTo(language).userID());
         userId.setBounds(10, 20, 80, 25);
-        JTextField userLink = new JTextField(20);
-        userLink.setBounds(100, 20, 165, 25);
+        this.userNameField = new JTextField(20);
+        userNameField.setBounds(100, 20, 165, 25);
 
-        JLabel passwordLabel = new JLabel(languageGetter.translateto(language).password());
+        this.passwordLabel = new JLabel(languageGetter.translateTo(language).password());
         passwordLabel.setBounds(10, 50, 80, 25);
-        JPasswordField passwordText = new JPasswordField();
-        passwordText.setBounds(100, 50, 165, 25);
+        this.passwordField = new JPasswordField();
+        passwordField.setBounds(100, 50, 165, 25);
+        messageLabel.setBounds(125,250,250,35);
+        messageLabel.setFont(new Font(null,Font.ITALIC,25));
 
-        JButton loginButton = new JButton(languageGetter.translateto(language).login());
+        this.loginButton = new JButton(languageGetter.translateTo(language).login());
         loginButton.setBounds(10, 80, 80, 25);
 
         panel.add(userId);
-        panel.add(userLink);
+        panel.add(userNameField);
         panel.add(passwordLabel);
-        panel.add(passwordText);
+        panel.add(passwordField);
         panel.add(loginButton);
-
-
-        //enter->出发输入框事件
-        UserAndPassword userAndPassword = new UserAndPassword();
-        passwordText.addActionListener(userAndPassword);
-        userLink.addActionListener(userAndPassword);
-        //设置替换编码
-        passwordText.setEchoChar('*'); //char
-
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //TODO change this so that we can check is this user is normal user or admin user
-                new GuiNormalUser(language);
-                new GuiAdminUser(language);
-                frame.dispose();
-            }
-        });
-
+        panel.add(messageLabel);
         frame.setVisible(true);
+        loginButton.addActionListener( this);
 
+        this.shell = shell;
+        this.language = language;
     }
 
-    //@SuppressWarnings("unchecked")
-
-    //private void LoginJBAction(java.awt.event.ActionEvent evt){
-    //    dispose();
-    //    GuiLogin guiLogin = new GuiLogin();
-    //    guiLogin.setVisible(true);
-    //}
-
-    static class UserAndPassword implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            JTextField field = (JTextField) e.getSource(); //获得资源，返回对象
-            System.out.println(field.getText()); //获得输入框中的文本
-
-            //if User d.n.e
-            field.setText("");
-            //System.out.println("Please Register first."); 也许要加新的page for instruction?
-
-            //if password is Wrong:
-            //field.setText(""); // set empty
-            //System.out.println("Wrong Password."); 也许要加新的page for instruction?
-
-            //if User and password correct
-            //if normal
-            //go to homepage-normal
-            //if Admin
-            //go to homepage-Admin
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loginButton) {
+            String username = userNameField.getText();
+            String password = String.valueOf(passwordField.getPassword());
+            UserController userController = shell.getLoginController().getUserController();
+            LoginController loginController = shell.getLoginController();
+            UserProfile userContext = loginController.Login(username, password);
+            shell.setUserProfile(userContext);
+            if (userContext != null) {
+                if (userController.isAdmin(username)) {
+                    new GuiAdminUser(language, shell);
+                    frame.dispose();
+                } else {
+                    new GuiNormalUser(language, shell);
+                    frame.dispose();
+                }
+            }else{
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("Invalid username/password.");
+            }
 
         }
+
     }
 }
+
+
+
 

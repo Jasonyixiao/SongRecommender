@@ -1,5 +1,7 @@
 package GUI;
 
+import controllers.ShellState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,20 +16,20 @@ class GuiNormalUser {
 //        new GuiNormalUser("English");
 //    }
 
-    public GuiNormalUser(final String language) {
-        LanguageGetter languageGetter = new LanguageGetter();
-        final JFrame frame = new JFrame(languageGetter.translateto(language).homepageNormalUser());
+    public GuiNormalUser(final String language, final ShellState shell) {
+        final LanguageGetter languageGetter = new LanguageGetter();
+        final JFrame frame = new JFrame(languageGetter.translateTo(language).homepageNormalUser());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
 
         JMenuBar jMenuBar = new JMenuBar();
-        JMenu m1 = new JMenu(languageGetter.translateto(language).userInfo());
-        JMenu m2 = new JMenu(languageGetter.translateto(language).listen());
-        JMenu m3 = new JMenu(languageGetter.translateto(language).notification());
-        JMenu m4 = new JMenu(languageGetter.translateto(language).recommend());
-        JMenu m5 = new JMenu(languageGetter.translateto(language).admin());
-        JMenu m6 = new JMenu(languageGetter.translateto(language).exit());
+        JMenu m1 = new JMenu(languageGetter.translateTo(language).userInfo());
+        JMenu m2 = new JMenu(languageGetter.translateTo(language).listen());
+        JMenu m3 = new JMenu(languageGetter.translateTo(language).notification());
+        JMenu m4 = new JMenu(languageGetter.translateTo(language).recommend());
+        JMenu m5 = new JMenu(languageGetter.translateTo(language).admin());
+        JMenu m6 = new JMenu(languageGetter.translateTo(language).exit());
         jMenuBar.add(m1);
         jMenuBar.add(m2);
         jMenuBar.add(m3);
@@ -35,15 +37,15 @@ class GuiNormalUser {
         jMenuBar.add(m5);
         jMenuBar.add(m6);
 
-        JMenuItem m11 = new JMenuItem(languageGetter.translateto(language).checkHistory());
-        JMenuItem m12 = new JMenuItem(languageGetter.translateto(language).logout());
-        JMenuItem m21 = new JMenuItem(languageGetter.translateto(language).songURL());
-        JMenuItem m31 = new JMenuItem(languageGetter.translateto(language).checkNewNotifications());
-        JMenuItem m32 = new JMenuItem(languageGetter.translateto(language).checkAllNotifications());
-        JMenuItem m41 = new JMenuItem(languageGetter.translateto(language).getRecommendSongs());
-        JMenuItem m42 = new JMenuItem(languageGetter.translateto(language).rateASong());
-        JMenuItem m43 = new JMenuItem(languageGetter.translateto(language).recommendToUser());
-        JMenuItem m51 = new JMenuItem(languageGetter.translateto(language).user());
+        JMenuItem m11 = new JMenuItem(languageGetter.translateTo(language).checkHistory());
+        JMenuItem m12 = new JMenuItem(languageGetter.translateTo(language).logout());
+        JMenuItem m21 = new JMenuItem(languageGetter.translateTo(language).songURL());
+        JMenuItem m31 = new JMenuItem(languageGetter.translateTo(language).checkNewNotifications());
+        JMenuItem m32 = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
+        JMenuItem m41 = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
+        JMenuItem m42 = new JMenuItem(languageGetter.translateTo(language).rateASong());
+        JMenuItem m43 = new JMenuItem(languageGetter.translateTo(language).recommendToUser());
+        JMenuItem m51 = new JMenuItem(languageGetter.translateTo(language).user());
         m1.add(m11);
         m1.add(m12);
         m2.add(m21);
@@ -59,7 +61,7 @@ class GuiNormalUser {
         m11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiHistory(language);
+                new GuiHistory(language,shell);
                 frame.dispose();
             }
         });
@@ -67,7 +69,7 @@ class GuiNormalUser {
         m12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiSign(language);
+                new GuiSign(language, shell);
                 frame.dispose();
             }
         });
@@ -78,18 +80,18 @@ class GuiNormalUser {
         m21.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiListen(language);
+                new GuiListen(language,shell);
                 frame.dispose();
             }
         });
 
 
-        //3.Notification
+        //3. Notification
         //go to GuiNewNotification page
         m31.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiNewNotification(language);
+                new GuiNotification(languageGetter.translateTo(language).checkNewNotifications(),language,shell);
                 frame.dispose();
             }
         });
@@ -97,18 +99,17 @@ class GuiNormalUser {
         m32.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAllNotification(language);
+                new GuiNotification(languageGetter.translateTo(language).checkAllNotifications(),language,shell);
                 frame.dispose();
             }
         });
-
 
         //4.Get Recommend Songs
         //go to GuiRecommendSong page
         m41.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiGetRecSong(language);
+                new GuiGetRecSong(language, shell);
                 frame.dispose();
             }
         });
@@ -116,8 +117,8 @@ class GuiNormalUser {
         m42.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] i = new String[0];
-                new GuiRateSong(i, language);
+
+                new GuiRateSong(language,shell);
                 frame.dispose();
             }
         });
@@ -126,7 +127,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
-                new GuiRecSongtoUser(language);
+                new GuiRecSongtoUser(language,shell);
                 frame.dispose();
             }
         }); ////////////

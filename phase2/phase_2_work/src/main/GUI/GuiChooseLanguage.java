@@ -1,16 +1,18 @@
 package GUI;
 
+import controllers.ShellState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GuiChooseLanguage extends JDialog {
-    public static void main(String[] args) {
-        new GuiChooseLanguage();
-    }
+//    public static void main(String[] args) {
+//        new GuiChooseLanguage(shell);
+//    }
 
-    public GuiChooseLanguage() {
+    public GuiChooseLanguage(final ShellState shell) {
 
         final JFrame frame = new JFrame();
         JButton button1 = new JButton("English");
@@ -40,7 +42,7 @@ public class GuiChooseLanguage extends JDialog {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiSign("English");
+                new GuiSign("English",shell);
                 frame.dispose();
             }
         });
@@ -50,7 +52,7 @@ public class GuiChooseLanguage extends JDialog {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiSign("Chinese");
+                new GuiSign("Chinese",shell);
                 frame.dispose();
             }
         });

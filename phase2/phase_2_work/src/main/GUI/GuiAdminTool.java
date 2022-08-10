@@ -15,7 +15,7 @@ public class GuiAdminTool extends JDialog {
 class GuiChangeUserAdmin{
     public GuiChangeUserAdmin(String language) {
         LanguageGetter languageGetter = new LanguageGetter();
-        new GuiFindUser(languageGetter.translateto(language).chooseUserToPromote(), language);
+        new GuiFindUser(languageGetter.translateTo(language).chooseUserToPromote(), language);
     }
 
 }
@@ -23,7 +23,7 @@ class GuiChangeUserAdmin{
 class GuiDelete{
     public GuiDelete(String language) {
         LanguageGetter languageGetter = new LanguageGetter();
-        new GuiFindUser(languageGetter.translateto(language).chooseUserToDelete(), language);
+        new GuiFindUser(languageGetter.translateTo(language).chooseUserToDelete(), language);
 
     }
 }
@@ -31,6 +31,6 @@ class GuiDelete{
 class GuiBan{
     public GuiBan(String language){
         LanguageGetter languageGetter = new LanguageGetter();
-        new GuiFindUser(languageGetter.translateto(language).chooseUserToBan(), language);
+        new GuiFindUser(languageGetter.translateTo(language).chooseUserToBan(), language);
     }
 }

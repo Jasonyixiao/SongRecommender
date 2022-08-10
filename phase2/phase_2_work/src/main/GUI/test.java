@@ -15,7 +15,7 @@ public class test {
         LanguageGetter languageGetter = new LanguageGetter();
         final JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle(languageGetter.translateto(language).notification());
+        frame.setTitle(languageGetter.translateTo(language).notification());
         frame.setSize(500, 500);
         JScrollPane jScrollPane = new JScrollPane();
         frame.add(jScrollPane);

@@ -15,7 +15,7 @@ public class LanguageGetter {
         languageMap.put("English", new English());
     }
 
-    public ILanguage translateto(String language) {
+    public ILanguage translateTo(String language) {
         return languageMap.get(language);
     }
 

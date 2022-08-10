@@ -126,6 +126,19 @@ public class UserController {
         }
     }
 
+    /**
+     * This method will save the user data.
+     * @throws IOException
+     */
     public void saveUserData() throws IOException {userManager.save();
+    }
+
+    /**
+     * This method will check if a user is admin.
+     * @param username is the username of the user being checked.
+     * @return true iff the user is admin.
+     */
+    public boolean isAdmin(String username){
+        return userManager.checkIsAdmin(username);
     }
 }

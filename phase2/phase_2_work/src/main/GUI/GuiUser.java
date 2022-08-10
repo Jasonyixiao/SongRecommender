@@ -13,7 +13,7 @@ public class GuiUser {
         LanguageGetter languageGetter = new LanguageGetter();
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle(languageGetter.translateto(language).user());
+        frame.setTitle(languageGetter.translateTo(language).user());
         frame.setSize(500, 500);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
         frame.add(new JButton("User1")); // replace "User1" ...  with usernames

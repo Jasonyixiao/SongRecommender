@@ -1,5 +1,7 @@
 package GUI;
 
+import controllers.ShellState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,23 +11,23 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class GuiGetRecSong {
 
-    public GuiGetRecSong(final String language) {
+    public GuiGetRecSong(final String language, final ShellState shell) {
         LanguageGetter languageGetter = new LanguageGetter();
         final JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle(languageGetter.translateto(language).recommendSongs());
+        frame.setTitle(languageGetter.translateTo(language).recommendSongs());
         frame.setSize(500, 4000);
         JPanel panel = new JPanel();
         frame.add(panel);
         panel.setLayout(null);
-        JButton button2 = new JButton(languageGetter.translateto(language).back());
+        JButton button2 = new JButton(languageGetter.translateTo(language).back());
         button2.setBounds(400,10,80,25);
         panel.add(button2);
 
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAdminUser(language); // here we need to add a if statement to check if the current user is normal user or admin user
+                new GuiAdminUser(language, shell); // here we need to add a if statement to check if the current user is normal user or admin user
                 frame.dispose();
             }
         });
@@ -35,7 +37,7 @@ public class GuiGetRecSong {
         frame.setVisible(true);
 
     }
-    public static void main(String[] args) {
-        new GuiGetRecSong("English");
-    }
+//    public static void main(String[] args) {
+//        new GuiGetRecSong("English", );
+//    }
 }

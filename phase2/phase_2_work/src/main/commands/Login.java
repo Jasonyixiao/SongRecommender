@@ -30,7 +30,7 @@ public class Login implements ICommands {
         System.out.print("Password:  ");
         String password = scanner.nextLine();
         UserController userController = shellState.getLoginController().getUserController();  // disgusting
-        LoginController loginController = new LoginController(userController);
+        LoginController loginController = shellState.getLoginController();
         UserProfile userContext = loginController.Login(username,password);
         shellState.setUserProfile(userContext);
         if (userContext != null) {

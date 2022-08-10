@@ -107,6 +107,18 @@ public class UserManager {
         }
     }
 
+    /**
+     * Checks if a user is admin user.
+     * @param username is the username of the user
+     * @return true iff the user is admin
+     */
+    public boolean checkIsAdmin(String username){
+        if(allUsers.get(username).getIsAdmin()==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     /**
      * This method will let admin users promote a normal user to admin user.

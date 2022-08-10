@@ -1,5 +1,7 @@
 package GUI;
 
+import controllers.ShellState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,11 +10,11 @@ import java.awt.event.ActionListener;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class GuiHistory {
-    public GuiHistory(final String language) {
+    public GuiHistory(final String language, final ShellState shell) {
         LanguageGetter languageGetter = new LanguageGetter();
         final JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle(languageGetter.translateto(language).LoginHistory());
+        frame.setTitle(languageGetter.translateTo(language).LoginHistory());
         frame.setSize(500, 500);
         JPanel panel = new JPanel();
         frame.add(panel);
@@ -22,19 +24,19 @@ public class GuiHistory {
         frame.add(new JButton("Login History2:")); // or use a for loop
         frame.add(new JButton("Login History3:")); // TODO connnect this to the controller
         frame.setVisible(true);
-        JButton button2 = new JButton(languageGetter.translateto(language).back());
+        JButton button2 = new JButton(languageGetter.translateTo(language).back());
         button2.setBounds(400,10,80,25);
         panel.add(button2);
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAdminUser(language); // here we need to add a if statement to check if the current user is normal user or admin user
+                new GuiAdminUser(language,shell); // here we need to add a if statement to check if the current user is normal user or admin user
                 frame.dispose();
             }
         });
 
     }
-    public static void main(String[] args) {
-        new GuiHistory("English");
-    }
+//    public static void main(String[] args) {
+//        new GuiHistory("English");
+//    }
 }

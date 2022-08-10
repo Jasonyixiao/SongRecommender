@@ -237,7 +237,8 @@ public class UserManager {
         }catch (ClassNotFoundException ignored){
         }
     }
-    public void save() {
+    public void save() throws IOException {
+        gateWay.save(allUsers, gateWay.getUserFile());
         try {
             gateWay.save(allUsers, gateWay.getUserFile());
         } catch (IOException e) {

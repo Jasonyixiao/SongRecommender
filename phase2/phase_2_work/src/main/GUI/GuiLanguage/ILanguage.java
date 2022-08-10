@@ -1,6 +1,6 @@
 package GUI.GuiLanguage;
 
-public interface language {
+public interface ILanguage {
     public String ChooseUserToPromote();
 
     public String ChooseUserToDelete();

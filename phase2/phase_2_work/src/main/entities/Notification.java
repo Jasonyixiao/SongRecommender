@@ -1,11 +1,13 @@
 package entities;
 
+import java.io.Serializable;
+
 /**
  * This class represents a Notification in the program.
  */
 
 // Note we possibly can separate out recommend and message as two separate classes that extends Notification
-public class Notification {
+public class Notification implements Serializable {
     private String content; // for now it is an url of a song, we use this for recommending a song to a user.
 
     private String message;

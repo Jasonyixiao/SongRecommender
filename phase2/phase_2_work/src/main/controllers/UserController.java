@@ -2,6 +2,7 @@ package controllers;
 
 import usecases.UserManager;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -125,6 +126,6 @@ public class UserController {
         }
     }
 
-    public void saveUserData() {userManager.save();
+    public void saveUserData() throws IOException {userManager.save();
     }
 }

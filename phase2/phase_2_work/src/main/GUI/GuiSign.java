@@ -9,7 +9,7 @@ class GuiSign extends JDialog {
     public static void main(String[] args) {
         new GuiSign("English");
     }
-    //Todo we need to create a separate panel where we ask the user for their language of preference.
+    //Todo we need to create a separate panel where we ask the user for their ILanguage of preference.
 
     private static JButton button1, button2;
     private static JLabel label1, label2;

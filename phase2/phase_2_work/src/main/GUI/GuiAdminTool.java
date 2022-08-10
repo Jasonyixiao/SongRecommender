@@ -13,7 +13,9 @@ public class GuiAdminTool extends JDialog {
     }
 }
 
-
+/**
+ * This class is responsible for admin user to create another admin user.
+ */
 class GuiChangeUserAdmin{
     public GuiChangeUserAdmin(String language) {
         LanguageGetter languageGetter = new LanguageGetter();
@@ -22,6 +24,9 @@ class GuiChangeUserAdmin{
 
 }
 
+/**
+ * This Class is responsible for deleting a user.
+ */
 class GuiDelete{
     public GuiDelete(String language) {
         LanguageGetter languageGetter = new LanguageGetter();
@@ -30,6 +35,9 @@ class GuiDelete{
     }
 }
 
+/**
+ * This Class is responsible for banning a normal user.
+ */
 class GuiBan{
     public GuiBan(String language){
         LanguageGetter languageGetter = new LanguageGetter();

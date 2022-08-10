@@ -13,6 +13,9 @@ public class GuiGetNotification extends JDialog {
     }
 }
 
+/**
+ * This class is responsible for calling the new notification page.
+ */
 class GuiNewNotification{
     LanguageGetter languageGetter = new LanguageGetter();
     public GuiNewNotification(String language) {
@@ -21,6 +24,9 @@ class GuiNewNotification{
 
 }
 
+/**
+ * This class is responsible for calling the all notification page.
+ */
 class GuiAllNotification{
     public GuiAllNotification(String language) {
         LanguageGetter languageGetter = new LanguageGetter();

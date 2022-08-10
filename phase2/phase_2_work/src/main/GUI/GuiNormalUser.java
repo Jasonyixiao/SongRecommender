@@ -169,6 +169,10 @@ class GuiNormalUser {
         frame.setVisible(true);
     }
 
+    /**
+     * This method will close the window.
+     * @param frame is the current frame of the window.
+     */
     private static void windowClose(Frame frame) {
         frame.addWindowListener(new WindowAdapter() {
             @Override

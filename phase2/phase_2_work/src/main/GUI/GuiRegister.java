@@ -19,8 +19,8 @@ class GuiRegister extends JDialog{
         frame.add(panel);
         panel.setLayout(null);
 
-        JLabel label = new JLabel(languageGetter.translateto(language).userID());
-        label.setBounds(10, 20, 80, 25);
+        JLabel userLabel = new JLabel(languageGetter.translateto(language).userID());
+        userLabel.setBounds(10, 20, 80, 25);
         JTextField userLink = new JTextField(20);
         userLink.setBounds(100, 20, 165, 25);
 
@@ -34,7 +34,7 @@ class GuiRegister extends JDialog{
         JLabel success = new JLabel("");
         success.setBounds(10, 110, 300, 25);
 
-        panel.add(label);
+        panel.add(userLabel);
         panel.add(userLink);
         panel.add(passwordLabel);
         panel.add(passwordText);
@@ -42,8 +42,12 @@ class GuiRegister extends JDialog{
         panel.add(success);
 
 
-        //Password enter->出发输入框事件
+
         UserAndPassword userAndPassword = new UserAndPassword();
+        //User enter
+        passwordText.addActionListener(userAndPassword);
+        userLink.addActionListener(userAndPassword);
+        //Password enter
         passwordText.addActionListener(userAndPassword);
         userLink.addActionListener(userAndPassword);
 
@@ -61,16 +65,11 @@ class GuiRegister extends JDialog{
 
         frame.setVisible(true);
 
-
     }
 
-    // @SuppressWarnings("unchecked")
-    //private void RegisterJBAction(java.awt.event.ActionEvent evt){
-    //    dispose();
-    //    GuiRegister guiRegister = new GuiRegister();
-    //    guiRegister.setVisible(true);
-    //}
-
+    /**
+     * This class gets the source for the user and the password that the customer entered.
+     */
     static class UserAndPassword implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

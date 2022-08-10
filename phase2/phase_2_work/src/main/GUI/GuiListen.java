@@ -35,6 +35,11 @@ class GuiListen extends JDialog{
         JButton button2 = new JButton(languageGetter.translateto(language).back());
         button2.setBounds(400,10,80,25);
 
+        panel.add(label);
+        panel.add(urlLink);
+        panel.add(button);
+        panel.add(button2);
+
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,11 +48,6 @@ class GuiListen extends JDialog{
             }
         });
 
-
-        panel.add(label);
-        panel.add(urlLink);
-        panel.add(button);
-        panel.add(button2);
         frame.setVisible(true);
     }
 

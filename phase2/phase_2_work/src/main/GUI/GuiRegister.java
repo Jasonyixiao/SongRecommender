@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class is used for registering.
+ */
 class GuiRegister extends JDialog{
 
     public GuiRegister(final String language, final ShellState shell) {

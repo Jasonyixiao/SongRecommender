@@ -3,11 +3,33 @@ package GUI.GuiLanguage;
 public class English implements ILanguage {
     public English() {
     }
-    public String ChooseUserToPromote(){
+    public String chooseUserToPromote(){
         return "Choose User to Admin";
     }
+    @Override
+    public String register(){
+        return "register";
+    }
+    @Override
+    public String homepageNormalUser() {
+        return "homepage normal user";
+    }
+    @Override
+    public String registerSystem(){
+        return"Register System";
+    }
 
-    public String ChooseUserToDelete(){
+    @Override
+    public String userInfo() {
+        return "User info";
+    }
+
+    @Override
+    public String LoginHistory() {
+        return "Login History";
+    }
+
+    public String chooseUserToDelete(){
         return "Choose User to Delete";
     }
 
@@ -15,164 +37,164 @@ public class English implements ILanguage {
         return "Choose User to Ban";
     }
 
-    public String HomepageAdminUser(){
+    public String homepageAdminUser(){
         return "Homepage-Admin User";
     }
 
-    public String Notification(){
+    public String notification(){
         return "Notification";
     }
 
-    public String Recommend(){
+    public String recommend(){
         return "Recommend";
     }
 
-    public String Admin(){
+    public String admin(){
         return "Admin";
     }
 
     @Override
-    public String Other() {
+    public String other() {
         return "Other";
     }
 
     @Override
-    public String Exit() {
+    public String exit() {
         return "Exit";
     }
 
     @Override
-    public String CheckHistory() {
+    public String checkHistory() {
         return "Check History";
     }
 
     @Override
-    public String LogOut() {
+    public String logout() {
         return "Logout";
     }
 
     @Override
-    public String CheckNewNotifications() {
+    public String checkNewNotifications() {
         return "Check New Notifications";
     }
 
     @Override
-    public String CheckAllNotifications() {
+    public String checkAllNotifications() {
         return "Check All Notifications";
     }
 
     @Override
-    public String GetRecommendSongs() {
+    public String getRecommendSongs() {
         return "Get Recommend Songs";
     }
 
     @Override
-    public String RateASong() {
+    public String rateASong() {
         return "RateSong";
     }
 
     @Override
-    public String RecommendToUser() {
+    public String recommendToUser() {
         return "Recommend to User";
     }
 
     @Override
-    public String User() {
+    public String user() {
         return "User";
     }
 
     @Override
-    public String Ban() {
+    public String ban() {
         return "Ban";
     }
 
     @Override
-    public String Delete() {
+    public String delete() {
         return "Delete";
     }
 
     @Override
-    public String UserName() {
+    public String userName() {
         return "Username";
     }
 
     @Override
-    public String Search() {
+    public String search() {
         return "Search";
     }
 
     @Override
-    public String NewNotifications() {
+    public String newNotifications() {
         return "NewNotifications";
     }
 
     @Override
-    public String AllNotifications() {
+    public String allNotifications() {
         return "All Notifications";
     }
 
     @Override
-    public String RecommendSongs() {
+    public String recommendSongs() {
         return "Recommend Songs";
     }
 
     @Override
-    public String Listen() {
+    public String listen() {
         return "Listen";
     }
 
     @Override
-    public String SongURL() {
+    public String songURL() {
         return "Song Url";
     }
 
     @Override
-    public String LoginSystem() {
+    public String loginSystem() {
         return "Login System";
     }
 
     @Override
-    public String UserID() {
+    public String userID() {
         return "User ID";
     }
 
     @Override
-    public String Password() {
+    public String password() {
         return "Password";
     }
 
     @Override
-    public String Login() {
+    public String login() {
         return "Login";
     }
 
     @Override
-    public String SongName() {
+    public String songName() {
         return "Song Name";
     }
 
     @Override
-    public String Rate() {
+    public String rate() {
         return "Rate";
     }
 
     @Override
-    public String Yes() {
+    public String yes() {
         return "Yes";
     }
 
     @Override
-    public String ForExistedUser() {
+    public String forExistedUser() {
         return "For Existed User";
     }
 
     @Override
-    public String ForNewUser() {
+    public String forNewUser() {
         return "For New User";
     }
 
     @Override
-    public String Welcome() {
+    public String welcome() {
         return "Welcome";
     }
 

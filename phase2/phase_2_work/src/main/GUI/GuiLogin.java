@@ -9,34 +9,30 @@ class GuiLogin extends JDialog{ // when press sign in button
 //        new GuiLogin("English");
 //    } // we will put english for now
 
-    private static JLabel UserId, passwordLabel;
-    private static JTextField UserLink;
-    private static JPasswordField passwordText;
-    private static JButton loginButton;
-
     public GuiLogin(final String language) {
+        LanguageGetter languageGetter = new LanguageGetter();
         JPanel panel = new JPanel();
-        final JFrame frame = new JFrame("Login System");
+        final JFrame frame = new JFrame(languageGetter.translateto(language).loginSystem());
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
 
-        UserId = new JLabel("User ID");
-        UserId.setBounds(10, 20, 80, 25);
-        UserLink = new JTextField(20);
-        UserLink.setBounds(100, 20, 165, 25);
+        JLabel userId = new JLabel(languageGetter.translateto(language).userID());
+        userId.setBounds(10, 20, 80, 25);
+        JTextField userLink = new JTextField(20);
+        userLink.setBounds(100, 20, 165, 25);
 
-        passwordLabel = new JLabel("Password");
+        JLabel passwordLabel = new JLabel(languageGetter.translateto(language).password());
         passwordLabel.setBounds(10, 50, 80, 25);
-        passwordText = new JPasswordField();
+        JPasswordField passwordText = new JPasswordField();
         passwordText.setBounds(100, 50, 165, 25);
 
-        loginButton = new JButton("Login");
+        JButton loginButton = new JButton(languageGetter.translateto(language).login());
         loginButton.setBounds(10, 80, 80, 25);
 
-        panel.add(UserId);
-        panel.add(UserLink);
+        panel.add(userId);
+        panel.add(userLink);
         panel.add(passwordLabel);
         panel.add(passwordText);
         panel.add(loginButton);
@@ -45,13 +41,14 @@ class GuiLogin extends JDialog{ // when press sign in button
         //enter->出发输入框事件
         UserAndPassword userAndPassword = new UserAndPassword();
         passwordText.addActionListener(userAndPassword);
-        UserLink.addActionListener(userAndPassword);
+        userLink.addActionListener(userAndPassword);
         //设置替换编码
         passwordText.setEchoChar('*'); //char
 
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //TODO change this so that we can check is this user is normal user or admin user
                 new GuiNormalUser(language);
                 new GuiAdminUser(language);
                 frame.dispose();

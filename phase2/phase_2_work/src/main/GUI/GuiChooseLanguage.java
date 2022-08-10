@@ -5,20 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class GuiSign extends JDialog {
+public class GuiChooseLanguage extends JDialog {
     public static void main(String[] args) {
-        new GuiSign("English");
+        new GuiChooseLanguage();
     }
 
-    public GuiSign(final String language){  //first frame shows the register button and sign in button.
+    public GuiChooseLanguage() {
+
         final JFrame frame = new JFrame();
+        JButton button1 = new JButton("English");
+        JButton button2 = new JButton("中文");
 
-        LanguageGetter languageGetter = new LanguageGetter();
-        JButton button1 = new JButton(languageGetter.translateto(language).login());
-        JButton button2 = new JButton(languageGetter.translateto(language).register());
+        JLabel label1 = new JLabel("For English User");
+        JLabel label2 = new JLabel("中文页面");
 
-        JLabel label1 = new JLabel(languageGetter.translateto(language).forExistedUser());
-        JLabel label2 = new JLabel(languageGetter.translateto(language).forNewUser());
 
         JPanel panel1 = new JPanel();
         JPanel panel2 = new JPanel();
@@ -40,7 +40,7 @@ class GuiSign extends JDialog {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiLogin(language);
+                new GuiSign("English");
                 frame.dispose();
             }
         });
@@ -50,26 +50,14 @@ class GuiSign extends JDialog {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiRegister(language);
+                new GuiSign("Chinese");
                 frame.dispose();
             }
         });
 
         // LoginJBAction(button1);
-        frame.setTitle(languageGetter.translateto(language).welcome());
+        frame.setTitle("welcome");
         frame.pack();
         frame.setVisible(true);
-
-
-        // MyActionListener myActionListener = new MyActionListener();
-        // button1.addActionListener(myActionListener);
     }
-
 }
-
-//class MyActionListener implements ActionListener {
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//        System.out.println("Hiiii");
-//    }
-//}

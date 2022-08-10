@@ -6,15 +6,16 @@ import java.awt.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class GuiHistory {
-    public GuiHistory() {
+    public GuiHistory(String language) {
+        LanguageGetter languageGetter = new LanguageGetter();
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle("Login History");
+        frame.setTitle(languageGetter.translateto(language).LoginHistory());
         frame.setSize(500, 500);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
         frame.add(new JButton("Login History1:")); // get rid of "login History 1"... just put 1, 2, 3 instead
         frame.add(new JButton("Login History2:")); // or use a for loop
-        frame.add(new JButton("Login History3:"));
+        frame.add(new JButton("Login History3:")); // TODO connnect this to the controller
         frame.add(new JButton("Login History4:"));
         frame.add(new JButton("Login History5:"));
         frame.add(new JButton("Login History6:"));
@@ -26,6 +27,6 @@ public class GuiHistory {
 
     }
     public static void main(String[] args) {
-        new GuiHistory();
+        new GuiHistory("English");
     }
 }

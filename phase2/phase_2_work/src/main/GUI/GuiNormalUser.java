@@ -7,29 +7,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static javax.swing.JFrame.*;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 class GuiNormalUser {
     public static void main(String[] args) {
         new GuiNormalUser("English");
     }
-    private static JMenuBar jMenuBar;
-    private static JMenu m1, m2, m3, m4, m5, m6;
-    private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m52;
 
     public GuiNormalUser(final String language) {
-        final JFrame frame = new JFrame("Homepage-NormalUser");
+        LanguageGetter languageGetter = new LanguageGetter();
+        final JFrame frame = new JFrame(languageGetter.translateto(language).homepageNormalUser());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
 
-        jMenuBar = new JMenuBar();
-        m1 = new JMenu("User Information");
-        m2 = new JMenu("Listen");
-        m3 = new JMenu("Notification");
-        m4 = new JMenu("Recommend");
-        m5 = new JMenu("Admin");
-        m6 = new JMenu("Exit");
+        JMenuBar jMenuBar = new JMenuBar();
+        JMenu m1 = new JMenu(languageGetter.translateto(language).userInfo());
+        JMenu m2 = new JMenu(languageGetter.translateto(language).listen());
+        JMenu m3 = new JMenu(languageGetter.translateto(language).notification());
+        JMenu m4 = new JMenu(languageGetter.translateto(language).recommend());
+        JMenu m5 = new JMenu(languageGetter.translateto(language).admin());
+        JMenu m6 = new JMenu(languageGetter.translateto(language).exit());
         jMenuBar.add(m1);
         jMenuBar.add(m2);
         jMenuBar.add(m3);
@@ -37,23 +35,21 @@ class GuiNormalUser {
         jMenuBar.add(m5);
         jMenuBar.add(m6);
 
-        m11 = new JMenuItem("Check History");
-        m12 = new JMenuItem("Log Out");
-        m21 = new JMenuItem("url");
-        m31 = new JMenuItem("Check new notifications");
-        m32 = new JMenuItem("Check all notifications");
-        m41 = new JMenuItem("Get Recommend Songs");
-        m42 = new JMenuItem("Rate a Song");
-        m43 = new JMenuItem("Recommend to User");
-        m51 = new JMenuItem("User");
-        m52 = new JMenuItem("Self"); //TODO delete this line
+        JMenuItem m11 = new JMenuItem(languageGetter.translateto(language).checkHistory());
+        JMenuItem m12 = new JMenuItem(languageGetter.translateto(language).logout());
+        JMenuItem m21 = new JMenuItem(languageGetter.translateto(language).songURL());
+        JMenuItem m31 = new JMenuItem(languageGetter.translateto(language).checkNewNotifications());
+        JMenuItem m32 = new JMenuItem(languageGetter.translateto(language).checkAllNotifications());
+        JMenuItem m41 = new JMenuItem(languageGetter.translateto(language).getRecommendSongs());
+        JMenuItem m42 = new JMenuItem(languageGetter.translateto(language).rateASong());
+        JMenuItem m43 = new JMenuItem(languageGetter.translateto(language).recommendToUser());
+        JMenuItem m51 = new JMenuItem(languageGetter.translateto(language).user());
         m1.add(m11);
         m1.add(m12);
         m2.add(m21);
         m3.add(m31);
         m3.add(m32);
         m5.add(m51);
-        m5.add(m52);
         m4.add(m41);
         m4.add(m42);
         m4.add(m43);
@@ -63,7 +59,7 @@ class GuiNormalUser {
         m11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiHistory();
+                new GuiHistory(language);
                 frame.dispose();
             }
         });
@@ -82,7 +78,7 @@ class GuiNormalUser {
         m21.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiListen();
+                new GuiListen(language);
                 frame.dispose();
             }
         });
@@ -93,7 +89,7 @@ class GuiNormalUser {
         m31.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiNewNotification();
+                new GuiNewNotification(language);
                 frame.dispose();
             }
         });
@@ -101,7 +97,7 @@ class GuiNormalUser {
         m32.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAllNotification();
+                new GuiAllNotification(language);
                 frame.dispose();
             }
         });
@@ -112,7 +108,7 @@ class GuiNormalUser {
         m41.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiGetRecSong();
+                new GuiGetRecSong(language);
                 frame.dispose();
             }
         });
@@ -121,7 +117,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
-                new GuiRateSong(i);
+                new GuiRateSong(i, language);
                 frame.dispose();
             }
         });
@@ -130,7 +126,7 @@ class GuiNormalUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
-                new GuiRecSongtoUser();
+                new GuiRecSongtoUser(language);
                 frame.dispose();
             }
         }); ////////////
@@ -141,15 +137,7 @@ class GuiNormalUser {
         m51.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiChangeUserAdmin();
-                frame.dispose();
-            }
-        });
-        //go to GuiAdminUser page
-        m52.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiAdminUser(language);
+                new GuiChangeUserAdmin(language);
                 frame.dispose();
             }
         });

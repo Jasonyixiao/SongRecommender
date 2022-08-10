@@ -3,29 +3,26 @@ package GUI;
 import javax.swing.*;
 
 public class GuiFindUser {
-    private static JLabel label;
-    private static JTextField UserName;
-    private static JButton button;
 
-    public GuiFindUser(String title) {
-
+    public GuiFindUser(String title, String language) {
+        LanguageGetter languageGetter = new LanguageGetter();
         JPanel panel = new JPanel();
         JFrame frame = new JFrame(title);
         frame.setSize(500,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
-        label = new JLabel("User name:");
+        JLabel label = new JLabel(languageGetter.translateto(language).userName());
         label.setBounds(10, 20, 80, 25);
 
-        UserName = new JTextField();
-        UserName.setBounds(100, 20, 165, 25);
+        JTextField userName = new JTextField();
+        userName.setBounds(100, 20, 165, 25);
 
-        button = new JButton("Search");
+        JButton button = new JButton(languageGetter.translateto(language).search());
         button.setBounds(10, 80, 80, 25);
 
         panel.add(label);
-        panel.add(UserName);
+        panel.add(userName);
         panel.add(button);
         frame.setVisible(true);
     }

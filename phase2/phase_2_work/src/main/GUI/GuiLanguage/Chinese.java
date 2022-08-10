@@ -3,177 +3,199 @@ package GUI.GuiLanguage;
 public class Chinese implements ILanguage {
     public Chinese() {
     }
-
-    public String ChooseUserToPromote(){
-        return "Choose User to Admin";
+    @Override
+    public String register(){
+        return "注册";
     }
 
-    public String ChooseUserToDelete(){
-        return "Choose User to Delete";
+    public String chooseUserToPromote(){
+        return "选择要提升成管理员的用户";
+    }
+
+    public String chooseUserToDelete(){
+        return "选择需要删除的用户";
     }
 
     public String chooseUserToBan(){
-        return "Choose User to Ban";
+        return "选择封号的用户";
     }
 
-    public String HomepageAdminUser(){
-        return "Homepage-Admin User";
+    public String homepageAdminUser(){
+        return "管理员的主页面";
     }
 
-    public String Notification(){
-        return "Notification";
+    public String notification(){
+        return "信息";
     }
 
-    public String Recommend(){
-        return "Recommend";
+    public String recommend() {
+        return "推荐";
     }
 
-    public String Admin(){
-        return "Admin";
-    }
-
-    @Override
-    public String Other() {
-        return "Other";
+    public String admin(){
+        return "管理员";
     }
 
     @Override
-    public String Exit() {
-        return "Exit";
+    public String other() {
+        return "其他";
     }
 
     @Override
-    public String CheckHistory() {
-        return "Check History";
+    public String exit() {
+        return "退出";
     }
 
     @Override
-    public String LogOut() {
-        return "Logout";
+    public String checkHistory() {
+        return "查看历史记录";
     }
 
     @Override
-    public String CheckNewNotifications() {
-        return "Check New Notifications";
+    public String logout() {
+        return "登出";
     }
 
     @Override
-    public String CheckAllNotifications() {
-        return "Check All Notifications";
+    public String checkNewNotifications() {
+        return "查看最新通知";
     }
 
     @Override
-    public String GetRecommendSongs() {
-        return "Get Recommend Songs";
+    public String checkAllNotifications() {
+        return "查看所有通知";
     }
 
     @Override
-    public String RateASong() {
-        return "RateSong";
+    public String getRecommendSongs() {
+        return "获取推荐歌曲";
     }
 
     @Override
-    public String RecommendToUser() {
-        return "Recommend to User";
+    public String rateASong() {
+        return "为歌曲评分";
     }
 
     @Override
-    public String User() {
-        return "User";
+    public String recommendToUser() {
+        return "推荐歌曲";
     }
 
     @Override
-    public String Ban() {
-        return "Ban";
+    public String user() {
+        return "用户";
     }
 
     @Override
-    public String Delete() {
-        return "Delete";
+    public String ban() {
+        return "封号";
     }
 
     @Override
-    public String UserName() {
-        return "Username";
+    public String delete() {
+        return "删除";
     }
 
     @Override
-    public String Search() {
-        return "Search";
+    public String userName() {
+        return "用户名";
     }
 
     @Override
-    public String NewNotifications() {
-        return "NewNotifications";
+    public String search() {
+        return "查询";
     }
 
     @Override
-    public String AllNotifications() {
-        return "All Notifications";
+    public String newNotifications() {
+        return "新通知";
     }
 
     @Override
-    public String RecommendSongs() {
-        return "Recommend Songs";
+    public String allNotifications() {
+        return "所有通知";
     }
 
     @Override
-    public String Listen() {
-        return "Listen";
+    public String recommendSongs() {
+        return "推荐歌曲";
     }
 
     @Override
-    public String SongURL() {
-        return "Song Url";
+    public String listen() {
+        return "听歌";
     }
 
     @Override
-    public String LoginSystem() {
-        return "Login System";
+    public String songURL() {
+        return "歌曲链接";
     }
 
     @Override
-    public String UserID() {
-        return "User ID";
+    public String loginSystem() {
+        return "登录系统";
     }
 
     @Override
-    public String Password() {
-        return "Password";
+    public String userID() {
+        return "用户名";
     }
 
     @Override
-    public String Login() {
-        return "Login";
+    public String password() {
+        return "密码";
     }
 
     @Override
-    public String SongName() {
-        return "Song Name";
+    public String login() {
+        return "登陆";
     }
 
     @Override
-    public String Rate() {
-        return "Rate";
+    public String songName() {
+        return "歌曲名字";
     }
 
     @Override
-    public String Yes() {
-        return "Yes";
+    public String rate() {
+        return "打分";
     }
 
     @Override
-    public String ForExistedUser() {
-        return "For Existed User";
+    public String yes() {
+        return "是";
     }
 
     @Override
-    public String ForNewUser() {
-        return "For New User";
+    public String forExistedUser() {
+        return "已注册用户";
     }
 
     @Override
-    public String Welcome() {
-        return "Welcome";
+    public String forNewUser() {
+        return "新用户";
+    }
+    @Override
+    public String LoginHistory() {
+        return "登录历史";
+    }
+
+    @Override
+    public String homepageNormalUser() {
+        return "普通用户主界面";
+    }
+
+    @Override
+    public String registerSystem(){
+        return"注册系统";
+    }
+
+    @Override
+    public String welcome() {
+        return "欢迎";
+    }
+    @Override
+    public String userInfo() {
+        return "用户信息";
     }
 }

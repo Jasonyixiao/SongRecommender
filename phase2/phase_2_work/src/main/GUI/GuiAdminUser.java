@@ -14,24 +14,21 @@ public class GuiAdminUser {
         new GuiAdminUser("English");
     } // set default to english
 
-    private static JMenuBar jMenuBar;
-    private static JMenu m1, m2, m3, m4, m5, m6;
-    private static JMenuItem m11, m12, m21, m31, m32, m41, m42, m43, m51, m61, m62, m7;
-
     public GuiAdminUser(final String language) { // add parameter
-        final JFrame frame = new JFrame("Homepage-Admin User");
+        LanguageGetter languageGetter = new LanguageGetter();
+        final JFrame frame = new JFrame(languageGetter.translateto(language).homepageAdminUser());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
 
-        jMenuBar = new JMenuBar();
-        m1 = new JMenu("UserInfo"); //return "user information" in chinese
-        m2 = new JMenu("Listen");
-        m3 = new JMenu("Notification");
-        m4 = new JMenu("Recommend");
-        m5 = new JMenu("Admin");
-        m6 = new JMenu("Other");
-        m7 = new JMenu("Exit");
+        JMenuBar jMenuBar = new JMenuBar();
+        JMenu m1 = new JMenu(languageGetter.translateto(language).userInfo()); //return "user information" in chinese
+        JMenu m2 = new JMenu(languageGetter.translateto(language).listen());
+        JMenu m3 = new JMenu(languageGetter.translateto(language).notification());
+        JMenu m4 = new JMenu(languageGetter.translateto(language).recommend());
+        JMenu m5 = new JMenu(languageGetter.translateto(language).admin());
+        JMenu m6 = new JMenu(languageGetter.translateto(language).other());
+        JMenuItem m7 = new JMenu(languageGetter.translateto(language).exit());
         jMenuBar.add(m1);
         jMenuBar.add(m2);
         jMenuBar.add(m3);
@@ -41,17 +38,17 @@ public class GuiAdminUser {
         jMenuBar.add(m7);
 
 
-        m11 = new JMenuItem("Check History");
-        m12 = new JMenuItem("Log Out");
-        m21 = new JMenuItem("url");
-        m31 = new JMenuItem("Check new notifications");
-        m32 = new JMenuItem("Check all notifications");
-        m41 = new JMenuItem("Get Recommend Songs");
-        m42 = new JMenuItem("Rate a Song");
-        m43 = new JMenuItem("Recommend to User");
-        m51 = new JMenuItem("User");
-        m61 = new JMenuItem("Ban");
-        m62 = new JMenuItem("Delete");
+        JMenuItem m11 = new JMenuItem(languageGetter.translateto(language).checkHistory());
+        JMenuItem m12 = new JMenuItem(languageGetter.translateto(language).logout());
+        JMenuItem m21 = new JMenuItem(languageGetter.translateto(language).songURL());
+        JMenuItem m31 = new JMenuItem(languageGetter.translateto(language).checkNewNotifications());
+        JMenuItem m32 = new JMenuItem(languageGetter.translateto(language).checkAllNotifications());
+        JMenuItem m41 = new JMenuItem(languageGetter.translateto(language).getRecommendSongs());
+        JMenuItem m42 = new JMenuItem(languageGetter.translateto(language).rateASong());
+        JMenuItem m43 = new JMenuItem(languageGetter.translateto(language).recommendToUser());
+        JMenuItem m51 = new JMenuItem(languageGetter.translateto(language).user());
+        JMenuItem m61 = new JMenuItem(languageGetter.translateto(language).ban());
+        JMenuItem m62 = new JMenuItem(languageGetter.translateto(language).delete());
         m1.add(m11);
         m1.add(m12);
         m2.add(m21);
@@ -66,7 +63,7 @@ public class GuiAdminUser {
 
         frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
         frame.add(new JButton("song1")); // we don't need this we will change this to song name, no need to translate
-        frame.add(new JButton("song2"));
+        frame.add(new JButton("song2")); // TODO connect this to the controller and replace this with a for loop
         frame.add(new JButton("song3"));
         frame.add(new JButton("song4"));
         frame.add(new JButton("song5"));
@@ -81,7 +78,7 @@ public class GuiAdminUser {
         m11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiHistory();
+                new GuiHistory(language); // TODO add language as a parameter
                 frame.dispose();
             }
         });
@@ -99,7 +96,7 @@ public class GuiAdminUser {
         m21.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiListen();
+                new GuiListen(language);
                 frame.dispose();
             }
         });
@@ -109,7 +106,7 @@ public class GuiAdminUser {
         m31.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiNewNotification();
+                new GuiNewNotification(language); // TODO add language as a parameter
                 frame.dispose();
             }
         });
@@ -117,7 +114,7 @@ public class GuiAdminUser {
         m32.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAllNotification();
+                new GuiAllNotification(language);
                 frame.dispose();
             }
         });
@@ -127,7 +124,7 @@ public class GuiAdminUser {
         m41.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiGetRecSong();
+                new GuiGetRecSong(language); // TODO add language as a parameter
                 frame.dispose();
             }
         });
@@ -136,7 +133,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
-                new GuiRateSong(i);
+                new GuiRateSong(i, language);
                 frame.dispose();
             }
         });
@@ -145,7 +142,7 @@ public class GuiAdminUser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
-                new GuiRecSongtoUser();
+                new GuiRecSongtoUser(language);
                 frame.dispose();
             }
         }); //////////
@@ -156,7 +153,7 @@ public class GuiAdminUser {
         m51.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiChangeUserAdmin();
+                new GuiChangeUserAdmin(language);
                 frame.dispose();
             }
         });
@@ -167,7 +164,7 @@ public class GuiAdminUser {
         m61.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiBan();
+                new GuiBan(language);
                 frame.dispose();
             }
         });
@@ -175,7 +172,7 @@ public class GuiAdminUser {
         m62.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiDelete();
+                new GuiDelete(language);
                 frame.dispose();
             }
         });

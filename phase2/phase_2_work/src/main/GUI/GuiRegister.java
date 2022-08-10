@@ -7,55 +7,52 @@ class GuiRegister extends JDialog{
     public static void main(String[] args) {
         new GuiRegister("English");
     }
-    private static JLabel label, passwordLabel, success;
-    private static JTextField UserLink;
-    private static JPasswordField passwordText;
-    private static JButton RegisterButton;
 
     public GuiRegister(final String language) {
+        LanguageGetter languageGetter = new LanguageGetter();
         JPanel panel = new JPanel();
-        final JFrame frame = new JFrame("Register System");
+        final JFrame frame = new JFrame(languageGetter.translateto(language).registerSystem());
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
 
-        label = new JLabel("New User ID");
+        JLabel label = new JLabel(languageGetter.translateto(language).userID());
         label.setBounds(10, 20, 80, 25);
-        UserLink = new JTextField(20);
-        UserLink.setBounds(100, 20, 165, 25);
+        JTextField userLink = new JTextField(20);
+        userLink.setBounds(100, 20, 165, 25);
 
-        passwordLabel = new JLabel("Set Password");
+        JLabel passwordLabel = new JLabel(languageGetter.translateto(language).password());
         passwordLabel.setBounds(10, 50, 80, 25);
-        passwordText = new JPasswordField();
+        JPasswordField passwordText = new JPasswordField();
         passwordText.setBounds(100, 50, 165, 25);
 
-        RegisterButton = new JButton("Register");
-        RegisterButton.setBounds(10, 80, 80, 25);
-        success = new JLabel("");
+        JButton registerButton = new JButton(languageGetter.translateto(language).register());
+        registerButton.setBounds(10, 80, 80, 25);
+        JLabel success = new JLabel("");
         success.setBounds(10, 110, 300, 25);
 
         panel.add(label);
-        panel.add(UserLink);
+        panel.add(userLink);
         panel.add(passwordLabel);
         panel.add(passwordText);
-        panel.add(RegisterButton);
+        panel.add(registerButton);
         panel.add(success);
 
 
         //Password enter->出发输入框事件
         UserAndPassword userAndPassword = new UserAndPassword();
         passwordText.addActionListener(userAndPassword);
-        UserLink.addActionListener(userAndPassword);
+        userLink.addActionListener(userAndPassword);
 
         //设置替换编码
         passwordText.setEchoChar('*'); //char ///////
 
-        RegisterButton.addActionListener(new ActionListener() {
+        registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //if ...
-                new GuiSign(language);
+                new GuiSign(language); // TODO connect to the controller
                 frame.dispose();
             }
         });

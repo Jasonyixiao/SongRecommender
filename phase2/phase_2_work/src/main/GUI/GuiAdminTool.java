@@ -1,35 +1,36 @@
 package GUI;
 
-import commands.ICommands;
-
 import javax.swing.*;
 
 
 public class GuiAdminTool extends JDialog {
     public static void main(String[] args) {
-        new GuiChangeUserAdmin();
-        new GuiDelete();
-        new GuiBan();
+        new GuiChangeUserAdmin("English");
+        new GuiDelete("English");
+        new GuiBan("English");
     }
 }
 
 
 class GuiChangeUserAdmin{
-    public GuiChangeUserAdmin() {
-        new GuiFindUser("Choose User to Admin");
+    public GuiChangeUserAdmin(String language) {
+        LanguageGetter languageGetter = new LanguageGetter();
+        new GuiFindUser(languageGetter.translateto(language).chooseUserToPromote(), language);
     }
 
 }
 
 class GuiDelete{
-    public GuiDelete() {
-        new GuiFindUser("Choose User to Delete");
+    public GuiDelete(String language) {
+        LanguageGetter languageGetter = new LanguageGetter();
+        new GuiFindUser(languageGetter.translateto(language).chooseUserToDelete(), language);
 
     }
 }
 
 class GuiBan{
-    public GuiBan(){
-        new GuiFindUser("Choose User to Ban");
+    public GuiBan(String language){
+        LanguageGetter languageGetter = new LanguageGetter();
+        new GuiFindUser(languageGetter.translateto(language).chooseUserToBan(), language);
     }
 }

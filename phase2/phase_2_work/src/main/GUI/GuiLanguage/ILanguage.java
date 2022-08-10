@@ -1,47 +1,56 @@
 package GUI.GuiLanguage;
 
-public interface ILanguage {
-    public String ChooseUserToPromote();
+public interface language {
+    public String chooseUserToPromote();
 
-    public String ChooseUserToDelete();
+    public String chooseUserToDelete();
 
     public String chooseUserToBan();
 
-    public String HomepageAdminUser();
+    public String homepageAdminUser();
 
-    public String Notification();
+    public String notification();
 
-    public String Recommend();
+    public String recommend();
 
-    public String Admin();
+    public String admin();
 
-    public String Other();
-    public String Exit();
-    public String CheckHistory();
-    public String LogOut();
-    public String CheckNewNotifications();
-    public String CheckAllNotifications();
-    public String GetRecommendSongs();
-    public String RateASong();
-    public String RecommendToUser();
-    public String User();
-    public String Ban();
-    public String Delete();
-    public String UserName();
-    public String Search();
-    public String NewNotifications();
-    public String AllNotifications();
-    public String RecommendSongs();
-    public String Listen();
-    public String SongURL();
-    public String LoginSystem();
-    public String UserID();
-    public String Password();
-    public String Login();
-    public String SongName();
-    public String Rate();
-    public String Yes();
-    public String ForExistedUser();
-    public String ForNewUser();
-    public String Welcome();
+    public String other();
+    public String exit();
+    public String checkHistory();
+    public String logout();
+    public String checkNewNotifications();
+    public String checkAllNotifications();
+    public String getRecommendSongs();
+    public String rateASong();
+    public String recommendToUser();
+    public String user();
+    public String ban();
+    public String delete();
+    public String userName();
+    public String search();
+    public String newNotifications();
+    public String allNotifications();
+    public String recommendSongs();
+    public String listen();
+    public String songURL();
+    public String loginSystem();
+    public String userID();
+    public String password();
+    public String login();
+    public String songName();
+    public String rate();
+    public String yes();
+    public String forExistedUser();
+    public String forNewUser();
+    public String welcome();
+    public String register();
+
+    public String userInfo();
+
+    public String LoginHistory();
+
+    public String homepageNormalUser();
+
+    public String registerSystem();
 }

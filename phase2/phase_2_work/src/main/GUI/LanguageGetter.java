@@ -10,6 +10,7 @@ public class LanguageGetter {
     private HashMap<String, ILanguage> languageMap;
 
     public LanguageGetter() {
+        languageMap = new HashMap<>();
         languageMap.put("Chinese", new Chinese());
         languageMap.put("English", new English());
     }

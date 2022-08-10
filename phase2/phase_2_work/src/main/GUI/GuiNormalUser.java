@@ -10,7 +10,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-
+/**
+ * This class is the homepage for normal user, calling different classes depending on the user's selection.
+ */
 class GuiNormalUser {
 //    public static void main(String[] args) {
 //        new GuiNormalUser("English");
@@ -168,6 +170,10 @@ class GuiNormalUser {
         frame.setVisible(true);
     }
 
+    /**
+     * This method will close the window.
+     * @param frame is the current frame of the window.
+     */
     private static void windowClose(Frame frame) {
         frame.addWindowListener(new WindowAdapter() {
             @Override

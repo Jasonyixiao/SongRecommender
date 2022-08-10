@@ -1,7 +1,9 @@
 package GUI;
 
 import javax.swing.*;
-
+/**
+ * This class represents the finding user page.
+ */
 public class GuiFindUser {
     public static void main(String[] args) {
         new GuiFindUser("title", "English");

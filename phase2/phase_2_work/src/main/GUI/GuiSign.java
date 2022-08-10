@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This Class is responsible for User to choose log in or Register.
+ */
 class GuiSign extends JDialog {
 //    public static void main(String[] args) {
 //        new GuiSign("English", new ShellState());

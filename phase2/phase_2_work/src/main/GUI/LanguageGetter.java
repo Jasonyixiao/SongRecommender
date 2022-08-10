@@ -6,6 +6,9 @@ import GUI.GuiLanguage.ILanguage;
 
 import java.util.HashMap;
 
+/**
+ * This class gets use's choice of languages.
+ */
 public class LanguageGetter {
     private HashMap<String, ILanguage> languageMap;
 

@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 
 import static javax.swing.JFrame.*;
 
-
+/**
+ *  This class is the homepage for Admin User, calling different classes depending on the user's selection.
+ */
 public class GuiAdminUser {
 
 //    public static void main(String[] args) {

@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
+/**
+ * This class shows the user the recommended songs.
+ */
 public class GuiGetRecSong {
 
     public GuiGetRecSong(final String language, final ShellState shell) {

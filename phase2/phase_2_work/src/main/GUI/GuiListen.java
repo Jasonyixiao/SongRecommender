@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class is responsible for listening to the songs.
+ */
 class GuiListen extends JDialog{
 //    public static void main(String[] args) {
 //        new GuiListen("English");
@@ -34,6 +37,11 @@ class GuiListen extends JDialog{
         JButton button2 = new JButton(languageGetter.translateTo(language).back());
         button2.setBounds(400,10,80,25);
 
+        panel.add(label);
+        panel.add(urlLink);
+        panel.add(button);
+        panel.add(button2);
+
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,11 +50,6 @@ class GuiListen extends JDialog{
             }
         });
 
-
-        panel.add(label);
-        panel.add(urlLink);
-        panel.add(button);
-        panel.add(button2);
         frame.setVisible(true);
     }
 

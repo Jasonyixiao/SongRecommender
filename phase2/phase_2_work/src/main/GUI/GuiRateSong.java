@@ -4,6 +4,9 @@ import controllers.ShellState;
 
 import javax.swing.*;
 
+/**
+ * This class is responsible for the user to rate the song.
+ */
 public class GuiRateSong extends JDialog{
 
 //    public static void main(String[] args) {

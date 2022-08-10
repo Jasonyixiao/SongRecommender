@@ -1,5 +1,8 @@
 package GUI.GuiLanguage;
 
+/**
+ * This class is responsible for English languages.
+ */
 public class English implements ILanguage {
     public English() {
     }

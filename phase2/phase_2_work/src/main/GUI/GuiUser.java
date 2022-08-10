@@ -5,6 +5,9 @@ import java.awt.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
+/**
+ * This class represents the users.
+ */
 public class GuiUser {
     public static void main(String[] args) {
         new GuiUser("English");

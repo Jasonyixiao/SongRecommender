@@ -27,7 +27,6 @@ public class GuiNotification {
         panel.setLayout(null);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
         frame.add(new JButton(notificationType));
-        frame.add(new JButton(notificationType));
         JButton button2 = new JButton(languageGetter.translateTo(language).back());
         button2.setBounds(400,10,80,25);
         panel.add(button2);

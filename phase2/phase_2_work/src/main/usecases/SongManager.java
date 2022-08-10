@@ -98,25 +98,20 @@ public class SongManager {
     /**
      * This method will read in all song's data from local, and save it in allSongs.
      */
-    public void read() {
-        try {
+    public void read() throws ClassNotFoundException {
+
             allSongs = gateWay.readSong();
-        } catch (ClassNotFoundException ignored) {
-        }
     }
+
+
+
 
 
     /**
      * This method will save allSongs data into the songFile.
      */
-    public void save() {
-        try {
-            gateWay.save(allSongs, gateWay.getSongFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-            // TODO: 2022/8/1  we need to avoid printing to console.
-        }
-
+    public void save() throws IOException {
+        gateWay.save(allSongs, gateWay.getSongFile());
     }
 
 

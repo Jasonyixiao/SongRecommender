@@ -35,7 +35,7 @@ public class Login implements ICommands {
         shellState.setUserProfile(userContext);
         if (userContext != null) {
             shellState.setIsSignedIn();
-            int numNewNotifications = shellState.getNotificationController().getNumofNewNotifications(username);
+            int numNewNotifications = shellState.getNotificationController().getNumOfNewNotifications(username);
             if (numNewNotifications > 0) {
                 System.out.println("You have " + numNewNotifications + " new notifications.");
             }

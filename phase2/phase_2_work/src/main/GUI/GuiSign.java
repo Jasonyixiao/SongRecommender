@@ -11,9 +11,7 @@ import java.awt.event.ActionListener;
  * This Class is responsible for User to choose log in or Register.
  */
 class GuiSign extends JDialog {
-//    public static void main(String[] args) {
-//        new GuiSign("English", new ShellState());
-//    }
+
 
     public GuiSign(final String language, final ShellState shell){  //first frame shows the register button and sign in button.
         final JFrame frame = new JFrame();
@@ -66,15 +64,8 @@ class GuiSign extends JDialog {
         frame.setVisible(true);
 
 
-        // MyActionListener myActionListener = new MyActionListener();
-        // button1.addActionListener(myActionListener);
+
     }
 
 }
 
-//class MyActionListener implements ActionListener {
-//    @Override
-//    public void actionPerformed(ActionEvent e) {
-//        System.out.println("Hiiii");
-//    }
-//}

@@ -6,13 +6,16 @@ import usecases.NotificationCenter;
 import usecases.SongManager;
 import usecases.UserManager;
 
+import java.io.IOException;
+
 public class LoadData {
     // we will use this class to load necessary data
 
     public LoadData() {
     }
 
-    public ShellState loadCurrentData(){
+    public ShellState loadCurrentData() throws IOException, ClassNotFoundException {
+
         IGateWay g = new GateWay();
         NotificationCenter notificationCenter = new NotificationCenter(g);
         UserManager userManager = new UserManager(g);
@@ -23,14 +26,14 @@ public class LoadData {
         SongController songController = new SongController(songManager);
         UserController userController = new UserController(userManager);
         LoginController loginController = new LoginController(userController);
-        NotificationController notificationController = new NotificationController(songController,notificationCenter);
+        NotificationController notificationController = new NotificationController(songController, notificationCenter);
         return new ShellState(loginController, songController, notificationController);
-
     }
+
 
     //Ideally, this method will only get run once, this is just a "hard coded" method for adding the initial songs into
     //the program.
-    private void loadInitialSongs(){
+    public void loadInitialSongs() throws IOException {
         GateWay g = new GateWay();
         SongController songController = new SongController(new SongManager(g));
         songController.addSong("As It Was",

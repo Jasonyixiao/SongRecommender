@@ -21,6 +21,7 @@ public class UserManager {
         this.allUsers = new HashMap<>(9999);
         this.gateWay = g;
 
+
     }
 
 
@@ -243,20 +244,14 @@ public class UserManager {
     /**
      * This method will read the saved user data into the system and store it in allUsers.
      */
-    public void read(){
-        try {
-            allUsers = gateWay.readUser();
-        }catch (ClassNotFoundException ignored){
-        }
+    public void read() throws ClassNotFoundException {
+
+        allUsers = gateWay.readUser();
     }
+
     public void save() throws IOException {
         gateWay.save(allUsers, gateWay.getUserFile());
-        try {
-            gateWay.save(allUsers, gateWay.getUserFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-            // TODO: 2022/8/1  we need to avoid printing to console.  
-        }
+
 
     }
 

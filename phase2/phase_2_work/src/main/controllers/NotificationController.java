@@ -2,6 +2,8 @@ package controllers;
 
 import usecases.NotificationCenter;
 
+import java.io.IOException;
+
 /**
  * This Class is responsible for calling the necessary methods for user to perform notifications-related tasks
  */
@@ -89,7 +91,7 @@ public class NotificationController {
      * @return the number of new notifications.
      */
 
-    public int getNumofNewNotifications(String currentUser) {
+    public int getNumOfNewNotifications(String currentUser) {
         return notificationCenter.getNumberOfNewNotifications(currentUser);
     }
 
@@ -117,31 +119,13 @@ public class NotificationController {
 
 
 
-    /**
-     * Sets the read status of a notification.
-     * @param username is the username of the receiver.
-     * @param idOfNotification is the index of the notification we are setting.
-     * @param isRead is true if read, false if unread.
-     */
-    public void setIsRead(String username, int idOfNotification, boolean isRead) {
-        if(notificationCenter.hasUser(username)) {
-            notificationCenter.setIsRead(username, idOfNotification, isRead);
-        }
-    }
 
-    /**
-     * Getter for index of the current notification we are working with.
-     * @return a index of current notification.
-     */
-    public int getIdOfCurrentNotification () {
-        return this.currentNotificationId;
-    }
 
 
     /**
      * This method will save the notification data.
      */
-    public void saveNotificationData(){
+    public void saveNotificationData() throws IOException {
         notificationCenter.save();
     }
 

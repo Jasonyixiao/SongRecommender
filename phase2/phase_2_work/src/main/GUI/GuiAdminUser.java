@@ -1,11 +1,16 @@
 package GUI;
 
+import controllers.LoginController;
 import controllers.ShellState;
+import controllers.UserController;
+import recommendStrategy.IRecommender;
+import recommendStrategy.RecommendByAvgRating;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import static javax.swing.JFrame.*;
 
@@ -14,9 +19,6 @@ import static javax.swing.JFrame.*;
  */
 public class GuiAdminUser {
 
-//    public static void main(String[] args) {
-//        new GuiAdminUser("English");
-//    } // set default to english
 
     public GuiAdminUser(final String language, final ShellState shell) { // add parameter
         final LanguageGetter languageGetter = new LanguageGetter();
@@ -24,6 +26,14 @@ public class GuiAdminUser {
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(10, 1, 10, 0));
+
+        final JLabel success = new JLabel();
+        success.setBounds(10, 110, 300, 25);
+        frame.add(success);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0,1));
+        frame.add(panel);
+
 
         JMenuBar jMenuBar = new JMenuBar();
         JMenu m1 = new JMenu(languageGetter.translateTo(language).userInfo()); //return "user information" in chinese
@@ -45,7 +55,7 @@ public class GuiAdminUser {
         JMenuItem m11 = new JMenuItem(languageGetter.translateTo(language).checkHistory());
         JMenuItem m12 = new JMenuItem(languageGetter.translateTo(language).logout());
         JMenuItem m21 = new JMenuItem(languageGetter.translateTo(language).songURL());
-        JMenuItem m31 = new JMenuItem(languageGetter.translateTo(language).checkNewNotifications());
+
         JMenuItem m32 = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
         JMenuItem m41 = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
         JMenuItem m42 = new JMenuItem(languageGetter.translateTo(language).rateASong());
@@ -56,7 +66,7 @@ public class GuiAdminUser {
         m1.add(m11);
         m1.add(m12);
         m2.add(m21);
-        m3.add(m31);
+
         m3.add(m32);
         m4.add(m41);
         m4.add(m42);
@@ -66,19 +76,16 @@ public class GuiAdminUser {
         m6.add(m62);
 
         frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
-        frame.add(new JButton("song1")); // we don't need this we will change this to song name, no need to translate
-        frame.add(new JButton("song2")); // TODO connect this to the controller and replace this with a for loop
-        frame.add(new JButton("song3"));
-        frame.add(new JButton("song4"));
-        frame.add(new JButton("song5"));
-        frame.add(new JButton("song6"));
-        frame.add(new JButton("song7"));
-        frame.add(new JButton("song8"));
-        frame.add(new JButton("song9"));
+        IRecommender recommender = new RecommendByAvgRating();
+        for (String song: shell.getSongController().getRecommend(recommender)){
+            panel.add(new JButton(song));
+
+        }
+
         frame.setVisible(true);
 
         //1. Information
-        //go back to GuiHistory page
+        //go to GuiHistory page
         m11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,12 +93,23 @@ public class GuiAdminUser {
                 frame.dispose();
             }
         });
-        //go back to GuiSign page
+        //Log out and go back to GuiSign page
         m12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{UserController userController = shell.getLoginController().getUserController();
+                LoginController loginController = new LoginController(userController);
+                loginController.LogOff(shell.getUserProfile());
+                userController.saveUserData();
+                shell.getSongController().saveSongData();
+                shell.getNotificationController().saveNotificationData();
                 new GuiSign(language, shell);
-                frame.dispose();
+                frame.dispose();}
+                catch (IOException exception){
+                    success.setFont(new Font(null,Font.ITALIC,25));
+                    success.setForeground(Color.red);
+                    success.setText("Unable to save your data.");
+                }
             }
         });
 
@@ -106,14 +124,7 @@ public class GuiAdminUser {
         });
 
         //3. Notification
-        //go to GuiNewNotification page
-        m31.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiNotification(languageGetter.translateTo(language).checkNewNotifications(),language,shell);
-                frame.dispose();
-            }
-        });
+
         //go to GuiAllNotification page
         m32.addActionListener(new ActionListener() {
             @Override

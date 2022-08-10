@@ -23,7 +23,7 @@ public class Logout implements ICommands {
     public String executeCommand(ShellState state) throws IOException {
         try {
             if (state.getUserProfile().getIsSignedIn()) {
-                UserController userController = state.getLoginController().getUserController();// disgusting
+                UserController userController = state.getLoginController().getUserController();
                 LoginController loginController = new LoginController(userController);
                 loginController.LogOff(state.getUserProfile());
                 userController.saveUserData();

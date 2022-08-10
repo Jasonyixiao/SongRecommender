@@ -145,24 +145,18 @@ public class NotificationCenter {
     /**
      * Saves the current notification data locally to the notification data file.
      */
-    public void save(){
-        try {
-            gateWay.save(allNotifications, gateWay.getNotificationFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-            // TODO: 2022/8/1  we need to avoid printing to console.
-        }
+    public void save() throws IOException {
+        gateWay.save(allNotifications, gateWay.getNotificationFile());
 
     }
 
     /**
      * Reads in the notifications data and saves them as a HashMap<String, List<Notification>> into allNotifications.
      */
-    public void read(){
-        try {
-            allNotifications = gateWay.readNotification();
-        } catch (ClassNotFoundException ignored) {
-        }
+    public void read() throws ClassNotFoundException {
+        allNotifications = gateWay.readNotification();
+
+
     }
 
 

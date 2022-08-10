@@ -3,6 +3,7 @@ package controllers;
 import recommendStrategy.IRecommender;
 import usecases.SongManager;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -39,20 +40,7 @@ public class SongController {
         return songManager.getRecommend(recommendAmount,recommender);
     }
 
-//    /**
-//     * This method will recommend a song to a specific user via username.
-//     * @param songname is the name of the song the user wants to recommend.
-//     * @param receiverUsername is the username of which the user wants to recommend to.
-//     * @return a message of whether the task is performed successfully.
-//     */
-//    public String recommendSong(String songname, String receiverUsername) {
-//        if (songManager.getAllSongs().containsKey(songname)) {
-//            songManager.recommendSong(songname, receiverUsername);
-//            return "Successful.";
-//        } else {
-//            return "Song does not exist.";
-//        }
-//    }
+
 
     /**
      * This method will show user the current rating of the specific song.
@@ -75,7 +63,7 @@ public class SongController {
     /**
      * This method will save the song data.
      */
-    public void saveSongData(){
+    public void saveSongData() throws IOException {
         songManager.save();
     }
 

@@ -25,7 +25,7 @@ public class CheckNewNotification implements ICommands {
     public String executeCommand(ShellState state) throws IOException {
         try {
             String currentUser = state.getUserProfile().getUsername();
-            int numNewNotifications = state.getNotificationController().getNumofNewNotifications(currentUser);
+            int numNewNotifications = state.getNotificationController().getNumOfNewNotifications(currentUser);
             Scanner sc = new Scanner(System.in);
             if (numNewNotifications == 0) {
                 return "You do not have any new Notifications. If you's like to view all notifications enter: " +

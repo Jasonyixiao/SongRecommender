@@ -2,6 +2,9 @@ package GUI;
 
 import javax.swing.*;
 
+/**
+ * This class is responsible for the user to rate the song.
+ */
 public class GuiRateSong extends JDialog{
 
 

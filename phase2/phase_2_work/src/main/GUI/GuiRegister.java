@@ -2,7 +2,9 @@ package GUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * This class is used for Register.
+ */
 class GuiRegister extends JDialog{
     public static void main(String[] args) {
         new GuiRegister("English");

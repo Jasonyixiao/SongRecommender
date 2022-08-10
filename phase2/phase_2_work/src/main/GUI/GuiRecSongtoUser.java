@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class is responsible for the user to recommend a specific song to another user.
+ */
 class GuiRecSongtoUser extends JDialog {
     public static void main(String[] args) {
         new GuiRecSongtoUser("English");

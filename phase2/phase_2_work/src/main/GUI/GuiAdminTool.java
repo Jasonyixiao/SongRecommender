@@ -2,7 +2,9 @@ package GUI;
 
 import javax.swing.*;
 
-
+/**
+ * This class responsible for classes that will open GuiFindUser page.
+ */
 public class GuiAdminTool extends JDialog {
     public static void main(String[] args) {
         new GuiChangeUserAdmin("English");

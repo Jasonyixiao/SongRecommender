@@ -8,7 +8,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-
+/**
+ * This class is the homepage for normal user, calling different classes depending on the user's selection.
+ */
 class GuiNormalUser {
 //    public static void main(String[] args) {
 //        new GuiNormalUser("English");

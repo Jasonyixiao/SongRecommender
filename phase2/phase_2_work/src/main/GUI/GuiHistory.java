@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
+/**
+ * This class represents login history.
+ */
 public class GuiHistory {
     public GuiHistory(final String language) {
         LanguageGetter languageGetter = new LanguageGetter();

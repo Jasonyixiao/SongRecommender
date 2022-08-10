@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
+/**
+ * This class is the notification page.
+ */
 public class GuiNotification {
     public static void main(String[] args) {
         new GuiNotification("allnotification", "English");

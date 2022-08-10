@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class is responsible for listening to the songs.
+ */
 class GuiListen extends JDialog{
     public static void main(String[] args) {
         new GuiListen("English");

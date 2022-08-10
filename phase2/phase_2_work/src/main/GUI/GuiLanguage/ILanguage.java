@@ -1,5 +1,8 @@
 package GUI.GuiLanguage;
 
+/**
+ * This class is responsible for calling different languages.
+ */
 public interface ILanguage {
     public String chooseUserToPromote();
 

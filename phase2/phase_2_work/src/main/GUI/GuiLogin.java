@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class is used for logging in.
+ */
 class GuiLogin extends JDialog{ // when press sign in button
 //    public static void main(String[] args) {
 //        new GuiLogin("English");

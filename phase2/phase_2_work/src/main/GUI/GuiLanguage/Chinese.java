@@ -1,5 +1,8 @@
 package GUI.GuiLanguage;
 
+/**
+ * This class is responsible for Chinese Language.
+ */
 public class Chinese implements ILanguage {
     public Chinese() {
     }

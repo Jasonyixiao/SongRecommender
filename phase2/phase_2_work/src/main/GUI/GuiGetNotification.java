@@ -2,6 +2,9 @@ package GUI;
 
 import javax.swing.*;
 
+/**
+ * This class is responsible for classes that will open the GuiNotification page.
+ */
 public class GuiGetNotification extends JDialog {
     public static void main(String[] args) {
         new GuiNewNotification("English");

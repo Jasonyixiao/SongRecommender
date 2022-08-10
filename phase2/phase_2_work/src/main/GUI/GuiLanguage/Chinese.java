@@ -191,6 +191,11 @@ public class Chinese implements ILanguage {
     }
 
     @Override
+    public String back() {
+        return "返回";
+    }
+
+    @Override
     public String welcome() {
         return "欢迎";
     }

@@ -1,18 +1,34 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 class GuiRecSongtoUser extends JDialog {
+    public static void main(String[] args) {
+        new GuiRecSongtoUser("English");
+    }
 
 
-    public GuiRecSongtoUser(String language){
+    public GuiRecSongtoUser(final String language){
         LanguageGetter languageGetter = new LanguageGetter();
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame(languageGetter.translateto(language).recommendToUser());
+        final JFrame frame = new JFrame(languageGetter.translateto(language).recommendToUser());
         frame.setSize(500,500);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
+        JButton button2 = new JButton(languageGetter.translateto(language).back());
+        button2.setBounds(400,10,80,25);
+        panel.add(button2);
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiAdminUser(language); // here we need to add a if statement to check if the current user is normal user or admin user
+                frame.dispose();
+            }
+        });
 
         //search song's Url
         JLabel songUrlLabel = new JLabel(languageGetter.translateto(language).songURL());

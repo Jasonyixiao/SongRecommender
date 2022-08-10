@@ -53,4 +53,6 @@ public interface ILanguage {
     public String homepageNormalUser();
 
     public String registerSystem();
+
+    public String back();
 }

@@ -10,9 +10,9 @@ import java.awt.event.WindowEvent;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 class GuiNormalUser {
-    public static void main(String[] args) {
-        new GuiNormalUser("English");
-    }
+//    public static void main(String[] args) {
+//        new GuiNormalUser("English");
+//    }
 
     public GuiNormalUser(final String language) {
         LanguageGetter languageGetter = new LanguageGetter();

@@ -20,6 +20,11 @@ public class English implements ILanguage {
     }
 
     @Override
+    public String back() {
+        return "back";
+    }
+
+    @Override
     public String userInfo() {
         return "User info";
     }

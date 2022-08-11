@@ -37,6 +37,19 @@ class GuiRegister extends JDialog{
         final JLabel success = new JLabel();
         success.setBounds(10, 110, 300, 15);
 
+        //Back button(return to main page:
+        JButton button2 = new JButton(languageGetter.translateTo(language).back());
+        button2.setBounds(400,10,80,25);
+        panel.add(button2);
+        //Add actionlistener to button2
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiSign(language, shell);
+                frame.dispose();
+            }
+        });
+
         panel.add(label);
         panel.add(username);
         panel.add(passwordLabel);

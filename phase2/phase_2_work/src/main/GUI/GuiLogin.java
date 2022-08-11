@@ -51,6 +51,19 @@ class GuiLogin extends JDialog implements ActionListener { // when press sign in
         this.loginButton = new JButton(languageGetter.translateTo(language).login());
         loginButton.setBounds(10, 80, 80, 25);
 
+        //Back button(return to main page:
+        JButton button2 = new JButton(languageGetter.translateTo(language).back());
+        button2.setBounds(400,10,80,25);
+        panel.add(button2);
+        //Add actionlistener to button2
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiSign(language, shell);
+                frame.dispose();
+            }
+        });
+
         panel.add(userId);
         panel.add(userNameField);
         panel.add(passwordLabel);
@@ -58,6 +71,7 @@ class GuiLogin extends JDialog implements ActionListener { // when press sign in
         panel.add(loginButton);
         panel.add(messageLabel);
         frame.setVisible(true);
+
         loginButton.addActionListener( this);
 
         this.shell = shell;

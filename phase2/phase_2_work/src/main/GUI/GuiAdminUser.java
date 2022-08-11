@@ -3,6 +3,7 @@ package GUI;
 import controllers.LoginController;
 import controllers.ShellState;
 import controllers.UserController;
+import driver.TopNineRunner;
 import recommendStrategy.IRecommender;
 import recommendStrategy.RecommendByAvgRating;
 
@@ -25,57 +26,63 @@ public class GuiAdminUser {
         final JFrame frame = new JFrame(languageGetter.translateTo(language).homepageAdminUser());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
-        frame.setLayout(new GridLayout(10, 1, 10, 0));
-
-        final JLabel success = new JLabel();
-        success.setBounds(10, 110, 300, 25);
-        frame.add(success);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0,1));
+//        final JLabel success = new JLabel();
+//        success.setBounds(10, 110, 300, 25);
+//        frame.add(success);
+
         frame.add(panel);
 
-
+        // Add a menu bar and add dropdown menus to it:
         JMenuBar jMenuBar = new JMenuBar();
-        JMenu m1 = new JMenu(languageGetter.translateTo(language).userInfo()); //return "user information" in chinese
-        JMenu m2 = new JMenu(languageGetter.translateTo(language).listen());
-        JMenu m3 = new JMenu(languageGetter.translateTo(language).notification());
-        JMenu m4 = new JMenu(languageGetter.translateTo(language).recommend());
-        JMenu m5 = new JMenu(languageGetter.translateTo(language).admin());
-        JMenu m6 = new JMenu(languageGetter.translateTo(language).other());
-        JMenuItem m7 = new JMenu(languageGetter.translateTo(language).exit());
-        jMenuBar.add(m1);
-        jMenuBar.add(m2);
-        jMenuBar.add(m3);
-        jMenuBar.add(m4);
-        jMenuBar.add(m5);
-        jMenuBar.add(m6);
-        jMenuBar.add(m7);
 
+        JMenu userInfoMenu = new JMenu(languageGetter.translateTo(language).userInfo()); //return "user information" in chinese
+        JMenu listenMenu = new JMenu(languageGetter.translateTo(language).listen());
+        JMenu notificationMenu = new JMenu(languageGetter.translateTo(language).notification());
+        JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
+        JMenu adminMenu = new JMenu(languageGetter.translateTo(language).admin());
+        JMenu otherMenu = new JMenu(languageGetter.translateTo(language).other());
+        JMenuItem exitMenu = new JMenu(languageGetter.translateTo(language).exit());
 
-        JMenuItem m11 = new JMenuItem(languageGetter.translateTo(language).checkHistory());
-        JMenuItem m12 = new JMenuItem(languageGetter.translateTo(language).logout());
-        JMenuItem m21 = new JMenuItem(languageGetter.translateTo(language).songURL());
+        jMenuBar.add(userInfoMenu);
+        jMenuBar.add(listenMenu);
+        jMenuBar.add(notificationMenu);
+        jMenuBar.add(recommendMenu);
+        jMenuBar.add(adminMenu);
+        jMenuBar.add(otherMenu);
+        jMenuBar.add(exitMenu);
 
-        JMenuItem m32 = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
-        JMenuItem m41 = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
-        JMenuItem m42 = new JMenuItem(languageGetter.translateTo(language).rateASong());
-        JMenuItem m43 = new JMenuItem(languageGetter.translateTo(language).recommendToUser());
-        JMenuItem m51 = new JMenuItem(languageGetter.translateTo(language).user());
-        JMenuItem m61 = new JMenuItem(languageGetter.translateTo(language).ban());
-        JMenuItem m62 = new JMenuItem(languageGetter.translateTo(language).delete());
-        m1.add(m11);
-        m1.add(m12);
-        m2.add(m21);
+        // Add items to the dropdown menu:
+        JMenuItem checkHistoryButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
+        JMenuItem logoutButton = new JMenuItem(languageGetter.translateTo(language).logout());
+        JMenuItem songUrlButton = new JMenuItem(languageGetter.translateTo(language).songURL());
+        JMenuItem checkAllNotificationButton = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
+        JMenuItem getRecommendSongsButton = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
+        JMenuItem rateSongButton = new JMenuItem(languageGetter.translateTo(language).rateASong());
+        JMenuItem recommendToUserButton = new JMenuItem(languageGetter.translateTo(language).recommendToUser());
+        JMenuItem userButton = new JMenuItem(languageGetter.translateTo(language).user());
+        JMenuItem banButton = new JMenuItem(languageGetter.translateTo(language).ban());
+        JMenuItem deleteButton = new JMenuItem(languageGetter.translateTo(language).delete());
 
-        m3.add(m32);
-        m4.add(m41);
-        m4.add(m42);
-        m4.add(m43);
-        m5.add(m51);
-        m6.add(m61);
-        m6.add(m62);
+        userInfoMenu.add(checkHistoryButton);
+        userInfoMenu.add(logoutButton);
+        listenMenu.add(songUrlButton);
+        notificationMenu.add(checkAllNotificationButton);
+        recommendMenu.add(getRecommendSongsButton);
+        recommendMenu.add(rateSongButton);
+        recommendMenu.add(recommendToUserButton);
+        adminMenu.add(userButton);
+        otherMenu.add(banButton);
+        otherMenu.add(deleteButton);
 
-        frame.getContentPane().add(BorderLayout.NORTH, jMenuBar);
+        // add menubar to panel and makes the panel scrollable:
+        panel.add(jMenuBar);
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setViewportView(panel);
+        frame.add(scrollPane, BorderLayout.CENTER);
+
+        // Add top Nine songs:
         IRecommender recommender = new RecommendByAvgRating();
         for (String song: shell.getSongController().getRecommend(recommender)){
             panel.add(new JButton(song));
@@ -86,7 +93,7 @@ public class GuiAdminUser {
 
         //1. Information
         //go to GuiHistory page
-        m11.addActionListener(new ActionListener() {
+        checkHistoryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiHistory(language, shell);
@@ -94,7 +101,7 @@ public class GuiAdminUser {
             }
         });
         //Log out and go back to GuiSign page
-        m12.addActionListener(new ActionListener() {
+        logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{UserController userController = shell.getLoginController().getUserController();
@@ -106,16 +113,16 @@ public class GuiAdminUser {
                 new GuiSign(language, shell);
                 frame.dispose();}
                 catch (IOException exception){
-                    success.setFont(new Font(null,Font.ITALIC,25));
-                    success.setForeground(Color.red);
-                    success.setText(languageGetter.translateTo(language).logoutFailed());
+//                    success.setFont(new Font(null,Font.ITALIC,25));
+//                    success.setForeground(Color.red);
+//                    success.setText(languageGetter.translateTo(language).logoutFailed());
                 }
             }
         });
 
         //2. Listen
         //go inside the URL page (GuiListen)
-        m21.addActionListener(new ActionListener() {
+        songUrlButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiListen(language,shell);
@@ -126,7 +133,7 @@ public class GuiAdminUser {
         //3. Notification
 
         //go to GuiAllNotification page
-        m32.addActionListener(new ActionListener() {
+        checkAllNotificationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiNotification(languageGetter.translateTo(language).checkAllNotifications(),language,shell);
@@ -136,7 +143,7 @@ public class GuiAdminUser {
 
         //4. Get Recommend Songs
         //go to GuiRecommendSong page
-        m41.addActionListener(new ActionListener() {
+        getRecommendSongsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiGetRecSong(language,shell);
@@ -144,7 +151,7 @@ public class GuiAdminUser {
             }
         });
         //go to GuiRateSong page
-        m42.addActionListener(new ActionListener() {
+        rateSongButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
@@ -153,7 +160,7 @@ public class GuiAdminUser {
             }
         });
         //go to GuiRecSongtoUser page
-        m43.addActionListener(new ActionListener() {
+        recommendToUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
@@ -165,7 +172,7 @@ public class GuiAdminUser {
 
         //5. Admin
         //go to GuiChangeUserAdmin page
-        m51.addActionListener(new ActionListener() {
+        userButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiChangeUserAdmin(language);
@@ -176,7 +183,7 @@ public class GuiAdminUser {
 
         //6. Others
         //go to GuiBan page
-        m61.addActionListener(new ActionListener() {
+        banButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiBan(language);
@@ -184,7 +191,7 @@ public class GuiAdminUser {
             }
         });
         //go to GuiDelete page
-        m62.addActionListener(new ActionListener() {
+        deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiDelete(language);
@@ -193,7 +200,7 @@ public class GuiAdminUser {
         });
 
         //7. Exit
-        m7.addActionListener(new ActionListener() {
+        exitMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);

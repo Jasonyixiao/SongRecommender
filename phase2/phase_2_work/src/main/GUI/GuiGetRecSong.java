@@ -16,25 +16,27 @@ public class GuiGetRecSong {
 
     public GuiGetRecSong(final String language, final ShellState shell) {
         LanguageGetter languageGetter = new LanguageGetter();
-        final JFrame frame = new JFrame();
+        final JFrame frame = new JFrame(languageGetter.translateTo(language).recommendSongs());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle(languageGetter.translateTo(language).recommendSongs());
-        frame.setSize(500, 4000);
+        frame.setSize(700, 700);
         JPanel panel = new JPanel();
-        frame.add(panel);
-        panel.setLayout(null);
+
         JButton button2 = new JButton(languageGetter.translateTo(language).back());
-        button2.setBounds(400,10,80,25);
         panel.add(button2);
 
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiAdminUser(language, shell); // here we need to add a if statement to check if the current user is normal user or admin user
-                frame.dispose();
+                String currentUsername = shell.getUserProfile().getUsername();
+                if (shell.getLoginController().getUserController().isAdmin(currentUsername)){
+                    new GuiAdminUser(language,shell);
+                    frame.dispose();
+                }else{
+                    new GuiNormalUser(language, shell);
+                    frame.dispose();
+                }
             }
         });
-        frame.setLayout(new GridLayout(100, 1, 10, 0)); // Todo we need to figure out what happens when we add a lot of songs
         frame.add(new JButton("Song1")); // again we will change "song1".... to the name of the song
         frame.add(new JButton("Song2")); // TODO connect this to the controller and use a for loop for songs
         frame.setVisible(true);

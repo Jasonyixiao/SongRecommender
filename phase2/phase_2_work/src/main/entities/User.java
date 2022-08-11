@@ -18,8 +18,7 @@ public class User implements Serializable {
 
     private String loginHistory;
 
-    private boolean isSignedIn; //TODO change this to int, 0 is indicates not signed in, 1 indicates signed  actually maybe not
-
+    private boolean isSignedIn;
     private final String banUntil;
 
     public static int totalPopulation;
@@ -110,9 +109,9 @@ public class User implements Serializable {
      */
     public void appendLoginHistory(){
         if (loginHistory.length() == 0) {
-             loginHistory += new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+             loginHistory = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date() + loginHistory);
         } else {
-            loginHistory += ", " + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+            loginHistory = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()) + ", " + loginHistory;
         }
     }
 

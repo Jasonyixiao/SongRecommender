@@ -102,22 +102,18 @@ public class NotificationController {
      * @param receiver is the username of the receiving user.
      * @param sender is the username of the sending user.
      * @param  message is the message of this notification.
-     * @return a message whether the user has succeeded. Or return further instructions if the user did not succeed.
+     * @return a boolean the user has succeeded.
      */
-    public String recommendSong(String songName, String receiver, String sender, String message) {
+    public Boolean recommendSong(String songName, String receiver, String sender, String message) {
         if (songController.hasSong(songName)) {
             String songURL = songController.listen(songName);
             int index = notificationCenter.createNotification(receiver,sender,songURL, message); // This creates a new notification and added it to notification center
             currentNotificationId = index;
-            return "Successfully recommended to " + receiver;
+            return true;
         } else {
-            return "Song does not exist, try again! ";
+            return false;
         }
     }
-
-
-
-
 
 
 

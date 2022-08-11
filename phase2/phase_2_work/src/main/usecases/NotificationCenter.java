@@ -132,15 +132,6 @@ public class NotificationCenter {
 
 
 
-    /**
-     * Sets the read status of a notification.
-     * @param username is the username of the receiver.
-     * @param idOfNotification is the index of the notification we are setting.
-     * @param isRead is true if read, false if unread.
-     */
-    public void setIsRead(String username, int idOfNotification, boolean isRead) {
-            allNotifications.get(username).get(idOfNotification).setIsRead(isRead);
-    }
 
     /**
      * Saves the current notification data locally to the notification data file.

@@ -64,4 +64,16 @@ public interface ILanguage {
     public String registerFailed();
 
     public String logoutFailed();
+
+    public String hereIsUrl();
+
+    public String noSongFound();
+
+    public String receiverUsername();
+
+    public String message();
+
+    public String recommendFailed();
+
+    public String recommendSucceeded();
 }

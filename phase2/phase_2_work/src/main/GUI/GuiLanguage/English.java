@@ -43,6 +43,36 @@ public class English implements ILanguage {
     }
 
     @Override
+    public String hereIsUrl() {
+        return "here is the Youtube link of the song: ";
+    }
+
+    @Override
+    public String noSongFound() {
+        return "No such song in the system";
+    }
+
+    @Override
+    public String receiverUsername() {
+        return "Receiver's Username:";
+    }
+
+    @Override
+    public String message() {
+        return "enter your message";
+    }
+
+    @Override
+    public String recommendFailed() {
+        return "Failed.Can't find song in the system.";
+    }
+
+    @Override
+    public String recommendSucceeded() {
+        return "You have successfully recommend the song.";
+    }
+
+    @Override
     public String userInfo() {
         return "User info";
     }
@@ -220,6 +250,10 @@ public class English implements ILanguage {
     public String welcome() {
         return "Welcome";
     }
+
+
+
+
 
 
 }

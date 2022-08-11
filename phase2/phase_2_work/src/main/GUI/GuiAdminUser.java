@@ -3,7 +3,6 @@ package GUI;
 import controllers.LoginController;
 import controllers.ShellState;
 import controllers.UserController;
-import driver.TopNineRunner;
 import recommendStrategy.IRecommender;
 import recommendStrategy.RecommendByAvgRating;
 
@@ -163,12 +162,12 @@ public class GuiAdminUser {
                 frame.dispose();
             }
         });
-        //go to GuiRecSongtoUser page
+        //go to GuiRecSongToUser page
         recommendToUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
-                new GuiRecSongtoUser(language,shell);
+                new GuiRecSongToUser(language,shell);
                 frame.dispose();
             }
         }); //////////
@@ -203,14 +202,8 @@ public class GuiAdminUser {
             }
         });
 
-        //7. Exit
-        exitMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+
             }
-        });
-    }
 
 }
 

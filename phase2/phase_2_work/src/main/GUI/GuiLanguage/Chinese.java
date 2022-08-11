@@ -214,6 +214,36 @@ public class Chinese implements ILanguage {
     }
 
     @Override
+    public String hereIsUrl() {
+        return "您要听的歌曲Youtube链接是: ";
+    }
+
+    @Override
+    public String noSongFound() {
+        return "找不到该歌曲";
+    }
+
+    @Override
+    public String receiverUsername() {
+        return "收件人的用户名:";
+    }
+
+    @Override
+    public String message() {
+        return "说点什么";
+    }
+
+    @Override
+    public String recommendFailed() {
+        return "推荐歌曲失败，找不到该歌曲";
+    }
+
+    @Override
+    public String recommendSucceeded() {
+        return "您已成功推荐歌曲";
+    }
+
+    @Override
     public String welcome() {
         return "欢迎";
     }

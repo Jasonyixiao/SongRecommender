@@ -6,15 +6,11 @@ import controllers.UserController;
 import recommendStrategy.IRecommender;
 import recommendStrategy.RecommendByAvgRating;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
-import java.util.Objects;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 /**
@@ -159,12 +155,12 @@ class GuiNormalUser {
                 frame.dispose();
             }
         });
-        //go to GuiRecSongtoUser page
+        //go to GuiRecSongToUser page
         recommendToUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];
-                new GuiRecSongtoUser(language,shell);
+                new GuiRecSongToUser(language,shell);
                 frame.dispose();
             }
         }); ////////////
@@ -184,17 +180,5 @@ class GuiNormalUser {
     }
 
 
-    /**
-     * This method will close the window.
-     * @param frame is the current frame of the window.
-     */
-//    private static void windowClose(Frame frame) {
-//        frame.addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowClosing(WindowEvent e) {
-//                // super.windowClosing(e);
-//                System.exit(0);
-//            }
-//        });
-//    }
+
 }

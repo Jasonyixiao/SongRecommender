@@ -18,27 +18,26 @@ public class GuiHistory {
         final JFrame frame = new JFrame(languageGetter.translateTo(language).LoginHistory());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
+        frame.setLayout(new GridLayout(11, 1));
 
         //Add a scrollable panel
         JPanel panel = new JPanel();
-        panel.setLayout(null);
+        panel.setLayout(new GridLayout(1, 8));
         frame.add(panel);
-        JButton item = new JButton("somthing");
-
-
-        // Add a menu bar and add back menus to it:
-
-        //put scrollable panel inside JFrame:
+        JMenuItem jMenuItem = new JMenuItem(languageGetter.translateTo(language).back());
+        panel.add(jMenuItem);
 
         //Add history to panel
-        for(String history: shell.getLoginController().getUserController().
-                getLogInHistory(shell.getUserProfile().getUsername())){
-            panel.add(new JButton(history));
+        for(int i = 0; i < 10 & i < shell.getLoginController().getUserController().
+                getLogInHistory(shell.getUserProfile().getUsername()).size(); i++){
+            String history = shell.getLoginController().getUserController().
+                    getLogInHistory(shell.getUserProfile().getUsername()).get(i);
+            frame.add(new JButton(history));
         }
 
         frame.setVisible(true);
 
-        item.addActionListener(new ActionListener() {
+        jMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String currentUsername = shell.getUserProfile().getUsername();

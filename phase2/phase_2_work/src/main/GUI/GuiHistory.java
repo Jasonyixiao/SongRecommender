@@ -21,26 +21,14 @@ public class GuiHistory {
 
         //Add a scrollable panel
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(0, 1));
-
+        panel.setLayout(null);
         frame.add(panel);
+        JButton item = new JButton("somthing");
+
 
         // Add a menu bar and add back menus to it:
-        JMenuBar jMenuBar = new JMenuBar();
-        JMenu backMenu = new JMenu(languageGetter.translateTo(language).back());
-        JMenu Menu = new JMenu(languageGetter.translateTo(language).back());
-        JMenu enu = new JMenu(languageGetter.translateTo(language).back());
-        JMenuItem item = new JMenuItem(languageGetter.translateTo(language).back());
-        jMenuBar.add(backMenu);
-        jMenuBar.add(Menu);
-        jMenuBar.add(enu);
-        backMenu.add(item);
 
         //put scrollable panel inside JFrame:
-        panel.add(jMenuBar);
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setViewportView(panel);
-        frame.add(scrollPane, BorderLayout.CENTER);
 
         //Add history to panel
         for(String history: shell.getLoginController().getUserController().

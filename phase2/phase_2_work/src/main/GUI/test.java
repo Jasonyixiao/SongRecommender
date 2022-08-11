@@ -16,53 +16,22 @@ public class test {
         LanguageGetter languageGetter = new LanguageGetter();
         JFrame testFrame = new JFrame("ramka testowa");
         JPanel jPanel = new JPanel();
-        jPanel.setLayout(new GridLayout(0, 1));
-        testFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        testFrame.setLayout(new GridLayout(10, 1));
+        jPanel.setLayout(new GridLayout(1, 8));
 
-        JMenuBar jMenuBar = new JMenuBar();
-        jMenuBar.setSize(10, 10);
+        //backbutton
+        JMenuBar button2 = new JMenuBar();
+        JMenuItem jMenuItem = new JMenuItem(languageGetter.translateTo(language).back());
+        button2.add(jMenuItem);
+        jPanel.add(button2);
 
-        JMenu userInfoMenu = new JMenu(languageGetter.translateTo(language).userInfo()); //return "user information" in chinese
-        userInfoMenu.setSize(10, 10);
-        jMenuBar.add(userInfoMenu);
-
-
-        JMenuItem checkHistoryButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
-        JMenuItem logoutButton = new JMenuItem(languageGetter.translateTo(language).logout());
-
-        userInfoMenu.add(checkHistoryButton);
-        userInfoMenu.add(logoutButton);
-
+        testFrame.add(jPanel);
 
         testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jPanel.add(new JButton("ded"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
-        jPanel.add(new JButton("dsds"));
+        testFrame.add(new JButton("ded"));
 
 
 
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setViewportView(jPanel);
-        testFrame.add(scrollPane, BorderLayout.CENTER);
         testFrame.setSize(400, 400);
         testFrame.setVisible(true);
 

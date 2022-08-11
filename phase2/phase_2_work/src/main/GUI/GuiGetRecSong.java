@@ -37,12 +37,9 @@ public class GuiGetRecSong {
                 }
             }
         });
-        frame.add(new JButton("Song1")); // again we will change "song1".... to the name of the song
-        frame.add(new JButton("Song2")); // TODO connect this to the controller and use a for loop for songs
+        
         frame.setVisible(true);
 
     }
-//    public static void main(String[] args) {
-//        new GuiGetRecSong("English", );
-//    }
+
 }

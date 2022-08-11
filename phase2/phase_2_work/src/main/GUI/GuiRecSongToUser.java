@@ -49,13 +49,13 @@ class GuiRecSongToUser extends JDialog {
         final JTextField songNameField = new JTextField();
         songNameField.setBounds(200,20,165,25);
         final JLabel messageLabel = new JLabel();
-        messageLabel.setBounds(125,250,250,35);
+        messageLabel.setBounds(125,250,400,35);
 
 
-        JLabel message = new JLabel(languageGetter.translateTo(language).message());
+        JLabel message = new JLabel(languageGetter.translateTo(language).enterMessage());
         message.setBounds(10,85,165,25);
         final JTextField messageField = new JTextField();
-        messageField.setBounds(200, 85, 165 , 25);
+        messageField.setBounds(200, 85, 200 , 25);
 
 
         //search User's name
@@ -63,23 +63,23 @@ class GuiRecSongToUser extends JDialog {
         receiver.setBounds(10,150,165,25);
         final JTextField receiverField = new JTextField();
         receiverField.setBounds(200,150,165,25);
-        JButton searchButton = new JButton(languageGetter.translateTo(language).search());
-        searchButton.setBounds(10,220,80,25);
+        JButton recommendButton = new JButton(languageGetter.translateTo(language).recommend());
+        recommendButton.setBounds(10,220,80,25);
 
         panel.add(messageLabel);
         panel.add(songName);
         panel.add(songNameField);
-        panel.add(searchButton);
+        panel.add(recommendButton);
         panel.add(receiver);
         panel.add(receiverField);
-        panel.add(searchButton);
+        panel.add(recommendButton);
         panel.add(message);
         panel.add(backButton);
         panel.add(messageField);
         frame.setVisible(true);
 
 
-        searchButton.addActionListener(new ActionListener() {
+        recommendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String song = songNameField.getText();

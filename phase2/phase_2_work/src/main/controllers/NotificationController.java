@@ -47,7 +47,7 @@ public class NotificationController {
      * @param username is the username of the user.
      * @return the number of notifications.
      */
-    public int GetTotalNumMessage(String username) {
+    public int GetTotalNumMessage (String username) throws NullPointerException {
         return notificationCenter.getTotalNumNotifications(username);
     }
 
@@ -120,6 +120,7 @@ public class NotificationController {
 
     /**
      * This method will save the notification data.
+     * @throws  IOException if error finding directory.
      */
     public void saveNotificationData() throws IOException {
         notificationCenter.save();

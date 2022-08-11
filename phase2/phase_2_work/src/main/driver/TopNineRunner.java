@@ -19,38 +19,38 @@ public class TopNineRunner {
 
     }
 
-    public void run() throws IOException {
-        //loadInitialSongs();
-//        ShellState shellState = loadCurrentData();
-//        Scanner input = new Scanner(System.in);
-//        CommandFactory commandFactory = new CommandFactory();
-//        while (shellState.getIsRunning()) {
-//            // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).
-//            System.out.println("Enter your command, please refer to the README file for valid inputs.");
-//            String userCommand = input.nextLine();
-//            ICommands command = commandFactory.getCommand(userCommand);
-//            if (command != null) {
-//                String result = command.executeCommand(shellState);
-//                System.out.println(result);
-//            }
-//        }
+    public void run() throws IOException, ClassNotFoundException {
+        loadInitialSongs();
+        ShellState shellState = loadCurrentData();
+        Scanner input = new Scanner(System.in);
+        CommandFactory commandFactory = new CommandFactory();
+        while (shellState.getIsRunning()) {
+            // when the user is not logged in, the user only have choices 000(register), 001(login), 003(exit).
+            System.out.println("Enter your command, please refer to the README file for valid inputs.");
+            String userCommand = input.nextLine();
+            ICommands command = commandFactory.getCommand(userCommand);
+            if (command != null) {
+                String result = command.executeCommand(shellState);
+                System.out.println(result);
+            }
+        }
     }
 
-//    private ShellState loadCurrentData(){
-//        IGateWay g = new GateWay();
-//        NotificationCenter notificationCenter = new NotificationCenter(g);
-//        UserManager userManager = new UserManager(g);
-//        SongManager songManager = new SongManager(g);
-//        userManager.read();
-//        songManager.read();
-//        notificationCenter.read();
-//        SongController songController = new SongController(songManager);
-//        UserController userController = new UserController(userManager);
-//        LoginController loginController = new LoginController(userController);
-//        NotificationController notificationController = new NotificationController(songController,notificationCenter);
-//        return new ShellState(loginController, songController, notificationController);
-//
-//    }
+    private ShellState loadCurrentData() throws ClassNotFoundException {
+        IGateWay g = new GateWay();
+        NotificationCenter notificationCenter = new NotificationCenter(g);
+        UserManager userManager = new UserManager(g);
+        SongManager songManager = new SongManager(g);
+        userManager.read();
+        songManager.read();
+        notificationCenter.read();
+        SongController songController = new SongController(songManager);
+        UserController userController = new UserController(userManager);
+        LoginController loginController = new LoginController(userController);
+        NotificationController notificationController = new NotificationController(songController,notificationCenter);
+        return new ShellState(loginController, songController, notificationController);
+
+    }
 
     //Ideally, this method will only get run once, this is just a "hard coded" method for adding the initial songs into
     //the program.

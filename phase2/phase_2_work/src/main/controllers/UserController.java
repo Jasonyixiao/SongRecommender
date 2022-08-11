@@ -128,7 +128,7 @@ public class UserController {
 
     /**
      * This method will save the user data.
-     * @throws IOException
+     * @throws  IOException if error finding directory.
      */
     public void saveUserData() throws IOException {userManager.save();
     }

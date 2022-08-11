@@ -1,7 +1,7 @@
 package GUI.GuiLanguage;
 
 /**
- * This class is responsible for English languages.
+ * This class is responsible for providing text for the GUI in English languages.
  */
 public class English implements ILanguage {
     public English() {
@@ -59,7 +59,7 @@ public class English implements ILanguage {
 
     @Override
     public String message() {
-        return "enter your message";
+        return "message";
     }
 
     @Override
@@ -70,6 +70,11 @@ public class English implements ILanguage {
     @Override
     public String recommendSucceeded() {
         return "You have successfully recommend the song.";
+    }
+
+    @Override
+    public String noNotification() {
+        return "You do not have any Notifications";
     }
 
     @Override
@@ -109,11 +114,6 @@ public class English implements ILanguage {
     @Override
     public String other() {
         return "Other";
-    }
-
-    @Override
-    public String exit() {
-        return "Exit";
     }
 
     @Override
@@ -251,9 +251,32 @@ public class English implements ILanguage {
         return "Welcome";
     }
 
+    @Override
+    public String enterMessage(){
+        return "enter your message";
+    }
 
+    @Override
+    public String youHaveMessageFrom() {
+        return "you have message from";
+    }
 
+    @Override
+    public String urlOfTheSongIs() {
+        return "The sender recommended you this song";
+    }
 
+    public String giveYourRating(){
+        return "give your rating" ;
+    }
 
+    @Override
+    public String rateSongSuccess() {
+        return "you have successfully rated the song.";
+    }
+
+    public String rateSongFailed(){
+        return "Rate song failed, song not in system/rating not out of 5.";
+    }
 
 }

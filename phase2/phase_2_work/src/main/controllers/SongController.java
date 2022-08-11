@@ -42,40 +42,25 @@ public class SongController {
 
 
 
-    /**
-     * This method will show user the current rating of the specific song.
-     * @param name is the song name of the song.
-     * @return the rating of the song.
-     */
-    public float getRatting(String name){
-        return songManager.displayCurrentRating(name);
-    }
 
     /**
      * This method will give a song with songName a rating.
      * @param songName is the name of the song being rated.
      * @param rating is the rating that the user is planning to give.
+     * @return true iff the user has successfully rate the song.
      */
-    public void rateAsong(String songName, float rating){
-        songManager.rate(songName, rating);
+    public boolean rateAsong(String songName, float rating){
+        return songManager.rate(songName,rating);
     }
 
     /**
      * This method will save the song data.
+     * @throws  IOException if error finding directory.
      */
     public void saveSongData() throws IOException {
         songManager.save();
     }
 
-    /**
-     * This method will call methods necessary to add a song to the system.
-     * @param name is the name of song being added.
-     * @param url is the Spotify link of the song.
-     * @param artist is the singer of the song.
-     */
-    public void addSong(String name, String url, String artist){
-        songManager.addSong(name, url, artist);
-    }
 
     /**
      * This method will check whether the song with songName is in the system.
@@ -93,11 +78,6 @@ public class SongController {
     public List<String> allSongNames(){
         return songManager.allSongNames();
     }
-    /**
-     * This method will add a song to the system.
-     * @param name is the songname.
-     * @param url is the Spotify link to the song.
-     * @param artist is the singer of the song.
-     */
+
 
 }

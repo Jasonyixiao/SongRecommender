@@ -86,7 +86,7 @@ public class GateWay implements IGateWay {
     @Override
     public HashMap<String, List<Notification>> readNotification() throws ClassNotFoundException {
         try {
-            InputStream file = new FileInputStream(songFile);
+            InputStream file = new FileInputStream(notificationFile);
             InputStream buffer = new BufferedInputStream(file);
             ObjectInput input = new ObjectInputStream(buffer);
             HashMap<String, List<Notification>> result = (HashMap<String, List<Notification>>) input.readObject();

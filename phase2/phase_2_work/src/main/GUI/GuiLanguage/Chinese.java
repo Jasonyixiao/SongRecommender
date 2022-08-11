@@ -1,7 +1,7 @@
 package GUI.GuiLanguage;
 
 /**
- * This class is responsible for Chinese Language.
+ * This class is responsible for providing text in the GUI in Chinese Language.
  */
 public class Chinese implements ILanguage {
     public Chinese() {
@@ -42,11 +42,6 @@ public class Chinese implements ILanguage {
     @Override
     public String other() {
         return "其他";
-    }
-
-    @Override
-    public String exit() {
-        return "退出";
     }
 
     @Override
@@ -244,6 +239,26 @@ public class Chinese implements ILanguage {
     }
 
     @Override
+    public String noNotification() {
+        return "您目前没有收到任何消息";
+    }
+
+    @Override
+    public String enterMessage() {
+        return "输入您的消息";
+    }
+
+    @Override
+    public String youHaveMessageFrom() {
+        return "您有消息来自";
+    }
+
+    @Override
+    public String urlOfTheSongIs() {
+        return "他推荐给您了这首歌";
+    }
+
+    @Override
     public String welcome() {
         return "欢迎";
     }
@@ -251,4 +266,20 @@ public class Chinese implements ILanguage {
     public String userInfo() {
         return "用户信息";
     }
+
+    public String giveYourRating(){
+        return "输入您的评分";
+    }
+
+    @Override
+    public String rateSongSuccess() {
+        return "成功为你的歌评分";
+    }
+
+    @Override
+    public String rateSongFailed() {
+        return "评分不在1-5之间/歌曲不存在";
+    }
+
+
 }

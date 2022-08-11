@@ -243,12 +243,17 @@ public class UserManager {
 
     /**
      * This method will read the saved user data into the system and store it in allUsers.
+     * @throws IOException if error reading from file.
      */
     public void read() throws ClassNotFoundException {
 
         allUsers = gateWay.readUser();
     }
 
+    /**
+     * This method will save Userdata into user file.
+     * @throws IOException if error finding directory.
+     */
     public void save() throws IOException {
         gateWay.save(allUsers, gateWay.getUserFile());
 

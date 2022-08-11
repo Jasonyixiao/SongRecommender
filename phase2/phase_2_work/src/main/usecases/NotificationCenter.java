@@ -52,7 +52,7 @@ public class NotificationCenter {
      * @param username is the username of the user we are checking.
      * @return the number of notification a user has.
      */
-    public int getTotalNumNotifications(String username) {
+    public int getTotalNumNotifications (String username) throws NullPointerException{
         return allNotifications.get(username).size();
     }
 
@@ -135,6 +135,7 @@ public class NotificationCenter {
 
     /**
      * Saves the current notification data locally to the notification data file.
+     * @throws  IOException if error finding directory.
      */
     public void save() throws IOException {
         gateWay.save(allNotifications, gateWay.getNotificationFile());
@@ -143,7 +144,9 @@ public class NotificationCenter {
 
     /**
      * Reads in the notifications data and saves them as a HashMap<String, List<Notification>> into allNotifications.
+     * @throws  IOException if error reading from.
      */
+
     public void read() throws ClassNotFoundException {
         allNotifications = gateWay.readNotification();
 

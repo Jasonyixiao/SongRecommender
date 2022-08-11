@@ -56,10 +56,17 @@ public class SongManager {
     /**
      * This method will let user to rate a song.
      * @param songName is the name of the song.
-     * @param point is the rating the user wants to give.
+     * @param point is the rating the user wants to give.(out of 5)
+     * @return true iff the user's rating is between 1-5 and the system contains the song.
      */
-    public void rate(String songName, float point) {
-        allSongs.get(songName).rate(point);
+    public boolean rate(String songName, float point) {
+        if (allSongs.get(songName)!= null && point < 5.0 && point >= 0.0 ){
+            allSongs.get(songName).rate(point);
+            return true;
+
+        }else{
+            return false;
+        }
     }
 
 
@@ -97,6 +104,7 @@ public class SongManager {
 
     /**
      * This method will read in all song's data from local, and save it in allSongs.
+     * @throws  IOException if error reading from file.
      */
     public void read() throws ClassNotFoundException {
 
@@ -109,6 +117,7 @@ public class SongManager {
 
     /**
      * This method will save allSongs data into the songFile.
+     * @throws  IOException if error finding directory.
      */
     public void save() throws IOException {
         gateWay.save(allSongs, gateWay.getSongFile());

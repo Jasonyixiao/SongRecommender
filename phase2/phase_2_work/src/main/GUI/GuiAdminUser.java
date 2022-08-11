@@ -42,7 +42,7 @@ public class GuiAdminUser {
         JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
         JMenu adminMenu = new JMenu(languageGetter.translateTo(language).admin());
         JMenu otherMenu = new JMenu(languageGetter.translateTo(language).other());
-        JMenuItem exitMenu = new JMenu(languageGetter.translateTo(language).exit());
+
 
         jMenuBar.add(userInfoMenu);
         jMenuBar.add(listenMenu);
@@ -50,12 +50,12 @@ public class GuiAdminUser {
         jMenuBar.add(recommendMenu);
         jMenuBar.add(adminMenu);
         jMenuBar.add(otherMenu);
-        jMenuBar.add(exitMenu);
+
 
         // Add items to the dropdown menu:
         JMenuItem checkHistoryButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
         JMenuItem logoutButton = new JMenuItem(languageGetter.translateTo(language).logout());
-        JMenuItem songUrlButton = new JMenuItem(languageGetter.translateTo(language).songURL());
+        JMenuItem songNameButton = new JMenuItem(languageGetter.translateTo(language).songName());
         JMenuItem checkAllNotificationButton = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
         JMenuItem getRecommendSongsButton = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
         JMenuItem rateSongButton = new JMenuItem(languageGetter.translateTo(language).rateASong());
@@ -70,7 +70,7 @@ public class GuiAdminUser {
 
         userInfoMenu.add(checkHistoryButton);
         userInfoMenu.add(logoutButton);
-        listenMenu.add(songUrlButton);
+        listenMenu.add(songNameButton);
         notificationMenu.add(checkAllNotificationButton);
         recommendMenu.add(getRecommendSongsButton);
         recommendMenu.add(rateSongButton);
@@ -125,7 +125,7 @@ public class GuiAdminUser {
 
         //2. Listen
         //go inside the URL page (GuiListen)
-        songUrlButton.addActionListener(new ActionListener() {
+        songNameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiListen(language,shell);

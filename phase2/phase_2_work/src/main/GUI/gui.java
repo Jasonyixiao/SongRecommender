@@ -12,7 +12,7 @@ public class gui {
         try {
             LoadData loadData = new LoadData();
             ShellState shell = loadData.loadCurrentData();
-            loadData.loadInitialSongs();
+
           new GuiChooseLanguage(shell);
         } catch(IOException | ClassNotFoundException e){
 

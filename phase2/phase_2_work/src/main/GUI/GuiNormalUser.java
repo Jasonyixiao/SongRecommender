@@ -36,7 +36,7 @@ class GuiNormalUser {
         JMenu listenMenu = new JMenu(languageGetter.translateTo(language).listen());
         JMenu notificationMenu = new JMenu(languageGetter.translateTo(language).notification());
         JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
-        JMenu exitMenu = new JMenu(languageGetter.translateTo(language).exit());
+
         final JLabel messageLabel = new JLabel();
         messageLabel.setBounds(125,250,250,35);
         panel.add(messageLabel);
@@ -44,7 +44,7 @@ class GuiNormalUser {
         jMenuBar.add(listenMenu);
         jMenuBar.add(notificationMenu);
         jMenuBar.add(recommendMenu);
-        jMenuBar.add(exitMenu);
+
 
         // Add items to the dropdown menu:
         JMenuItem checkHistoryMenuButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
@@ -168,14 +168,6 @@ class GuiNormalUser {
 
 
 
-        //6.Exit
-        exitMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-                frame.dispose();
-            }
-        });
 
     }
 

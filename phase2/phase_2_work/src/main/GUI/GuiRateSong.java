@@ -3,6 +3,11 @@ package GUI;
 import controllers.ShellState;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static java.lang.Float.parseFloat;
 
 /**
  * This class is responsible for the user to rate the song.
@@ -12,8 +17,8 @@ public class GuiRateSong extends JDialog{
 //    public static void main(String[] args) {
 //        new GuiRateSong("English", shell);
 //    }
-    public GuiRateSong(String language, ShellState shell){
-        LanguageGetter languageGetter = new LanguageGetter();
+    public GuiRateSong(final String language, final ShellState shell){
+        final LanguageGetter languageGetter = new LanguageGetter();
         JPanel panel = new JPanel();
         JFrame frame = new JFrame(languageGetter.translateTo(language).songName()); //SongName get from song.csv
 
@@ -24,29 +29,46 @@ public class GuiRateSong extends JDialog{
         panel.setLayout(null);
 
         JLabel songName = new JLabel(languageGetter.translateTo(language).songName());
-        JLabel rate = new JLabel(languageGetter.translateTo(language).rate());
-        rate.setBounds(10,50,280,25);
+        JLabel giveYourRating = new JLabel(languageGetter.translateTo(language).giveYourRating());
+        giveYourRating.setBounds(10,50,280,25);
         songName.setBounds(10,20,280,25 );
-        panel.add(rate);
+        panel.add(giveYourRating);
         panel.add(songName);
+        final JLabel messageLabel = new JLabel();
+        messageLabel.setBounds(40,250,700,35);
+        messageLabel.setFont(new Font(null,Font.ITALIC,15));
+        messageLabel.setForeground(Color.red);
+        panel.add(messageLabel);
 
-        JTextField rateField = new JTextField(5);
+        final JTextField rateField = new JTextField(5);
         rateField.setBounds(200,50,45,25);
         panel.add(rateField);
-        JTextField songNameField = new JTextField();
+        final JTextField songNameField = new JTextField();
         songNameField.setBounds(200,20,45,25);
         panel.add(songNameField);
 
         frame.setVisible(true);
 
 
-        JLabel recommend = new JLabel(languageGetter.translateTo(language).recommend());
-        recommend.setBounds(10,80,80,25);
-        panel.add(recommend);
         panel.setLayout(null);
-        JButton button = new JButton(languageGetter.translateTo(language).yes());
-        button.setBounds(150,80,150,25);
-        panel.add(button);
+        JButton rateButton = new JButton(languageGetter.translateTo(language).rate());
+        rateButton.setBounds(150,120,150,25);
+        panel.add(rateButton);
+
+        rateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float rating = Float.parseFloat(rateField.getText());
+                String songName = songNameField.getText();
+                if(shell.getSongController().rateAsong(songName,rating)){
+                    messageLabel.setText(languageGetter.translateTo(language).rateSongSuccess());
+                } else{
+                    messageLabel.setText(languageGetter.translateTo(language).rateSongFailed());
+                }
+
+
+            }
+        });
 
 
 

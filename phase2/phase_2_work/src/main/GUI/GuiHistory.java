@@ -23,8 +23,8 @@ public class GuiHistory {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         frame.add(panel);
-        JButton item = new JButton("somthing");
-
+        JButton item = new JButton(languageGetter.translateTo(language).back());
+        panel.add(item);
 
         // Add a menu bar and add back menus to it:
 
@@ -33,6 +33,7 @@ public class GuiHistory {
         //Add history to panel
         for(String history: shell.getLoginController().getUserController().
                 getLogInHistory(shell.getUserProfile().getUsername())){
+
             panel.add(new JButton(history));
         }
 

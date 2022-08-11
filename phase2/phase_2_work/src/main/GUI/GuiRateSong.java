@@ -40,8 +40,6 @@ public class GuiRateSong extends JDialog{
         frame.setVisible(true);
 
 
-
-
         JLabel recommend = new JLabel(languageGetter.translateTo(language).recommend());
         recommend.setBounds(10,80,80,25);
         panel.add(recommend);
@@ -49,6 +47,8 @@ public class GuiRateSong extends JDialog{
         JButton button = new JButton(languageGetter.translateTo(language).yes());
         button.setBounds(150,80,150,25);
         panel.add(button);
+
+
 
     }
 

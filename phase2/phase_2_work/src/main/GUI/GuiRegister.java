@@ -72,7 +72,7 @@ class GuiRegister extends JDialog{
                 new GuiSign(language,shell);
                 frame.dispose();
                 }else{
-                    success.setFont(new Font(null,Font.ITALIC,25));
+                    success.setFont(new Font(null,Font.ITALIC,15));
                     success.setForeground(Color.red);
                     success.setText(languageGetter.translateTo(language).registerFailed());
                 }

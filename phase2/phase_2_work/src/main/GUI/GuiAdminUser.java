@@ -64,6 +64,10 @@ public class GuiAdminUser {
         JMenuItem userButton = new JMenuItem(languageGetter.translateTo(language).user());
         JMenuItem banButton = new JMenuItem(languageGetter.translateTo(language).ban());
         JMenuItem deleteButton = new JMenuItem(languageGetter.translateTo(language).delete());
+        final JLabel messageLabel = new JLabel();
+        messageLabel.setBounds(125,250,250,35);
+        panel.add(messageLabel);
+
 
         userInfoMenu.add(checkHistoryButton);
         userInfoMenu.add(logoutButton);
@@ -113,9 +117,9 @@ public class GuiAdminUser {
                 new GuiSign(language, shell);
                 frame.dispose();}
                 catch (IOException exception){
-//                    success.setFont(new Font(null,Font.ITALIC,25));
-//                    success.setForeground(Color.red);
-//                    success.setText(languageGetter.translateTo(language).logoutFailed());
+                    messageLabel.setFont(new Font(null,Font.ITALIC,15));
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(languageGetter.translateTo(language).logoutFailed());
                 }
             }
         });

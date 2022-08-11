@@ -33,7 +33,7 @@ public class GuiChooseLanguage extends JDialog {
         panel1.setLayout(new GridLayout(3, 3));
         panel2.setLayout(new GridLayout(3, 3));
 
-        panel1.add(button1); // exsit user
+        panel1.add(button1); // exist user
         panel1.add(label1);
         panel2.add(button2);//new user
         panel2.add(label2);

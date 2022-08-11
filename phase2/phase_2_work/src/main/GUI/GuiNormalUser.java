@@ -1,6 +1,8 @@
 package GUI;
 
+import controllers.LoginController;
 import controllers.ShellState;
+import controllers.UserController;
 import recommendStrategy.IRecommender;
 import recommendStrategy.RecommendByAvgRating;
 
@@ -39,7 +41,9 @@ class GuiNormalUser {
         JMenu notificationMenu = new JMenu(languageGetter.translateTo(language).notification());
         JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
         JMenu exitMenu = new JMenu(languageGetter.translateTo(language).exit());
-
+        final JLabel messageLabel = new JLabel();
+        messageLabel.setBounds(125,250,250,35);
+        panel.add(messageLabel);
         jMenuBar.add(userInfoMenu);
         jMenuBar.add(listenMenu);
         jMenuBar.add(notificationMenu);
@@ -47,21 +51,21 @@ class GuiNormalUser {
         jMenuBar.add(exitMenu);
 
         // Add items to the dropdown menu:
-        JMenuItem checkHisotryMenuButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
+        JMenuItem checkHistoryMenuButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
         JMenuItem logoutMenuButton = new JMenuItem(languageGetter.translateTo(language).logout());
         JMenuItem songUrlMenuButton = new JMenuItem(languageGetter.translateTo(language).songURL());
         JMenuItem checkAllNotificationButton = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
-        JMenuItem getRemommendSongButton = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
+        JMenuItem getRecommendSongButton = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
         JMenuItem rateSongButton = new JMenuItem(languageGetter.translateTo(language).rateASong());
-        JMenuItem reommendToUserButton = new JMenuItem(languageGetter.translateTo(language).recommendToUser());
+        JMenuItem recommendToUserButton = new JMenuItem(languageGetter.translateTo(language).recommendToUser());
 
-        userInfoMenu.add(checkHisotryMenuButton);
+        userInfoMenu.add(checkHistoryMenuButton);
         userInfoMenu.add(logoutMenuButton);
         listenMenu.add(songUrlMenuButton);
         notificationMenu.add(checkAllNotificationButton);
-        recommendMenu.add(getRemommendSongButton);
+        recommendMenu.add(getRecommendSongButton);
         recommendMenu.add(rateSongButton);
-        recommendMenu.add(reommendToUserButton);
+        recommendMenu.add(recommendToUserButton);
 
         // add menubar to panel and makes the panel scrollable:
         panel.add(jMenuBar);
@@ -86,19 +90,31 @@ class GuiNormalUser {
 
         //1.User Information
         //go back to GuiHistory page
-        checkHisotryMenuButton.addActionListener(new ActionListener() {
+        checkHistoryMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiHistory(language,shell);
                 frame.dispose();
             }
         });
-        //go back to GuiSign page
+        //log out and go back to GuiSign page
         logoutMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiSign(language, shell);
-                frame.dispose();
+                try{
+                    UserController userController = shell.getLoginController().getUserController();
+                    LoginController loginController = new LoginController(userController);
+                    loginController.LogOff(shell.getUserProfile());
+                    userController.saveUserData();
+                    shell.getSongController().saveSongData();
+                    shell.getNotificationController().saveNotificationData();
+                    new GuiSign(language, shell);
+                    frame.dispose();}
+                catch (IOException exception) {
+                    messageLabel.setFont(new Font(null, Font.ITALIC, 15));
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText(languageGetter.translateTo(language).logoutFailed());
+                }
             }
         });
 
@@ -127,7 +143,7 @@ class GuiNormalUser {
 
         //4.Get Recommend Songs
         //go to GuiRecommendSong page
-        getRemommendSongButton.addActionListener(new ActionListener() {
+        getRecommendSongButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiGetRecSong(language, shell);
@@ -144,7 +160,7 @@ class GuiNormalUser {
             }
         });
         //go to GuiRecSongtoUser page
-        reommendToUserButton.addActionListener(new ActionListener() {
+        recommendToUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] i = new String[0];

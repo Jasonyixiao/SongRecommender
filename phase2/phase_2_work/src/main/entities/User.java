@@ -80,13 +80,7 @@ public class User implements Serializable {
         return password;
     }
 
-    public boolean isSignedIn() {
-        return isSignedIn;
-    }
 
-    public String getBanUntil() {
-        return banUntil;
-    }
 
     /**
      * Getter for IsAdmin
@@ -109,7 +103,7 @@ public class User implements Serializable {
      */
     public void appendLoginHistory(){
         if (loginHistory.length() == 0) {
-             loginHistory = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date() + loginHistory);
+             loginHistory = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
         } else {
             loginHistory = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()) + ", " + loginHistory;
         }

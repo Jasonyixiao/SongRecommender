@@ -78,6 +78,21 @@ public class English implements ILanguage {
     }
 
     @Override
+    public String author() {
+        return "author";
+    }
+
+    @Override
+    public String Succeeded() {
+        return "Rating successful！";
+    }
+
+    @Override
+    public String invalidInput() {
+        return "invalid input";
+    }
+
+    @Override
     public String userInfo() {
         return "User info";
     }

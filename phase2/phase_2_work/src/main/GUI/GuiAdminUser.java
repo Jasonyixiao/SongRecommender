@@ -20,18 +20,14 @@ import static javax.swing.JFrame.*;
 public class GuiAdminUser {
 
 
-    public GuiAdminUser(final String language, final ShellState shell) { // add parameter
+    public GuiAdminUser(final String language, final ShellState shell) {
         final LanguageGetter languageGetter = new LanguageGetter();
         final JFrame frame = new JFrame(languageGetter.translateTo(language).homepageAdminUser());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0,1));
-//        final JLabel success = new JLabel();
-//        success.setBounds(10, 110, 300, 25);
-//        frame.add(success);
 
-        frame.add(panel);
 
         // Add a menu bar and add dropdown menus to it:
         JMenuBar jMenuBar = new JMenuBar();
@@ -42,7 +38,7 @@ public class GuiAdminUser {
         JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
         JMenu adminMenu = new JMenu(languageGetter.translateTo(language).admin());
         JMenu otherMenu = new JMenu(languageGetter.translateTo(language).other());
-
+        JMenu logoutMenu = new JMenu(languageGetter.translateTo(language).logout());
 
         jMenuBar.add(userInfoMenu);
         jMenuBar.add(listenMenu);
@@ -50,7 +46,7 @@ public class GuiAdminUser {
         jMenuBar.add(recommendMenu);
         jMenuBar.add(adminMenu);
         jMenuBar.add(otherMenu);
-
+        jMenuBar.add(logoutMenu);
 
         // Add items to the dropdown menu:
         JMenuItem checkHistoryButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
@@ -63,14 +59,10 @@ public class GuiAdminUser {
         JMenuItem userButton = new JMenuItem(languageGetter.translateTo(language).user());
         JMenuItem banButton = new JMenuItem(languageGetter.translateTo(language).ban());
         JMenuItem deleteButton = new JMenuItem(languageGetter.translateTo(language).delete());
-        final JLabel messageLabel = new JLabel();
-        messageLabel.setBounds(125,250,250,35);
-        panel.add(messageLabel);
-
 
         userInfoMenu.add(checkHistoryButton);
-        userInfoMenu.add(logoutButton);
-        listenMenu.add(songNameButton);
+        logoutMenu.add(logoutButton);
+//        listenMenu.add(songUrlButton);
         notificationMenu.add(checkAllNotificationButton);
         recommendMenu.add(getRecommendSongsButton);
         recommendMenu.add(rateSongButton);
@@ -87,9 +79,21 @@ public class GuiAdminUser {
 
         // Add top Nine songs:
         IRecommender recommender = new RecommendByAvgRating();
-        for (String song: shell.getSongController().getRecommend(recommender)){
-            panel.add(new JButton(song));
+        for (final String song: shell.getSongController().getRecommend(recommender)){
+            JButton songButton = new JButton(song +
+                    "  Author: " +
+                    shell.getSongController().getSongAuthor(song) +
+                    "  rating: " +
+                    shell.getSongController().getRatting(song));
 
+            panel.add(songButton);
+            songButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new GuiSongPage(language, shell, song);
+                    frame.dispose();
+                }
+            });
         }
 
         frame.setVisible(true);
@@ -116,9 +120,8 @@ public class GuiAdminUser {
                 new GuiSign(language, shell);
                 frame.dispose();}
                 catch (IOException exception){
-                    messageLabel.setFont(new Font(null,Font.ITALIC,15));
-                    messageLabel.setForeground(Color.red);
-                    messageLabel.setText(languageGetter.translateTo(language).logoutFailed());
+                    new GuiErrorPage(language, shell);
+                    frame.dispose();
                 }
             }
         });
@@ -157,16 +160,14 @@ public class GuiAdminUser {
         rateSongButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] i = new String[0];
                 new GuiRateSong(language, shell);
                 frame.dispose();
             }
         });
-        //go to GuiRecSongToUser page
+        //go to GuiRecSongtoUser page
         recommendToUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String[] i = new String[0];
                 new GuiRecSongToUser(language,shell);
                 frame.dispose();
             }
@@ -201,9 +202,7 @@ public class GuiAdminUser {
                 frame.dispose();
             }
         });
-
-
-            }
+    }
 
 }
 

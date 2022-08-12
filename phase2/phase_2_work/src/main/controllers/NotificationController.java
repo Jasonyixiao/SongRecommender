@@ -9,9 +9,9 @@ import java.io.IOException;
  */
 public class NotificationController {
 
-    private NotificationCenter notificationCenter;
+    private final NotificationCenter notificationCenter;
 
-    private SongController songController;
+    private final SongController songController;
 
     private int currentNotificationId;
 
@@ -24,6 +24,14 @@ public class NotificationController {
     public NotificationController(SongController songController, NotificationCenter notificationCenter) {
         this.songController = songController;
         this.notificationCenter = notificationCenter;
+    }
+
+    /**
+     * Getter for notification id.
+     * @return the id of the current notification.
+     */
+    public int getCurrentNotificationId() {
+        return currentNotificationId;
     }
 
     /**
@@ -47,7 +55,7 @@ public class NotificationController {
      * @param username is the username of the user.
      * @return the number of notifications.
      */
-    public int GetTotalNumMessage (String username) throws NullPointerException {
+    public int getTotalNumMessage(String username) throws NullPointerException {
         return notificationCenter.getTotalNumNotifications(username);
     }
 
@@ -64,7 +72,7 @@ public class NotificationController {
         if (notificationCenter.hasUser(username)) {
             return notificationCenter.getNotificationContent(username, idOfNotification);
         } else {
-            return "No such Notification. ";
+            return "No such Notification.";
         }
     }
 
@@ -107,8 +115,7 @@ public class NotificationController {
     public Boolean recommendSong(String songName, String receiver, String sender, String message) {
         if (songController.hasSong(songName)) {
             String songURL = songController.listen(songName);
-            int index = notificationCenter.createNotification(receiver,sender,songURL, message); // This creates a new notification and added it to notification center
-            currentNotificationId = index;
+            currentNotificationId = notificationCenter.createNotification(receiver,sender,songURL, message);
             return true;
         } else {
             return false;
@@ -125,8 +132,4 @@ public class NotificationController {
     public void saveNotificationData() throws IOException {
         notificationCenter.save();
     }
-
-
-
-
 }

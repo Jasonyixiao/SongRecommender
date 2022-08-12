@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * This class is responsible for the user to rate the song.
@@ -58,10 +59,14 @@ public class GuiRateSong extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 float rating = Float.parseFloat(rateField.getText());
                 String songName = songNameField.getText();
-                if(shell.getSongController().rateASong(songName,rating)){
-                    messageLabel.setText(languageGetter.translateTo(language).rateSongSuccess());
-                } else{
-                    messageLabel.setText(languageGetter.translateTo(language).rateSongFailed());
+                try {
+                    if(shell.getSongController().rateASong(songName,rating)){
+                        messageLabel.setText(languageGetter.translateTo(language).rateSongSuccess());
+                    } else{
+                        messageLabel.setText(languageGetter.translateTo(language).rateSongFailed());
+                    }
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
 
 

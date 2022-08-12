@@ -44,6 +44,7 @@ public class Chinese implements ILanguage {
         return "其他";
     }
 
+
     @Override
     public String checkHistory() {
         return "查看历史登录记录";
@@ -256,6 +257,21 @@ public class Chinese implements ILanguage {
     @Override
     public String urlOfTheSongIs() {
         return "他推荐给您了这首歌";
+    }
+
+    @Override
+    public String author() {
+        return "作者";
+    }
+
+    @Override
+    public String Succeeded() {
+        return "评分成功";
+    }
+
+    @Override
+    public String invalidInput() {
+        return "请重新输入";
     }
 
     @Override

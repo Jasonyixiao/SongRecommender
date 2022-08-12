@@ -31,16 +31,6 @@ public class SongManager {
 
     }
 
-
-    /**
-     * Getter for all Songs.
-     * @return all songs in the system in the form of songname to song key-value pairs.
-     */
-    public HashMap<String, Song> getAllSongs() {
-        return allSongs;
-    }
-
-
     /**
      * This method will add a song to the system.
      * @param name is the songname.
@@ -59,8 +49,8 @@ public class SongManager {
      * @param point is the rating the user wants to give.(out of 5)
      * @return true iff the user's rating is between 1-5 and the system contains the song.
      */
-    public boolean rate(String songName, float point) {
-        if (allSongs.get(songName)!= null && point < 5.0 && point >= 0.0 ){
+    public boolean rate(String songName, float point){
+        if (allSongs.get(songName)!= null && point <= 5.0 && point >= 0.0 ){
             allSongs.get(songName).rate(point);
             return true;
 
@@ -111,8 +101,15 @@ public class SongManager {
             allSongs = gateWay.readSong();
     }
 
-
-
+    /**
+     * This method will return the artist of the given song.
+     * @param songName the song name.
+     * @return return the name of the artist.
+     */
+    public String getAuthor(String songName) {
+        Song song = allSongs.get(songName);
+        return song.getArtist();
+    }
 
 
     /**
@@ -141,7 +138,5 @@ public class SongManager {
         return new ArrayList<>(allSongs.keySet());
 
     }
-
-
 }
 

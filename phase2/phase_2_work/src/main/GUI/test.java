@@ -31,6 +31,20 @@ public class test {
         testFrame.add(new JButton("ded"));
 
 
+        JButton button = new JButton("gotolink");
+        jPanel.add(button);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String songurl = "https://www.youtube.com/watch?v=BqwAvw2GgUU";
+                    java.awt.Desktop.getDesktop().browse(java.net.URI.create(songurl));
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
+            }
+        });
+
 
         testFrame.setSize(400, 400);
         testFrame.setVisible(true);

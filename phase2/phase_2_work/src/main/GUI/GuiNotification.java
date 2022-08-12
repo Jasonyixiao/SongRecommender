@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -55,7 +54,7 @@ public class GuiNotification {
         //Getting all the notifications.
         try{ String currentUser = shell.getUserProfile().getUsername();
             System.out.println(shell.getNotificationController().getSender(currentUser,0));
-            int numAllNotifications = shell.getNotificationController().GetTotalNumMessage(currentUser);
+            int numAllNotifications = shell.getNotificationController().getTotalNumMessage(currentUser);
             for (int i = 0; i < numAllNotifications; i++) {
                     panel.add(new JButton( languageGetter.translateTo(language).youHaveMessageFrom()
                             + shell.getNotificationController().getSender(currentUser, i)+

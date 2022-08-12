@@ -8,6 +8,8 @@ import usecases.IGateWay;
 import usecases.SongManager;
 
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 public class SongTest {
     @Test
@@ -31,11 +33,14 @@ public class SongTest {
         IGateWay g = new GateWay();
         SongManager songManager = new SongManager(g);
         songManager.addSong("song1","https://open.spotify.com/track/6Uj1ctrBOjOas8xZXGqKk4?si=1d62a803cf494c19","artist");
-        songManager.rate("song1",5);
-        assertEquals(5, songManager.displayCurrentRating("song1"), 0.0);
-        songManager.rate("song1",4);
-        assertEquals(4.5, songManager.displayCurrentRating("song1"), 0.0);
-
+        try {
+            songManager.rate("song1",5);
+            assertEquals(5, songManager.displayCurrentRating("song1"), 0.0);
+            songManager.rate("song1",4);
+            assertEquals(4.5, songManager.displayCurrentRating("song1"), 0.0);
+        } catch (IOException e) {
+            fail();
+        }
     }
 
     @Test
@@ -67,7 +72,11 @@ public class SongTest {
         songManager.addSong("First Class", "https://open.spotify.com/track/0wHFktze2PHC5jDt3B17DC?si=89f658394a5a463e", "Jack Harlow");
         float i = 0;
         for(String songName: songManager.allSongNames()){
-            songManager.rate(songName, i);
+            try {
+                songManager.rate(songName, i);
+            } catch (IOException e) {
+                fail();
+            }
             i += 0.5;
         }
         assertEquals(songManager.allSongNames(),songManager.getRecommend(9, r));

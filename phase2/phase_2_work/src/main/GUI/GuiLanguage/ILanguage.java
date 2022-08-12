@@ -4,87 +4,91 @@ package GUI.GuiLanguage;
  * This class is responsible for calling different languages.
  */
 public interface ILanguage {
-    String chooseUserToPromote();
+    public String chooseUserToPromote();
 
-    String chooseUserToDelete();
+    public String chooseUserToDelete();
 
-    String chooseUserToBan();
+    public String chooseUserToBan();
 
-    String homepageAdminUser();
+    public String homepageAdminUser();
 
-    String notification();
+    public String notification();
 
-    String recommend();
+    public String recommend();
 
-    String admin();
+    public String admin();
 
-    String other();
+    public String other();
+    public String checkHistory();
+    public String logout();
+    public String checkNewNotifications();
+    public String checkAllNotifications();
+    public String getRecommendSongs();
+    public String rateASong();
+    public String recommendToUser();
+    public String user();
+    public String ban();
+    public String delete();
+    public String userName();
+    public String search();
+    public String newNotifications();
+    public String allNotifications();
+    public String recommendSongs();
+    public String listen();
+    public String songURL();
+    public String loginSystem();
+    public String userID();
+    public String password();
+    public String login();
+    public String songName();
+    public String rate();
+    public String yes();
+    public String forExistedUser();
+    public String forNewUser();
+    public String welcome();
+    public String register();
 
-    String checkHistory();
-    String logout();
-    String checkNewNotifications();
-    String checkAllNotifications();
-    String getRecommendSongs();
-    String rateASong();
-    String recommendToUser();
-    String user();
-    String ban();
-    String delete();
-    String userName();
-    String search();
-    String newNotifications();
-    String allNotifications();
-    String recommendSongs();
-    String listen();
-    String songURL();
-    String loginSystem();
-    String userID();
-    String password();
-    String login();
-    String songName();
-    String rate();
-    String yes();
-    String forExistedUser();
-    String forNewUser();
-    String welcome();
-    String register();
+    public String userInfo();
 
-    String userInfo();
+    public String LoginHistory();
 
-    String LoginHistory();
+    public String homepageNormalUser();
 
-    String homepageNormalUser();
+    public String registerSystem();
 
-    String registerSystem();
+    public String back();
 
-    String back();
+    public String logInFailed();
 
-    String logInFailed();
+    public String registerFailed();
 
-    String registerFailed();
+    public String logoutFailed();
 
-    String logoutFailed();
+    public String hereIsUrl();
 
-    String hereIsUrl();
+    public String noSongFound();
 
-    String noSongFound();
+    public String receiverUsername();
 
-    String receiverUsername();
+    public String message();
 
-    String message();
-
-    String recommendFailed();
-
-    String recommendSucceeded();
+    public String recommendFailed();
 
     String noNotification();
+
+    public String recommendSucceeded();
 
     String enterMessage();
 
     String youHaveMessageFrom();
 
+    public String author();
+
     String urlOfTheSongIs();
 
+    public String Succeeded();
+
+    public String invalidInput();
     String giveYourRating();
 
     String rateSongSuccess();

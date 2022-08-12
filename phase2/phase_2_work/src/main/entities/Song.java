@@ -28,6 +28,7 @@ public class Song implements Serializable {
         songUrl = url;
         this.artist = artist;
         Name = name;
+        totalpoints = 0;
     }
 
     /**

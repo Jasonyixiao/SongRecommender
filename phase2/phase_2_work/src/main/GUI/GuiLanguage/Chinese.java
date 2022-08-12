@@ -297,5 +297,20 @@ public class Chinese implements ILanguage {
         return "评分不在1-5之间/歌曲不存在";
     }
 
+    @Override
+    public String recommendStrategy() {
+        return "推荐策略";
+    }
+
+    @Override
+    public String recommendByAvgRating() {
+        return "评分最高";
+    }
+
+    @Override
+    public String rating() {
+        return "评分";
+    }
+
 
 }

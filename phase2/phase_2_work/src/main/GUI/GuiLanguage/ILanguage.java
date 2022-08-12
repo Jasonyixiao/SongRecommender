@@ -93,4 +93,10 @@ public interface ILanguage {
 
     String rateSongSuccess();
     String rateSongFailed();
+
+    public String recommendStrategy();
+
+    public String recommendByAvgRating();
+
+    public String rating();
 }

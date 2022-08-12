@@ -294,4 +294,20 @@ public class English implements ILanguage {
         return "Rate song failed, song not in system/rating not out of 5.";
     }
 
+    @Override
+    public String recommendStrategy() {
+        return "Recommend Strategy";
+    }
+
+    @Override
+    public String recommendByAvgRating() {
+        return "" +
+                "Recommend by Avg Rating";
+    }
+
+    @Override
+    public String rating() {
+        return "rating";
+    }
+
 }

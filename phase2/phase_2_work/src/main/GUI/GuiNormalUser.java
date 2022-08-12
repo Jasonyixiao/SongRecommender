@@ -36,11 +36,15 @@ class GuiNormalUser {
         JMenu notificationMenu = new JMenu(languageGetter.translateTo(language).notification());
         JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
         JMenu logoutMenu = new JMenu(languageGetter.translateTo(language).logout());
+        JMenu recommendBy = new JMenu(languageGetter.translateTo(language).recommendStrategy());
+
 
         jMenuBar.add(userInfoMenu);
         jMenuBar.add(notificationMenu);
         jMenuBar.add(recommendMenu);
+        jMenuBar.add(recommendBy);
         jMenuBar.add(logoutMenu);
+
 
 
         // Add items to the dropdown menu:
@@ -50,6 +54,7 @@ class GuiNormalUser {
         JMenuItem rateSongButton = new JMenuItem(languageGetter.translateTo(language).rateASong());
         JMenuItem reommendToUserButton = new JMenuItem(languageGetter.translateTo(language).recommendToUser());
         JMenuItem logoutButton = new JMenuItem(languageGetter.translateTo(language).logout());
+        JMenuItem recommendByRating = new JMenuItem(languageGetter.translateTo(language).recommendByAvgRating());
 
         userInfoMenu.add(checkHisotryMenuButton);
         notificationMenu.add(checkAllNotificationButton);
@@ -57,6 +62,8 @@ class GuiNormalUser {
         recommendMenu.add(rateSongButton);
         recommendMenu.add(reommendToUserButton);
         logoutMenu.add(logoutButton);
+        recommendBy.add(recommendByRating);
+
 
 
         // add menubar to panel and makes the panel scrollable:
@@ -70,9 +77,9 @@ class GuiNormalUser {
         IRecommender recommender = new RecommendByAvgRating();
         for (final String song: shell.getSongController().getRecommend(recommender)) {
             JButton songButton = new JButton(song +
-                    "  Author: " +
+                    "  " + languageGetter.translateTo(language).author() + ": " +
                     shell.getSongController().getSongAuthor(song) +
-                    "  rating: " +
+                    "  " + languageGetter.translateTo(language).rating() + ": " +
                     shell.getSongController().getRatting(song));
             panel.add(songButton);
             songButton.addActionListener(new ActionListener() {
@@ -93,6 +100,14 @@ class GuiNormalUser {
                 frame.dispose();
             }
         });
+        //Add action listener to the recommend by rating button
+        recommendByRating.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiRecByAvgRate(shell, language);
+            }
+        });
+
         //go back to GuiSign page
         logoutButton.addActionListener(new ActionListener() {
             @Override

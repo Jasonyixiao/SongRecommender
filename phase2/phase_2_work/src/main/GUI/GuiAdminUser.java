@@ -38,18 +38,19 @@ public class GuiAdminUser {
         JMenu adminMenu = new JMenu(languageGetter.translateTo(language).admin());
         JMenu otherMenu = new JMenu(languageGetter.translateTo(language).other());
         JMenu logoutMenu = new JMenu(languageGetter.translateTo(language).logout());
+        JMenu recommendStrategy = new JMenu(languageGetter.translateTo(language).recommendStrategy());
 
         jMenuBar.add(userInfoMenu);
         jMenuBar.add(notificationMenu);
         jMenuBar.add(recommendMenu);
         jMenuBar.add(adminMenu);
+        jMenuBar.add(recommendStrategy);
         jMenuBar.add(otherMenu);
         jMenuBar.add(logoutMenu);
 
         // Add items to the dropdown menu:
         JMenuItem checkHistoryButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
         JMenuItem logoutButton = new JMenuItem(languageGetter.translateTo(language).logout());
-        JMenuItem songNameButton = new JMenuItem(languageGetter.translateTo(language).songName());
         JMenuItem checkAllNotificationButton = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
         JMenuItem getRecommendSongsButton = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
         JMenuItem rateSongButton = new JMenuItem(languageGetter.translateTo(language).rateASong());
@@ -57,10 +58,11 @@ public class GuiAdminUser {
         JMenuItem userButton = new JMenuItem(languageGetter.translateTo(language).user());
         JMenuItem banButton = new JMenuItem(languageGetter.translateTo(language).ban());
         JMenuItem deleteButton = new JMenuItem(languageGetter.translateTo(language).delete());
+        JMenuItem recommendByRating = new JMenuItem(languageGetter.translateTo(language).recommendByAvgRating());
 
         userInfoMenu.add(checkHistoryButton);
         logoutMenu.add(logoutButton);
-//        listenMenu.add(songUrlButton);
+        recommendStrategy.add(recommendByRating);
         notificationMenu.add(checkAllNotificationButton);
         recommendMenu.add(getRecommendSongsButton);
         recommendMenu.add(rateSongButton);
@@ -79,9 +81,9 @@ public class GuiAdminUser {
         IRecommender recommender = new RecommendByAvgRating();
         for (final String song: shell.getSongController().getRecommend(recommender)){
             JButton songButton = new JButton(song +
-                    "  Author: " +
+                    "  " + languageGetter.translateTo(language).author() + ": " +
                     shell.getSongController().getSongAuthor(song) +
-                    "  rating: " +
+                    "  " + languageGetter.translateTo(language).rating() + ": " +
                     shell.getSongController().getRatting(song));
 
             panel.add(songButton);
@@ -105,6 +107,16 @@ public class GuiAdminUser {
                 frame.dispose();
             }
         });
+
+        //Add action to Recommend by avg rating button
+        recommendByRating.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuiRecByAvgRate(shell, language);
+                frame.dispose();
+            }
+        });
+
         //Log out and go back to GuiSign page
         logoutButton.addActionListener(new ActionListener() {
             @Override
@@ -124,15 +136,6 @@ public class GuiAdminUser {
             }
         });
 
-        //2. Listen
-        //go inside the URL page (GuiListen)
-        songNameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiListen(language,shell);
-                frame.dispose();
-            }
-        });
 
         //3. Notification
 

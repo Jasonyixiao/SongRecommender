@@ -10,9 +10,9 @@ operations performed during your login time will NOT be saved. Including your ac
 
 How To Run:
 
-1)  Navigate to src/main/java/GUI. 
-2)  You will see a file called gui, run this file, and you should the GUI appear on your screen.
-3)  Have fun!
+1) Navigate to src/main/GUI.
+2) You will see a file called gui, run this file, and you should the GUI appear on your screen.
+3) Have fun!
 
 Some Important Notes:
 After you perform some tasks, the GUI will take you directly back to the previous page, this means you have successfully performed the

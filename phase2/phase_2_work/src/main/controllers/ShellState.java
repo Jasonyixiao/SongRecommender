@@ -1,12 +1,10 @@
 package controllers;
 
 /**
- *  This class is to check if the user is still active. The program will terminate once the user exit. This can be
- *  done by calling setIsRunning that sets isRunning to false, and while loop will terminate.
+ *  This class is to keep track of the current user's information.
  */
 public class ShellState {
-    // this class is to check if the user is still active. The program will terminate once the user exit. This can be
-    // done by calling setIsRunning that sets isRunning to false, and while loop will terminate.
+
 
     private UserProfile userContext;
 

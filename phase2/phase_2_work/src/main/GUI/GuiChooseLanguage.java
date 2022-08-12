@@ -10,9 +10,7 @@ import java.awt.event.ActionListener;
  * This is the page for user to choose different languages.
  */
 public class GuiChooseLanguage extends JDialog {
-//    public static void main(String[] args) {
-//        new GuiChooseLanguage(shell);
-//    }
+
 
     public GuiChooseLanguage(final ShellState shell) {
 

@@ -71,9 +71,11 @@ public class    UserTest {
     public void testGetLoginHistory(){
         IGateWay g = new GateWay();
         UserManager userManager = new UserManager(g);
-        userManager.createUser("Harry", "Zhang");
+        UserController userController = new UserController(userManager);
+
+        userController.createNormalUser("Harry", "Zhang");
         userManager.login("Harry", "Zhang");
-        assertNotNull(userManager.getLoginHistory("Harry"));
+        assertNotNull(userController.getLogInHistory("Harry"));
 
 
 
@@ -88,7 +90,7 @@ public class    UserTest {
         userManager1.getAllUsers().get("Harry").setIsAdmin(1);
         assertTrue(userController.isAdmin("Harry"));
         userController.createNormalUser("Jason", "Zhang");
-        assertTrue(!userController.isAdmin("Jason"));
+        assertFalse(userController.isAdmin("Jason"));
         assertEquals("Command Successful!",userController.createAdminUser("Harry","Jason"));
         assertTrue(userController.isAdmin("Jason"));
     }

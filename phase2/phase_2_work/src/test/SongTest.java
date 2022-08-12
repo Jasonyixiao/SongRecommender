@@ -65,7 +65,7 @@ public class SongTest {
     }
 
     @Test
-    // test the recommending songs system
+    // test the recommending songs system.
     public void testRecommend(){
         IGateWay g = new GateWay();
         SongManager songManager = new SongManager(g);

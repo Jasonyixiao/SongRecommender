@@ -14,7 +14,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  */
 public class GuiNotification {
 
-    public GuiNotification(String notificationType, final String language, final ShellState shell) {
+    public GuiNotification(final String language, final ShellState shell) {
         LanguageFactory languageFactory = new LanguageFactory();
         final JFrame frame = new JFrame(languageFactory.translateTo(language).notification());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -71,15 +71,11 @@ public class GuiNotification {
                     songButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            try {
-                                new GuiSongPage(
-                                        language,
-                                        shell,
-                                        shell.getNotificationController().getSongname(currentUser, num));
-                                frame.dispose();
-                            } catch (Exception ex) {
-                                System.out.println(ex);
-                            }
+                            new GuiSongPage(
+                                    language,
+                                    shell,
+                                    shell.getNotificationController().getSongname(currentUser, num));
+                            frame.dispose();
                         }
                     });
             }

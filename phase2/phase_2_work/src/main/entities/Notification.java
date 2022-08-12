@@ -8,13 +8,15 @@ import java.io.Serializable;
 
 // Note we possibly can separate out recommend and message as two separate classes that extends Notification
 public class Notification implements Serializable {
-    private String content; // for now it is an url of a song, we use this for recommending a song to a user.
+    private final String content; // for now it is an url of a song, we use this for recommending a song to a user.
 
-    private String message;
+    private final String message;
+
+    private String songName;
 
     private boolean isNew;
 
-    private String sender; // username of the sender
+    private final String sender; // username of the sender
 
     /**
      * Constructor of a notification, stores content(url of song for now), message, isNew, sender as variables.
@@ -27,6 +29,23 @@ public class Notification implements Serializable {
         this.message = message;
         this.isNew = true;
         this.sender = sender;
+        this.songName = "";
+    }
+    /**
+     * Constructor of a notification, stores content(url of song for now), message, isNew, sender as variables.
+     * @return return the song name
+     */
+    public String getSongName() {
+        return songName;
+    }
+
+    /**
+     * Constructor of a notification, stores content(url of song for now), message, isNew, sender as variables.
+     * @param songName is the name of the song
+     */
+
+    public void setSongName(String songName) {
+        this.songName = songName;
     }
 
     /**

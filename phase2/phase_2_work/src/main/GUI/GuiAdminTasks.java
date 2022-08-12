@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /**
  * This class represents the page only available for admin users, tasks include: ban, delete, and promote a normal user.
@@ -17,9 +18,9 @@ public class GuiAdminTasks {
         final LanguageFactory languageFactory = new LanguageFactory();
         JPanel panel = new JPanel();
         final JFrame frame = new JFrame();
-        if (purpose == "promote"){
+        if (Objects.equals(purpose, "promote")){
             frame.setTitle(languageFactory.translateTo(language).chooseUserToPromote());
-        }else if (purpose == "ban"){
+        }else if (Objects.equals(purpose, "ban")){
             frame.setTitle(languageFactory.translateTo(language).chooseUserToBan());
         }else{
             frame.setTitle(languageFactory.translateTo(language).chooseUserToDelete());

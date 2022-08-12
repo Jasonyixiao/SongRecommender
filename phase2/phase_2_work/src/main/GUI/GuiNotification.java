@@ -16,24 +16,28 @@ public class GuiNotification {
 
     public GuiNotification(String notificationType, final String language, final ShellState shell) {
         LanguageFactory languageFactory = new LanguageFactory();
-        final JFrame frame = new JFrame();
+        final JFrame frame = new JFrame(languageFactory.translateTo(language).notification());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle(languageFactory.translateTo(language).notification());
-        frame.setSize(500, 500);
+        frame.setSize(700, 700);
         JPanel panel = new JPanel();
-        frame.add(panel);
+        panel.setLayout(new GridLayout(0,1));
+
+        // Add a menu bar and add dropdown menus to it:
+        JButton button2 = new JButton(languageFactory.translateTo(language).back());
+        frame.add(button2);
+
+
+
         JLabel messageLabel = new JLabel();
-        messageLabel.setBounds(125,250,300,35);
         messageLabel.setFont(new Font(null,Font.ITALIC,15));
         messageLabel.setForeground(Color.red);
 
+        frame.setLayout(new GridLayout(3, 1, 10, 10));
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setViewportView(panel);
+        frame.add(scrollPane, BorderLayout.CENTER);
+        frame.add(messageLabel);
 
-
-        frame.setLayout(new GridLayout(10, 1, 10, 0));
-        JButton button2 = new JButton(languageFactory.translateTo(language).back());
-        button2.setBounds(400, 10, 80, 25);
-        panel.add(button2);
-        panel.add(messageLabel);
         frame.setVisible(true);
 
 
@@ -51,18 +55,33 @@ public class GuiNotification {
             }
         });
 
-        //Getting all the notifications.
-        try{ String currentUser = shell.getUserProfile().getUsername();
+        //Getting all the notifications, and make notifications clickable
+        try{ final String currentUser = shell.getUserProfile().getUsername();
             System.out.println(shell.getNotificationController().getSender(currentUser,0));
             int numAllNotifications = shell.getNotificationController().getTotalNumMessage(currentUser);
             for (int i = 0; i < numAllNotifications; i++) {
-                    panel.add(new JButton( languageFactory.translateTo(language).youHaveMessageFrom()
-                            + shell.getNotificationController().getSender(currentUser, i)+
-                            ". " + languageFactory.translateTo(language).urlOfTheSongIs() + ": "
-                            + shell.getNotificationController().getContent(currentUser, i)+
-                            ". " + languageFactory.translateTo(language).message() + ": "
-                            + shell.getNotificationController().getMessage(currentUser, i))
-                    );
+                JButton songButton = new JButton(languageFactory.translateTo(language).youHaveMessageFrom()
+                        + shell.getNotificationController().getSender(currentUser, i) +
+                        ". " + languageFactory.translateTo(language).songName() + ": "
+                        + shell.getNotificationController().getSongname(currentUser, i) +
+                        ". " + languageFactory.translateTo(language).message() + ": "
+                        + shell.getNotificationController().getMessage(currentUser, i));
+                final int num = i;
+                    panel.add(songButton);
+                    songButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            try {
+                                new GuiSongPage(
+                                        language,
+                                        shell,
+                                        shell.getNotificationController().getSongname(currentUser, num));
+                                frame.dispose();
+                            } catch (Exception ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                    });
             }
             frame.setVisible(true);
 

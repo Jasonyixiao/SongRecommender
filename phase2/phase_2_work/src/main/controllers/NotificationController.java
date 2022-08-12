@@ -115,11 +115,20 @@ public class NotificationController {
     public Boolean recommendSong(String songName, String receiver, String sender, String message) {
         if (songController.hasSong(songName)) {
             String songURL = songController.listen(songName);
-            currentNotificationId = notificationCenter.createNotification(receiver,sender,songURL, message);
+            currentNotificationId = notificationCenter.createNotification(receiver,sender,songURL, message, songName);
             return true;
         } else {
             return false;
         }
+    }
+    /**
+     * This method will let user recommend a song to another user.
+     * @param receiver is the username of the receiving user.
+     * @return return the name of the song of the notification.
+     */
+
+    public String getSongname(String receiver, int idexOfNotification){
+        return notificationCenter.getSongName(receiver, idexOfNotification);
     }
 
 

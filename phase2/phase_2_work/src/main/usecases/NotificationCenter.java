@@ -108,16 +108,28 @@ public class NotificationCenter {
 
     /**
      * This method creates a notification.
+     *
      * @param receiver is the receiving user's username.
-     * @param sender is the sending user's username.
-     * @param content is the song url we are recommending.
-     * @param  message is the message of this notification.
+     * @param sender   is the sending user's username.
+     * @param content  is the song url we are recommending.
+     * @param message  is the message of this notification.
+     * @param songName
      * @return the index of the notification in the receiving user's list of all notifications.
      */
-    public int createNotification(String receiver, String sender, String content, String message) { // this returns the index of this newly created notification
+    public int createNotification(String receiver, String sender, String content, String message, String songName) { // this returns the index of this newly created notification
         Notification notification = new Notification(content, message, sender);
         addNotification(receiver, notification);
+        notification.setSongName(songName);
         return allNotifications.get(receiver).size() - 1;
+    }
+    /**
+     * This method creates a notification.
+     *
+     * @param receiver is the receiving user's username.
+     * @return the song name of the notification.
+     */
+    public String getSongName(String receiver, int idOfNotification) {
+        return allNotifications.get(receiver).get(idOfNotification).getSongName();
     }
 
     /**
@@ -152,12 +164,4 @@ public class NotificationCenter {
 
 
     }
-
-
-
-
-
-
-
-
 }

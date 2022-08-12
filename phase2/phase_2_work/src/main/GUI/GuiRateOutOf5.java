@@ -54,6 +54,7 @@ public class GuiRateOutOf5 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new GuiSongPage(language, shell, songName);
+                frame.dispose();
             }
         });
 

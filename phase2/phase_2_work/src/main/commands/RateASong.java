@@ -30,7 +30,7 @@ public class RateASong implements ICommands {
                     System.out.print("out of 5, what would you rate this song?");
                     String rating = scanner.nextLine();
                     float f = Float.parseFloat(rating);
-                    songController.rateAsong(songName, f);
+                    songController.rateASong(songName, f);
                     return "you successfully rated " + songName + " a " + rating + " .";
                 }else{
                     return "No such song in the system";

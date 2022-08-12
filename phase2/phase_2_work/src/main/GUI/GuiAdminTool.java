@@ -7,7 +7,7 @@ import javax.swing.*;
  */
 public class GuiAdminTool extends JDialog {
     public static void main(String[] args) {
-        new GuiChangeUserAdmin("English");
+        new GuiPromoteUserToAdmin("English");
         new GuiDelete("English");
         new GuiBan("English");
     }
@@ -16,8 +16,8 @@ public class GuiAdminTool extends JDialog {
 /**
  * This class is responsible for admin user to create another admin user.
  */
-class GuiChangeUserAdmin{
-    public GuiChangeUserAdmin(String language) {
+class GuiPromoteUserToAdmin {
+    public GuiPromoteUserToAdmin(String language) {
         LanguageGetter languageGetter = new LanguageGetter();
         new GuiFindUser(languageGetter.translateTo(language).chooseUserToPromote(), language);
     }

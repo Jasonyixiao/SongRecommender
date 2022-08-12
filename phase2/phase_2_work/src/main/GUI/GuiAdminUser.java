@@ -174,11 +174,11 @@ public class GuiAdminUser {
 
 
         //5. Admin
-        //go to GuiChangeUserAdmin page
+        //go to GuiPromoteUserToAdmin page
         userButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiChangeUserAdmin(language);
+                new GuiPromoteUserToAdmin(language);
                 frame.dispose();
             }
         });

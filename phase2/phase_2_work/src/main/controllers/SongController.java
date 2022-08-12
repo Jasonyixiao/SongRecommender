@@ -49,7 +49,7 @@ public class SongController {
      * @param rating is the rating that the user is planning to give.
      * @return true iff the user has successfully rate the song.
      */
-    public boolean rateAsong(String songName, float rating){
+    public boolean rateASong(String songName, float rating){
         return songManager.rate(songName,rating);
     }
 
@@ -77,6 +77,11 @@ public class SongController {
      */
     public List<String> allSongNames(){
         return songManager.allSongNames();
+    }
+
+
+    public void addSong(String name, String url, String artist){
+        songManager.addSong(name, url, artist);
     }
 
 

@@ -10,7 +10,7 @@ import java.util.List;
  * This Class is responsible for implementing one recommending strategy.
  */
 public class RecommendByAvgRating implements IRecommender {
-    public RecommendByAvgRating(){}
+
 
     /**
      * This method will recommend songs based on highest average ratings.

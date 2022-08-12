@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This class is used for registering.
+ * This is the registering page.
  */
 class GuiRegister extends JDialog{
 

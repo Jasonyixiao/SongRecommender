@@ -9,8 +9,11 @@ import usecases.UserManager;
 import java.io.IOException;
 import java.util.Objects;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
+/**
+ * Test methods that modify information regarding notifications.
+ */
 public class NotificationTest {
     private ShellState loadData() {
         IGateWay g = new GateWay();
@@ -117,15 +120,46 @@ public class NotificationTest {
                 "rec"), true);
     }
     @Test
-    public void testSave(){
+    public void testSaveAndRead(){
         ShellState shellState = loadData();
-        shellState.getSongController().addSong("ded", "djiedij.idi", "uh");
+        shellState.getSongController().addSong("dd1", "djiedij.idi", "uh");
+        shellState.getNotificationController().recommendSong(
+                "dd1",
+                "x",
+                "jason",
+                "rec");
         try {
             shellState.getNotificationController().saveNotificationData();
         } catch (IOException e) {
             fail();
         }
+        IGateWay g = new GateWay();
+
+        NotificationCenter notificationCenter= new NotificationCenter(g);
+        try {
+            notificationCenter.read();
+        }catch ( ClassNotFoundException e){
+            fail();
+        }
+        assertEquals(1, notificationCenter.getTotalNumNotifications("x"));
+
     }
+    @Test
+    //test getSongName
+    public void testGetSongName(){
+        ShellState shellState = loadData();
+        shellState.getSongController().addSong("dd1", "djiedij.idi", "uh");
+        shellState.getNotificationController().recommendSong(
+                "dd1",
+                "x",
+                "jason",
+                "rec");
+
+        String name = shellState.getNotificationController().
+                getSongName("x",shellState.getNotificationController().getCurrentNotificationId());
+        assertEquals(name, "dd1");
+    }
+
 
 
 

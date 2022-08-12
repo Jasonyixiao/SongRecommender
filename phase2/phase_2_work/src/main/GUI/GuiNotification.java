@@ -63,7 +63,7 @@ public class GuiNotification {
                 JButton songButton = new JButton(languageFactory.translateTo(language).youHaveMessageFrom()
                         + shell.getNotificationController().getSender(currentUser, i) +
                         ". " + languageFactory.translateTo(language).songName() + ": "
-                        + shell.getNotificationController().getSongname(currentUser, i) +
+                        + shell.getNotificationController().getSongName(currentUser, i) +
                         ". " + languageFactory.translateTo(language).message() + ": "
                         + shell.getNotificationController().getMessage(currentUser, i));
                 final int num = i;
@@ -75,7 +75,7 @@ public class GuiNotification {
                                 new GuiSongPage(
                                         language,
                                         shell,
-                                        shell.getNotificationController().getSongname(currentUser, num));
+                                        shell.getNotificationController().getSongName(currentUser, num));
                                 frame.dispose();
                             } catch (Exception ex) {
                                 System.out.println(ex);

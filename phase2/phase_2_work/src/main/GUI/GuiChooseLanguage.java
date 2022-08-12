@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
- * This class is responsible for choosing different languages.
+ * This is the page for user to choose different languages.
  */
 public class GuiChooseLanguage extends JDialog {
 //    public static void main(String[] args) {

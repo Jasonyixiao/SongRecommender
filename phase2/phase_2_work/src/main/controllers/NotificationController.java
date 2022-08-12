@@ -127,7 +127,7 @@ public class NotificationController {
      * @return return the name of the song of the notification.
      */
 
-    public String getSongname(String receiver, int idexOfNotification){
+    public String getSongName(String receiver, int idexOfNotification){
         return notificationCenter.getSongName(receiver, idexOfNotification);
     }
 

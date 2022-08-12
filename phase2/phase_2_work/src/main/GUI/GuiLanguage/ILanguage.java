@@ -1,7 +1,7 @@
 package GUI.GuiLanguage;
 
 /**
- * This class is responsible for calling different languages.
+ * Interface for language that can display text in their specified language.
  */
 public interface ILanguage {
     String chooseUserToPromote();
@@ -78,15 +78,17 @@ public interface ILanguage {
 
     String author();
 
-    String urlOfTheSongIs();
 
-    String Succeeded();
+
+    String rateSongSucceed();
+
+    String rateSongFailed();
 
 
     String giveYourRating();
 
     String rateSongSuccess();
-    String rateSongFailed();
+    String rateSongSaveFailed();
 
     String recommendStrategy();
 

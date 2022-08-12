@@ -75,7 +75,7 @@ public class English implements ILanguage {
     }
 
     @Override
-    public String Succeeded() {
+    public String rateSongSucceed() {
         return "Rating successful！";
     }
 
@@ -90,26 +90,29 @@ public class English implements ILanguage {
         return "Login History";
     }
 
+    @Override
     public String chooseUserToDelete(){
         return "Choose User to Delete";
     }
-
+    @Override
     public String chooseUserToBan(){
         return "Choose User to Ban";
     }
-
+    @Override
     public String homepageAdminUser(){
         return "Homepage-Admin User";
     }
-
+    @Override
     public String notification(){
         return "Notification";
     }
 
+    @Override
     public String recommend(){
         return "Recommend";
     }
 
+    @Override
     public String admin(){
         return "Admin";
     }
@@ -229,10 +232,7 @@ public class English implements ILanguage {
         return "you have message from";
     }
 
-    @Override
-    public String urlOfTheSongIs() {
-        return "The sender recommended you this song";
-    }
+
 
     public String giveYourRating(){
         return "give your rating" ;
@@ -241,6 +241,11 @@ public class English implements ILanguage {
     @Override
     public String rateSongSuccess() {
         return "you have successfully rated the song.";
+    }
+
+    @Override
+    public String rateSongSaveFailed() {
+        return "Error occurred when saving rating data";
     }
 
     public String rateSongFailed(){

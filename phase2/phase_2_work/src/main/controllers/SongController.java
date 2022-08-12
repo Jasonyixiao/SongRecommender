@@ -31,6 +31,8 @@ public class SongController {
         return songManager.listen(name);
     }
 
+
+
     /**
      * This method will return the recommended songs in this program.
      * @param recommender decides the recommending algorithm we will use.
@@ -58,9 +60,9 @@ public class SongController {
      * @return true iff the user has successfully rate the song.
      */
     public boolean rateASong(String songName, float rating) throws IOException {
-        boolean result = songManager.rate(songName,rating);
+
         saveSongData();
-        return result;
+        return songManager.rate(songName,rating);
     }
 
     /**

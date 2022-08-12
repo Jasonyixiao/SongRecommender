@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This Class is responsible for User to choose log in or Register.
+ * This page is for User to choose log in or Register.
  */
 class GuiSign extends JDialog {
 

@@ -64,7 +64,7 @@ class GuiRecSongToUser extends JDialog {
         final JTextField receiverField = new JTextField();
         receiverField.setBounds(200,150,165,25);
         JButton recommendButton = new JButton(languageFactory.translateTo(language).recommend());
-        recommendButton.setBounds(10,220,80,25);
+        recommendButton.setBounds(10,220,200,25);
 
         panel.add(messageLabel);
         panel.add(songName);

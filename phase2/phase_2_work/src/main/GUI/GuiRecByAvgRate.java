@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This is the page shown to user if user wants to see songs recommended by average rating.
+ */
 public class GuiRecByAvgRate {
     GuiRecByAvgRate(final ShellState shell, final String language) { //ShellState shell,
 

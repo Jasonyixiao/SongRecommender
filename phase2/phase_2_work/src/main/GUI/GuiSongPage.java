@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This is the page when the user click on a song from the home page.
+ */
 public class GuiSongPage {
     public GuiSongPage(final String language, final ShellState shell, final String songName){ // add: ShellState shell,
         LanguageFactory languageFactory = new LanguageFactory();

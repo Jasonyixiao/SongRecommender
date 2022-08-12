@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This page will show when a user fails to log out.
+ */
 public class GuiErrorPage {
     GuiErrorPage(final String language, final ShellState shell){
         final JFrame frame = new JFrame("!!!!");

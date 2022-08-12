@@ -9,5 +9,5 @@ import java.util.List;
  */
 
 public interface IRecommender {
-    public List<String> getRecommend(int amount, Collection<Song> allSongs);
+    List<String> getRecommend(int amount, Collection<Song> allSongs);
 }

@@ -209,10 +209,7 @@ public class Chinese implements ILanguage {
         return "您有消息来自";
     }
 
-    @Override
-    public String urlOfTheSongIs() {
-        return "他推荐给您了这首歌";
-    }
+
 
     @Override
     public String author() {
@@ -220,7 +217,12 @@ public class Chinese implements ILanguage {
     }
 
     @Override
-    public String Succeeded() {
+    public String rateSongSaveFailed() {
+        return "在存歌时存储数据出错";
+    }
+
+    @Override
+    public String rateSongSucceed() {
         return "评分成功";
     }
 
@@ -243,6 +245,8 @@ public class Chinese implements ILanguage {
     public String rateSongSuccess() {
         return "成功为你的歌评分";
     }
+
+
 
     @Override
     public String rateSongFailed() {

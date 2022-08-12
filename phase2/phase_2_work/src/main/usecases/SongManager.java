@@ -94,7 +94,7 @@ public class SongManager {
 
     /**
      * This method will read in all song's data from local, and save it in allSongs.
-     * @throws  IOException if error reading from file.
+     * @throws  ClassNotFoundException if error reading from file.
      */
     public void read() throws ClassNotFoundException {
 

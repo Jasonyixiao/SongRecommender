@@ -32,7 +32,7 @@ public class Notification implements Serializable {
         this.songName = "";
     }
     /**
-     * Constructor of a notification, stores content(url of song for now), message, isNew, sender as variables.
+     * Getter for songName
      * @return return the song name
      */
     public String getSongName() {
@@ -40,7 +40,7 @@ public class Notification implements Serializable {
     }
 
     /**
-     * Constructor of a notification, stores content(url of song for now), message, isNew, sender as variables.
+     * Setter for songName
      * @param songName is the name of the song
      */
 
@@ -70,13 +70,7 @@ public class Notification implements Serializable {
 
 
 
-    /**
-     * Setter for isNew.
-     * @param isNew is true for read message, false for unread.
-     */
-    public void setIsRead(boolean isNew) { // users will have the optiont to mark notification as read or unread
-        this.isNew = isNew;
-    }
+
 
     /**
      * Getter for isNew.

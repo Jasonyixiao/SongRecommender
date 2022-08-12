@@ -9,13 +9,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 /**
- * This class is responsible for the user to rate the song.
+ * This class is the page for the user to search song name and rate songs.
  */
 public class GuiRateSong extends JDialog{
 
-//    public static void main(String[] args) {
-//        new GuiRateSong("English", shell);
-//    }
+
     public GuiRateSong(final String language, final ShellState shell){
         final LanguageFactory languageFactory = new LanguageFactory();
         JPanel panel = new JPanel();
@@ -84,7 +82,8 @@ public class GuiRateSong extends JDialog{
                         messageLabel.setText(languageFactory.translateTo(language).rateSongFailed());
                     }
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                        messageLabel.setText(languageFactory.translateTo(language).rateSongSaveFailed());
+
                 }
 
 

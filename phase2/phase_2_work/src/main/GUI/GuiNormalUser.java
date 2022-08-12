@@ -33,13 +33,11 @@ class GuiNormalUser {
         // Add a menu bar and add dropdown menus to it:
         JMenuBar jMenuBar = new JMenuBar();
         JMenu userInfoMenu = new JMenu(languageGetter.translateTo(language).userInfo());
-        JMenu listenMenu = new JMenu(languageGetter.translateTo(language).listen());
         JMenu notificationMenu = new JMenu(languageGetter.translateTo(language).notification());
         JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
         JMenu logoutMenu = new JMenu(languageGetter.translateTo(language).logout());
 
         jMenuBar.add(userInfoMenu);
-        jMenuBar.add(listenMenu);
         jMenuBar.add(notificationMenu);
         jMenuBar.add(recommendMenu);
         jMenuBar.add(logoutMenu);
@@ -47,7 +45,6 @@ class GuiNormalUser {
 
         // Add items to the dropdown menu:
         JMenuItem checkHisotryMenuButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
-        JMenuItem songUrlMenuButton = new JMenuItem(languageGetter.translateTo(language).songURL());
         JMenuItem checkAllNotificationButton = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
         JMenuItem getRecommendSongButton = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
         JMenuItem rateSongButton = new JMenuItem(languageGetter.translateTo(language).rateASong());
@@ -55,7 +52,6 @@ class GuiNormalUser {
         JMenuItem logoutButton = new JMenuItem(languageGetter.translateTo(language).logout());
 
         userInfoMenu.add(checkHisotryMenuButton);
-        listenMenu.add(songUrlMenuButton);
         notificationMenu.add(checkAllNotificationButton);
         recommendMenu.add(getRecommendSongButton);
         recommendMenu.add(rateSongButton);
@@ -118,18 +114,8 @@ class GuiNormalUser {
         });
 
 
-        //2.Listen
-        //go inside the URL page (GuiListen)
-        songUrlMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiListen(language,shell);
-                frame.dispose();
-            }
-        });
 
-
-        //3. Notification
+        //2. Notification
 
         //go to GuiAllNotification page
         checkAllNotificationButton.addActionListener(new ActionListener() {

@@ -33,7 +33,6 @@ public class GuiAdminUser {
         JMenuBar jMenuBar = new JMenuBar();
 
         JMenu userInfoMenu = new JMenu(languageGetter.translateTo(language).userInfo()); //return "user information" in chinese
-        JMenu listenMenu = new JMenu(languageGetter.translateTo(language).listen());
         JMenu notificationMenu = new JMenu(languageGetter.translateTo(language).notification());
         JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
         JMenu adminMenu = new JMenu(languageGetter.translateTo(language).admin());
@@ -41,7 +40,6 @@ public class GuiAdminUser {
         JMenu logoutMenu = new JMenu(languageGetter.translateTo(language).logout());
 
         jMenuBar.add(userInfoMenu);
-        jMenuBar.add(listenMenu);
         jMenuBar.add(notificationMenu);
         jMenuBar.add(recommendMenu);
         jMenuBar.add(adminMenu);

@@ -136,7 +136,7 @@ class GuiNormalUser {
         checkAllNotificationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiNotification(languageFactory.translateTo(language).checkAllNotifications(),language,shell);
+                new GuiNotification(language, shell);
                 frame.dispose();
             }
         });

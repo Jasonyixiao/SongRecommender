@@ -9,10 +9,10 @@ import java.util.HashMap;
 /**
  * This class gets use's choice of languages.
  */
-public class LanguageGetter {
+public class LanguageFactory {
     private HashMap<String, ILanguage> languageMap;
 
-    public LanguageGetter() {
+    public LanguageFactory() {
         languageMap = new HashMap<>();
         languageMap.put("Chinese", new Chinese());
         languageMap.put("English", new English());

@@ -28,7 +28,7 @@ public class UserController {
      */
     public String createAdminUser(String myUsername, String otherUsername) {
         return this.userManager.createAdmin(myUsername,otherUsername);
-        // this is used in promte
+
     }
 
     /**

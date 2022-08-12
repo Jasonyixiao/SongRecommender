@@ -17,9 +17,9 @@ public class GuiRateSong extends JDialog{
 //        new GuiRateSong("English", shell);
 //    }
     public GuiRateSong(final String language, final ShellState shell){
-        final LanguageGetter languageGetter = new LanguageGetter();
+        final LanguageFactory languageFactory = new LanguageFactory();
         JPanel panel = new JPanel();
-        JFrame frame = new JFrame(languageGetter.translateTo(language).songName()); //SongName get from song.csv
+        final JFrame frame = new JFrame(languageFactory.translateTo(language).songName()); //SongName get from song.csv
 
         frame.setSize(500,500);
 
@@ -27,8 +27,8 @@ public class GuiRateSong extends JDialog{
         frame.add(panel);
         panel.setLayout(null);
 
-        JLabel songName = new JLabel(languageGetter.translateTo(language).songName());
-        JLabel giveYourRating = new JLabel(languageGetter.translateTo(language).giveYourRating());
+        JLabel songName = new JLabel(languageFactory.translateTo(language).songName());
+        JLabel giveYourRating = new JLabel(languageFactory.translateTo(language).giveYourRating());
         giveYourRating.setBounds(10,50,280,25);
         songName.setBounds(10,20,280,25 );
         panel.add(giveYourRating);
@@ -50,10 +50,28 @@ public class GuiRateSong extends JDialog{
 
 
         panel.setLayout(null);
-        JButton rateButton = new JButton(languageGetter.translateTo(language).rate());
+        JButton rateButton = new JButton(languageFactory.translateTo(language).rate());
         rateButton.setBounds(150,120,150,25);
         panel.add(rateButton);
+        JButton button2 = new JButton(languageFactory.translateTo(language).back());
+        button2.setBounds(400,10,80,25);
+        panel.add(button2); //
+        frame.setVisible(true);
 
+
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String currentUsername = shell.getUserProfile().getUsername();
+                if (shell.getLoginController().getUserController().isAdmin(currentUsername)){
+                    new GuiAdminUser(language,shell);
+                    frame.dispose();
+                }else{
+                    new GuiNormalUser(language, shell);
+                    frame.dispose();
+                }
+            }
+        });
         rateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,9 +79,9 @@ public class GuiRateSong extends JDialog{
                 String songName = songNameField.getText();
                 try {
                     if(shell.getSongController().rateASong(songName,rating)){
-                        messageLabel.setText(languageGetter.translateTo(language).rateSongSuccess());
+                        messageLabel.setText(languageFactory.translateTo(language).rateSongSuccess());
                     } else{
-                        messageLabel.setText(languageGetter.translateTo(language).rateSongFailed());
+                        messageLabel.setText(languageFactory.translateTo(language).rateSongFailed());
                     }
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);

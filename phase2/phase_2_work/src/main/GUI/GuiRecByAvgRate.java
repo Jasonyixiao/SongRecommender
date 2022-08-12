@@ -12,25 +12,25 @@ import java.awt.event.ActionListener;
 public class GuiRecByAvgRate {
     GuiRecByAvgRate(final ShellState shell, final String language) { //ShellState shell,
 
-    LanguageGetter languageGetter = new LanguageGetter();
-    final JFrame frame = new JFrame(languageGetter.translateTo(language).recommendByAvgRating());
+    LanguageFactory languageFactory = new LanguageFactory();
+    final JFrame frame = new JFrame(languageFactory.translateTo(language).recommendByAvgRating());
     frame.setLayout(new GridLayout(11, 1));
     JMenuBar bar = new JMenuBar();
-    JMenu backMenu = new JMenu(languageGetter.translateTo(language).back());
-    JMenuItem backButton = new JMenuItem(languageGetter.translateTo(language).back());
+    JMenu backMenu = new JMenu(languageFactory.translateTo(language).back());
+    JMenuItem backButton = new JMenuItem(languageFactory.translateTo(language).back());
     backMenu.add(backButton);
     bar.add(backMenu);
     frame.add(bar);
     frame.setSize(700, 700);
     frame.setVisible(true);
 
-    // Add top Nine songs by rating by default:
+    // Add top Nine songs by avg rating:
         IRecommender recommender = new RecommendByAvgRating();
         for (final String song: shell.getSongController().getRecommend(recommender)) {
             JButton songButton = new JButton(song +
-                    "  " + languageGetter.translateTo(language).author() + ": " +
+                    "  " + languageFactory.translateTo(language).author() + ": " +
                     shell.getSongController().getSongAuthor(song) +
-                    "  " + languageGetter.translateTo(language).rating() + ": " +
+                    "  " + languageFactory.translateTo(language).rating() + ": " +
                     shell.getSongController().getRatting(song));
             frame.add(songButton);
             songButton.addActionListener(new ActionListener() {

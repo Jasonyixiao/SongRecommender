@@ -15,14 +15,14 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class GuiNotification {
 
     public GuiNotification(String notificationType, final String language, final ShellState shell) {
-        LanguageGetter languageGetter = new LanguageGetter();
+        LanguageFactory languageFactory = new LanguageFactory();
         final JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setTitle(languageGetter.translateTo(language).notification());
+        frame.setTitle(languageFactory.translateTo(language).notification());
         frame.setSize(500, 500);
         JPanel panel = new JPanel();
         frame.add(panel);
-         JLabel messageLabel = new JLabel();
+        JLabel messageLabel = new JLabel();
         messageLabel.setBounds(125,250,300,35);
         messageLabel.setFont(new Font(null,Font.ITALIC,15));
         messageLabel.setForeground(Color.red);
@@ -30,7 +30,7 @@ public class GuiNotification {
 
 
         frame.setLayout(new GridLayout(10, 1, 10, 0));
-        JButton button2 = new JButton(languageGetter.translateTo(language).back());
+        JButton button2 = new JButton(languageFactory.translateTo(language).back());
         button2.setBounds(400, 10, 80, 25);
         panel.add(button2);
         panel.add(messageLabel);
@@ -56,18 +56,18 @@ public class GuiNotification {
             System.out.println(shell.getNotificationController().getSender(currentUser,0));
             int numAllNotifications = shell.getNotificationController().getTotalNumMessage(currentUser);
             for (int i = 0; i < numAllNotifications; i++) {
-                    panel.add(new JButton( languageGetter.translateTo(language).youHaveMessageFrom()
+                    panel.add(new JButton( languageFactory.translateTo(language).youHaveMessageFrom()
                             + shell.getNotificationController().getSender(currentUser, i)+
-                            ". " + languageGetter.translateTo(language).urlOfTheSongIs() + ": "
+                            ". " + languageFactory.translateTo(language).urlOfTheSongIs() + ": "
                             + shell.getNotificationController().getContent(currentUser, i)+
-                            ". " + languageGetter.translateTo(language).message() + ": "
+                            ". " + languageFactory.translateTo(language).message() + ": "
                             + shell.getNotificationController().getMessage(currentUser, i))
                     );
             }
             frame.setVisible(true);
 
         }catch(NullPointerException e){
-            messageLabel.setText(languageGetter.translateTo(language).noNotification());
+            messageLabel.setText(languageFactory.translateTo(language).noNotification());
         }
 
 

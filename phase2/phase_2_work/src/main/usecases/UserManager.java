@@ -136,7 +136,7 @@ public class UserManager {
         if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 otherUser.setIsAdmin(1);
-                return "Command successful.";
+                return "Command Successful!";
 
             }
             else{
@@ -171,7 +171,7 @@ public class UserManager {
         if (currentUser.getIsAdmin() == 1) {    // 1 means the current user is admin
             if (otherUser.getIsAdmin() == 0) {      // 0 mean the current user is normal user
                 allUsers.remove(otherUsername);
-                return "Command successful.";
+                return "Command Successful!";
             }
             else{
                 return "You cannot delete admin.";

@@ -1,19 +1,16 @@
 package GUI;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class test {
     public static void main(String[] args) {
         new test("English");
     }
     public test(final String language) {
-        LanguageGetter languageGetter = new LanguageGetter();
+        LanguageFactory languageFactory = new LanguageFactory();
         JFrame testFrame = new JFrame("ramka testowa");
         JPanel jPanel = new JPanel();
         testFrame.setLayout(new GridLayout(10, 1));
@@ -21,7 +18,7 @@ public class test {
 
         //backbutton
         JMenuBar button2 = new JMenuBar();
-        JMenuItem jMenuItem = new JMenuItem(languageGetter.translateTo(language).back());
+        JMenuItem jMenuItem = new JMenuItem(languageFactory.translateTo(language).back());
         button2.add(jMenuItem);
         jPanel.add(button2);
 

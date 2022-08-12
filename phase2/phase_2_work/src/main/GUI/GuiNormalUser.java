@@ -22,8 +22,8 @@ class GuiNormalUser {
 //    }
 
     public GuiNormalUser(final String language, final ShellState shell) {
-        final LanguageGetter languageGetter = new LanguageGetter();
-        final JFrame frame = new JFrame(languageGetter.translateTo(language).homepageNormalUser());
+        final LanguageFactory languageFactory = new LanguageFactory();
+        final JFrame frame = new JFrame(languageFactory.translateTo(language).homepageNormalUser());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
 
@@ -32,11 +32,11 @@ class GuiNormalUser {
 
         // Add a menu bar and add dropdown menus to it:
         JMenuBar jMenuBar = new JMenuBar();
-        JMenu userInfoMenu = new JMenu(languageGetter.translateTo(language).userInfo());
-        JMenu notificationMenu = new JMenu(languageGetter.translateTo(language).notification());
-        JMenu recommendMenu = new JMenu(languageGetter.translateTo(language).recommend());
-        JMenu logoutMenu = new JMenu(languageGetter.translateTo(language).logout());
-        JMenu recommendBy = new JMenu(languageGetter.translateTo(language).recommendStrategy());
+        JMenu userInfoMenu = new JMenu(languageFactory.translateTo(language).userInfo());
+        JMenu notificationMenu = new JMenu(languageFactory.translateTo(language).notification());
+        JMenu recommendMenu = new JMenu(languageFactory.translateTo(language).recommend());
+        JMenu logoutMenu = new JMenu(languageFactory.translateTo(language).logout());
+        JMenu recommendBy = new JMenu(languageFactory.translateTo(language).recommendStrategy());
 
 
         jMenuBar.add(userInfoMenu);
@@ -48,17 +48,17 @@ class GuiNormalUser {
 
 
         // Add items to the dropdown menu:
-        JMenuItem checkHisotryMenuButton = new JMenuItem(languageGetter.translateTo(language).checkHistory());
-        JMenuItem checkAllNotificationButton = new JMenuItem(languageGetter.translateTo(language).checkAllNotifications());
-        JMenuItem getRecommendSongButton = new JMenuItem(languageGetter.translateTo(language).getRecommendSongs());
-        JMenuItem rateSongButton = new JMenuItem(languageGetter.translateTo(language).rateASong());
-        JMenuItem reommendToUserButton = new JMenuItem(languageGetter.translateTo(language).recommendToUser());
-        JMenuItem logoutButton = new JMenuItem(languageGetter.translateTo(language).logout());
-        JMenuItem recommendByRating = new JMenuItem(languageGetter.translateTo(language).recommendByAvgRating());
+        JMenuItem checkHisotryMenuButton = new JMenuItem(languageFactory.translateTo(language).checkHistory());
+        JMenuItem checkAllNotificationButton = new JMenuItem(languageFactory.translateTo(language).checkAllNotifications());
+
+        JMenuItem rateSongButton = new JMenuItem(languageFactory.translateTo(language).rateASong());
+        JMenuItem reommendToUserButton = new JMenuItem(languageFactory.translateTo(language).recommendToUser());
+        JMenuItem logoutButton = new JMenuItem(languageFactory.translateTo(language).logout());
+        JMenuItem recommendByRating = new JMenuItem(languageFactory.translateTo(language).recommendByAvgRating());
 
         userInfoMenu.add(checkHisotryMenuButton);
         notificationMenu.add(checkAllNotificationButton);
-        recommendMenu.add(getRecommendSongButton);
+
         recommendMenu.add(rateSongButton);
         recommendMenu.add(reommendToUserButton);
         logoutMenu.add(logoutButton);
@@ -77,9 +77,9 @@ class GuiNormalUser {
         IRecommender recommender = new RecommendByAvgRating();
         for (final String song: shell.getSongController().getRecommend(recommender)) {
             JButton songButton = new JButton(song +
-                    "  " + languageGetter.translateTo(language).author() + ": " +
+                    "  " + languageFactory.translateTo(language).author() + ": " +
                     shell.getSongController().getSongAuthor(song) +
-                    "  " + languageGetter.translateTo(language).rating() + ": " +
+                    "  " + languageFactory.translateTo(language).rating() + ": " +
                     shell.getSongController().getRatting(song));
             panel.add(songButton);
             songButton.addActionListener(new ActionListener() {
@@ -136,20 +136,12 @@ class GuiNormalUser {
         checkAllNotificationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GuiNotification(languageGetter.translateTo(language).checkAllNotifications(),language,shell);
+                new GuiNotification(languageFactory.translateTo(language).checkAllNotifications(),language,shell);
                 frame.dispose();
             }
         });
 
-        //4.Get Recommend Songs
-        //go to GuiRecommendSong page
-        getRecommendSongButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new GuiGetRecSong(language, shell);
-                frame.dispose();
-            }
-        });
+
         //go to GuiRateSong page
         rateSongButton.addActionListener(new ActionListener() {
             @Override

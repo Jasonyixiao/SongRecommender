@@ -14,8 +14,8 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  */
 public class GuiHistory {
     public GuiHistory(final String language, final ShellState shell) {
-        LanguageGetter languageGetter = new LanguageGetter();
-        final JFrame frame = new JFrame(languageGetter.translateTo(language).LoginHistory());
+        LanguageFactory languageFactory = new LanguageFactory();
+        final JFrame frame = new JFrame(languageFactory.translateTo(language).LoginHistory());
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(11, 1));
@@ -24,7 +24,7 @@ public class GuiHistory {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 8));
         frame.add(panel);
-        JMenuItem jMenuItem = new JMenuItem(languageGetter.translateTo(language).back());
+        JMenuItem jMenuItem = new JMenuItem(languageFactory.translateTo(language).back());
         panel.add(jMenuItem);
 
         //Add history to panel

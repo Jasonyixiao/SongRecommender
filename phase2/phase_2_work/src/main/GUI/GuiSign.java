@@ -16,12 +16,12 @@ class GuiSign extends JDialog {
     public GuiSign(final String language, final ShellState shell){  //first frame shows the register button and sign in button.
         final JFrame frame = new JFrame();
 
-        LanguageGetter languageGetter = new LanguageGetter();
-        JButton button1 = new JButton(languageGetter.translateTo(language).login());
-        JButton button2 = new JButton(languageGetter.translateTo(language).register());
+        LanguageFactory languageFactory = new LanguageFactory();
+        JButton button1 = new JButton(languageFactory.translateTo(language).login());
+        JButton button2 = new JButton(languageFactory.translateTo(language).register());
 
-        JLabel label1 = new JLabel(languageGetter.translateTo(language).forExistedUser());
-        JLabel label2 = new JLabel(languageGetter.translateTo(language).forNewUser());
+        JLabel label1 = new JLabel(languageFactory.translateTo(language).forExistedUser());
+        JLabel label2 = new JLabel(languageFactory.translateTo(language).forNewUser());
 
         JPanel panel1 = new JPanel();
         JPanel panel2 = new JPanel();
@@ -44,7 +44,7 @@ class GuiSign extends JDialog {
         frame.add(panel3);
 
         //Back button(return to main page:
-        JButton backButton = new JButton(languageGetter.translateTo(language).back());
+        JButton backButton = new JButton(languageFactory.translateTo(language).back());
         button2.setBounds(400,500,80,25);
         panel3.add(backButton);
         //Add actionlistener to button2
@@ -75,7 +75,7 @@ class GuiSign extends JDialog {
         });
 
         // LoginJBAction(button1);
-        frame.setTitle(languageGetter.translateTo(language).welcome());
+        frame.setTitle(languageFactory.translateTo(language).welcome());
         frame.pack();
         frame.setVisible(true);
 

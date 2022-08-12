@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class GuiSongPage {
     public GuiSongPage(final String language, final ShellState shell, final String songName){ // add: ShellState shell,
-        LanguageGetter languageGetter = new LanguageGetter();
+        LanguageFactory languageFactory = new LanguageFactory();
         final JFrame frame = new JFrame();
         frame.setSize(700, 700);
         frame.setLayout(new GridLayout(1, 1));
@@ -17,7 +17,7 @@ public class GuiSongPage {
         panel.setLayout(new GridLayout(4, 1));
 
         //Add the back button
-        JButton backButton = new JButton(languageGetter.translateTo(language).back());
+        JButton backButton = new JButton(languageFactory.translateTo(language).back());
         panel.add(backButton);
         backButton.addActionListener(new ActionListener() {
             @Override
@@ -34,13 +34,13 @@ public class GuiSongPage {
         });
 
         //Add song name + author
-        final JLabel song = new JLabel(languageGetter.translateTo(language).songName()+ ": " +
+        final JLabel song = new JLabel(languageFactory.translateTo(language).songName()+ ": " +
                 songName + "     " +
-                languageGetter.translateTo(language).author() + ": "+
+                languageFactory.translateTo(language).author() + ": "+
                 shell.getSongController().getSongAuthor(songName));
 
-        JButton listenButton = new JButton(languageGetter.translateTo(language).listen());
-        JButton rateButton = new JButton(languageGetter.translateTo(language).rate());
+        JButton listenButton = new JButton(languageFactory.translateTo(language).listen());
+        JButton rateButton = new JButton(languageFactory.translateTo(language).rate());
 
         //Add actionlistener to listenButton
         listenButton.addActionListener(new ActionListener() {

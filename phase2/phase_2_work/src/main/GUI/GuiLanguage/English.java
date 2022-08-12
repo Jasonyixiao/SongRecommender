@@ -7,7 +7,7 @@ public class English implements ILanguage {
     public English() {
     }
     public String chooseUserToPromote(){
-        return "Choose User to Admin";
+        return "Choose User to promote to Admin";
     }
     @Override
     public String register(){
@@ -29,7 +29,7 @@ public class English implements ILanguage {
 
     @Override
     public String logInFailed() {
-        return "Invalid username/password";
+        return "Log in Failed, banned from the system or invalid username/password.";
     }
 
     @Override
@@ -42,15 +42,7 @@ public class English implements ILanguage {
         return "Logout successful, but we were not able to save your data";
     }
 
-    @Override
-    public String hereIsUrl() {
-        return "here is the Youtube link of the song: ";
-    }
 
-    @Override
-    public String noSongFound() {
-        return "No such song in the system";
-    }
 
     @Override
     public String receiverUsername() {
@@ -87,10 +79,6 @@ public class English implements ILanguage {
         return "Rating successful！";
     }
 
-    @Override
-    public String invalidInput() {
-        return "invalid input";
-    }
 
     @Override
     public String userInfo() {
@@ -126,10 +114,7 @@ public class English implements ILanguage {
         return "Admin";
     }
 
-    @Override
-    public String other() {
-        return "Other";
-    }
+
 
     @Override
     public String checkHistory() {
@@ -141,20 +126,13 @@ public class English implements ILanguage {
         return "Logout";
     }
 
-    @Override
-    public String checkNewNotifications() {
-        return "Check New Notifications";
-    }
+
 
     @Override
     public String checkAllNotifications() {
         return "Check All Notifications";
     }
 
-    @Override
-    public String getRecommendSongs() {
-        return "Get Recommend Songs";
-    }
 
     @Override
     public String rateASong() {
@@ -167,8 +145,8 @@ public class English implements ILanguage {
     }
 
     @Override
-    public String user() {
-        return "User";
+    public String promote() {
+        return "Create admin";
     }
 
     @Override
@@ -186,35 +164,13 @@ public class English implements ILanguage {
         return "Username";
     }
 
-    @Override
-    public String search() {
-        return "Search";
-    }
 
-    @Override
-    public String newNotifications() {
-        return "NewNotifications";
-    }
-
-    @Override
-    public String allNotifications() {
-        return "All Notifications";
-    }
-
-    @Override
-    public String recommendSongs() {
-        return "Recommend Songs";
-    }
 
     @Override
     public String listen() {
         return "Listen";
     }
 
-    @Override
-    public String songURL() {
-        return "Song Url";
-    }
 
     @Override
     public String loginSystem() {
@@ -246,10 +202,7 @@ public class English implements ILanguage {
         return "Rate";
     }
 
-    @Override
-    public String yes() {
-        return "Yes";
-    }
+
 
     @Override
     public String forExistedUser() {
@@ -309,5 +262,21 @@ public class English implements ILanguage {
     public String rating() {
         return "rating";
     }
+
+    @Override
+    public String confirm() {
+        return "confirm";
+    }
+
+    @Override
+    public String adminTaskComplete() {
+        return " Task completed";
+    }
+
+    @Override
+    public String adminTaskFailed() {
+        return "Task failed. Can't perform such operation to an admin/yourself.";
+    }
+
 
 }

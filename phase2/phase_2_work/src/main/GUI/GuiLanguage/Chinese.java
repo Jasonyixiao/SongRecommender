@@ -39,10 +39,6 @@ public class Chinese implements ILanguage {
         return "管理员";
     }
 
-    @Override
-    public String other() {
-        return "其他";
-    }
 
 
     @Override
@@ -55,20 +51,12 @@ public class Chinese implements ILanguage {
         return "登出";
     }
 
-    @Override
-    public String checkNewNotifications() {
-        return "查看最新通知";
-    }
 
     @Override
     public String checkAllNotifications() {
         return "查看所有通知";
     }
 
-    @Override
-    public String getRecommendSongs() {
-        return "获取推荐歌曲";
-    }
 
     @Override
     public String rateASong() {
@@ -81,9 +69,10 @@ public class Chinese implements ILanguage {
     }
 
     @Override
-    public String user() {
-        return "用户";
+    public String promote() {
+        return "更改用户类型";
     }
+
 
     @Override
     public String ban() {
@@ -100,35 +89,12 @@ public class Chinese implements ILanguage {
         return "用户名";
     }
 
-    @Override
-    public String search() {
-        return "查询";
-    }
-
-    @Override
-    public String newNotifications() {
-        return "新通知";
-    }
-
-    @Override
-    public String allNotifications() {
-        return "所有通知";
-    }
-
-    @Override
-    public String recommendSongs() {
-        return "推荐歌曲";
-    }
 
     @Override
     public String listen() {
         return "听歌";
     }
 
-    @Override
-    public String songURL() {
-        return "歌曲链接";
-    }
 
     @Override
     public String loginSystem() {
@@ -160,10 +126,6 @@ public class Chinese implements ILanguage {
         return "打分";
     }
 
-    @Override
-    public String yes() {
-        return "是";
-    }
 
     @Override
     public String forExistedUser() {
@@ -196,7 +158,7 @@ public class Chinese implements ILanguage {
 
     @Override
     public String logInFailed() {
-        return "密码或用户名错误";
+        return "登陆失败，账户已被封禁或账号密码错误";
     }
 
     @Override
@@ -209,15 +171,8 @@ public class Chinese implements ILanguage {
         return "您已成功登出，但您的用户数据无法保存";
     }
 
-    @Override
-    public String hereIsUrl() {
-        return "您要听的歌曲Youtube链接是: ";
-    }
 
-    @Override
-    public String noSongFound() {
-        return "找不到该歌曲";
-    }
+
 
     @Override
     public String receiverUsername() {
@@ -269,10 +224,7 @@ public class Chinese implements ILanguage {
         return "评分成功";
     }
 
-    @Override
-    public String invalidInput() {
-        return "请重新输入";
-    }
+
 
     @Override
     public String welcome() {
@@ -310,6 +262,21 @@ public class Chinese implements ILanguage {
     @Override
     public String rating() {
         return "评分";
+    }
+
+    @Override
+    public String confirm() {
+        return "确认";
+    }
+
+    @Override
+    public String adminTaskComplete() {
+        return "成功";
+    }
+
+    @Override
+    public String adminTaskFailed() {
+        return "失败，该操作不能对管理员/您自己使用";
     }
 
 

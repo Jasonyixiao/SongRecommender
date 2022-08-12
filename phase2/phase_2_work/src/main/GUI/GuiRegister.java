@@ -1,7 +1,5 @@
 package GUI;
-import controllers.LoginController;
 import controllers.ShellState;
-import controllers.SongController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,31 +12,31 @@ import java.awt.event.ActionListener;
 class GuiRegister extends JDialog{
 
     public GuiRegister(final String language, final ShellState shell) {
-        final LanguageGetter languageGetter = new LanguageGetter();
+        final LanguageFactory languageFactory = new LanguageFactory();
         JPanel panel = new JPanel();
-        final JFrame frame = new JFrame(languageGetter.translateTo(language).registerSystem());
+        final JFrame frame = new JFrame(languageFactory.translateTo(language).registerSystem());
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
 
-        JLabel label = new JLabel(languageGetter.translateTo(language).userID());
+        JLabel label = new JLabel(languageFactory.translateTo(language).userID());
         label.setBounds(10, 20, 80, 25);
         final JTextField username = new JTextField(20);
         username.setBounds(100, 20, 165, 25);
 
-        JLabel passwordLabel = new JLabel(languageGetter.translateTo(language).password());
+        JLabel passwordLabel = new JLabel(languageFactory.translateTo(language).password());
         passwordLabel.setBounds(10, 50, 80, 25);
         final JPasswordField password = new JPasswordField();
         password.setBounds(100, 50, 165, 25);
 
-        JButton registerButton = new JButton(languageGetter.translateTo(language).register());
+        JButton registerButton = new JButton(languageFactory.translateTo(language).register());
         registerButton.setBounds(10, 80, 80, 25);
         final JLabel success = new JLabel();
         success.setBounds(10, 110, 300, 15);
 
         //Back button(return to main page:
-        JButton button2 = new JButton(languageGetter.translateTo(language).back());
+        JButton button2 = new JButton(languageFactory.translateTo(language).back());
         button2.setBounds(400,10,80,25);
         panel.add(button2);
         //Add actionlistener to button2
@@ -74,7 +72,7 @@ class GuiRegister extends JDialog{
                 }else{
                     success.setFont(new Font(null,Font.ITALIC,15));
                     success.setForeground(Color.red);
-                    success.setText(languageGetter.translateTo(language).registerFailed());
+                    success.setText(languageFactory.translateTo(language).registerFailed());
                 }
             }
         });

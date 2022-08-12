@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  */
 class GuiLogin extends JDialog implements ActionListener { // when press sign in button
 
-    LanguageGetter languageGetter = new LanguageGetter();
+    LanguageFactory languageFactory = new LanguageFactory();
     JPanel panel = new JPanel();
     JFrame frame;
     JLabel userId;
@@ -30,29 +30,29 @@ class GuiLogin extends JDialog implements ActionListener { // when press sign in
 
 
     public GuiLogin(final String language, final ShellState shell) {
-        this.frame = new JFrame(languageGetter.translateTo(language).loginSystem());
+        this.frame = new JFrame(languageFactory.translateTo(language).loginSystem());
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         panel.setLayout(null);
 
-        this.userId = new JLabel(languageGetter.translateTo(language).userID());
+        this.userId = new JLabel(languageFactory.translateTo(language).userID());
         userId.setBounds(10, 20, 80, 25);
         this.userNameField = new JTextField(20);
         userNameField.setBounds(100, 20, 165, 25);
 
-        this.passwordLabel = new JLabel(languageGetter.translateTo(language).password());
+        this.passwordLabel = new JLabel(languageFactory.translateTo(language).password());
         passwordLabel.setBounds(10, 50, 80, 25);
         this.passwordField = new JPasswordField();
         passwordField.setBounds(100, 50, 165, 25);
-        messageLabel.setBounds(125,250,250,35);
+        messageLabel.setBounds(10,250,700,35);
         messageLabel.setFont(new Font(null,Font.ITALIC,15));
 
-        this.loginButton = new JButton(languageGetter.translateTo(language).login());
+        this.loginButton = new JButton(languageFactory.translateTo(language).login());
         loginButton.setBounds(10, 80, 80, 25);
 
         //Back button(return to main page:
-        JButton button2 = new JButton(languageGetter.translateTo(language).back());
+        JButton button2 = new JButton(languageFactory.translateTo(language).back());
         button2.setBounds(400,10,80,25);
         panel.add(button2);
         //Add actionlistener to button2
@@ -97,7 +97,7 @@ class GuiLogin extends JDialog implements ActionListener { // when press sign in
                 }
             }else{
                 messageLabel.setForeground(Color.red);
-                messageLabel.setText(languageGetter.translateTo(language).logInFailed());
+                messageLabel.setText(languageFactory.translateTo(language).logInFailed());
             }
 
         }
